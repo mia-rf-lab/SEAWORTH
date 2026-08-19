@@ -1,0 +1,1684 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>海沃控股集團 SEAWORTH HOLDING｜敬海而行，與世界共榮共善</title>
+    <meta name="description" content="海沃控股集團（SEAWORTH HOLDING）整合智慧造船、遠洋漁撈、冷鏈物流與國際貿易，打造全流程可追溯的全球海洋產業體系。">
+    
+    <!-- Google Fonts: Editorial Classics & Luxury Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:ital,wght@0,400;0,600;0,700;1,400&family=Italiana&family=Noto+Serif+TC:wght@200;300;400;600;700&family=Pinyon+Script&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- JSON-LD Structured Data for AI & Search Engines -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Corporation",
+      "name": "海沃控股集團",
+      "alternateName": "SEAWORTH HOLDING",
+      "url": "https://www.seaworth.com",
+      "logo": "https://www.seaworth.com/assets/logo.svg",
+      "description": "整合智慧造船、遠洋漁撈、冷鏈物流與國際貿易，建構全流程可追溯的全球永續海洋產業體系。",
+      "foundingDate": "2026",
+      "headquarters": {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Kaohsiung",
+          "addressCountry": "TW"
+        }
+      },
+      "knowsAbout": ["智慧遠洋漁撈", "海上超低溫冷鏈", "智慧造船", "MSC海洋認證", "ESG共善治理"]
+    }
+    </script>
+
+    <style>
+        :root {
+            /* 頂級珠寶與奢華藝廊色系 (Quiet Luxury / Champagne & Silk) */
+            --bg-canvas: #FBF8F3;          /* 絲綢珍珠暖白 */
+            --bg-champagne: #F5EFEB;       /* 香檳米金底 */
+            --bg-card: #FFFFFF;
+            --c-ink: #14171A;              /* 奢華黑瑪瑙墨色 */
+            --c-navy: #0E1E2E;             /* 皇家深海藍 */
+            --c-charcoal: #2E3339;         /* 暖調深灰 */
+            --c-muted: #7E848D;
+            
+            /* 金屬光澤與金箔漸層 */
+            --gold-primary: #C5A059;       /* 皇家古董金 */
+            --gold-light: #DFCA9B;         /* 亮面香檳金 */
+            --gold-dark: #8F6D35;          /* 沉金 */
+            --gold-foil: linear-gradient(135deg, #ECC880 0%, #C5A059 50%, #9B7637 100%);
+            --gold-sheen: linear-gradient(90deg, transparent 0%, rgba(223, 202, 155, 0.4) 50%, transparent 100%);
+            --glass-gold: rgba(197, 160, 89, 0.08);
+
+            /* 字體配置 */
+            --font-serif: 'Noto Serif TC', serif;
+            --font-display: 'Cinzel', serif;
+            --font-accent: 'Italiana', serif;
+            --font-script: 'Pinyon Script', cursive;
+
+            /* 動態與陰影 */
+            --shadow-luxury: 0 20px 50px -10px rgba(14, 30, 46, 0.07), 0 0 0 1px rgba(197, 160, 89, 0.15);
+            --shadow-hover: 0 30px 70px -12px rgba(14, 30, 46, 0.12), 0 0 0 1px rgba(197, 160, 89, 0.35);
+            --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-serif);
+            background-color: var(--bg-canvas);
+            color: var(--c-charcoal);
+            line-height: 2.1;
+            letter-spacing: 0.05em;
+            font-weight: 300;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            /* 隱微的頂級細緻紋理底圖 */
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(223, 202, 155, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(14, 30, 46, 0.03) 0%, transparent 45%);
+        }
+
+        /* 標題與字體風格 */
+        h1, h2, h3, h4 {
+            font-family: var(--font-serif);
+            color: var(--c-ink);
+            letter-spacing: 0.08em;
+            font-weight: 400;
+        }
+
+        .en-luxury {
+            font-family: var(--font-display);
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+        }
+
+        .gold-text-gradient {
+            background: var(--gold-foil);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        /* 經典法式花式雙金線裝飾與皇冠線條 */
+        .crest-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin: 0 auto 28px auto;
+        }
+        .crest-line {
+            width: 70px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+        }
+        .crest-diamond {
+            width: 8px;
+            height: 8px;
+            transform: rotate(45deg);
+            border: 1px solid var(--gold-primary);
+            background: var(--bg-canvas);
+            position: relative;
+        }
+        .crest-diamond::after {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            background: var(--gold-primary);
+        }
+
+        /* 華麗弧形拱門（Arch）與內縮法式雙線邊框裝飾組件 */
+        .french-arch-frame {
+            position: relative;
+            padding: 16px;
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            border-radius: 200px 200px 4px 4px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-luxury);
+        }
+        .french-arch-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 190px 190px 2px 2px;
+            overflow: hidden;
+            border: 1px solid rgba(197, 160, 89, 0.4);
+        }
+
+        /* 內嵌金色角隅裝飾 (Corner Filigree) */
+        .luxury-card-ornate {
+            position: relative;
+            background: var(--bg-card);
+            border: 1px solid rgba(197, 160, 89, 0.25);
+            box-shadow: var(--shadow-luxury);
+            transition: all 0.5s var(--ease-luxury);
+        }
+        .luxury-card-ornate::before,
+        .luxury-card-ornate::after {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            pointer-events: none;
+            transition: all 0.4s ease;
+        }
+        .luxury-card-ornate::before {
+            top: 6px;
+            left: 6px;
+            border-top: 1px solid var(--gold-primary);
+            border-left: 1px solid var(--gold-primary);
+        }
+        .luxury-card-ornate::after {
+            bottom: 6px;
+            right: 6px;
+            border-bottom: 1px solid var(--gold-primary);
+            border-right: 1px solid var(--gold-primary);
+        }
+        .luxury-card-ornate:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(197, 160, 89, 0.5);
+        }
+        .luxury-card-ornate:hover::before {
+            top: 4px;
+            left: 4px;
+            width: 20px;
+            height: 20px;
+        }
+        .luxury-card-ornate:hover::after {
+            bottom: 4px;
+            right: 4px;
+            width: 20px;
+            height: 20px;
+        }
+
+        /* 頂級導覽列 */
+        header.luxury-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(251, 248, 243, 0.94);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.25);
+            transition: all 0.4s ease;
+        }
+        .nav-container {
+            max-width: 1380px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .luxury-brand {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            text-decoration: none;
+        }
+        .brand-crest {
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--gold-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(45deg);
+            background: rgba(223, 202, 155, 0.1);
+            transition: all 0.4s ease;
+        }
+        .brand-crest svg {
+            transform: rotate(-45deg);
+            color: var(--gold-primary);
+            width: 22px;
+            height: 22px;
+        }
+        .luxury-brand:hover .brand-crest {
+            background: var(--gold-primary);
+        }
+        .luxury-brand:hover .brand-crest svg {
+            color: #FFFFFF;
+        }
+        .brand-title-wrap .brand-zh {
+            font-size: 1.4rem;
+            letter-spacing: 0.2em;
+            color: var(--c-ink);
+            font-weight: 400;
+            display: block;
+            line-height: 1.1;
+        }
+        .brand-title-wrap .brand-en {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            letter-spacing: 0.28em;
+            color: var(--gold-dark);
+            display: block;
+        }
+
+        .luxury-nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+            align-items: center;
+        }
+        .luxury-nav-menu a {
+            text-decoration: none;
+            color: var(--c-ink);
+            font-size: 0.88rem;
+            letter-spacing: 0.16em;
+            position: relative;
+            padding: 8px 0;
+            transition: color 0.3s ease;
+        }
+        .luxury-nav-menu a::after {
+            content: '◆';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%) scale(0);
+            font-size: 0.5rem;
+            color: var(--gold-primary);
+            transition: transform 0.3s var(--ease-luxury);
+        }
+        .luxury-nav-menu a:hover {
+            color: var(--gold-dark);
+        }
+        .luxury-nav-menu a:hover::after {
+            transform: translateX(-50%) scale(1);
+        }
+        .btn-nav-reserve {
+            border: 1px solid var(--gold-primary);
+            padding: 12px 28px !important;
+            font-family: var(--font-display) !important;
+            font-size: 0.8rem !important;
+            letter-spacing: 0.25em !important;
+            background: linear-gradient(135deg, rgba(223, 202, 155, 0.15) 0%, rgba(251, 248, 243, 0.8) 100%);
+            transition: all 0.4s ease !important;
+        }
+        .btn-nav-reserve:hover {
+            background: var(--gold-foil) !important;
+            color: #FFFFFF !important;
+            box-shadow: 0 8px 25px rgba(197, 160, 89, 0.35);
+        }
+        .btn-nav-reserve::after {
+            display: none !important;
+        }
+
+        /* 策展區塊通用佈局 */
+        .section-container {
+            max-width: 1380px;
+            margin: 0 auto;
+            padding: 140px 40px;
+            position: relative;
+        }
+        .section-header-ornate {
+            text-align: center;
+            max-width: 820px;
+            margin: 0 auto 80px auto;
+        }
+        .script-sub {
+            font-family: var(--font-script);
+            font-size: 2.2rem;
+            color: var(--gold-primary);
+            display: block;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        .section-h2-luxury {
+            font-size: 2.7rem;
+            line-height: 1.4;
+            color: var(--c-ink);
+            margin-bottom: 20px;
+        }
+        .section-p-luxury {
+            font-size: 1.05rem;
+            color: var(--c-muted);
+            line-height: 2.1;
+        }
+
+        /* 區塊 1：HERO BANNER - 奢華拱門與高定意象 */
+        .hero-section-luxury {
+            padding: 100px 40px 140px 40px;
+            position: relative;
+            background: radial-gradient(circle at 75% 25%, rgba(223, 202, 155, 0.22) 0%, rgba(251, 248, 243, 1) 70%);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.25);
+            overflow: hidden;
+        }
+        .hero-grid-luxury {
+            max-width: 1380px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 80px;
+            align-items: center;
+        }
+        .hero-tagline-ornate {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 6px 20px;
+            border: 1px solid rgba(197, 160, 89, 0.4);
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.7);
+            margin-bottom: 30px;
+        }
+        .hero-h1-luxury {
+            font-size: 3.8rem;
+            line-height: 1.28;
+            margin-bottom: 26px;
+            font-weight: 300;
+        }
+        .hero-lead-gold {
+            font-size: 1.3rem;
+            color: var(--gold-dark);
+            margin-bottom: 20px;
+            font-weight: 400;
+            display: block;
+        }
+        .hero-desc-luxury {
+            font-size: 1.05rem;
+            color: #555C65;
+            line-height: 2.2;
+            margin-bottom: 45px;
+            max-width: 600px;
+        }
+        .hero-actions-luxury {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+        .btn-gold-fill {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--gold-foil);
+            color: #FFFFFF;
+            padding: 18px 42px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.2em;
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.35);
+            border: 1px solid transparent;
+            transition: all 0.4s var(--ease-luxury);
+        }
+        .btn-gold-fill:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 40px rgba(197, 160, 89, 0.5);
+        }
+        .btn-gold-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.7);
+            color: var(--c-ink);
+            border: 1px solid rgba(197, 160, 89, 0.5);
+            padding: 18px 36px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.18em;
+            transition: all 0.4s ease;
+        }
+        .btn-gold-outline:hover {
+            border-color: var(--gold-primary);
+            background: #FFFFFF;
+            color: var(--gold-dark);
+            transform: translateY(-3px);
+        }
+
+        /* 英雄拱門框架視覺 */
+        .hero-arch-container {
+            height: 560px;
+            position: relative;
+        }
+        .hero-arch-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            filter: brightness(0.95) saturate(1.1);
+            transition: transform 10s ease;
+        }
+        .french-arch-frame:hover .hero-arch-bg {
+            transform: scale(1.05);
+        }
+        .hero-floating-medallion {
+            position: absolute;
+            bottom: 20px;
+            left: -25px;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(197, 160, 89, 0.4);
+            padding: 22px 28px;
+            box-shadow: var(--shadow-luxury);
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            border-radius: 4px;
+        }
+        .medallion-icon {
+            width: 48px;
+            height: 48px;
+            border: 1px solid var(--gold-primary);
+            background: rgba(223, 202, 155, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-dark);
+            border-radius: 50%;
+        }
+
+        /* 區塊 2：ABOUT GROUP & 3 大核心事業群 */
+        .about-section-luxury {
+            background-color: var(--bg-canvas);
+        }
+        .about-grand-quote {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(245, 239, 235, 0.8) 100%);
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            padding: 60px 70px;
+            margin-bottom: 70px;
+            position: relative;
+            box-shadow: var(--shadow-luxury);
+        }
+        .quote-corner-mark {
+            font-family: var(--font-accent);
+            font-size: 5rem;
+            color: rgba(197, 160, 89, 0.25);
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            line-height: 1;
+        }
+        .grand-quote-title {
+            font-size: 1.6rem;
+            color: var(--c-ink);
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 2;
+        }
+        .grand-quote-desc {
+            font-size: 1.08rem;
+            color: #4A525D;
+            line-height: 2.2;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 三大事業群金屬卡片 */
+        .business-trio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 36px;
+            margin-bottom: 60px;
+        }
+        .business-luxury-card {
+            padding: 55px 38px 45px 38px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card-crest-number {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            color: var(--gold-primary);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-crest-number::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(197, 160, 89, 0.4), transparent);
+        }
+        .card-h3-luxury {
+            font-size: 1.55rem;
+            color: var(--c-ink);
+            margin-bottom: 8px;
+        }
+        .card-tagline-luxury {
+            font-size: 0.85rem;
+            color: var(--gold-dark);
+            letter-spacing: 0.16em;
+            margin-bottom: 20px;
+            display: block;
+        }
+        .card-narrative-luxury {
+            font-size: 0.96rem;
+            color: #636B75;
+            line-height: 2.0;
+            margin-bottom: 36px;
+        }
+        .card-arrow-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--c-ink);
+            text-decoration: none;
+            font-size: 0.82rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            padding-top: 18px;
+            border-top: 1px solid rgba(197, 160, 89, 0.25);
+            transition: all 0.3s ease;
+        }
+        .business-luxury-card:hover .card-arrow-link {
+            color: var(--gold-primary);
+            border-top-color: var(--gold-primary);
+            gap: 14px;
+        }
+
+        /* 區塊 3：MILESTONES & NUMBERS - 香檳金箔立體計數 */
+        .milestones-luxury-wrap {
+            background: linear-gradient(180deg, #F5EFEB 0%, #FAF5EE 100%);
+            border-top: 1px solid rgba(197, 160, 89, 0.25);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.25);
+        }
+        .milestone-grid-ornate {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+            margin-bottom: 70px;
+        }
+        .milestone-box-ornate {
+            background: #FFFFFF;
+            padding: 50px 28px;
+            text-align: center;
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            box-shadow: var(--shadow-luxury);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        .milestone-box-ornate::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gold-foil);
+        }
+        .milestone-box-ornate:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+        .milestone-num-val {
+            font-family: var(--font-display);
+            font-size: 3.6rem;
+            line-height: 1;
+            margin-bottom: 14px;
+            color: var(--c-navy);
+            font-weight: 600;
+        }
+        .milestone-num-val span {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            color: var(--gold-primary);
+            margin-left: 2px;
+            font-weight: 300;
+        }
+        .milestone-title-ornate {
+            font-size: 1.05rem;
+            color: var(--c-ink);
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+        .milestone-sub-ornate {
+            font-size: 0.85rem;
+            color: var(--c-muted);
+            line-height: 1.6;
+        }
+
+        /* 核心經濟魚種金色膠囊展示列 */
+        .species-ribbon-ornate {
+            background: #FFFFFF;
+            border: 1px solid rgba(197, 160, 89, 0.4);
+            padding: 28px 45px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            box-shadow: var(--shadow-luxury);
+            border-radius: 4px;
+        }
+        .species-ribbon-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.92rem;
+            letter-spacing: 0.2em;
+            color: var(--c-ink);
+            white-space: nowrap;
+        }
+        .species-tags-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        .species-gold-pill {
+            background: var(--bg-champagne);
+            color: var(--c-ink);
+            font-size: 0.88rem;
+            letter-spacing: 0.1em;
+            padding: 8px 22px;
+            border-radius: 30px;
+            border: 1px solid rgba(197, 160, 89, 0.35);
+            transition: all 0.3s ease;
+        }
+        .species-gold-pill:hover {
+            background: var(--gold-foil);
+            color: #FFFFFF;
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(197, 160, 89, 0.3);
+        }
+
+        /* 區塊 4：ESG & SUSTAINABILITY - 奢華三聯畫雕花 */
+        .esg-triptych-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 36px;
+            margin-bottom: 60px;
+        }
+        .esg-pillar-ornate {
+            padding: 55px 36px;
+        }
+        .pillar-crest-badge {
+            width: 54px;
+            height: 54px;
+            border: 1px solid var(--gold-primary);
+            background: linear-gradient(135deg, rgba(223, 202, 155, 0.2) 0%, rgba(255, 255, 255, 0.8) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--gold-dark);
+            margin-bottom: 26px;
+            transform: rotate(45deg);
+        }
+        .pillar-crest-badge span {
+            transform: rotate(-45deg);
+        }
+        .esg-pillar-title {
+            font-size: 1.45rem;
+            color: var(--c-ink);
+            margin-bottom: 6px;
+        }
+        .esg-pillar-en {
+            font-size: 0.76rem;
+            letter-spacing: 0.22em;
+            color: var(--gold-dark);
+            margin-bottom: 24px;
+            display: block;
+            text-transform: uppercase;
+        }
+        .esg-list-ornate {
+            list-style: none;
+        }
+        .esg-list-ornate li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 18px;
+            font-size: 0.94rem;
+            color: #555E68;
+            line-height: 1.9;
+        }
+        .esg-list-ornate li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 0.55rem;
+            color: var(--gold-primary);
+        }
+
+        /* 區塊 5：CERTIFICATIONS & GLOBAL HUBS - 皇家徽章牆 */
+        .cert-section-luxury {
+            background: var(--bg-champagne);
+            border-top: 1px solid rgba(197, 160, 89, 0.25);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.25);
+        }
+        .badge-medallion-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 24px;
+            margin-bottom: 70px;
+        }
+        .badge-medallion-box {
+            background: #FFFFFF;
+            border: 1px solid rgba(197, 160, 89, 0.35);
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: var(--shadow-luxury);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        .badge-medallion-box:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--gold-primary);
+        }
+        .badge-icon-ornate {
+            width: 44px;
+            height: 44px;
+            margin: 0 auto 16px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-primary);
+        }
+        .badge-name-ornate {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--c-ink);
+            margin-bottom: 6px;
+            letter-spacing: 0.08em;
+        }
+        .badge-sub-ornate {
+            font-size: 0.78rem;
+            color: var(--c-muted);
+            line-height: 1.5;
+        }
+
+        /* 全球 5 大跨國樞紐精緻卡牌盒 */
+        .global-hubs-box-ornate {
+            background: #FFFFFF;
+            border: 1px solid rgba(197, 160, 89, 0.35);
+            padding: 50px 45px;
+            box-shadow: var(--shadow-luxury);
+        }
+        .hubs-box-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.25);
+            padding-bottom: 24px;
+            margin-bottom: 36px;
+        }
+        .hubs-h3-luxury {
+            font-size: 1.4rem;
+            color: var(--c-ink);
+            margin-bottom: 6px;
+        }
+        .hubs-sub-luxury {
+            font-size: 0.9rem;
+            color: var(--c-muted);
+        }
+        .hubs-5-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+        .hub-column-luxury {
+            background: var(--bg-canvas);
+            border: 1px solid rgba(197, 160, 89, 0.25);
+            padding: 24px 18px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .hub-column-luxury:hover {
+            background: #FFFFFF;
+            border-color: var(--gold-primary);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-luxury);
+        }
+        .hub-city-gold {
+            font-size: 1.12rem;
+            color: var(--c-ink);
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .hub-role-gold {
+            font-size: 0.8rem;
+            color: var(--gold-dark);
+            line-height: 1.5;
+        }
+
+        /* 區塊 6：CONTACT US - 奢華法式預約廳 */
+        .contact-section-luxury {
+            background-color: var(--bg-canvas);
+        }
+        .contact-layout-luxury {
+            display: grid;
+            grid-template-columns: 0.95fr 1.05fr;
+            gap: 80px;
+            align-items: start;
+        }
+        .contact-intro-ornate h3 {
+            font-size: 2.1rem;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+        .contact-intro-ornate p {
+            font-size: 1.02rem;
+            color: var(--c-muted);
+            line-height: 2.1;
+            margin-bottom: 40px;
+        }
+        .contact-direct-channels {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+        .contact-direct-channels li {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .channel-title-luxury {
+            font-size: 0.94rem;
+            color: var(--c-ink);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .channel-title-luxury i {
+            color: var(--gold-primary);
+            width: 18px;
+            height: 18px;
+        }
+        .channel-mail-luxury {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            letter-spacing: 0.12em;
+            color: var(--gold-dark);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .channel-mail-luxury:hover {
+            color: var(--c-ink);
+        }
+
+        /* 奢華金線對稱輸入表單 */
+        .contact-form-luxury {
+            padding: 55px 48px;
+        }
+        .form-field-ornate {
+            margin-bottom: 28px;
+        }
+        .form-label-ornate {
+            display: block;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            margin-bottom: 10px;
+        }
+        .form-input-ornate, .form-select-ornate, .form-textarea-ornate {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--bg-canvas);
+            border: 1px solid rgba(197, 160, 89, 0.35);
+            font-size: 0.96rem;
+            color: var(--c-ink);
+            font-family: inherit;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        .form-input-ornate:focus, .form-select-ornate:focus, .form-textarea-ornate:focus {
+            border-color: var(--gold-primary);
+            background: #FFFFFF;
+            box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.15);
+        }
+        .form-split-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        .btn-luxury-submit {
+            width: 100%;
+            background: var(--gold-foil);
+            color: #FFFFFF;
+            border: none;
+            padding: 20px;
+            font-size: 0.92rem;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 12px 30px rgba(197, 160, 89, 0.35);
+            transition: all 0.4s var(--ease-luxury);
+            margin-top: 10px;
+        }
+        .btn-luxury-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 45px rgba(197, 160, 89, 0.55);
+        }
+
+        /* 頁尾 FOOTER - 皇室黑金典藏底調 */
+        footer.luxury-footer {
+            background: #0C0F12;
+            color: #A3AAB2;
+            padding: 120px 40px 50px 40px;
+            border-top: 1px solid rgba(197, 160, 89, 0.3);
+            position: relative;
+        }
+        footer.luxury-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold-foil);
+        }
+        .footer-grid-luxury {
+            max-width: 1380px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr 1fr;
+            gap: 70px;
+            margin-bottom: 90px;
+        }
+        .footer-brand-title {
+            font-size: 1.6rem;
+            color: #FFFFFF;
+            letter-spacing: 0.2em;
+            margin-bottom: 8px;
+            font-weight: 300;
+        }
+        .footer-brand-en {
+            font-family: var(--font-display);
+            font-size: 0.78rem;
+            letter-spacing: 0.3em;
+            color: var(--gold-primary);
+            display: block;
+            margin-bottom: 24px;
+        }
+        .footer-brand-desc {
+            font-size: 0.9rem;
+            line-height: 2.1;
+            color: #7D8691;
+        }
+        .footer-heading-gold {
+            font-size: 0.85rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: #FFFFFF;
+            margin-bottom: 28px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+        .footer-heading-gold::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 28px;
+            height: 1px;
+            background: var(--gold-primary);
+        }
+        .footer-ul-luxury {
+            list-style: none;
+        }
+        .footer-ul-luxury li {
+            margin-bottom: 14px;
+        }
+        .footer-ul-luxury a {
+            color: #7D8691;
+            text-decoration: none;
+            font-size: 0.88rem;
+            letter-spacing: 0.08em;
+            transition: all 0.3s ease;
+        }
+        .footer-ul-luxury a:hover {
+            color: var(--gold-light);
+            padding-left: 6px;
+        }
+        .footer-bottom-gold {
+            max-width: 1380px;
+            margin: 0 auto;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            color: #555E68;
+        }
+
+        /* 成功送出吐司通知 */
+        .toast-luxury {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: #FFFFFF;
+            border: 1px solid var(--gold-primary);
+            padding: 22px 36px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+            display: none;
+            align-items: center;
+            gap: 16px;
+            z-index: 2000;
+        }
+
+        /* 響應式微調 */
+        @media (max-width: 1024px) {
+            .hero-grid-luxury, .contact-layout-luxury {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            .hero-arch-container {
+                height: 440px;
+            }
+            .business-trio-grid, .esg-triptych-grid {
+                grid-template-columns: 1fr;
+            }
+            .milestone-grid-ornate {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .badge-medallion-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .hubs-5-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-grid-luxury {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 640px) {
+            .section-container {
+                padding: 100px 24px;
+            }
+            .hero-h1-luxury {
+                font-size: 2.5rem;
+            }
+            .milestone-grid-ornate {
+                grid-template-columns: 1fr;
+            }
+            .badge-medallion-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .hubs-5-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-split-2 {
+                grid-template-columns: 1fr;
+            }
+            .luxury-nav-menu {
+                display: none;
+            }
+            .species-ribbon-ornate {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .footer-grid-luxury {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 頂級金緻導覽列 -->
+    <header class="luxury-header">
+        <nav class="nav-container">
+            <a href="#" class="luxury-brand">
+                <div class="brand-crest">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                    </svg>
+                </div>
+                <div class="brand-title-wrap">
+                    <span class="brand-zh">海沃控股集團</span>
+                    <span class="brand-en">SEAWORTH HOLDING</span>
+                </div>
+            </a>
+
+            <ul class="luxury-nav-menu">
+                <li><a href="#about">集團總覽</a></li>
+                <li><a href="#business">三大事業群</a></li>
+                <li><a href="#milestones">卓越實力</a></li>
+                <li><a href="#esg">共善與永續</a></li>
+                <li><a href="#certifications">國際認證</a></li>
+                <li><a href="#contact" class="btn-nav-reserve">貴賓洽詢</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 區塊 1：主視覺 HERO BANNER -->
+    <section class="hero-section-luxury">
+        <div class="hero-grid-luxury">
+            <div class="hero-content-luxury">
+                <div class="hero-tagline-ornate">
+                    <i data-lucide="compass" style="width: 15px; height: 15px; color: var(--gold-primary);"></i>
+                    <span class="en-luxury" style="font-size: 0.75rem; color: var(--gold-dark); font-weight: 600;">ESTABLISHED 2026 ‧ 40+ YEARS HERITAGE</span>
+                </div>
+
+                <h1 class="hero-h1-luxury">
+                    敬海而行，<br>
+                    <span class="gold-text-gradient">與世界共榮共善</span>
+                </h1>
+
+                <span class="hero-lead-gold">跨越四十載深耕 ‧ 建構全球智慧遠洋產業鏈與永續共善新局</span>
+
+                <p class="hero-desc-luxury">
+                    海沃控股集團整合智慧造船、遠洋漁撈、冷鏈物流與國際貿易，打造全流程可追溯的全球海洋產業體系。以合規自律守護大洋生態，以頂尖造船工藝與智慧航行締造全球海洋新標竿。
+                </p>
+
+                <div class="hero-actions-luxury">
+                    <a href="#business" class="btn-gold-fill">
+                        探索事業版圖 <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                    </a>
+                    <a href="#esg" class="btn-gold-outline">
+                        永續實踐與 ESG
+                    </a>
+                </div>
+            </div>
+
+            <!-- 法式浪漫雙線拱門視覺 -->
+            <div class="hero-arch-container">
+                <div class="french-arch-frame" style="width: 100%; height: 100%;">
+                    <div class="french-arch-inner">
+                        <div class="hero-arch-bg"></div>
+                    </div>
+                </div>
+                <!-- 浮動品質金牌勳章 -->
+                <div class="hero-floating-medallion">
+                    <div class="medallion-icon">
+                        <i data-lucide="shield-check" style="width: 24px; height: 24px;"></i>
+                    </div>
+                    <div>
+                        <div class="en-luxury" style="font-size: 0.72rem; color: var(--gold-dark); font-weight: 600;">GLOBAL STANDARD</div>
+                        <strong style="font-size: 0.95rem; color: var(--c-ink); font-family: var(--font-serif); font-weight: 600;">全流程可追溯全球供應體系</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 區塊 2：關於我們｜集團架構與三大事業群 -->
+    <section class="section-container about-section-luxury" id="about">
+        <div class="section-header-ornate">
+            <span class="script-sub">About Seaworth</span>
+            <div class="crest-divider">
+                <div class="crest-line"></div>
+                <div class="crest-diamond"></div>
+                <div class="crest-line"></div>
+            </div>
+            <h2 class="section-h2-luxury">全鏈路整合 ‧ 深耕全球大洋</h2>
+            <p class="section-p-luxury">
+                從高雄前鎮漁港的深厚積累，到跨越大洋的現代化智慧船隊，以完整縱深鏈接海洋與世界。
+            </p>
+        </div>
+
+        <!-- 奢華引言大框 -->
+        <div class="about-grand-quote">
+            <span class="quote-corner-mark">“</span>
+            <h3 class="grand-quote-title">海沃控股集團（SEAWORTH HOLDING）</h3>
+            <p class="grand-quote-desc">
+                成立於 2026 年，傳承逾四十載深厚根基，以整合遠洋漁業上下游資源、深化共善治理為使命。透過智慧化造船與嚴格合規管理，建立「從深海到市場」的一體化全球供應網絡，為大洋產業注入科技活力與永續責任。
+            </p>
+        </div>
+
+        <!-- 三大事業群 3 欄金角裝飾卡片 -->
+        <div class="business-trio-grid" id="business">
+            <!-- 事業群 1 -->
+            <div class="luxury-card-ornate business-luxury-card">
+                <div>
+                    <div class="card-crest-number">01 ‧ HERITAGE</div>
+                    <h3 class="card-h3-luxury">華偉漁業事業群</h3>
+                    <span class="card-tagline-luxury">產業根基與遠洋圍網</span>
+                    <p class="card-narrative-luxury">
+                        傳承自 1983 年高雄前鎮漁港冷凍倉儲與第一艘圍網漁船，奠定集團雄厚實力與全球化根基。具備大洋卓越作業效能與充沛後勤倉儲網絡。
+                    </p>
+                </div>
+                <a href="#contact" class="card-arrow-link">
+                    探索作業詳情 <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
+                </a>
+            </div>
+
+            <!-- 事業群 2 -->
+            <div class="luxury-card-ornate business-luxury-card">
+                <div>
+                    <div class="card-crest-number">02 ‧ INNOVATION</div>
+                    <h3 class="card-h3-luxury">巨寶漁業事業群</h3>
+                    <span class="card-tagline-luxury">智慧造船與海上移動冷鏈</span>
+                    <p class="card-narrative-luxury">
+                        專營圍網捕撈與現代化超低溫冷凍運搬船，引進前瞻船舶設計與國際勞工合規標準，打造頂尖海上移動冷鏈，鎖住漁獲原鮮極致品質。
+                    </p>
+                </div>
+                <a href="#contact" class="card-arrow-link">
+                    探索作業詳情 <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
+                </a>
+            </div>
+
+            <!-- 事業群 3 -->
+            <div class="luxury-card-ornate business-luxury-card">
+                <div>
+                    <div class="card-crest-number">03 ‧ PRECISION</div>
+                    <h3 class="card-h3-luxury">華昇魷釣事業群</h3>
+                    <span class="card-tagline-luxury">精準漁法與高技術捕撈</span>
+                    <p class="card-narrative-luxury">
+                        專精魷魚秋刀魚船與延繩釣漁船，展現高技術精準漁法、生態永續與全球供應的頂尖專業，實踐責任捕撈與極致風味守護。
+                    </p>
+                </div>
+                <a href="#contact" class="card-arrow-link">
+                    探索作業詳情 <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
+                </a>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="#milestones" class="btn-gold-outline" style="border-radius: 2px;">
+                深入了解集團總覽與卓越佈局 <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- 區塊 3：成功案例與關鍵數據 -->
+    <section class="milestones-luxury-wrap" id="milestones">
+        <div class="section-container">
+            <div class="section-header-ornate">
+                <span class="script-sub">Milestones & Scale</span>
+                <div class="crest-divider">
+                    <div class="crest-line"></div>
+                    <div class="crest-diamond"></div>
+                    <div class="crest-line"></div>
+                </div>
+                <h2 class="section-h2-luxury">全球佈局 ‧ 卓越實力</h2>
+                <p class="section-p-luxury">
+                    以量化實證展現控股集團實力，以可驗證的規模優勢與高標準運營引領產業前行。
+                </p>
+            </div>
+
+            <!-- 4 欄立體數據計數器 -->
+            <div class="milestone-grid-ornate">
+                <div class="milestone-box-ornate">
+                    <div class="milestone-num-val">40<span>+ 載</span></div>
+                    <div class="milestone-title-ornate">產業深耕經驗</div>
+                    <div class="milestone-sub-ornate">源自 1983 年深厚傳承</div>
+                </div>
+
+                <div class="milestone-box-ornate">
+                    <div class="milestone-num-val">~40<span>艘</span></div>
+                    <div class="milestone-title-ornate">頂尖現代化合規船隊</div>
+                    <div class="milestone-sub-ornate">圍網、延繩釣、魷釣與運搬船</div>
+                </div>
+
+                <div class="milestone-box-ornate">
+                    <div class="milestone-num-val">2<span>大洋</span></div>
+                    <div class="milestone-title-ornate">全球作業海域</div>
+                    <div class="milestone-sub-ornate">橫跨太平洋與大西洋戰略漁場</div>
+                </div>
+
+                <div class="milestone-box-ornate">
+                    <div class="milestone-num-val">5<span>大據點</span></div>
+                    <div class="milestone-title-ornate">跨國營運樞紐</div>
+                    <div class="milestone-sub-ornate">台灣、韓國、中國、泰國、巴紐</div>
+                </div>
+            </div>
+
+            <!-- 核心經濟魚種金色膠囊展示列 -->
+            <div class="species-ribbon-ornate">
+                <div class="species-ribbon-title">
+                    <i data-lucide="sparkles" style="width: 18px; height: 18px; color: var(--gold-primary);"></i>
+                    <strong style="font-weight: 600;">核心經濟魚種展示</strong>
+                </div>
+                <div class="species-tags-grid">
+                    <span class="species-gold-pill">正鰹 ‧ Skipjack</span>
+                    <span class="species-gold-pill">黃鰭鮪 ‧ Yellowfin</span>
+                    <span class="species-gold-pill">大目鮪 ‧ Bigeye</span>
+                    <span class="species-gold-pill">長鰭鮪 ‧ Albacore</span>
+                    <span class="species-gold-pill">魷魚 ‧ Squid</span>
+                    <span class="species-gold-pill">秋刀魚 ‧ Pacific Saury</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 區塊 4：永續發展與科技共善（ESG） -->
+    <section class="section-container" id="esg">
+        <div class="section-header-ornate">
+            <span class="script-sub">Sustainability & Tech</span>
+            <div class="crest-divider">
+                <div class="crest-line"></div>
+                <div class="crest-diamond"></div>
+                <div class="crest-line"></div>
+            </div>
+            <h2 class="section-h2-luxury">共善經營 ‧ 智慧責任引領產業升級</h2>
+            <p class="section-p-luxury">
+                從海洋生態守護、人道尊嚴勞動到海事數位治理，落實與大自然及全球夥伴的永續共榮。
+            </p>
+        </div>
+
+        <div class="esg-triptych-grid">
+            <!-- E: Environment -->
+            <div class="luxury-card-ornate esg-pillar-ornate">
+                <div class="pillar-crest-badge">
+                    <span>E</span>
+                </div>
+                <h3 class="esg-pillar-title">海洋生態守護</h3>
+                <span class="esg-pillar-en">Environment Stewardship</span>
+                <ul class="esg-list-ornate">
+                    <li>全面落實聯合國永續發展目標（SDGs）與區域漁業管理組織（RFMO）規範。</li>
+                    <li>全面取得 <strong>MSC 海洋管理委員會</strong> 與 <strong>Dolphin Safe 海豚保護</strong> 雙重認證。</li>
+                    <li>採用非纏結式集魚器（FADs）與低碳節能航行技術，減緩生態衝擊。</li>
+                </ul>
+            </div>
+
+            <!-- S: Social -->
+            <div class="luxury-card-ornate esg-pillar-ornate">
+                <div class="pillar-crest-badge">
+                    <span>S</span>
+                </div>
+                <h3 class="esg-pillar-title">人本人權保障</h3>
+                <span class="esg-pillar-en">Social & Dignity</span>
+                <ul class="esg-list-ornate">
+                    <li>嚴格遵循 <strong>ILO C-188 漁業工作公約</strong> 與 <strong>FISH 船員人權標準</strong>。</li>
+                    <li>率先導入「海上遠距醫療照護」與船上 Wi-Fi 通訊權，維護船員身心健康。</li>
+                    <li>堅守暴力零容忍原則，提供合規生活起居設施與尊嚴勞動保障。</li>
+                </ul>
+            </div>
+
+            <!-- G: Governance & Tech -->
+            <div class="luxury-card-ornate esg-pillar-ornate">
+                <div class="pillar-crest-badge">
+                    <span>G</span>
+                </div>
+                <h3 class="esg-pillar-title">智慧科技與合規治理</h3>
+                <span class="esg-pillar-en">Governance & Tech</span>
+                <ul class="esg-list-ornate">
+                    <li>導入 IoT 電子浮標、AI 智慧漁撈預測與海事大數據即時調度中心。</li>
+                    <li>打造「從深海到餐桌」全流程可追溯供應鏈，數據透明公開。</li>
+                    <li>堅守反非法捕撈（IUU）原則，建立高標準誠信內控與獨立審計機制。</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="#contact" class="btn-gold-fill">
+                閱讀完整永續政策 <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- 區塊 5：國際認證與全球夥伴 -->
+    <section class="cert-section-luxury" id="certifications">
+        <div class="section-container">
+            <div class="section-header-ornate">
+                <span class="script-sub">International Compliance</span>
+                <div class="crest-divider">
+                    <div class="crest-line"></div>
+                    <div class="crest-diamond"></div>
+                    <div class="crest-line"></div>
+                </div>
+                <h2 class="section-h2-luxury">國際合規認證 ‧ 全球合作網絡</h2>
+                <p class="section-p-luxury">
+                    榮獲多項國際權威組織認證，與全球主流市場夥伴建立長期穩固的戰略信任。
+                </p>
+            </div>
+
+            <!-- 5 大徽章牆 -->
+            <div class="badge-medallion-grid">
+                <div class="badge-medallion-box">
+                    <div class="badge-icon-ornate"><i data-lucide="award" style="width: 32px; height: 32px;"></i></div>
+                    <div class="badge-name-ornate">MSC 認證</div>
+                    <div class="badge-sub-ornate">海洋管理委員會標準</div>
+                </div>
+                <div class="badge-medallion-box">
+                    <div class="badge-icon-ornate"><i data-lucide="shield" style="width: 32px; height: 32px;"></i></div>
+                    <div class="badge-name-ornate">Dolphin Safe</div>
+                    <div class="badge-sub-ornate">海豚保護友善標章</div>
+                </div>
+                <div class="badge-medallion-box">
+                    <div class="badge-icon-ornate"><i data-lucide="users" style="width: 32px; height: 32px;"></i></div>
+                    <div class="badge-name-ornate">FISH Standard</div>
+                    <div class="badge-sub-ornate">船員人權福祉標準</div>
+                </div>
+                <div class="badge-medallion-box">
+                    <div class="badge-icon-ornate"><i data-lucide="file-check-2" style="width: 32px; height: 32px;"></i></div>
+                    <div class="badge-name-ornate">ILO C-188</div>
+                    <div class="badge-sub-ornate">國際漁業工作公約</div>
+                </div>
+                <div class="badge-medallion-box">
+                    <div class="badge-icon-ornate"><i data-lucide="check-circle" style="width: 32px; height: 32px;"></i></div>
+                    <div class="badge-name-ornate">ISO 31000:2018</div>
+                    <div class="badge-sub-ornate">風險管理與內控規範</div>
+                </div>
+            </div>
+
+            <!-- 全球營運據點與經銷網絡卡盒 -->
+            <div class="global-hubs-box-ornate">
+                <div class="hubs-box-header">
+                    <div>
+                        <h3 class="hubs-h3-luxury">全球主流市場經銷與戰略樞紐</h3>
+                        <p class="hubs-sub-luxury">亞洲 ‧ 歐洲 ‧ 美洲主流市場 ｜ 與 PNA 國家及國際漁業組織建立長期戰略夥伴關係</p>
+                    </div>
+                    <span class="en-luxury" style="color: var(--gold-dark); font-size: 0.8rem; font-weight: 600;">GLOBAL HUBS</span>
+                </div>
+
+                <div class="hubs-5-grid">
+                    <div class="hub-column-luxury">
+                        <div class="hub-city-gold">台灣高雄</div>
+                        <div class="hub-role-gold">全球營運調度總部</div>
+                    </div>
+                    <div class="hub-column-luxury">
+                        <div class="hub-city-gold">韓國釜山</div>
+                        <div class="hub-role-gold">東北亞補給與物流中心</div>
+                    </div>
+                    <div class="hub-column-luxury">
+                        <div class="hub-city-gold">中國舟山</div>
+                        <div class="hub-role-gold">船舶工程維護與加工</div>
+                    </div>
+                    <div class="hub-column-luxury">
+                        <div class="hub-city-gold">泰國曼谷</div>
+                        <div class="hub-role-gold">東南亞貿易與供應鏈</div>
+                    </div>
+                    <div class="hub-column-luxury">
+                        <div class="hub-city-gold">巴布亞紐幾內亞</div>
+                        <div class="hub-role-gold">中西太平洋前進要塞</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 區塊 6：聯絡海沃（CONTACT US） -->
+    <section class="section-container contact-section-luxury" id="contact">
+        <div class="section-header-ornate">
+            <span class="script-sub">Get in Touch</span>
+            <div class="crest-divider">
+                <div class="crest-line"></div>
+                <div class="crest-diamond"></div>
+                <div class="crest-line"></div>
+            </div>
+            <h2 class="section-h2-luxury">攜手海沃 ‧ 共創海洋永續價值</h2>
+            <p class="section-p-luxury">
+                誠摯歡迎全球合作夥伴、投資人與產業先進與我們聯繫，共啟藍色經濟新章。
+            </p>
+        </div>
+
+        <div class="contact-layout-luxury">
+            <div class="contact-intro-ornate">
+                <h3>聯絡海沃控股</h3>
+                <p>
+                    我們珍視每一個共榮合作機會。請依據您的需求選擇專門服務窗口，集團團隊將於 24 小時內指派專人與您聯繫。
+                </p>
+
+                <ul class="contact-direct-channels">
+                    <li>
+                        <span class="channel-title-luxury">
+                            <i data-lucide="trending-up"></i> 投資人關係洽詢 (IR)
+                        </span>
+                        <a href="mailto:invest@seaworth.com" class="channel-mail-luxury">invest@seaworth.com</a>
+                    </li>
+                    <li>
+                        <span class="channel-title-luxury">
+                            <i data-lucide="briefcase"></i> 商務合作與業務洽詢 (Business)
+                        </span>
+                        <a href="mailto:partnership@seaworth.com" class="channel-mail-luxury">partnership@seaworth.com</a>
+                    </li>
+                    <li>
+                        <span class="channel-title-luxury">
+                            <i data-lucide="radio"></i> 公共關係與媒體事務 (PR)
+                        </span>
+                        <a href="mailto:pr@seaworth.com" class="channel-mail-luxury">pr@seaworth.com</a>
+                    </li>
+                </ul>
+
+                <div style="background: rgba(223, 202, 155, 0.18); padding: 26px 30px; border-left: 3px solid var(--gold-primary);">
+                    <div class="en-luxury" style="font-size: 0.76rem; color: var(--gold-dark); font-weight: 600; margin-bottom: 4px;">HEADQUARTERS</div>
+                    <div style="font-size: 0.98rem; color: var(--c-ink); font-weight: 500;">台灣高雄市前鎮區漁港核心園區</div>
+                </div>
+            </div>
+
+            <!-- 貴賓互動表單 -->
+            <div class="luxury-card-ornate contact-form-luxury">
+                <form id="luxuryContactForm" onsubmit="handleFormSubmit(event)">
+                    <div class="form-field-ornate">
+                        <label class="form-label-ornate" for="serviceCategory">服務類別洽詢 *</label>
+                        <select id="serviceCategory" class="form-select-ornate" required>
+                            <option value="" disabled selected>請選擇洽詢類別</option>
+                            <option value="IR">投資人關係洽詢 (invest@seaworth.com)</option>
+                            <option value="Partnership">商務合作與業務洽詢 (partnership@seaworth.com)</option>
+                            <option value="PR">公共關係與媒體事務 (pr@seaworth.com)</option>
+                            <option value="Other">其他事宜</option>
+                        </select>
+                    </div>
+
+                    <div class="form-split-2">
+                        <div class="form-field-ornate">
+                            <label class="form-label-ornate" for="clientName">姓名 *</label>
+                            <input type="text" id="clientName" class="form-input-ornate" placeholder="例如：陳經理" required>
+                        </div>
+                        <div class="form-field-ornate">
+                            <label class="form-label-ornate" for="clientCompany">貴公司名稱 *</label>
+                            <input type="text" id="clientCompany" class="form-input-ornate" placeholder="例如：全球海運集團" required>
+                        </div>
+                    </div>
+
+                    <div class="form-split-2">
+                        <div class="form-field-ornate">
+                            <label class="form-label-ornate" for="clientPhone">聯絡電話</label>
+                            <input type="tel" id="clientPhone" class="form-input-ornate" placeholder="+886 912 345 678">
+                        </div>
+                        <div class="form-field-ornate">
+                            <label class="form-label-ornate" for="clientEmail">電子信箱 *</label>
+                            <input type="email" id="clientEmail" class="form-input-ornate" placeholder="name@domain.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-field-ornate">
+                        <label class="form-label-ornate" for="clientSubject">需求主旨 *</label>
+                        <input type="text" id="clientSubject" class="form-input-ornate" placeholder="請簡述您的洽詢主旨" required>
+                    </div>
+
+                    <div class="form-field-ornate">
+                        <label class="form-label-ornate" for="clientMessage">留言內容 *</label>
+                        <textarea id="clientMessage" class="form-textarea-ornate" rows="4" placeholder="請詳細說明您的需求與合作構想..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-luxury-submit">
+                        發送訊息 ‧ SEND MESSAGE
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 FOOTER -->
+    <footer class="luxury-footer">
+        <div class="footer-grid-luxury">
+            <div>
+                <h4 class="footer-brand-title">海沃控股集團</h4>
+                <span class="footer-brand-en">SEAWORTH HOLDING</span>
+                <p class="footer-brand-desc">
+                    成立於 2026 年，傳承逾四十載深厚根基，以整合遠洋漁業上下游資源、深化共善治理為使命，建構全流程可追溯的全球海洋產業體系。
+                </p>
+            </div>
+
+            <div>
+                <div class="footer-heading-gold">三大事業群</div>
+                <ul class="footer-ul-luxury">
+                    <li><a href="#business">華偉漁業事業群</a></li>
+                    <li><a href="#business">巨寶漁業事業群</a></li>
+                    <li><a href="#business">華昇魷釣事業群</a></li>
+                    <li><a href="#milestones">現代化合規船隊</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <div class="footer-heading-gold">永續與治理</div>
+                <ul class="footer-ul-luxury">
+                    <li><a href="#esg">海洋生態守護 (MSC)</a></li>
+                    <li><a href="#esg">人本人權保障 (FISH)</a></li>
+                    <li><a href="#esg">智慧科技與反 IUU</a></li>
+                    <li><a href="#certifications">國際認證與合規標準</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <div class="footer-heading-gold">全球營運據點</div>
+                <ul class="footer-ul-luxury">
+                    <li><a href="#contact">台灣高雄（營運總部）</a></li>
+                    <li><a href="#contact">韓國釜山據點</a></li>
+                    <li><a href="#contact">中國舟山基地</a></li>
+                    <li><a href="#contact">泰國曼谷樞紐</a></li>
+                    <li><a href="#contact">巴布亞紐幾內亞</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom-gold">
+            <div>© 2026 SEAWORTH HOLDING (海沃控股集團). ALL RIGHTS RESERVED.</div>
+            <div style="display: flex; gap: 24px;">
+                <a href="#" style="color: #7D8691; text-decoration: none;">隱私權政策</a>
+                <a href="#" style="color: #7D8691; text-decoration: none;">法律聲明</a>
+                <a href="#" style="color: #7D8691; text-decoration: none;">永續報告書</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 訊息送出反饋 Toast -->
+    <div class="toast-luxury" id="luxuryToast">
+        <i data-lucide="check-circle" style="color: var(--gold-primary); width: 24px; height: 24px;"></i>
+        <div>
+            <div style="font-weight: 600; color: var(--c-ink); font-size: 0.95rem;">洽詢訊息已成功發送</div>
+            <div style="font-size: 0.82rem; color: var(--c-muted);">海沃團隊將於 24 小時內由專人與您聯繫。</div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        lucide.createIcons();
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const toast = document.getElementById('luxuryToast');
+            toast.style.display = 'flex';
+            
+            document.getElementById('luxuryContactForm').reset();
+
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 4500);
+        }
+    </script>
+</body>
+</html>

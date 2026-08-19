@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>海沃控股集團 SEAWORTH HOLDING｜敬海而行，與世界共榮共善</title>
+    <meta name="description" content="海沃控股集團（SEAWORTH HOLDING）整合智慧造船、遠洋漁撈、冷鏈物流與國際貿易，以美術館策展般的極簡哲學，建構全球永續海洋產業體系。">
+    
+    <!-- Google Fonts: Editorial Serif + Clean Modern Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&family=Noto+Serif+TC:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- JSON-LD Structured Data for AI & Search Engines -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Corporation",
+      "name": "海沃控股集團",
+      "alternateName": "SEAWORTH HOLDING",
+      "url": "https://www.seaworth.com",
+      "logo": "https://www.seaworth.com/assets/logo.svg",
+      "description": "整合智慧造船、遠洋漁撈、冷鏈物流與國際貿易，建構全流程可追溯的全球永續海洋產業體系。",
+      "foundingDate": "2026",
+      "headquarters": {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Kaohsiung",
+          "addressCountry": "TW"
+        }
+      },
+      "knowsAbout": ["智慧遠洋漁撈", "海上超低溫冷鏈", "智慧造船", "MSC海洋認證", "ESG共善治理"]
+    }
+    </script>
+
+    <style>
+        :root {
+            --c-paper: #FBF9F5;          /* 藝廊暖調紙本白 */
+            --c-white: #FFFFFF;
+            --c-sand: #F0EAE1;           /* 典藏底座米灰色 */
+            --c-sand-light: #F7F4EE;
+            --c-ink: #141618;            /* 碳素深黑墨色 */
+            --c-charcoal: #2C3036;       /* 沉靜石墨灰 */
+            --c-muted: #7E848D;          /* 展品標註灰 */
+            --c-gold: #B39264;           /* 啞光古董金 */
+            --c-gold-faint: rgba(179, 146, 100, 0.15);
+            --c-line: #E5DFC5;           /* 極細展覽隔線 */
+            --c-line-soft: rgba(0, 0, 0, 0.06);
+            
+            --font-serif: 'Noto Serif TC', serif;
+            --font-display: 'Cormorant Garamond', serif;
+            --font-sans: 'Montserrat', 'Noto Sans TC', sans-serif;
+
+            --ease-art: cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            background-color: var(--c-paper);
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--c-paper);
+            color: var(--c-charcoal);
+            line-height: 2.0;
+            letter-spacing: 0.06em;
+            font-weight: 300;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Typography & Editorial Rules */
+        h1, h2, h3, h4, .serif {
+            font-family: var(--font-serif);
+            font-weight: 300;
+            letter-spacing: 0.08em;
+            color: var(--c-ink);
+        }
+
+        .en-curation {
+            font-family: var(--font-display);
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            font-style: italic;
+        }
+
+        .en-label {
+            font-family: var(--font-sans);
+            font-size: 0.72rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--c-gold);
+            font-weight: 400;
+        }
+
+        /* Curatorial Container & Grid */
+        .gallery-container {
+            max-width: 1360px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .museum-section {
+            padding: 160px 0;
+            position: relative;
+        }
+
+        .museum-section-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--c-line), transparent);
+        }
+
+        /* Section Curatorial Header */
+        .curator-header {
+            margin-bottom: 90px;
+            position: relative;
+        }
+        .curator-header.center {
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .curator-tag {
+            display: inline-block;
+            margin-bottom: 24px;
+            position: relative;
+            padding-left: 36px;
+        }
+        .curator-tag::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 24px;
+            height: 1px;
+            background-color: var(--c-gold);
+        }
+        .curator-header.center .curator-tag {
+            padding-left: 0;
+        }
+        .curator-header.center .curator-tag::before {
+            display: none;
+        }
+        .curator-title {
+            font-size: 2.8rem;
+            line-height: 1.4;
+            color: var(--c-ink);
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+        .curator-desc {
+            font-size: 1.05rem;
+            color: var(--c-muted);
+            max-width: 680px;
+            line-height: 2.1;
+            font-weight: 300;
+        }
+        .curator-header.center .curator-desc {
+            margin: 0 auto;
+        }
+
+        /* Minimal Navigation (Top Gallery Bar) */
+        header.museum-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(251, 249, 245, 0.88);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--c-line-soft);
+            transition: all 0.5s var(--ease-art);
+        }
+        .museum-nav {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 24px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .museum-brand {
+            text-decoration: none;
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+        }
+        .brand-zh {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            letter-spacing: 0.2em;
+            color: var(--c-ink);
+            font-weight: 400;
+        }
+        .brand-en {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            letter-spacing: 0.28em;
+            color: var(--c-gold);
+            text-transform: uppercase;
+        }
+        .museum-nav-links {
+            display: flex;
+            list-style: none;
+            gap: 42px;
+            align-items: center;
+        }
+        .museum-nav-links a {
+            text-decoration: none;
+            color: var(--c-charcoal);
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            font-weight: 400;
+            position: relative;
+            padding: 8px 0;
+            transition: color 0.4s var(--ease-art);
+        }
+        .museum-nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 1px;
+            background-color: var(--c-gold);
+            transition: width 0.4s var(--ease-art);
+        }
+        .museum-nav-links a:hover {
+            color: var(--c-gold);
+        }
+        .museum-nav-links a:hover::after {
+            width: 100%;
+        }
+        .nav-contact-btn {
+            border: 1px solid var(--c-ink);
+            padding: 10px 24px !important;
+            font-size: 0.78rem !important;
+            letter-spacing: 0.22em !important;
+            transition: all 0.4s var(--ease-art) !important;
+        }
+        .nav-contact-btn:hover {
+            background-color: var(--c-ink);
+            color: var(--c-paper) !important;
+        }
+        .nav-contact-btn::after {
+            display: none !important;
+        }
+
+        /* SECTION 1: HERO - MUSEUM ROTUNDA / EXPOSITION */
+        .hero-museum {
+            min-height: 100vh;
+            padding-top: 140px;
+            padding-bottom: 120px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: radial-gradient(circle at 75% 30%, rgba(240, 234, 225, 0.7) 0%, rgba(251, 249, 245, 1) 75%);
+        }
+        .hero-museum-layout {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 90px;
+            align-items: center;
+        }
+        .hero-editorial-label {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 36px;
+        }
+        .hero-editorial-label .line {
+            width: 40px;
+            height: 1px;
+            background: var(--c-gold);
+        }
+        .hero-curated-h1 {
+            font-size: 4rem;
+            line-height: 1.25;
+            color: var(--c-ink);
+            margin-bottom: 28px;
+            font-weight: 300;
+        }
+        .hero-curated-h1 em {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-weight: 400;
+            color: var(--c-gold);
+            letter-spacing: 0.05em;
+        }
+        .hero-sub-poetry {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            color: var(--c-charcoal);
+            margin-bottom: 24px;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+        .hero-curated-desc {
+            font-size: 1rem;
+            color: var(--c-muted);
+            line-height: 2.1;
+            margin-bottom: 48px;
+            max-width: 540px;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+        .btn-museum-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            background-color: var(--c-ink);
+            color: var(--c-paper);
+            padding: 18px 40px;
+            font-size: 0.85rem;
+            letter-spacing: 0.22em;
+            text-decoration: none;
+            border: 1px solid var(--c-ink);
+            transition: all 0.5s var(--ease-art);
+        }
+        .btn-museum-primary:hover {
+            background-color: transparent;
+            color: var(--c-ink);
+        }
+        .btn-museum-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--c-ink);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.2em;
+            padding: 18px 24px;
+            border-bottom: 1px solid var(--c-line);
+            transition: all 0.4s var(--ease-art);
+        }
+        .btn-museum-ghost:hover {
+            border-bottom-color: var(--c-gold);
+            color: var(--c-gold);
+            padding-left: 30px;
+        }
+
+        /* Hero Exhibition Frame (Art Frame Treatment) */
+        .hero-art-frame {
+            position: relative;
+            padding: 24px;
+            background: var(--c-white);
+            box-shadow: 0 30px 80px rgba(20, 22, 24, 0.06);
+            border: 1px solid var(--c-line);
+        }
+        .hero-art-inner {
+            position: relative;
+            width: 100%;
+            height: 520px;
+            overflow: hidden;
+            background-color: #D9D2C7;
+        }
+        .hero-art-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(18%) contrast(96%) brightness(98%);
+            transition: transform 12s var(--ease-art);
+        }
+        .hero-art-frame:hover .hero-art-inner img {
+            transform: scale(1.06);
+        }
+        .museum-plaque {
+            margin-top: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            font-size: 0.72rem;
+            color: var(--c-muted);
+            letter-spacing: 0.18em;
+            font-family: var(--font-sans);
+            text-transform: uppercase;
+        }
+        .museum-plaque .plaque-title {
+            color: var(--c-ink);
+            font-weight: 500;
+        }
+
+        /* SECTION 2: ABOUT / CURATORIAL ROOM 01 */
+        .about-curatorial-box {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 80px;
+            margin-bottom: 110px;
+            align-items: center;
+            border-top: 1px solid var(--c-line);
+            border-bottom: 1px solid var(--c-line);
+            padding: 70px 0;
+        }
+        .about-statement-large {
+            font-family: var(--font-serif);
+            font-size: 2.1rem;
+            line-height: 1.6;
+            color: var(--c-ink);
+            font-weight: 300;
+        }
+        .about-statement-large span {
+            color: var(--c-gold);
+            font-family: var(--font-display);
+            font-style: italic;
+            display: block;
+            margin-top: 8px;
+        }
+        .about-curatorial-text {
+            font-size: 1.05rem;
+            color: var(--c-charcoal);
+            line-height: 2.2;
+            font-weight: 300;
+        }
+
+        /* 3 Core Business Units: Museum Pavilion Layout */
+        .pavilion-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        .pavilion-card {
+            background: var(--c-white);
+            border: 1px solid var(--c-line);
+            padding: 60px 42px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            transition: all 0.6s var(--ease-art);
+        }
+        .pavilion-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.05);
+            border-color: var(--c-gold);
+        }
+        .pavilion-index {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-style: italic;
+            color: var(--c-gold);
+            margin-bottom: 30px;
+            display: block;
+        }
+        .pavilion-title {
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+            font-weight: 400;
+        }
+        .pavilion-tagline {
+            font-size: 0.82rem;
+            color: var(--c-gold);
+            letter-spacing: 0.18em;
+            margin-bottom: 24px;
+            display: block;
+            text-transform: uppercase;
+        }
+        .pavilion-narrative {
+            font-size: 0.95rem;
+            color: var(--c-muted);
+            line-height: 2.0;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+        .pavilion-footer-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--c-ink);
+            font-size: 0.8rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            padding-top: 20px;
+            border-top: 1px solid var(--c-line-soft);
+            transition: all 0.4s var(--ease-art);
+        }
+        .pavilion-card:hover .pavilion-footer-link {
+            color: var(--c-gold);
+            border-top-color: var(--c-gold);
+            gap: 18px;
+        }
+
+        /* SECTION 3: MILESTONES & NUMBERS - SCULPTURAL EXHIBITION */
+        .sculptural-numbers {
+            background-color: var(--c-sand-light);
+            border-top: 1px solid var(--c-line);
+            border-bottom: 1px solid var(--c-line);
+        }
+        .metrics-exhibition-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background-color: var(--c-line);
+            border: 1px solid var(--c-line);
+            margin-bottom: 80px;
+        }
+        .metric-pedestal {
+            background: var(--c-white);
+            padding: 60px 36px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.5s var(--ease-art);
+        }
+        .metric-pedestal:hover {
+            background: var(--c-paper);
+        }
+        .pedestal-number {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            color: var(--c-ink);
+            line-height: 1;
+            margin-bottom: 14px;
+            font-weight: 300;
+        }
+        .pedestal-number em {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            font-style: normal;
+            color: var(--c-gold);
+            margin-left: 4px;
+        }
+        .pedestal-label {
+            font-size: 1rem;
+            color: var(--c-ink);
+            font-weight: 400;
+            margin-bottom: 8px;
+            letter-spacing: 0.1em;
+        }
+        .pedestal-sub {
+            font-size: 0.82rem;
+            color: var(--c-muted);
+            line-height: 1.6;
+        }
+
+        /* Species Specimen Ribbon (標本陳列感魚種條) */
+        .specimen-gallery {
+            border: 1px solid var(--c-line);
+            background: var(--c-white);
+            padding: 32px 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        .specimen-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.88rem;
+            letter-spacing: 0.2em;
+            color: var(--c-ink);
+            white-space: nowrap;
+            text-transform: uppercase;
+        }
+        .specimen-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        .specimen-capsule {
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            color: var(--c-charcoal);
+            padding-bottom: 2px;
+            border-bottom: 1px solid var(--c-line);
+            transition: all 0.3s ease;
+        }
+        .specimen-capsule:hover {
+            color: var(--c-gold);
+            border-bottom-color: var(--c-gold);
+        }
+
+        /* SECTION 4: ESG & SUSTAINABILITY - TRIPTYCH GALLERY (三聯畫策展) */
+        .triptych-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 36px;
+            margin-bottom: 70px;
+        }
+        .triptych-panel {
+            background: var(--c-white);
+            border: 1px solid var(--c-line);
+            padding: 50px 36px;
+            position: relative;
+            transition: all 0.5s var(--ease-art);
+        }
+        .triptych-panel:hover {
+            border-color: var(--c-gold);
+            box-shadow: 0 20px 50px rgba(20, 22, 24, 0.04);
+        }
+        .triptych-monogram {
+            font-family: var(--font-display);
+            font-size: 3.2rem;
+            font-style: italic;
+            color: var(--c-gold);
+            line-height: 1;
+            margin-bottom: 16px;
+            display: block;
+        }
+        .triptych-h3 {
+            font-size: 1.45rem;
+            margin-bottom: 6px;
+            font-weight: 400;
+        }
+        .triptych-en {
+            font-size: 0.72rem;
+            letter-spacing: 0.25em;
+            color: var(--c-muted);
+            margin-bottom: 28px;
+            display: block;
+        }
+        .triptych-list {
+            list-style: none;
+        }
+        .triptych-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 18px;
+            font-size: 0.92rem;
+            color: var(--c-charcoal);
+            line-height: 1.9;
+        }
+        .triptych-list li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--c-gold);
+            font-weight: 300;
+        }
+
+        /* SECTION 5: COMPLIANCE & GLOBAL ARCHIVE */
+        .archive-section {
+            background-color: var(--c-sand-light);
+            border-top: 1px solid var(--c-line);
+            border-bottom: 1px solid var(--c-line);
+        }
+        .seal-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            margin-bottom: 70px;
+        }
+        .seal-box {
+            background: var(--c-white);
+            border: 1px solid var(--c-line);
+            padding: 36px 20px;
+            text-align: center;
+            transition: all 0.4s var(--ease-art);
+        }
+        .seal-box:hover {
+            border-color: var(--c-gold);
+            background: var(--c-paper);
+        }
+        .seal-icon-wrap {
+            width: 44px;
+            height: 44px;
+            margin: 0 auto 16px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--c-gold);
+        }
+        .seal-title {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--c-ink);
+            letter-spacing: 0.1em;
+            margin-bottom: 6px;
+        }
+        .seal-desc {
+            font-size: 0.75rem;
+            color: var(--c-muted);
+            line-height: 1.5;
+        }
+
+        /* Global Hubs Museum Cartography */
+        .cartography-card {
+            background: var(--c-white);
+            border: 1px solid var(--c-line);
+            padding: 50px;
+        }
+        .cartography-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 1px solid var(--c-line);
+            padding-bottom: 24px;
+            margin-bottom: 40px;
+        }
+        .cartography-h3 {
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--c-ink);
+            margin-bottom: 6px;
+        }
+        .cartography-note {
+            font-size: 0.88rem;
+            color: var(--c-muted);
+        }
+        .hubs-ensemble {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 24px;
+        }
+        .hub-column {
+            border-left: 1px solid var(--c-line);
+            padding-left: 20px;
+            transition: all 0.3s ease;
+        }
+        .hub-column:hover {
+            border-left-color: var(--c-gold);
+        }
+        .hub-city-name {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            color: var(--c-ink);
+            margin-bottom: 4px;
+        }
+        .hub-role-desc {
+            font-size: 0.78rem;
+            color: var(--c-gold);
+            letter-spacing: 0.1em;
+            line-height: 1.5;
+        }
+
+        /* SECTION 6: CONTACT & INQUIRY (MUSEUM REGISTRY) */
+        .registry-layout {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 90px;
+            align-items: start;
+        }
+        .registry-narrative h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+        .registry-narrative p {
+            font-size: 0.98rem;
+            color: var(--c-muted);
+            line-height: 2.1;
+            margin-bottom: 40px;
+        }
+        .registry-desks {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+        .registry-desks li {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--c-line);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .desk-role {
+            font-size: 0.92rem;
+            color: var(--c-ink);
+            font-weight: 400;
+            letter-spacing: 0.08em;
+        }
+        .desk-email {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            letter-spacing: 0.12em;
+            color: var(--c-gold);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .desk-email:hover {
+            color: var(--c-ink);
+        }
+
+        /* Refined Minimalist Form */
+        .registry-form {
+            background: var(--c-white);
+            border: 1px solid var(--c-line);
+            padding: 50px 45px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.03);
+        }
+        .m-form-group {
+            margin-bottom: 28px;
+            position: relative;
+        }
+        .m-form-label {
+            display: block;
+            font-size: 0.76rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--c-muted);
+            margin-bottom: 10px;
+        }
+        .m-form-input, .m-form-select, .m-form-textarea {
+            width: 100%;
+            padding: 14px 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--c-line);
+            font-size: 1rem;
+            font-family: inherit;
+            color: var(--c-ink);
+            outline: none;
+            transition: border-color 0.4s ease;
+            border-radius: 0;
+        }
+        .m-form-input:focus, .m-form-select:focus, .m-form-textarea:focus {
+            border-bottom-color: var(--c-ink);
+        }
+        .m-form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+        }
+        .btn-registry-submit {
+            width: 100%;
+            background: var(--c-ink);
+            color: var(--c-paper);
+            border: 1px solid var(--c-ink);
+            padding: 20px;
+            font-size: 0.82rem;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.5s var(--ease-art);
+            margin-top: 10px;
+        }
+        .btn-registry-submit:hover {
+            background: transparent;
+            color: var(--c-ink);
+        }
+
+        /* FOOTER: CURATOR's COLOPHON */
+        footer.museum-colophon {
+            background-color: #111315;
+            color: #A0A5AB;
+            padding: 110px 0 50px 0;
+            border-top: 1px solid #22262A;
+        }
+        .colophon-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+        .colophon-brand h4 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: #FBF9F5;
+            letter-spacing: 0.2em;
+            margin-bottom: 8px;
+            font-weight: 300;
+        }
+        .colophon-brand .en-sub {
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            color: var(--c-gold);
+            letter-spacing: 0.3em;
+            display: block;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+        }
+        .colophon-brand p {
+            font-size: 0.88rem;
+            line-height: 2.1;
+            color: #7D838B;
+        }
+        .colophon-heading {
+            font-size: 0.8rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: #FBF9F5;
+            margin-bottom: 28px;
+            font-weight: 500;
+        }
+        .colophon-links {
+            list-style: none;
+        }
+        .colophon-links li {
+            margin-bottom: 14px;
+        }
+        .colophon-links a {
+            color: #7D838B;
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            transition: color 0.3s ease;
+        }
+        .colophon-links a:hover {
+            color: var(--c-gold);
+        }
+        .colophon-bottom {
+            border-top: 1px solid #22262A;
+            padding-top: 36px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.76rem;
+            letter-spacing: 0.15em;
+            color: #5D636B;
+        }
+
+        /* Toast Notice */
+        .toast-museum {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: var(--c-white);
+            border: 1px solid var(--c-line);
+            border-left: 3px solid var(--c-gold);
+            padding: 20px 32px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            display: none;
+            align-items: center;
+            gap: 16px;
+            z-index: 2000;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .hero-museum-layout, .about-curatorial-box, .registry-layout {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            .hero-curated-h1 {
+                font-size: 3rem;
+            }
+            .pavilion-grid, .triptych-grid {
+                grid-template-columns: 1fr;
+            }
+            .metrics-exhibition-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .seal-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .hubs-ensemble {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .colophon-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 640px) {
+            .gallery-container {
+                padding: 0 24px;
+            }
+            .hero-curated-h1 {
+                font-size: 2.3rem;
+            }
+            .metrics-exhibition-grid {
+                grid-template-columns: 1fr;
+            }
+            .seal-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .hubs-ensemble {
+                grid-template-columns: 1fr;
+            }
+            .m-form-row {
+                grid-template-columns: 1fr;
+            }
+            .museum-nav-links {
+                display: none;
+            }
+            .colophon-grid {
+                grid-template-columns: 1fr;
+            }
+            .specimen-gallery {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Museum Header & Minimal Navigation -->
+    <header class="museum-header">
+        <nav class="museum-nav">
+            <a href="#" class="museum-brand">
+                <span class="brand-zh">海沃控股</span>
+                <span class="brand-en">Seaworth Holding</span>
+            </a>
+
+            <ul class="museum-nav-links">
+                <li><a href="#about">典藏概述</a></li>
+                <li><a href="#business">事業展館</a></li>
+                <li><a href="#milestones">卓越實證</a></li>
+                <li><a href="#esg">共善永續</a></li>
+                <li><a href="#certifications">國際認證</a></li>
+                <li><a href="#contact" class="nav-contact-btn">典藏洽詢</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- SECTION 1: HERO - MUSEUM ROTUNDA -->
+    <section class="hero-museum">
+        <div class="gallery-container" style="width: 100%;">
+            <div class="hero-museum-layout">
+                <div class="hero-content-curated">
+                    <div class="hero-editorial-label">
+                        <span class="line"></span>
+                        <span class="en-label">ESTABLISHED 2026 ‧ FOUR DECADES OF HERITAGE</span>
+                    </div>
+                    <h1 class="hero-curated-h1">
+                        敬海而行，<br>
+                        <em>與世界共榮共善</em>
+                    </h1>
+                    <p class="hero-sub-poetry">
+                        跨越四十載深耕 ‧ 建構全球智慧遠洋產業鏈與永續共善新局
+                    </p>
+                    <p class="hero-curated-desc">
+                        海沃控股集團整合智慧造船、遠洋漁撈、冷鏈物流與國際貿易，打造全流程可追溯的全球海洋產業體系。以謙遜之姿敬畏深海，以卓越科技實踐生態共善。
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#business" class="btn-museum-primary">
+                            探索事業版圖 <i data-lucide="arrow-right" style="width: 15px; height: 15px;"></i>
+                        </a>
+                        <a href="#esg" class="btn-museum-ghost">
+                            永續實踐與 ESG
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-art-frame">
+                    <div class="hero-art-inner">
+                        <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1200&q=80" alt="浩瀚深海與現代化船隊航行畫面">
+                    </div>
+                    <div class="museum-plaque">
+                        <span class="plaque-title">Room 01 ‧ Oceanic Majesty</span>
+                        <span>Full Traceability Fleet System</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: ABOUT / PAVILION 01 -->
+    <section class="museum-section" id="about">
+        <div class="gallery-container">
+            <div class="curator-header">
+                <div class="curator-tag">
+                    <span class="en-label">ABOUT THE GROUP</span>
+                </div>
+                <h2 class="curator-title">全鏈路整合 ‧ 深耕全球大洋</h2>
+            </div>
+
+            <div class="about-curatorial-box">
+                <div class="about-statement-large">
+                    「承續四十載深厚根基，<br>在廣袤大洋間構築智慧共善的供應新秩序。」
+                    <span>Since 1983 to the Global Horizon</span>
+                </div>
+                <div class="about-curatorial-text">
+                    海沃控股集團（SEAWORTH HOLDING）成立於 2026 年，傳承逾四十載深厚根基，以整合遠洋漁業上下游資源、深化共善治理為使命。透過智慧化造船、合規勞動管理與超低溫海上冷鏈，建立「從深海到市場」的一體化全球供應網絡，樹立海洋產業兼具理性效率與人本溫度的當代典範。
+                </div>
+            </div>
+
+            <!-- 3 Pavilion Business Cards -->
+            <div class="pavilion-grid" id="business">
+                <!-- Card 1 -->
+                <div class="pavilion-card">
+                    <div>
+                        <span class="pavilion-index">Pavilion 01</span>
+                        <h3 class="pavilion-title">華偉漁業事業群</h3>
+                        <span class="pavilion-tagline">產業根基與遠洋圍網</span>
+                        <p class="pavilion-narrative">
+                            傳承自 1983 年高雄前鎮漁港冷凍倉儲與第一艘圍網漁船，奠定集團雄厚實力與全球化根基。以穩健航線與豐沛經驗引領大洋作業。
+                        </p>
+                    </div>
+                    <a href="#contact" class="pavilion-footer-link">
+                        典藏詳情 <i data-lucide="arrow-up-right" style="width: 14px; height: 14px;"></i>
+                    </a>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="pavilion-card">
+                    <div>
+                        <span class="pavilion-index">Pavilion 02</span>
+                        <h3 class="pavilion-title">巨寶漁業事業群</h3>
+                        <span class="pavilion-tagline">智慧造船與海上移動冷鏈</span>
+                        <p class="pavilion-narrative">
+                            專營圍網捕撈與現代化超低溫冷凍運搬船，引進前瞻船舶工程與國際勞工合規標準，打造頂尖海上移動冷鏈，鎖住來自大洋的原鮮純粹。
+                        </p>
+                    </div>
+                    <a href="#contact" class="pavilion-footer-link">
+                        典藏詳情 <i data-lucide="arrow-up-right" style="width: 14px; height: 14px;"></i>
+                    </a>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="pavilion-card">
+                    <div>
+                        <span class="pavilion-index">Pavilion 03</span>
+                        <h3 class="pavilion-title">華昇魷釣事業群</h3>
+                        <span class="pavilion-tagline">精準漁法與高技術捕撈</span>
+                        <p class="pavilion-narrative">
+                            專精魷魚秋刀魚船與延繩釣漁船，展現高技術精準漁法、生態永續與全球市場供應的頂尖專業，實踐責任捕撈最高準則。
+                        </p>
+                    </div>
+                    <a href="#contact" class="pavilion-footer-link">
+                        典藏詳情 <i data-lucide="arrow-up-right" style="width: 14px; height: 14px;"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: KEY MILESTONES & NUMBERS (SCULPTURAL) -->
+    <section class="museum-section sculptural-numbers" id="milestones">
+        <div class="gallery-container">
+            <div class="curator-header center">
+                <span class="en-label" style="display: block; margin-bottom: 12px;">KEY MILESTONES & NUMBERS</span>
+                <h2 class="curator-title">全球佈局 ‧ 卓越實力</h2>
+                <p class="curator-desc">
+                    以跨越四十載的度量衡，展現控股集團在全球深海產業體系中的實力印記。
+                </p>
+            </div>
+
+            <!-- Pedestals -->
+            <div class="metrics-exhibition-grid">
+                <div class="metric-pedestal">
+                    <div class="pedestal-number">40<em>+ 載</em></div>
+                    <div class="pedestal-label">產業深耕經驗</div>
+                    <div class="pedestal-sub">源自 1983 年深厚傳承</div>
+                </div>
+                <div class="metric-pedestal">
+                    <div class="pedestal-number">~40<em>艘</em></div>
+                    <div class="pedestal-label">現代化合規船隊</div>
+                    <div class="pedestal-sub">美式圍網、延繩釣、魷釣秋刀魚與運搬船</div>
+                </div>
+                <div class="metric-pedestal">
+                    <div class="pedestal-number">2<em>大洋區</em></div>
+                    <div class="pedestal-label">作業海域橫跨</div>
+                    <div class="pedestal-sub">太平洋與大西洋重點海域</div>
+                </div>
+                <div class="metric-pedestal">
+                    <div class="pedestal-number">5<em>大據點</em></div>
+                    <div class="pedestal-label">跨國營運樞紐</div>
+                    <div class="pedestal-sub">台灣、韓國、中國、泰國、巴紐</div>
+                </div>
+            </div>
+
+            <!-- Specimen Ribbon -->
+            <div class="specimen-gallery">
+                <div class="specimen-title">
+                    <i data-lucide="compass" style="width: 16px; height: 16px; color: var(--c-gold);"></i>
+                    <span>核心經濟魚種展示</span>
+                </div>
+                <div class="specimen-items">
+                    <span class="specimen-capsule">正鰹 Skipjack</span>
+                    <span class="specimen-capsule">黃鰭鮪 Yellowfin</span>
+                    <span class="specimen-capsule">大目鮪 Bigeye</span>
+                    <span class="specimen-capsule">長鰭鮪 Albacore</span>
+                    <span class="specimen-capsule">魷魚 Squid</span>
+                    <span class="specimen-capsule">秋刀魚 Pacific Saury</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: ESG & SUSTAINABILITY (TRIPTYCH) -->
+    <section class="museum-section" id="esg">
+        <div class="gallery-container">
+            <div class="curator-header center">
+                <span class="en-label" style="display: block; margin-bottom: 12px;">SUSTAINABILITY & GOVERNANCE</span>
+                <h2 class="curator-title">共善經營 ‧ 智慧責任引領產業升級</h2>
+                <p class="curator-desc">
+                    我們堅信，最純粹的商業文明源於對生命、海洋生態與夥伴尊嚴的深刻尊重。
+                </p>
+            </div>
+
+            <div class="triptych-grid">
+                <!-- Environment -->
+                <div class="triptych-panel">
+                    <span class="triptych-monogram">I. E</span>
+                    <h3 class="triptych-h3">海洋生態守護</h3>
+                    <span class="triptych-en">ENVIRONMENTAL STEWARDSHIP</span>
+                    <ul class="triptych-list">
+                        <li>嚴格落實聯合國永續發展目標（SDGs）與區域漁業管理組織（RFMO）標準。</li>
+                        <li>全面取得 <strong>MSC 海洋管理委員會</strong> 與 <strong>Dolphin Safe 海豚保護</strong> 認證。</li>
+                        <li>推行非纏結式集魚器（Non-entangling FADs）與低碳節能航行技術。</li>
+                    </ul>
+                </div>
+
+                <!-- Social -->
+                <div class="triptych-panel">
+                    <span class="triptych-monogram">II. S</span>
+                    <h3 class="triptych-h3">人本人權保障</h3>
+                    <span class="triptych-en">SOCIAL & HUMAN DIGNITY</span>
+                    <ul class="triptych-list">
+                        <li>全面遵循 <strong>ILO C-188 漁業工作公約</strong> 與 <strong>FISH 船員人權標準</strong>。</li>
+                        <li>率先導入「海上遠距醫療照護」系統與全船 Wi-Fi 通訊權益保障。</li>
+                        <li>堅守職場暴力零容忍原則，提供高規格的生活福祉與尊嚴勞動環境。</li>
+                    </ul>
+                </div>
+
+                <!-- Governance -->
+                <div class="triptych-panel">
+                    <span class="triptych-monogram">III. G</span>
+                    <h3 class="triptych-h3">智慧科技與合規治理</h3>
+                    <span class="triptych-en">GOVERNANCE & TECHNOLOGY</span>
+                    <ul class="triptych-list">
+                        <li>導入 IoT 電子浮標、AI 智慧漁撈預測與海事大數據調度系統。</li>
+                        <li>打造「從深海到市場」全流程可追溯供應鏈，透明可信。</li>
+                        <li>恪守反非法捕撈（IUU）原則，建構最高標準誠信內控體系。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: CERTIFICATIONS & GLOBAL ARCHIVE -->
+    <section class="museum-section archive-section" id="certifications">
+        <div class="gallery-container">
+            <div class="curator-header center">
+                <span class="en-label" style="display: block; margin-bottom: 12px;">INTERNATIONAL COMPLIANCE ARCHIVE</span>
+                <h2 class="curator-title">國際合規認證 ‧ 全球合作網絡</h2>
+                <p class="curator-desc">
+                    以全球嚴苛檢驗標準為圭臬，獲取多項權威體系授權與信任。
+                </p>
+            </div>
+
+            <!-- Badges -->
+            <div class="seal-grid">
+                <div class="seal-box">
+                    <div class="seal-icon-wrap"><i data-lucide="award" style="width: 28px; height: 28px;"></i></div>
+                    <div class="seal-title">MSC 認證</div>
+                    <div class="seal-desc">海洋管理委員會永續標準</div>
+                </div>
+                <div class="seal-box">
+                    <div class="seal-icon-wrap"><i data-lucide="shield" style="width: 28px; height: 28px;"></i></div>
+                    <div class="seal-title">Dolphin Safe</div>
+                    <div class="seal-desc">海豚保護與友善捕撈</div>
+                </div>
+                <div class="seal-box">
+                    <div class="seal-icon-wrap"><i data-lucide="heart-handshake" style="width: 28px; height: 28px;"></i></div>
+                    <div class="seal-title">FISH Standard</div>
+                    <div class="seal-desc">國際船員人權福祉認證</div>
+                </div>
+                <div class="seal-box">
+                    <div class="seal-icon-wrap"><i data-lucide="file-check-2" style="width: 28px; height: 28px;"></i></div>
+                    <div class="seal-title">ILO C-188</div>
+                    <div class="seal-desc">國際勞工漁業工作公約</div>
+                </div>
+                <div class="seal-box">
+                    <div class="seal-icon-wrap"><i data-lucide="check-circle" style="width: 28px; height: 28px;"></i></div>
+                    <div class="seal-title">ISO 31000</div>
+                    <div class="seal-desc">風險管理與內控治理標準</div>
+                </div>
+            </div>
+
+            <!-- Cartography Box -->
+            <div class="cartography-card">
+                <div class="cartography-header">
+                    <div>
+                        <h3 class="cartography-h3">全球五大戰略營運樞紐與經銷網絡</h3>
+                        <p class="cartography-note">亞洲 ‧ 歐洲 ‧ 美洲主流市場 ｜ 與 PNA 國家及國際漁業組織建立長期戰略夥伴關係</p>
+                    </div>
+                    <span class="en-label">GLOBAL PRESENCE</span>
+                </div>
+
+                <div class="hubs-ensemble">
+                    <div class="hub-column">
+                        <div class="hub-city-name">台灣高雄</div>
+                        <div class="hub-role-desc">全球營運與智慧調度總部</div>
+                    </div>
+                    <div class="hub-column">
+                        <div class="hub-city-name">韓國釜山</div>
+                        <div class="hub-role-desc">東北亞物流與補給樞紐</div>
+                    </div>
+                    <div class="hub-column">
+                        <div class="hub-city-name">中國舟山</div>
+                        <div class="hub-role-desc">船舶工程與加工維護基地</div>
+                    </div>
+                    <div class="hub-column">
+                        <div class="hub-city-name">泰國曼谷</div>
+                        <div class="hub-role-desc">東南亞貿易與供應鏈節點</div>
+                    </div>
+                    <div class="hub-column">
+                        <div class="hub-city-name">巴布亞紐幾內亞</div>
+                        <div class="hub-role-desc">中西太平洋前進作業要塞</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: CONTACT & INQUIRY -->
+    <section class="museum-section" id="contact">
+        <div class="gallery-container">
+            <div class="registry-layout">
+                <div class="registry-narrative">
+                    <div class="curator-tag">
+                        <span class="en-label">GET IN TOUCH</span>
+                    </div>
+                    <h3>攜手海沃 ‧ 共創海洋永續價值</h3>
+                    <p>
+                        我們重視每一位全球夥伴、機構投資人與研究機構的交流對話。請依據您的事項選擇對應窗口，策展聯絡團隊將於 24 小時內專人回覆。
+                    </p>
+
+                    <ul class="registry-desks">
+                        <li>
+                            <span class="desk-role">投資人關係洽詢 (IR)</span>
+                            <a href="mailto:invest@seaworth.com" class="desk-email">invest@seaworth.com</a>
+                        </li>
+                        <li>
+                            <span class="desk-role">商務合作與業務洽詢 (Partnership)</span>
+                            <a href="mailto:partnership@seaworth.com" class="desk-email">partnership@seaworth.com</a>
+                        </li>
+                        <li>
+                            <span class="desk-role">公共關係與媒體事務 (PR)</span>
+                            <a href="mailto:pr@seaworth.com" class="desk-email">pr@seaworth.com</a>
+                        </li>
+                    </ul>
+
+                    <div style="border-left: 1px solid var(--c-gold); padding-left: 20px;">
+                        <span class="en-label" style="display: block; margin-bottom: 4px;">HEADQUARTERS</span>
+                        <div style="font-size: 0.95rem; color: var(--c-ink);">台灣高雄市前鎮區漁港核心園區</div>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <div class="registry-form">
+                    <form id="museumContactForm" onsubmit="handleFormSubmit(event)">
+                        <div class="m-form-group">
+                            <label class="m-form-label" for="serviceSelect">服務類別洽詢 *</label>
+                            <select id="serviceSelect" class="m-form-select" required>
+                                <option value="" disabled selected>請選擇洽詢事項類別</option>
+                                <option value="IR">投資人關係洽詢 (invest@seaworth.com)</option>
+                                <option value="Partnership">商務合作與業務洽詢 (partnership@seaworth.com)</option>
+                                <option value="PR">公共關係與媒體事務 (pr@seaworth.com)</option>
+                                <option value="Other">其他海洋永續合作事宜</option>
+                            </select>
+                        </div>
+
+                        <div class="m-form-row">
+                            <div class="m-form-group">
+                                <label class="m-form-label" for="nameInput">您的姓名 *</label>
+                                <input type="text" id="nameInput" class="m-form-input" placeholder="例如：陳經理" required>
+                            </div>
+                            <div class="m-form-group">
+                                <label class="m-form-label" for="companyInput">貴機構 / 公司名稱 *</label>
+                                <input type="text" id="companyInput" class="m-form-input" placeholder="例如：國際海洋貿易集團" required>
+                            </div>
+                        </div>
+
+                        <div class="m-form-row">
+                            <div class="m-form-group">
+                                <label class="m-form-label" for="phoneInput">聯絡電話</label>
+                                <input type="tel" id="phoneInput" class="m-form-input" placeholder="+886 912 345 678">
+                            </div>
+                            <div class="m-form-group">
+                                <label class="m-form-label" for="emailInput">電子信箱 *</label>
+                                <input type="email" id="emailInput" class="m-form-input" placeholder="name@organization.com" required>
+                            </div>
+                        </div>
+
+                        <div class="m-form-group">
+                            <label class="m-form-label" for="subjectInput">洽詢主旨 *</label>
+                            <input type="text" id="subjectInput" class="m-form-input" placeholder="請簡述您的交流主旨" required>
+                        </div>
+
+                        <div class="m-form-group">
+                            <label class="m-form-label" for="messageInput">訊息內容 *</label>
+                            <textarea id="messageInput" class="m-form-textarea" rows="3" placeholder="請填寫您的合作細節或具體需求..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-registry-submit">
+                            遞交洽詢訊息 ‧ Send Inquiry
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER: MUSEUM COLOPHON -->
+    <footer class="museum-colophon">
+        <div class="gallery-container">
+            <div class="colophon-grid">
+                <div class="colophon-brand">
+                    <h4>海沃控股集團</h4>
+                    <span class="en-sub">Seaworth Holding</span>
+                    <p>
+                        成立於 2026 年，以四十載遠洋漁業實力為基石，傳承敬海精神，建構全流程可追溯的全球智慧海洋產業生態系。
+                    </p>
+                </div>
+
+                <div>
+                    <div class="colophon-heading">三大事業群</div>
+                    <ul class="colophon-links">
+                        <li><a href="#business">華偉漁業事業群</a></li>
+                        <li><a href="#business">巨寶漁業事業群</a></li>
+                        <li><a href="#business">華昇魷釣事業群</a></li>
+                        <li><a href="#milestones">現代化船隊編制</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <div class="colophon-heading">永續與治理</div>
+                    <ul class="colophon-links">
+                        <li><a href="#esg">海洋生態守護 (MSC)</a></li>
+                        <li><a href="#esg">船員人道尊嚴 (FISH)</a></li>
+                        <li><a href="#esg">智慧科技與反 IUU</a></li>
+                        <li><a href="#certifications">國際認證規範</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <div class="colophon-heading">全球營運樞紐</div>
+                    <ul class="colophon-links">
+                        <li><a href="#contact">台灣高雄（總部）</a></li>
+                        <li><a href="#contact">韓國釜山</a></li>
+                        <li><a href="#contact">中國舟山</a></li>
+                        <li><a href="#contact">泰國曼谷</a></li>
+                        <li><a href="#contact">巴布亞紐幾內亞</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="colophon-bottom">
+                <div>© 2026 SEAWORTH HOLDING. ALL RIGHTS RESERVED.</div>
+                <div>CURATED FOR GLOBAL MARITIME EXCELLENCE</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast-museum" id="toastNotice">
+        <i data-lucide="check" style="width: 20px; height: 20px; color: var(--c-gold);"></i>
+        <div>
+            <div style="font-size: 0.9rem; color: var(--c-ink); font-weight: 500;">洽詢訊息已成功遞交</div>
+            <div style="font-size: 0.78rem; color: var(--c-muted);">海沃團隊將於 24 小時內專人與您聯繫。</div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        lucide.createIcons();
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const toast = document.getElementById('toastNotice');
+            toast.style.display = 'flex';
+            
+            document.getElementById('museumContactForm').reset();
+
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 4500);
+        }
+    </script>
+</body>
+</html>

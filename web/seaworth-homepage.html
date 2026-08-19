@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>海沃控股集團 SEAWORTH HOLDING｜敬海而行，與世界共榮共善</title>
+<meta name="description" content="海沃控股集團（SEAWORTH HOLDING）整合智慧造船、遠洋漁撈、冷鏈物流與國際貿易，打造全流程可追溯的全球海洋產業體系，攜手世界共榮共善。">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Noto+Sans+TC:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --navy:#122A3C;
+    --navy-soft:#2C4A60;
+    --navy-pale:#5E7A8C;
+    --gold:#B7965B;
+    --gold-dark:#93763F;
+    --gold-pale:#E8DBC0;
+    --bg:#FBFAF6;
+    --surface:#FFFFFF;
+    --surface-alt:#F4F0E7;
+    --line:#E6E0D2;
+    --text:#33424C;
+    --text-soft:#6B7986;
+    --radius:2px;
+    --maxw:1220px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Noto Sans TC', sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.75;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  .serif{font-family:'Noto Serif TC', serif;}
+  .en{font-family:'Cormorant Garamond', serif;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+  .eyebrow{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.05rem;
+    letter-spacing:.14em;
+    color:var(--gold-dark);
+    text-transform:uppercase;
+    display:inline-block;
+    margin-bottom:14px;
+  }
+  .eyebrow::before{content:"";display:inline-block;width:28px;height:1px;background:var(--gold);margin-right:10px;vertical-align:middle;}
+  h2.section-title{
+    font-family:'Noto Serif TC', serif;
+    font-weight:600;
+    font-size:clamp(1.7rem, 2.6vw, 2.5rem);
+    color:var(--navy);
+    letter-spacing:.02em;
+    margin-bottom:18px;
+  }
+  .section-lead{
+    max-width:680px;
+    color:var(--text-soft);
+    font-weight:300;
+    font-size:1.02rem;
+  }
+  .center{text-align:center;margin-left:auto;margin-right:auto;}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 34px;
+    font-size:.92rem;
+    letter-spacing:.06em;
+    border-radius:var(--radius);
+    border:1px solid var(--navy);
+    transition:all .3s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--navy);color:#fff;}
+  .btn-primary:hover{background:var(--navy-soft);border-color:var(--navy-soft);}
+  .btn-ghost{background:transparent;color:var(--navy);}
+  .btn-ghost:hover{background:var(--navy);color:#fff;}
+  .btn-gold{border-color:var(--gold);color:var(--gold-dark);}
+  .btn-gold:hover{background:var(--gold);color:#fff;}
+  .btn-on-dark{border-color:rgba(255,255,255,.7);color:#fff;}
+  .btn-on-dark:hover{background:#fff;color:var(--navy);}
+  .btn svg{width:14px;height:14px;transition:transform .3s;}
+  .btn:hover svg{transform:translateX(3px);}
+
+  /* ===== NAV ===== */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(251,250,246,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s, background .3s;
+  }
+  header.scrolled{border-bottom-color:var(--line);background:rgba(251,250,246,.97);}
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;height:84px;}
+  .logo img{height:38px;width:auto;}
+  .nav-links{display:flex;align-items:center;gap:38px;}
+  .nav-links a:not(.btn){
+    font-size:.9rem;letter-spacing:.04em;color:var(--navy);
+    position:relative;padding:6px 0;
+  }
+  .nav-links a:not(.btn)::after{
+    content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--gold);
+    transition:width .3s;
+  }
+  .nav-links a:not(.btn):hover::after{width:100%;}
+  .nav-links a.nav-cta{margin-left:8px;padding:11px 24px;font-size:.82rem;color:#fff;}
+  .nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px;margin-left:auto;flex-shrink:0;}
+  .nav-toggle span{width:24px;height:2px;background:var(--navy);display:block;}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;align-items:flex-end;
+    color:#fff;
+    overflow:hidden;
+  }
+  .hero-media{position:absolute;inset:0;z-index:0;}
+  .hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 55%;}
+  .hero-media::after{
+    content:"";position:absolute;inset:0;
+    background:
+      linear-gradient(180deg, rgba(18,42,60,.55) 0%, rgba(18,42,60,.15) 32%, rgba(18,42,60,.25) 62%, rgba(18,42,60,.86) 100%),
+      linear-gradient(90deg, rgba(18,42,60,.55) 0%, rgba(18,42,60,.05) 55%);
+  }
+  .hero-content{position:relative;z-index:1;padding:180px 0 96px;width:100%;}
+  .hero-content .eyebrow{color:var(--gold-pale);}
+  .hero-content .eyebrow::before{background:var(--gold-pale);}
+  .hero h1{
+    font-family:'Noto Serif TC', serif;
+    font-weight:600;
+    font-size:clamp(2.3rem, 5vw, 4rem);
+    line-height:1.3;
+    max-width:820px;
+    letter-spacing:.02em;
+    margin-bottom:20px;
+    text-shadow:0 2px 24px rgba(0,0,0,.25);
+  }
+  .hero-sub{
+    font-size:clamp(1rem,1.5vw,1.2rem);
+    font-weight:400;
+    letter-spacing:.03em;
+    color:var(--gold-pale);
+    margin-bottom:22px;
+  }
+  .hero-desc{
+    max-width:560px;
+    font-weight:300;
+    color:rgba(255,255,255,.88);
+    margin-bottom:40px;
+    font-size:1rem;
+  }
+  .hero-actions{display:flex;flex-wrap:wrap;gap:16px;}
+  .hero-scroll{
+    position:absolute;right:40px;bottom:40px;z-index:1;
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+    color:rgba(255,255,255,.75);font-size:.72rem;letter-spacing:.2em;
+  }
+  .hero-scroll .line{width:1px;height:46px;background:rgba(255,255,255,.5);position:relative;overflow:hidden;}
+  .hero-scroll .line::after{content:"";position:absolute;top:-100%;left:0;width:100%;height:100%;background:#fff;animation:scrolldown 2.2s infinite;}
+  @keyframes scrolldown{ to{top:100%;} }
+
+  section{padding:112px 0;position:relative;}
+  .section-head{margin-bottom:56px;}
+
+  /* ===== ABOUT / GROUP ===== */
+  .about{background:var(--surface);}
+  .about-top{display:grid;grid-template-columns:1.1fr .9fr;gap:80px;align-items:end;margin-bottom:64px;}
+  .about-link{
+    display:inline-flex;align-items:center;gap:8px;color:var(--navy);
+    font-size:.92rem;border-bottom:1px solid var(--gold);padding-bottom:4px;
+  }
+  .about-link svg{width:13px;height:13px;}
+  .group-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
+  .group-card{
+    background:var(--bg);
+    border:1px solid var(--line);
+    display:flex;flex-direction:column;
+    transition:box-shadow .35s, transform .35s;
+  }
+  .group-card:hover{box-shadow:0 24px 48px -24px rgba(18,42,60,.22);transform:translateY(-4px);}
+  .group-card .img-box{aspect-ratio:15/8;overflow:hidden;background:#fff;border-bottom:1px solid var(--line);}
+  .group-card .img-box img{width:100%;height:100%;object-fit:contain;padding:18px;transition:transform .5s;}
+  .group-card:hover .img-box img{transform:scale(1.04);}
+  .group-card .body{padding:30px 28px 34px;flex:1;display:flex;flex-direction:column;}
+  .group-card .num{
+    font-family:'Cormorant Garamond', serif;font-style:italic;color:var(--gold);
+    font-size:1.4rem;margin-bottom:10px;
+  }
+  .group-card h3{
+    font-family:'Noto Serif TC', serif;font-weight:600;color:var(--navy);
+    font-size:1.18rem;margin-bottom:6px;line-height:1.5;
+  }
+  .group-card .tag{font-size:.82rem;color:var(--gold-dark);margin-bottom:14px;letter-spacing:.02em;}
+  .group-card p{font-size:.9rem;color:var(--text-soft);flex:1;}
+
+  /* ===== STATS ===== */
+  .stats{background:var(--surface-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .stats-head{text-align:center;margin-bottom:60px;}
+  .stats-head .eyebrow{margin-bottom:10px;}
+  .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-bottom:64px;}
+  .stat-item{
+    text-align:center;padding:0 24px;border-left:1px solid var(--line);
+  }
+  .stat-item:first-child{border-left:none;}
+  .stat-num{
+    font-family:'Noto Serif TC', serif;font-weight:700;color:var(--navy);
+    font-size:clamp(2.1rem,3.4vw,3rem);line-height:1;margin-bottom:14px;
+  }
+  .stat-num .unit{font-family:'Noto Sans TC',sans-serif;font-weight:400;font-size:1.3rem;color:var(--gold-dark);margin-left:2px;}
+  .stat-label{font-size:.88rem;color:var(--text-soft);line-height:1.6;}
+  .species-row{
+    display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:14px;
+    padding-top:48px;border-top:1px solid var(--line);
+  }
+  .species-row .caption{width:100%;text-align:center;font-size:.85rem;color:var(--text-soft);margin-bottom:18px;letter-spacing:.04em;}
+  .species-pill{
+    border:1px solid var(--gold-pale);background:#fff;color:var(--navy);
+    padding:9px 22px;font-size:.88rem;border-radius:999px;letter-spacing:.03em;
+  }
+
+  /* ===== ESG ===== */
+  .esg{background:var(--bg);}
+  .esg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-bottom:52px;}
+  .esg-card{background:var(--surface);border:1px solid var(--line);overflow:hidden;}
+  .esg-card .img-box{aspect-ratio:4/3;overflow:hidden;}
+  .esg-card .img-box img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+  .esg-card:hover .img-box img{transform:scale(1.06);}
+  .esg-card .body{padding:32px 28px 36px;}
+  .esg-letter{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:44px;height:44px;border:1px solid var(--gold);color:var(--gold-dark);
+    font-family:'Cormorant Garamond', serif;font-size:1.4rem;font-style:italic;
+    margin-bottom:18px;
+  }
+  .esg-card h3{font-family:'Noto Serif TC',serif;font-weight:600;color:var(--navy);font-size:1.15rem;margin-bottom:6px;}
+  .esg-card .sub{font-size:.82rem;color:var(--gold-dark);margin-bottom:16px;letter-spacing:.03em;}
+  .esg-card ul{display:flex;flex-direction:column;gap:10px;}
+  .esg-card li{font-size:.87rem;color:var(--text-soft);padding-left:16px;position:relative;}
+  .esg-card li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:1px;background:var(--gold);}
+  .esg-foot{text-align:center;}
+
+  /* ===== CERTS ===== */
+  .certs{background:var(--surface-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .cert-strip{
+    display:flex;align-items:center;justify-content:center;flex-wrap:wrap;
+    gap:0;background:#fff;border:1px solid var(--line);margin-bottom:56px;
+  }
+  .cert-item{
+    flex:1 1 150px;display:flex;align-items:center;justify-content:center;
+    padding:30px 20px;border-left:1px solid var(--line);min-height:110px;
+  }
+  .cert-item:first-child{border-left:none;}
+  .cert-item img{max-height:46px;max-width:120px;width:auto;object-fit:contain;filter:grayscale(45%);opacity:.82;transition:all .3s;}
+  .cert-item:hover img{filter:grayscale(0%);opacity:1;}
+  .cert-badge-text{
+    display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--navy-soft);
+  }
+  .cert-badge-text .mark{
+    width:34px;height:34px;border:1px solid var(--gold);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;color:var(--gold-dark);font-size:.72rem;font-family:'Cormorant Garamond',serif;font-style:italic;
+  }
+  .cert-badge-text span.name{font-size:.72rem;letter-spacing:.03em;text-align:center;color:var(--text-soft);}
+  .network-row{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;}
+  .network-row h3{font-family:'Noto Serif TC',serif;color:var(--navy);font-weight:600;font-size:1.3rem;margin-bottom:14px;}
+  .network-row p{color:var(--text-soft);font-size:.95rem;margin-bottom:0;}
+  .market-tags{display:flex;gap:14px;flex-wrap:wrap;justify-content:flex-end;}
+  .market-tags span{
+    font-family:'Noto Serif TC',serif;font-size:1.05rem;color:var(--navy);
+    padding:14px 26px;border:1px solid var(--navy);
+  }
+
+  /* ===== CONTACT ===== */
+  .contact{background:var(--surface);}
+  .contact-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:0;border:1px solid var(--line);}
+  .contact-form{padding:56px;background:#fff;}
+  .contact-form .row{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:22px;}
+  .field{display:flex;flex-direction:column;gap:8px;margin-bottom:22px;}
+  .field label{font-size:.82rem;color:var(--navy-soft);letter-spacing:.03em;}
+  .field input,.field select,.field textarea{
+    border:none;border-bottom:1px solid var(--line);background:transparent;
+    padding:10px 2px;font-family:inherit;font-size:.95rem;color:var(--text);
+    transition:border-color .3s;
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--gold);}
+  .field textarea{resize:vertical;min-height:90px;}
+  .contact-form .submit-row{margin-top:12px;display:flex;align-items:center;gap:18px;}
+  .form-note{font-size:.8rem;color:var(--text-soft);}
+  .contact-side{background:var(--navy);color:#fff;padding:56px 48px;display:flex;flex-direction:column;justify-content:space-between;}
+  .contact-side h3{font-family:'Noto Serif TC',serif;font-size:1.25rem;font-weight:600;margin-bottom:10px;}
+  .contact-side > p{color:rgba(255,255,255,.7);font-size:.9rem;margin-bottom:36px;}
+  .office-list{display:flex;flex-direction:column;}
+  .office-list li{
+    padding:16px 0;border-top:1px solid rgba(255,255,255,.14);
+    display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:.9rem;
+  }
+  .office-list li:last-child{border-bottom:1px solid rgba(255,255,255,.14);}
+  .office-list .tag{color:var(--gold-pale);font-size:.72rem;letter-spacing:.04em;white-space:nowrap;}
+  .contact-emails{margin-top:36px;display:flex;flex-direction:column;gap:6px;font-size:.85rem;color:rgba(255,255,255,.75);}
+  .contact-emails a:hover{color:var(--gold-pale);}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--navy);color:rgba(255,255,255,.65);padding:64px 0 28px;}
+  .footer-top{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:48px;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.14);margin-bottom:28px;}
+  .footer-brand img{height:34px;margin-bottom:16px;filter:brightness(0) invert(1);opacity:.92;}
+  .footer-brand p{font-size:.85rem;line-height:1.8;max-width:280px;color:rgba(255,255,255,.55);}
+  .footer-col h4{font-size:.85rem;letter-spacing:.06em;color:var(--gold-pale);margin-bottom:18px;text-transform:uppercase;}
+  .footer-col li{margin-bottom:11px;font-size:.85rem;}
+  .footer-col a:hover{color:#fff;}
+  .footer-bottom{display:flex;justify-content:space-between;align-items:center;font-size:.78rem;color:rgba(255,255,255,.45);flex-wrap:wrap;gap:10px;}
+
+  /* ===== REVEAL ===== */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  @media (max-width:980px){
+    .about-top{grid-template-columns:1fr;gap:32px;}
+    .group-grid{grid-template-columns:1fr;}
+    .stat-grid{grid-template-columns:repeat(2,1fr);row-gap:36px;}
+    .stat-item:nth-child(3){border-left:none;}
+    .esg-grid{grid-template-columns:1fr;}
+    .network-row{grid-template-columns:1fr;gap:28px;}
+    .market-tags{justify-content:flex-start;}
+    .contact-grid{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr 1fr;row-gap:36px;}
+  }
+  @media (max-width:720px){
+    .wrap{padding:0 22px;}
+    .nav-links{
+      position:fixed;top:84px;left:0;right:0;bottom:0;
+      background:var(--bg);flex-direction:column;justify-content:flex-start;
+      padding:40px 32px;gap:26px;
+      transform:translateX(100%);transition:transform .35s ease;
+    }
+    .nav-links.open{transform:translateX(0);}
+    .nav-toggle{display:flex;}
+    .nav-cta{margin-left:0;}
+    section{padding:76px 0;}
+    .contact-form{padding:36px 26px;}
+    .contact-form .row{grid-template-columns:1fr;gap:0;}
+    .contact-side{padding:40px 26px;}
+    .cert-item{flex:1 1 45%;}
+    .hero-scroll{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <nav class="wrap">
+    <a href="#top" class="logo"><img src="assets/logo-header.png" alt="SEAWORTH HOLDING 海沃控股集團"></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">集團總覽</a></li>
+      <li><a href="#numbers">關鍵數據</a></li>
+      <li><a href="#esg">永續發展</a></li>
+      <li><a href="#certs">國際認證</a></li>
+      <li><a href="#contact" class="btn btn-primary nav-cta">聯絡我們</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="選單"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- Hero -->
+  <section class="hero" style="padding:0;">
+    <div class="hero-media"><img src="assets/hero-vessel.jpg" alt="海沃控股集團現代化遠洋船隊"></div>
+    <div class="wrap hero-content">
+      <span class="eyebrow">Seaworth Holding · Since 2026</span>
+      <h1>敬海而行，與世界共榮共善</h1>
+      <p class="hero-sub">跨越四十載深耕・建構全球智慧遠洋產業鏈與永續共善新局</p>
+      <p class="hero-desc">海沃控股集團整合智慧造船、遠洋漁撈、冷鏈物流與國際貿易，打造全流程可追溯的全球海洋產業體系。</p>
+      <div class="hero-actions">
+        <a href="#about" class="btn btn-on-dark">探索事業版圖
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#esg" class="btn btn-on-dark">永續實踐與 ESG
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero-scroll"><span>SCROLL</span><span class="line"></span></div>
+  </section>
+
+  <!-- About / Group -->
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="about-top reveal">
+        <div>
+          <span class="eyebrow">About the Group</span>
+          <h2 class="section-title">全鏈路整合・深耕全球大洋</h2>
+          <p class="section-lead">海沃控股集團（SEAWORTH HOLDING）成立於 2026 年，傳承逾四十載深厚根基，以整合遠洋漁業上下游資源、深化共善治理為使命。透過智慧化與合規管理，建立「從深海到市場」的一體化全球供應網絡。</p>
+        </div>
+        <div style="text-align:left;">
+          <a href="#" class="about-link">深入了解集團總覽
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="group-grid">
+        <div class="group-card reveal">
+          <div class="img-box"><img src="assets/biz-fairwell.jpg" alt="華偉漁業事業群"></div>
+          <div class="body">
+            <span class="num">01</span>
+            <h3>華偉漁業事業群</h3>
+            <span class="tag">產業根基與遠洋圍網</span>
+            <p>傳承自 1983 年高雄前鎮漁港冷凍倉儲與第一艘圍網漁船，奠定集團雄厚實力與全球化根基。</p>
+          </div>
+        </div>
+        <div class="group-card reveal">
+          <div class="img-box"><img src="assets/biz-jumbo.jpg" alt="巨寶漁業事業群"></div>
+          <div class="body">
+            <span class="num">02</span>
+            <h3>巨寶漁業事業群</h3>
+            <span class="tag">智慧造船與海上移動冷鏈</span>
+            <p>專營圍網捕撈與現代化冷凍運搬船，引進前瞻船舶設計與國際勞工合規標準，打造頂尖海上移動冷鏈。</p>
+          </div>
+        </div>
+        <div class="group-card reveal">
+          <div class="img-box"><img src="assets/biz-huasheng.jpg" alt="華昇魷釣事業群"></div>
+          <div class="body">
+            <span class="num">03</span>
+            <h3>華昇魷釣事業群</h3>
+            <span class="tag">精準漁法與高技術捕撈</span>
+            <p>專精魷魚秋刀魚船與延繩釣漁船，展現高技術漁法、生態永續與全球供應的頂尖專業。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats" id="numbers">
+    <div class="wrap">
+      <div class="stats-head reveal">
+        <span class="eyebrow">Key Milestones &amp; Numbers</span>
+        <h2 class="section-title">全球佈局・卓越實力</h2>
+      </div>
+
+      <div class="stat-grid reveal">
+        <div class="stat-item">
+          <div class="stat-num"><span class="counter" data-target="40">0</span><span class="unit">+ 載</span></div>
+          <p class="stat-label">產業深耕經驗<br>源自 1983 年</p>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">近<span class="counter" data-target="40">0</span><span class="unit">艘</span></div>
+          <p class="stat-label">頂尖現代化合規船隊<br>圍網・延繩釣・魷釣秋刀魚・運搬船</p>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num"><span class="counter" data-target="2">0</span><span class="unit">大洋區</span></div>
+          <p class="stat-label">作業海域<br>橫跨太平洋與大西洋</p>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num"><span class="counter" data-target="5">0</span><span class="unit">大據點</span></div>
+          <p class="stat-label">台灣高雄（總部）・韓國釜山<br>中國舟山・泰國曼谷・巴布亞紐幾內亞</p>
+        </div>
+      </div>
+
+      <div class="species-row reveal">
+        <span class="caption">核心經濟魚種</span>
+        <span class="species-pill">正鰹</span>
+        <span class="species-pill">黃鰭鮪</span>
+        <span class="species-pill">大目鮪</span>
+        <span class="species-pill">長鰭鮪</span>
+        <span class="species-pill">魷魚</span>
+        <span class="species-pill">秋刀魚</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESG -->
+  <section class="esg" id="esg">
+    <div class="wrap">
+      <div class="section-head center reveal" style="max-width:680px;">
+        <span class="eyebrow">ESG &amp; Sustainability</span>
+        <h2 class="section-title">共善經營・智慧責任引領產業升級</h2>
+      </div>
+
+      <div class="esg-grid">
+        <div class="esg-card reveal">
+          <div class="img-box"><img src="assets/esg-environment.jpg" alt="海洋生態守護"></div>
+          <div class="body">
+            <span class="esg-letter">E</span>
+            <h3>海洋生態守護</h3>
+            <span class="sub">Environment</span>
+            <ul>
+              <li>落實聯合國永續發展目標（SDGs）與 RFMO 規範</li>
+              <li>全面取得 MSC 海洋管理委員會與 Dolphin Safe 海豚保護認證</li>
+              <li>採用非纏結式集魚器（FADs）與低碳節能航行技術，減緩生態衝擊</li>
+            </ul>
+          </div>
+        </div>
+        <div class="esg-card reveal">
+          <div class="img-box"><img src="assets/esg-social.jpg" alt="人本人權保障"></div>
+          <div class="body">
+            <span class="esg-letter">S</span>
+            <h3>人本人權保障</h3>
+            <span class="sub">Social</span>
+            <ul>
+              <li>嚴格遵循 ILO C-188 漁業工作公約與 FISH 船員人權標準</li>
+              <li>率先導入「海上遠距醫療照護」與船上 Wi-Fi 通訊權</li>
+              <li>落實暴力零容忍與尊嚴勞動，守護船員身心健康</li>
+            </ul>
+          </div>
+        </div>
+        <div class="esg-card reveal">
+          <div class="img-box"><img src="assets/esg-governance.jpg" alt="智慧科技與合規治理"></div>
+          <div class="body">
+            <span class="esg-letter">G</span>
+            <h3>智慧科技與合規治理</h3>
+            <span class="sub">Governance &amp; Tech</span>
+            <ul>
+              <li>導入 IoT 電子浮標、AI 智慧漁撈預測與海事大數據調度</li>
+              <li>打造「從深海到餐桌」全流程可追溯供應鏈</li>
+              <li>堅守反非法捕撈（IUU）與高標準誠信內控</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="esg-foot reveal">
+        <a href="#" class="btn btn-gold">閱讀完整永續政策
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications & Global network -->
+  <section class="certs" id="certs">
+    <div class="wrap">
+      <div class="section-head center reveal" style="max-width:680px;">
+        <span class="eyebrow">Certifications &amp; Global Presence</span>
+        <h2 class="section-title">國際合規認證・全球合作網絡</h2>
+      </div>
+
+      <div class="cert-strip reveal">
+        <div class="cert-item"><img src="assets/certs/MSC_ecolabel.png" alt="MSC 海洋管理委員會認證"></div>
+        <div class="cert-item"><img src="assets/certs/Dolphin_Safe.png" alt="Dolphin Safe 海豚保護標章"></div>
+        <div class="cert-item"><img src="assets/certs/FISH.jpg" alt="FISH Crew Standard 船員人權標準"></div>
+        <div class="cert-item">
+          <div class="cert-badge-text">
+            <span class="mark">ILO</span>
+            <span class="name">ILO C-188<br>國際勞工公約標準</span>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-badge-text">
+            <span class="mark">ISO</span>
+            <span class="name">ISO 31000:2018<br>風險管理規範</span>
+          </div>
+        </div>
+        <div class="cert-item"><img src="assets/certs/WCPFC-logo.png" alt="WCPFC 中西太平洋漁業委員會"></div>
+        <div class="cert-item"><img src="assets/certs/ISSF-LOGO.png" alt="ISSF 國際永續漁業基金會"></div>
+      </div>
+
+      <div class="network-row reveal">
+        <div>
+          <h3>全球市場經銷網絡</h3>
+          <p>經銷網路垂直滲透亞洲、歐洲、美洲等主流消費市場；與 PNA 國家及國際漁業組織締結長期戰略夥伴關係，鞏固核心漁業資源，穩健擴張國際版圖。</p>
+        </div>
+        <div class="market-tags">
+          <span>亞洲 Asia</span>
+          <span>歐洲 Europe</span>
+          <span>美洲 Americas</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Contact Us</span>
+        <h2 class="section-title">攜手海沃・共創海洋永續價值</h2>
+      </div>
+
+      <div class="contact-grid reveal">
+        <form class="contact-form" id="contactForm">
+          <div class="row">
+            <div class="field">
+              <label for="name">姓名</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="field">
+              <label for="company">貴公司名稱</label>
+              <input type="text" id="company" name="company">
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="phone">聯絡電話</label>
+              <input type="tel" id="phone" name="phone">
+            </div>
+            <div class="field">
+              <label for="email">電子信箱</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="subject">需求主旨</label>
+            <select id="subject" name="subject">
+              <option value="invest">投資人關係洽詢（invest@seaworth.com）</option>
+              <option value="partnership">商務合作與業務洽詢（partnership@seaworth.com）</option>
+              <option value="pr">公共關係與媒體事務（pr@seaworth.com）</option>
+              <option value="other">其他事宜</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="message">留言內容</label>
+            <textarea id="message" name="message" rows="4"></textarea>
+          </div>
+          <div class="submit-row">
+            <button type="submit" class="btn btn-primary">發送訊息
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+            <span class="form-note" id="formNote">我們將於 1–2 個工作天內回覆您</span>
+          </div>
+        </form>
+
+        <div class="contact-side">
+          <div>
+            <h3>全球營運據點</h3>
+            <p>Global Operation Offices</p>
+            <ul class="office-list">
+              <li><span>台灣高雄</span><span class="tag">企業總部</span></li>
+              <li><span>韓國釜山</span><span class="tag">Busan</span></li>
+              <li><span>中國舟山</span><span class="tag">Zhoushan</span></li>
+              <li><span>泰國曼谷</span><span class="tag">Bangkok</span></li>
+              <li><span>巴布亞紐幾內亞</span><span class="tag">PNG</span></li>
+            </ul>
+          </div>
+          <div class="contact-emails">
+            <a href="mailto:invest@seaworth.com">invest@seaworth.com</a>
+            <a href="mailto:partnership@seaworth.com">partnership@seaworth.com</a>
+            <a href="mailto:pr@seaworth.com">pr@seaworth.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/logo-header.png" alt="SEAWORTH HOLDING">
+        <p>海沃控股集團整合智慧造船、遠洋漁撈、冷鏈物流與國際貿易，打造全流程可追溯的全球海洋產業體系。</p>
+      </div>
+      <div class="footer-col">
+        <h4>集團</h4>
+        <ul>
+          <li><a href="#about">關於海沃</a></li>
+          <li><a href="#about">事業版圖</a></li>
+          <li><a href="#numbers">關鍵數據</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>永續與治理</h4>
+        <ul>
+          <li><a href="#esg">ESG 永續發展</a></li>
+          <li><a href="#certs">國際認證</a></li>
+          <li><a href="#certs">全球夥伴網絡</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>聯絡</h4>
+        <ul>
+          <li><a href="mailto:invest@seaworth.com">投資人關係</a></li>
+          <li><a href="mailto:partnership@seaworth.com">商務合作</a></li>
+          <li><a href="mailto:pr@seaworth.com">媒體公關</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 SEAWORTH HOLDING CO., LTD. 海沃控股股份有限公司</span>
+      <span>敬海而行，與世界共榮共善</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // header scroll state
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // mobile nav
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // counters
+  const counters = document.querySelectorAll('.counter');
+  const counted = new WeakSet();
+  const cio = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !counted.has(entry.target)) {
+        counted.add(entry.target);
+        const el = entry.target;
+        const target = parseInt(el.dataset.target, 10);
+        const dur = 1400;
+        const start = performance.now();
+        function tick(now){
+          const p = Math.min((now - start) / dur, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(eased * target);
+          if (p < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => cio.observe(c));
+
+  // contact form (no backend — inline confirmation)
+  const form = document.getElementById('contactForm');
+  const note = document.getElementById('formNote');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    note.textContent = '感謝您的訊息，我們將盡快與您聯繫。';
+    note.style.color = '#93763F';
+    form.reset();
+  });
+</script>
+
+</body>
+</html>

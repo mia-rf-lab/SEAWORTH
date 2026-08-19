@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>海沃控股集團 SEAWORTH HOLDING｜敬海而行，與世界共榮共善</title>
+<meta name="description" content="海沃控股集團（SEAWORTH HOLDING）整合智慧造船、遠洋漁撈、冷鏈物流與國際貿易，打造全流程可追溯的全球海洋產業體系，攜手世界共榮共善。">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,500;0,700;0,800;0,900;1,700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --black:#0B0C0E;
+    --white:#FFFFFF;
+    --cream:#F6F3EC;
+    --navy:#13293D;
+    --gold:#C0813E;
+    --gold-deep:#8F5D28;
+    --text:#3A3A38;
+    --text-soft:#7A7770;
+    --line:#E4E0D6;
+    --maxw:1320px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Noto Sans TC', sans-serif;
+    background:var(--white);
+    color:var(--text);
+    line-height:1.75;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  .en{font-family:'Archivo',sans-serif;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 40px;}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 32px;font-size:.86rem;font-weight:700;letter-spacing:.03em;transition:all .3s;}
+  .btn-black{background:var(--black);color:#fff;}
+  .btn-black:hover{background:var(--gold-deep);}
+  .btn-outline-w{border:1px solid rgba(255,255,255,.6);color:#fff;}
+  .btn-outline-w:hover{background:#fff;color:var(--black);}
+  .btn-gold{background:var(--gold);color:#fff;}
+  .btn-gold:hover{background:var(--gold-deep);}
+
+  /* ===== UTILITY BAR ===== */
+  .utility{background:var(--black);color:rgba(255,255,255,.72);font-size:.76rem;}
+  .utility .wrap{display:flex;align-items:center;justify-content:flex-end;gap:28px;height:40px;}
+  .utility a:hover{color:#fff;}
+  .utility .phone{color:var(--gold);font-weight:700;letter-spacing:.02em;}
+
+  /* ===== NAV ===== */
+  header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;height:82px;}
+  .logo img{height:32px;flex-shrink:0;}
+  .nav-links{display:flex;align-items:center;gap:36px;}
+  .nav-links a:not(.btn){font-size:.86rem;font-weight:500;letter-spacing:.02em;color:var(--black);}
+  .nav-links a:not(.btn):hover{color:var(--gold-deep);}
+  .nav-toggle{display:none;background:none;border:0;cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:auto;flex-shrink:0;}
+  .nav-toggle span{width:22px;height:2px;background:var(--black);display:block;}
+
+  /* ===== HERO ===== */
+  .hero{position:relative;height:92vh;min-height:560px;overflow:hidden;color:#fff;}
+  .hero img{width:100%;height:100%;object-fit:cover;}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(11,12,14,.35) 0%, rgba(11,12,14,.15) 30%, rgba(11,12,14,.55) 100%);}
+  .hero-stack{
+    position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;z-index:1;gap:2px;
+  }
+  .hero-stack .word{
+    font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:.06em;
+    font-size:clamp(1.3rem,4.2vw,2.6rem);line-height:1.25;
+    color:rgba(255,255,255,.5);
+  }
+  .hero-stack .word.main{color:#fff;font-size:clamp(1.8rem,6.4vw,4rem);margin:14px 0;letter-spacing:.02em;}
+  .hero-badge{
+    width:64px;height:64px;border-radius:50%;border:1px solid rgba(255,255,255,.5);
+    display:flex;align-items:center;justify-content:center;margin-bottom:20px;
+  }
+  .hero-badge img{width:30px;height:30px;filter:brightness(0) invert(1);}
+  .hero-tag{position:absolute;left:40px;bottom:34px;z-index:1;font-size:.78rem;letter-spacing:.1em;color:rgba(255,255,255,.7);}
+  .hero-cta{position:absolute;right:40px;bottom:34px;z-index:1;display:flex;gap:12px;}
+  .hero-cta .btn{padding:12px 24px;font-size:.78rem;}
+
+  /* ===== INTRO ===== */
+  .intro{background:var(--cream);text-align:center;padding:110px 0;}
+  .intro .pre{font-size:1.02rem;color:var(--text-soft);margin-bottom:18px;line-height:1.8;}
+  .intro h2{font-size:clamp(2.4rem,5vw,4rem);font-weight:900;color:var(--black);letter-spacing:.02em;margin-bottom:18px;}
+  .intro .sub{font-family:'Archivo',sans-serif;font-size:.86rem;letter-spacing:.16em;color:var(--gold-deep);font-weight:700;margin-bottom:8px;}
+  .intro .cap{font-size:.86rem;color:var(--text-soft);}
+
+  /* ===== LANDMARK BAND ===== */
+  .landmark{position:relative;height:64vh;min-height:420px;overflow:hidden;color:#fff;}
+  .landmark img{width:100%;height:100%;object-fit:cover;}
+  .landmark::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(11,12,14,.1), rgba(11,12,14,.62));}
+  .landmark-content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;z-index:1;}
+  .landmark-content .en{font-size:clamp(2.6rem,7vw,5.4rem);font-weight:900;letter-spacing:.01em;margin-bottom:14px;}
+  .landmark-content p{font-size:.98rem;color:rgba(255,255,255,.85);max-width:520px;}
+
+  /* ===== BLACK SECTION ===== */
+  .black-sec{background:var(--black);color:#fff;padding:120px 0 0;overflow:hidden;}
+  .black-grid{display:grid;grid-template-columns:220px 1fr;gap:60px;}
+  .crumb-list{display:flex;flex-direction:column;gap:26px;padding-top:14px;}
+  .crumb-list li{font-size:.84rem;color:rgba(255,255,255,.55);display:flex;align-items:center;gap:10px;}
+  .crumb-list li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);}
+  .crumb-list li.active{color:#fff;font-weight:700;}
+  .black-main .en{font-size:.82rem;letter-spacing:.16em;color:var(--gold);font-weight:700;margin-bottom:18px;display:block;}
+  .black-main h2{font-size:clamp(2rem,4.4vw,3.4rem);font-weight:900;line-height:1.4;margin-bottom:26px;}
+  .black-main h2 em{font-style:normal;color:var(--gold);}
+  .black-main p{color:rgba(255,255,255,.68);max-width:640px;font-size:1rem;margin-bottom:36px;}
+
+  .fan-row{display:flex;justify-content:center;gap:0;padding:0 0 0;margin-top:20px;position:relative;}
+  .fan-card{
+    width:230px;aspect-ratio:3/4;border-radius:6px;overflow:hidden;background:#fff;
+    box-shadow:0 30px 50px -18px rgba(0,0,0,.6);
+    margin:0 -26px;transition:transform .4s ease, z-index 0s;
+    border:6px solid #fff;
+  }
+  .fan-card img{width:100%;height:100%;object-fit:cover;}
+  .fan-card:nth-child(1){transform:rotate(-11deg) translateY(30px);}
+  .fan-card:nth-child(2){transform:rotate(-4deg) translateY(4px);z-index:2;}
+  .fan-card:nth-child(3){transform:rotate(4deg) translateY(4px);z-index:2;}
+  .fan-card:nth-child(4){transform:rotate(11deg) translateY(30px);}
+  .fan-card:hover{transform:translateY(-14px) rotate(0deg) scale(1.04);z-index:5;}
+  .fan-wrap{transform:translateY(70px);}
+
+  /* ===== FACILITY LIST + MAP ===== */
+  .facility{background:var(--white);padding:160px 0 110px;}
+  .facility-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:80px;align-items:center;}
+  .fac-item{border-bottom:1px solid var(--line);}
+  .fac-item:first-child{border-top:1px solid var(--line);}
+  .fac-head{
+    display:flex;align-items:center;gap:20px;padding:20px 2px;cursor:pointer;background:none;border:0;width:100%;text-align:left;
+  }
+  .fac-head .num{font-family:'Archivo',sans-serif;font-weight:800;color:var(--gold);font-size:.9rem;width:28px;flex-shrink:0;}
+  .fac-head .name{font-size:1rem;font-weight:700;color:var(--black);flex:1;}
+  .fac-head .plus{width:20px;height:20px;position:relative;flex-shrink:0;}
+  .fac-head .plus::before,.fac-head .plus::after{content:"";position:absolute;background:var(--text-soft);top:50%;left:50%;transform:translate(-50%,-50%);}
+  .fac-head .plus::before{width:12px;height:1.5px;}
+  .fac-head .plus::after{width:1.5px;height:12px;transition:transform .3s;}
+  .fac-item.open .fac-head .plus::after{transform:translate(-50%,-50%) rotate(90deg);}
+  .fac-item.open .fac-head .name{color:var(--gold-deep);}
+  .fac-body{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+  .fac-body p{padding:0 2px 20px 48px;color:var(--text-soft);font-size:.88rem;max-width:440px;}
+  .fac-map img{border-radius:8px;}
+
+  /* ===== TWO COLUMN ===== */
+  .split-sec{background:var(--cream);padding:120px 0;}
+  .split-grid{display:grid;grid-template-columns:1fr .8fr;gap:80px;align-items:center;}
+  .split-text .en{font-size:.82rem;letter-spacing:.16em;color:var(--gold-deep);font-weight:700;margin-bottom:16px;display:block;}
+  .split-text h3{font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:900;color:var(--black);margin-bottom:22px;line-height:1.4;}
+  .split-text p{color:var(--text-soft);font-size:.96rem;margin-bottom:30px;max-width:480px;}
+  .split-stats{display:flex;gap:44px;}
+  .split-stats .n{font-family:'Archivo',sans-serif;font-weight:900;font-size:2rem;color:var(--black);}
+  .split-stats .l{font-size:.8rem;color:var(--text-soft);margin-top:6px;}
+  .split-photo{position:relative;border-radius:8px;overflow:hidden;box-shadow:0 40px 70px -30px rgba(11,12,14,.4);}
+  .split-photo img{width:100%;height:100%;object-fit:cover;aspect-ratio:3/4;}
+  .split-photo .cap{
+    position:absolute;left:0;right:0;bottom:0;padding:26px 24px;
+    background:linear-gradient(0deg, rgba(11,12,14,.82), transparent);color:#fff;
+  }
+  .split-photo .cap strong{display:block;font-size:1.02rem;margin-bottom:4px;}
+  .split-photo .cap span{font-size:.8rem;color:rgba(255,255,255,.75);}
+
+  /* ===== BRAND MOTIF (gold textured) ===== */
+  .motif{
+    position:relative;background:linear-gradient(135deg, var(--gold-deep), var(--gold) 60%, #D69A5C);
+    color:#fff;padding:130px 0;overflow:hidden;
+  }
+  .motif::before{
+    content:"";position:absolute;inset:0;opacity:.15;
+    background-image:radial-gradient(circle at 20% 30%, #fff 0, transparent 40%), radial-gradient(circle at 80% 70%, #fff 0, transparent 45%);
+  }
+  .motif-inner{position:relative;z-index:1;max-width:680px;}
+  .motif .en{font-size:.82rem;letter-spacing:.18em;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:20px;display:block;}
+  .motif h2{font-size:clamp(2.6rem,6vw,4.6rem);font-weight:900;margin-bottom:26px;letter-spacing:.02em;}
+  .motif p{font-size:1.02rem;color:rgba(255,255,255,.92);line-height:1.9;}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--black);color:rgba(255,255,255,.6);padding:90px 0 0;}
+  .footer-top{display:grid;grid-template-columns:1.2fr 1fr 1fr 1.3fr;gap:50px;padding-bottom:60px;border-bottom:1px solid rgba(255,255,255,.12);}
+  .footer-brand img{height:30px;margin-bottom:18px;filter:brightness(0) invert(1);}
+  .footer-brand p{font-size:.85rem;max-width:280px;line-height:1.8;}
+  .footer-col h4{font-size:.78rem;letter-spacing:.08em;color:#fff;margin-bottom:18px;text-transform:uppercase;}
+  .footer-col li{margin-bottom:11px;font-size:.85rem;}
+  .footer-col a:hover{color:var(--gold);}
+  .footer-form p{font-size:.85rem;margin-bottom:16px;}
+  .footer-form-row{display:flex;gap:8px;}
+  .footer-form-row input{flex:1;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff;padding:12px 16px;font-size:.85rem;border-radius:2px;}
+  .footer-form-row input::placeholder{color:rgba(255,255,255,.4);}
+  .footer-form-row button{background:var(--gold);color:#fff;border:0;padding:0 22px;font-size:.85rem;font-weight:700;cursor:pointer;border-radius:2px;}
+  .footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;padding:28px 0;font-size:.76rem;}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  @media (max-width:980px){
+    .black-grid{grid-template-columns:1fr;gap:20px;}
+    .crumb-list{flex-direction:row;flex-wrap:wrap;gap:16px 20px;}
+    .facility-grid{grid-template-columns:1fr;gap:50px;}
+    .split-grid{grid-template-columns:1fr;gap:40px;}
+    .split-photo{max-width:420px;}
+    .footer-top{grid-template-columns:1fr 1fr;row-gap:36px;}
+    .fan-card{width:180px;}
+  }
+  @media (max-width:720px){
+    .wrap{padding:0 22px;}
+    .utility .wrap{justify-content:center;gap:16px;}
+    .nav-links{
+      position:fixed;top:82px;left:0;right:0;bottom:0;background:#fff;
+      flex-direction:column;align-items:flex-start;padding:36px 30px;gap:24px;
+      transform:translateX(100%);transition:transform .35s ease;overflow-y:auto;
+    }
+    .nav-links.open{transform:translateX(0);}
+    .nav-toggle{display:flex;}
+    .hero-tag{left:22px;bottom:20px;}
+    .hero-cta{right:22px;bottom:20px;}
+    .intro{padding:76px 0;}
+    .black-sec{padding:80px 0 0;}
+    .fan-card{width:130px;margin:0 -20px;}
+    .fan-card:nth-child(1),.fan-card:nth-child(4){transform:rotate(-8deg) translateY(20px);}
+    .facility{padding:80px 0;}
+    .split-sec{padding:80px 0;}
+    .split-stats{gap:28px;flex-wrap:wrap;}
+    .motif{padding:80px 0;}
+    .footer-top{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="utility">
+  <div class="wrap">
+    <a href="#certs">國際認證</a>
+    <a href="#esg">永續發展</a>
+    <span class="phone">+886 7-000-0000</span>
+    <a href="mailto:invest@seaworth.com">invest@seaworth.com</a>
+  </div>
+</div>
+
+<header id="siteHeader">
+  <nav class="wrap">
+    <a href="#top" class="logo"><img src="assets/logo-header.png" alt="SEAWORTH HOLDING 海沃控股集團"></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">集團總覽</a></li>
+      <li><a href="#facility">事業版圖</a></li>
+      <li><a href="#split">全球據點</a></li>
+      <li><a href="#esg">永續發展</a></li>
+      <li><a href="#contact" class="btn btn-black">聯絡我們</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="選單"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <img src="assets/hero-wave.jpg" alt="海沃控股集團・浩瀚遠洋">
+    <div class="hero-stack">
+      <span class="word">SMART SHIPBUILDING</span>
+      <span class="word">DEEP-SEA FISHING</span>
+      <div class="hero-badge"><img src="assets/logomark.png" alt=""></div>
+      <span class="word main">敬海而行</span>
+      <span class="word">COLD CHAIN LOGISTICS</span>
+      <span class="word">GLOBAL TRADE</span>
+    </div>
+    <span class="hero-tag">SEAWORTH HOLDING · SINCE 2026</span>
+    <div class="hero-cta">
+      <a href="#about" class="btn btn-black">集團簡介</a>
+      <a href="#contact" class="btn btn-outline-w">關心客戶登錄</a>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="intro">
+    <div class="wrap reveal">
+      <p class="pre">跨越四十載深耕<br>打造全流程可追溯的全球海洋產業鏈</p>
+      <h2>海沃控股集團</h2>
+      <span class="sub en">SEAWORTH HOLDING CO., LTD.</span>
+      <p class="cap">2026 年成立・整合智慧造船、遠洋漁撈、冷鏈物流與國際貿易</p>
+    </div>
+  </section>
+
+  <!-- LANDMARK -->
+  <section class="landmark">
+    <img src="assets/landmark-fleet.jpg" alt="海沃控股集團全球船隊">
+    <div class="landmark-content reveal">
+      <span class="en">Global Fleet</span>
+      <p>近 40 艘現代化合規船隊，作業海域橫跨太平洋與大西洋</p>
+    </div>
+  </section>
+
+  <!-- BLACK SECTION -->
+  <section class="black-sec" id="about">
+    <div class="wrap">
+      <div class="black-grid">
+        <ul class="crumb-list reveal">
+          <li class="active">集團總覽</li>
+          <li>事業群介紹</li>
+          <li>集團架構</li>
+          <li>永續發展</li>
+        </ul>
+        <div class="black-main reveal">
+          <span class="en">About the Group</span>
+          <h2>海沃控股集團<br>整合<em>三大事業群</em>，<br>建構完整全球海洋產業鏈</h2>
+          <p>海沃控股集團（SEAWORTH HOLDING）成立於 2026 年，傳承逾四十載深厚根基，以整合遠洋漁業上下游資源、深化共善治理為使命。透過智慧化與合規管理，建立「從深海到市場」的一體化全球供應網絡。</p>
+        </div>
+      </div>
+
+      <div class="fan-wrap reveal">
+        <div class="fan-row">
+          <div class="fan-card"><img src="assets/hero-blob.jpg" alt="海沃船隊"></div>
+          <div class="fan-card"><img src="assets/biz-fairwell.jpg" alt="華偉漁業事業群"></div>
+          <div class="fan-card"><img src="assets/biz-jumbo.jpg" alt="巨寶漁業事業群"></div>
+          <div class="fan-card"><img src="assets/biz-huasheng.jpg" alt="華昇魷釣事業群"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FACILITY LIST + MAP -->
+  <section class="facility" id="facility">
+    <div class="wrap">
+      <div class="facility-grid">
+        <div class="reveal" id="facList">
+          <div class="fac-item open">
+            <button class="fac-head"><span class="num en">01</span><span class="name">華偉漁業事業群</span><span class="plus"></span></button>
+            <div class="fac-body"><p>傳承自 1983 年高雄前鎮漁港冷凍倉儲與第一艘圍網漁船，奠定集團雄厚實力與全球化根基。</p></div>
+          </div>
+          <div class="fac-item">
+            <button class="fac-head"><span class="num en">02</span><span class="name">巨寶漁業事業群</span><span class="plus"></span></button>
+            <div class="fac-body"><p>專營圍網捕撈與現代化冷凍運搬船，引進前瞻船舶設計與國際勞工合規標準，打造頂尖海上移動冷鏈。</p></div>
+          </div>
+          <div class="fac-item">
+            <button class="fac-head"><span class="num en">03</span><span class="name">華昇魷釣事業群</span><span class="plus"></span></button>
+            <div class="fac-body"><p>專精魷魚秋刀魚船與延繩釣漁船，展現高技術漁法、生態永續與全球供應的頂尖專業。</p></div>
+          </div>
+          <div class="fac-item">
+            <button class="fac-head"><span class="num en">04</span><span class="name">智慧造船與冷鏈物流</span><span class="plus"></span></button>
+            <div class="fac-body"><p>引進前瞻船舶設計，串聯捕撈、船隊管理與海上移動冷鏈，優化全鏈路營運效能。</p></div>
+          </div>
+          <div class="fac-item">
+            <button class="fac-head"><span class="num en">05</span><span class="name">永續發展與 ESG</span><span class="plus"></span></button>
+            <div class="fac-body"><p>落實國際永續認證與漁業組織規範，守護海洋生態與船員人權。</p></div>
+          </div>
+          <div class="fac-item">
+            <button class="fac-head"><span class="num en">06</span><span class="name">國際認證與全球夥伴</span><span class="plus"></span></button>
+            <div class="fac-body"><p>取得 MSC、Dolphin Safe 等國際認證，攜手 PNA 國家與國際漁業組織鞏固資源。</p></div>
+          </div>
+        </div>
+        <div class="fac-map reveal">
+          <img src="assets/enterprise-map.jpg" alt="海沃控股集團全球版圖">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TWO COLUMN -->
+  <section class="split-sec" id="split">
+    <div class="wrap">
+      <div class="split-grid">
+        <div class="split-text reveal">
+          <span class="en">Global Fleet Specialist</span>
+          <h3>全球據點<br>與船隊實力</h3>
+          <p>集團於巴布亞紐幾內亞、泰國、中國及韓國建構跨國營運戰略據點，並與 PNA 國家及國際漁業組織締結深厚的策略合作夥伴關係，鞏固核心漁業資源；經銷網路垂直滲透亞洲、歐洲及美洲等全球主流消費市場。</p>
+          <div class="split-stats">
+            <div><div class="n en">5</div><div class="l">跨國營運據點</div></div>
+            <div><div class="n en">3</div><div class="l">洲際銷售市場</div></div>
+            <div><div class="n en">40+</div><div class="l">年產業深耕經驗</div></div>
+          </div>
+        </div>
+        <div class="split-photo reveal">
+          <img src="assets/crew-deck.jpg" alt="海沃控股集團船隊作業實況">
+          <div class="cap">
+            <strong>堅守合規，守護海洋</strong>
+            <span>落實 ILO C-188 與 FISH 船員人權標準</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND MOTIF -->
+  <section class="motif" id="esg">
+    <div class="wrap">
+      <div class="motif-inner reveal">
+        <span class="en">Brand Values 品牌精神</span>
+        <h2>敬海而行</h2>
+        <p>「敬海而行，與世界共榮共善」源自海沃控股集團對海洋的敬重與感恩。我們秉持專業、誠信、創新、永續的核心價值，落實聯合國永續發展目標與 RFMO 規範，全面取得 MSC 與 Dolphin Safe 認證；率先導入海上遠距醫療照護，堅守船員人權與職業安全，以智慧責任引領產業升級，攜手世界共榮成長。</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/logo-header.png" alt="SEAWORTH HOLDING">
+        <p>海沃控股集團整合智慧造船、遠洋漁撈、冷鏈物流與國際貿易，打造全流程可追溯的全球海洋產業體系。</p>
+      </div>
+      <div class="footer-col">
+        <h4>集團</h4>
+        <ul>
+          <li><a href="#about">關於海沃</a></li>
+          <li><a href="#facility">事業版圖</a></li>
+          <li><a href="#split">全球據點</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>永續與治理</h4>
+        <ul>
+          <li><a href="#esg">ESG 永續發展</a></li>
+          <li><a href="#facility">國際認證</a></li>
+          <li><a href="#split">全球夥伴網絡</a></li>
+        </ul>
+      </div>
+      <div class="footer-form">
+        <h4>聯絡海沃</h4>
+        <p>投資人關係／商務合作／媒體公關，請留下您的信箱，我們將盡快與您聯繫。</p>
+        <form class="footer-form-row" id="contactForm">
+          <input type="email" placeholder="輸入您的電子信箱" required>
+          <button type="submit">送出</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 SEAWORTH HOLDING CO., LTD. 海沃控股股份有限公司</span>
+      <span>台灣高雄（總部）・韓國釜山・中國舟山・泰國曼谷・巴布亞紐幾內亞</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold:.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  document.querySelectorAll('.fac-item').forEach(item => {
+    const head = item.querySelector('.fac-head');
+    const body = item.querySelector('.fac-body');
+    if (item.classList.contains('open')) body.style.maxHeight = body.scrollHeight + 'px';
+    head.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.fac-item').forEach(other => {
+        other.classList.remove('open');
+        other.querySelector('.fac-body').style.maxHeight = null;
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        body.style.maxHeight = body.scrollHeight + 'px';
+      }
+    });
+  });
+
+  const form = document.getElementById('contactForm');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    form.querySelector('input').value = '感謝您，我們將盡快與您聯繫。';
+  });
+</script>
+
+</body>
+</html>
