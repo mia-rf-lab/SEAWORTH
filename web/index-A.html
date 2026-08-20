@@ -93,19 +93,19 @@
   header.scrolled .nav-toggle span{background:var(--black);}
 
   /* ===== HERO ===== */
-  .hero{position:relative;height:92vh;min-height:560px;overflow:hidden;color:#fff;}
-  .hero img{width:100%;height:100%;object-fit:cover;}
+  .hero{position:relative;width:100%;height:100vh;min-height:100vh;overflow:hidden;color:#fff;}
+  .hero img{width:100%;height:100%;object-fit:cover;object-position:center;}
   .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.15) 30%, rgba(0,0,0,.55) 100%);}
   .hero-stack{
     position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
     text-align:center;z-index:1;gap:2px;
   }
   .hero-stack .word{
-    font-family:var(--font-en), var(--font-cn);font-weight:800;letter-spacing:.06em;
-    font-size:clamp(1.3rem,4.2vw,2.6rem);line-height:1.25;
-    color:rgba(255,255,255,.5);
+    font-family:var(--font-en), var(--font-cn);font-weight:900;letter-spacing:normal;
+    font-size:clamp(2.2rem, 7.5vw, 4.8rem);line-height:1.15;
+    color:rgba(255,255,255,.90);
   }
-  .hero-stack .word.main{color:#fff;font-size:clamp(1.8rem,6.4vw,4rem);margin:14px 0;letter-spacing:.02em;}
+  .hero-stack .word.main{color:rgba(255,255,255,.85);font-size:clamp(1.1rem, 2.8vw, 1.8rem);font-weight:500;margin:3px 0;letter-spacing:.12em;line-height:1.4;}
   .hero-badge{
     width:64px;height:64px;border-radius:50%;border:1px solid rgba(255,255,255,.5);
     display:flex;align-items:center;justify-content:center;margin-bottom:20px;
@@ -375,12 +375,10 @@
   <section class="hero">
     <img src="assets/hero-wave.jpg" alt="海沃控股集團・浩瀚遠洋">
     <div class="hero-stack">
-      <span class="word">SMART SHIPBUILDING</span>
-      <span class="word">DEEP-SEA FISHING</span>
+      <span class="word">WE SEE YOUR WORTH</span>
       <div class="hero-badge"><img src="assets/logomark.png" alt=""></div>
       <span class="word main">敬海而行</span>
-      <span class="word">COLD CHAIN LOGISTICS</span>
-      <span class="word">GLOBAL TRADE</span>
+      <span class="word main">與世界共榮共善</span>
     </div>
     <span class="hero-tag">SEAWORTH HOLDING · SINCE 2026</span>
   </section>
