@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>海沃控股集團 SEAWORTH HOLDING｜全球智慧遠洋產業鏈與永續共善</title>
+    <meta name="description" content="海沃控股集團（SEAWORTH HOLDING）整合智慧造船、遠洋漁撈、冷鏈物流與國際貿易，打造全流程可追溯的全球海洋產業體系。">
+    
+    <!-- Google Fonts: 頂級現代重工海事科技與高階企業字體 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700;900&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- JSON-LD 結構化資料 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Corporation",
+      "name": "海沃控股集團",
+      "alternateName": "SEAWORTH HOLDING",
+      "url": "https://www.seaworth.com",
+      "logo": "https://www.seaworth.com/assets/logo.svg",
+      "description": "整合智慧造船、遠洋漁撈、冷鏈物流與國際貿易，建構全流程可追溯的全球永續海洋產業體系。",
+      "foundingDate": "2026",
+      "headquarters": {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Kaohsiung",
+          "addressCountry": "TW"
+        }
+      },
+      "knowsAbout": ["智慧遠洋漁撈", "海上超低溫冷鏈", "智慧造船", "MSC海洋認證", "ESG共善治理"]
+    }
+    </script>
+
+    <style>
+        :root {
+            /* 現代重工海事科技淺色系 (HD Hyundai Marine Solution Light Theme) */
+            --bg-white: #FFFFFF;
+            --bg-canvas: #F8FAFC;         /* 航海淺晶白底 */
+            --bg-subtle: #F1F5F9;         /* 科技石階灰 */
+            --bg-card: #FFFFFF;
+            
+            --c-navy: #002244;            /* 旗艦深海藍 */
+            --c-navy-light: #0A3A6B;
+            --c-ink: #0F172A;             /* 科技黑 */
+            --c-charcoal: #334155;
+            --c-muted: #64748B;
+            
+            /* HD 標誌性科技亮綠與海洋青 */
+            --c-hd-green: #00B050;        /* 旗艦亮綠 (HD Green) */
+            --c-hd-green-dark: #008B3E;
+            --c-hd-green-light: #E6F7ED;
+            --c-blue-accent: #0066CC;     /* 海事科技藍 */
+            --c-blue-light: #EBF4FE;
+            
+            --c-border: #E2E8F0;
+            --c-border-light: rgba(226, 232, 240, 0.8);
+            
+            --font-sans: 'Plus Jakarta Sans', 'Noto Sans TC', sans-serif;
+            --font-serif: 'Noto Serif TC', serif;
+            
+            --ease-hd: cubic-bezier(0.16, 1, 0.3, 1);
+            --shadow-hd: 0 10px 30px -5px rgba(0, 34, 68, 0.06);
+            --shadow-hover: 0 20px 40px -10px rgba(0, 34, 68, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            background-color: var(--bg-canvas);
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--c-charcoal);
+            background-color: var(--bg-canvas);
+            line-height: 1.8;
+            letter-spacing: -0.01em;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--c-ink);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 48px;
+        }
+
+        /* 頂部雙層企業導覽列 */
+        header.hd-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--c-border);
+            transition: all 0.3s var(--ease-hd);
+        }
+        .header-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 18px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .brand-logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+        }
+        /* 綠色幾何重工徽標 */
+        .hd-symbol {
+            width: 32px;
+            height: 32px;
+            background: var(--c-navy);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--c-hd-green);
+            font-weight: 900;
+            font-size: 1.1rem;
+        }
+        .brand-logo-text {
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            color: var(--c-navy);
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+        .brand-logo-text span {
+            font-size: 0.68rem;
+            color: var(--c-muted);
+            font-weight: 600;
+            letter-spacing: 0.12em;
+        }
+        .nav-links-menu {
+            display: flex;
+            list-style: none;
+            gap: 36px;
+            align-items: center;
+        }
+        .nav-links-menu a {
+            text-decoration: none;
+            color: var(--c-ink);
+            font-size: 0.92rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            transition: color 0.3s ease;
+        }
+        .nav-links-menu a:hover {
+            color: var(--c-blue-accent);
+        }
+        .nav-right-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .btn-nav-green {
+            background: var(--c-hd-green);
+            color: #FFFFFF !important;
+            padding: 8px 22px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .btn-nav-green:hover {
+            background: var(--c-hd-green-dark);
+            transform: translateY(-1px);
+        }
+
+        /* 區塊 1：HERO BANNER - 現代造船重工巨幅 + 懸浮客戶服務資訊卡 */
+        .hd-hero-section {
+            position: relative;
+            padding-top: 130px;
+            padding-bottom: 90px;
+            background: linear-gradient(135deg, #0A192F 0%, #0F2D4E 50%, #1A3E68 100%);
+            color: #FFFFFF;
+            overflow: hidden;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+        .hd-hero-bg-media {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.42;
+            filter: contrast(110%);
+        }
+        .hero-layout-grid {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .hero-content-left h1 {
+            font-size: clamp(2.4rem, 4.5vw, 4.2rem);
+            line-height: 1.15;
+            color: #FFFFFF;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        .hero-lead-text {
+            font-size: 1.25rem;
+            color: #94A3B8;
+            font-weight: 400;
+            margin-bottom: 36px;
+            max-width: 600px;
+            line-height: 1.7;
+        }
+        .hero-cta-btn-group {
+            display: flex;
+            gap: 16px;
+        }
+        .btn-hero-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--c-hd-green);
+            color: #FFFFFF;
+            padding: 15px 36px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(0, 176, 80, 0.3);
+            transition: all 0.3s ease;
+        }
+        .btn-hero-primary:hover {
+            background: var(--c-hd-green-dark);
+            transform: translateY(-2px);
+        }
+        .btn-hero-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(8px);
+            color: #FFFFFF;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 15px 32px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .btn-hero-outline:hover {
+            background: #FFFFFF;
+            color: var(--c-navy);
+        }
+
+        /* 經典白底浮動客戶服務資訊卡 (Floating Customer Service Box) */
+        .floating-customer-card {
+            background: #FFFFFF;
+            border-radius: 8px;
+            padding: 36px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+            color: var(--c-ink);
+        }
+        .customer-card-header {
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            color: var(--c-navy);
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--c-navy);
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .customer-service-list {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+        .customer-service-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--c-border);
+            font-size: 0.88rem;
+        }
+        .service-label {
+            color: var(--c-muted);
+            font-weight: 500;
+        }
+        .service-val {
+            color: var(--c-ink);
+            font-weight: 700;
+        }
+        .btn-widget-green {
+            width: 100%;
+            background: var(--c-hd-green);
+            color: #FFFFFF;
+            border: none;
+            padding: 14px;
+            border-radius: 4px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .btn-widget-green:hover {
+            background: var(--c-hd-green-dark);
+        }
+
+        /* 區塊 2：BRAND MARQUEE 巨大字品牌橫幅帶 */
+        .brand-strip-section {
+            background: #FFFFFF;
+            border-bottom: 1px solid var(--c-border);
+            padding: 70px 0;
+            text-align: center;
+        }
+        .brand-strip-h2 {
+            font-size: clamp(1.8rem, 4vw, 3.2rem);
+            font-weight: 900;
+            color: var(--c-navy);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .brand-pill-thumb {
+            width: 76px;
+            height: 42px;
+            border-radius: 6px;
+            overflow: hidden;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .brand-pill-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 區塊 3：VESSEL & MARINE SOLUTION 全幅大船舞台 */
+        .vessel-hero-section {
+            position: relative;
+            background: #FFFFFF;
+            padding: 110px 0;
+            border-bottom: 1px solid var(--c-border);
+        }
+        .vessel-stage-container {
+            position: relative;
+            width: 100%;
+            height: 580px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-hd);
+        }
+        .vessel-stage-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .vessel-floating-message {
+            position: absolute;
+            top: 60px;
+            left: 60px;
+            max-width: 480px;
+            color: #FFFFFF;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+        }
+        .vessel-floating-message h3 {
+            font-size: 2.4rem;
+            line-height: 1.25;
+            color: #FFFFFF;
+            margin-bottom: 12px;
+            font-weight: 800;
+        }
+        .vessel-floating-message p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        /* 右下角互動切換標籤小工具 */
+        .vessel-selector-widget {
+            position: absolute;
+            right: 60px;
+            bottom: 60px;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 220px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        .vessel-tab-btn {
+            background: var(--bg-subtle);
+            border: 1px solid var(--c-border);
+            padding: 10px 14px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--c-ink);
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        .vessel-tab-btn.active, .vessel-tab-btn:hover {
+            background: var(--c-hd-green);
+            color: #FFFFFF;
+            border-color: var(--c-hd-green);
+        }
+
+        /* 區塊 4：BUSINESS 三大核心事業群 (科技高光圓角卡片) */
+        .section-business {
+            padding: 120px 0;
+            background: var(--bg-canvas);
+        }
+        .section-title-row {
+            margin-bottom: 50px;
+        }
+        .section-tag-en {
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            color: var(--c-hd-green-dark);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            display: block;
+        }
+        .section-h2-large {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--c-navy);
+        }
+
+        .business-card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .biz-tech-card {
+            background: #FFFFFF;
+            border: 1px solid var(--c-border);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-hd);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s var(--ease-hd);
+        }
+        .biz-tech-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--c-blue-accent);
+        }
+        .biz-card-img-wrap {
+            height: 260px;
+            position: relative;
+            overflow: hidden;
+            background: var(--c-navy);
+        }
+        .biz-card-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 8s ease;
+        }
+        .biz-tech-card:hover .biz-card-img-wrap img {
+            transform: scale(1.06);
+        }
+        .biz-tag-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 34, 68, 0.85);
+            backdrop-filter: blur(8px);
+            color: #FFFFFF;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+        }
+        .biz-card-body {
+            padding: 32px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .biz-card-title {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--c-navy);
+            margin-bottom: 8px;
+        }
+        .biz-card-tagline {
+            font-size: 0.88rem;
+            color: var(--c-blue-accent);
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: block;
+        }
+        .biz-card-desc {
+            font-size: 0.92rem;
+            color: var(--c-muted);
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+        .biz-card-footer-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--c-navy);
+            text-decoration: none;
+            transition: gap 0.3s ease;
+        }
+        .biz-tech-card:hover .biz-card-footer-link {
+            color: var(--c-hd-green-dark);
+            gap: 12px;
+        }
+
+        /* 區塊 5：GLOBAL LEADER & KEY NUMBERS (地球弧線 + 藍色立體數字卡) */
+        .section-global-leader {
+            position: relative;
+            background: linear-gradient(180deg, #091829 0%, #0F2D4E 100%);
+            color: #FFFFFF;
+            padding: 140px 0 110px 0;
+            overflow: hidden;
+        }
+        .earth-watermark-bg {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 140%;
+            max-width: 1800px;
+            opacity: 0.28;
+            pointer-events: none;
+        }
+        .giant-outlined-watermark {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: clamp(3rem, 10vw, 10.5rem);
+            font-weight: 900;
+            color: transparent;
+            -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.12);
+            white-space: nowrap;
+            letter-spacing: 0.05em;
+            user-select: none;
+            pointer-events: none;
+        }
+        .global-grid-layout {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 80px;
+            align-items: center;
+            margin-bottom: 70px;
+        }
+        .global-left-text h2 {
+            font-size: clamp(2.2rem, 3.8vw, 3.6rem);
+            color: #FFFFFF;
+            line-height: 1.25;
+            margin-bottom: 20px;
+        }
+        .global-left-text p {
+            font-size: 1.05rem;
+            color: #94A3B8;
+            line-height: 1.85;
+            margin-bottom: 30px;
+        }
+        .global-cards-right {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        /* 韓系藍色重工立體數字卡牌 */
+        .stat-blue-card {
+            background: linear-gradient(135deg, #0A4A8E 0%, #002244 100%);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 12px;
+            padding: 36px 28px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 220px;
+            transition: all 0.3s ease;
+        }
+        .stat-blue-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--c-hd-green);
+        }
+        .stat-card-title {
+            font-size: 0.88rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: #93C5FD;
+            text-transform: uppercase;
+        }
+        .stat-card-num {
+            font-size: 3.8rem;
+            font-weight: 800;
+            color: #FFFFFF;
+            line-height: 1;
+        }
+        .stat-card-num span {
+            font-size: 1.4rem;
+            color: var(--c-hd-green);
+            margin-left: 4px;
+        }
+
+        /* 核心經濟魚種展示列 */
+        .fish-bar-hd {
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 16px 36px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .fish-bar-title {
+            font-size: 0.88rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .fish-pills-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .fish-pill-tag {
+            background: rgba(255, 255, 255, 0.15);
+            color: #FFFFFF;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 6px 18px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            transition: all 0.3s ease;
+        }
+        .fish-pill-tag:hover {
+            background: var(--c-hd-green);
+            border-color: var(--c-hd-green);
+        }
+
+        /* 區塊 6：MEDIA HUB / 媒體中心 & 永續焦點 (2x2 Clean News Grid) */
+        .section-media-hub {
+            padding: 120px 0;
+            background: var(--bg-white);
+            border-bottom: 1px solid var(--c-border);
+        }
+        .media-hub-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 2px solid var(--c-navy);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+        .media-tab-nav {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+        .media-tab-nav a {
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--c-muted);
+            transition: color 0.3s ease;
+        }
+        .media-tab-nav a.active, .media-tab-nav a:hover {
+            color: var(--c-navy);
+            border-bottom: 2px solid var(--c-hd-green);
+            padding-bottom: 4px;
+        }
+
+        .media-2x2-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        .media-news-card {
+            background: var(--bg-canvas);
+            border: 1px solid var(--c-border);
+            border-radius: 8px;
+            padding: 24px;
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 24px;
+            align-items: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .media-news-card:hover {
+            background: #FFFFFF;
+            box-shadow: var(--shadow-hd);
+            border-color: var(--c-blue-accent);
+            transform: translateY(-3px);
+        }
+        .media-card-thumb {
+            width: 140px;
+            height: 100px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .media-card-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .media-tag-category {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--c-hd-green-dark);
+            letter-spacing: 0.08em;
+            margin-bottom: 4px;
+            display: block;
+        }
+        .media-article-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--c-ink);
+            line-height: 1.45;
+            margin-bottom: 6px;
+        }
+        .media-article-date {
+            font-size: 0.8rem;
+            color: var(--c-muted);
+        }
+
+        /* 區塊 7：ESG & PEOPLE / 人才與企業精神 (4 色交疊質感卡片) */
+        .section-people-esg {
+            padding: 120px 0;
+            background: var(--bg-canvas);
+            border-bottom: 1px solid var(--c-border);
+        }
+        .people-cards-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 50px;
+        }
+        .color-esg-card {
+            border-radius: 12px;
+            padding: 40px 28px;
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: var(--shadow-hd);
+            transition: all 0.4s var(--ease-hd);
+        }
+        .color-esg-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+        /* 4 種色階 (Light Sky, Vibrant Green, Deep Royal Blue, Soft Pure White) */
+        .card-sky {
+            background: linear-gradient(135deg, #DCEEFE 0%, #EBF4FE 100%);
+            color: var(--c-navy);
+            border: 1px solid #BFDBFE;
+        }
+        .card-green {
+            background: linear-gradient(135deg, #00B050 0%, #008B3E 100%);
+            color: #FFFFFF;
+        }
+        .card-royal {
+            background: linear-gradient(135deg, #0A4A8E 0%, #002244 100%);
+            color: #FFFFFF;
+        }
+        .card-white {
+            background: #FFFFFF;
+            color: var(--c-ink);
+            border: 1px solid var(--c-border);
+        }
+
+        .esg-card-num-tag {
+            font-size: 0.82rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+        .esg-card-h4 {
+            font-size: 1.45rem;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-top: 10px;
+        }
+        .esg-card-body-text {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+
+        /* 區塊 8：CONTACT & INQUIRY (國際認證 + 企業聯絡表單) */
+        .section-contact-hd {
+            padding: 120px 0;
+            background: #FFFFFF;
+        }
+        .contact-layout-grid {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 70px;
+            align-items: start;
+        }
+        .cert-5-strip {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+            margin: 30px 0 40px 0;
+        }
+        .cert-mini-badge {
+            background: var(--bg-canvas);
+            border: 1px solid var(--c-border);
+            border-radius: 6px;
+            padding: 16px 8px;
+            text-align: center;
+        }
+        .cert-mini-badge i {
+            color: var(--c-navy);
+            margin-bottom: 6px;
+        }
+        .cert-mini-title {
+            font-size: 0.76rem;
+            font-weight: 700;
+            color: var(--c-ink);
+        }
+
+        .inquiry-form-card {
+            background: var(--bg-canvas);
+            border: 1px solid var(--c-border);
+            border-radius: 12px;
+            padding: 44px;
+            box-shadow: var(--shadow-hd);
+        }
+        .form-row-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .form-group-hd {
+            margin-bottom: 22px;
+        }
+        .form-label-hd {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--c-navy);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        .form-input-hd, .form-select-hd, .form-textarea-hd {
+            width: 100%;
+            padding: 14px 16px;
+            background: #FFFFFF;
+            border: 1px solid var(--c-border);
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            color: var(--c-ink);
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        .form-input-hd:focus, .form-select-hd:focus, .form-textarea-hd:focus {
+            border-color: var(--c-hd-green);
+            box-shadow: 0 0 0 3px var(--c-hd-green-light);
+        }
+        .btn-submit-hd {
+            width: 100%;
+            background: var(--c-hd-green);
+            color: #FFFFFF;
+            border: none;
+            padding: 16px;
+            font-size: 0.95rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .btn-submit-hd:hover {
+            background: var(--c-hd-green-dark);
+        }
+
+        /* 頁尾 FOOTER (HD Hyundai 風格乾淨灰底 + Family Site) */
+        footer.hd-footer {
+            background: #0B1928;
+            color: #94A3B8;
+            padding: 80px 0 40px 0;
+            border-top: 1px solid #1E293B;
+        }
+        .footer-top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #1E293B;
+            padding-bottom: 28px;
+            margin-bottom: 40px;
+        }
+        .footer-brand-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #FFFFFF;
+            letter-spacing: 0.05em;
+        }
+        .family-site-select {
+            background: #162638;
+            color: #FFFFFF;
+            border: 1px solid #334155;
+            padding: 10px 18px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            outline: none;
+        }
+        .footer-middle-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 50px;
+            font-size: 0.88rem;
+            line-height: 1.9;
+        }
+        .footer-bottom-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.78rem;
+            color: #64748B;
+            padding-top: 30px;
+            border-top: 1px solid #1E293B;
+        }
+
+        /* 成功送出 Toast 通知 */
+        .toast-hd {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: var(--c-navy);
+            color: #FFFFFF;
+            border-left: 4px solid var(--c-hd-green);
+            padding: 18px 28px;
+            border-radius: 4px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+            display: none;
+            align-items: center;
+            gap: 14px;
+            z-index: 2000;
+        }
+
+        /* 響應式微調 */
+        @media (max-width: 1024px) {
+            .container, .header-inner {
+                padding: 0 28px;
+            }
+            .hero-layout-grid, .global-grid-layout, .media-2x2-grid, .contact-layout-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .business-card-grid, .people-cards-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .cert-5-strip {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .footer-middle-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 640px) {
+            .nav-links-menu {
+                display: none;
+            }
+            .business-card-grid, .people-cards-row {
+                grid-template-columns: 1fr;
+            }
+            .global-cards-right {
+                grid-template-columns: 1fr;
+            }
+            .cert-5-strip {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .form-row-2 {
+                grid-template-columns: 1fr;
+            }
+            .vessel-stage-container {
+                height: 440px;
+            }
+            .vessel-floating-message {
+                top: 30px;
+                left: 30px;
+            }
+            .vessel-selector-widget {
+                right: 30px;
+                bottom: 30px;
+            }
+            .fish-bar-hd {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 14px;
+                border-radius: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 頂部雙層企業導覽列 -->
+    <header class="hd-header">
+        <nav class="header-inner">
+            <a href="#" class="brand-logo-wrap">
+                <div class="hd-symbol">S</div>
+                <div class="brand-logo-text">
+                    SEAWORTH
+                    <span>HOLDING TECH</span>
+                </div>
+            </a>
+
+            <ul class="nav-links-menu">
+                <li><a href="#about">企業理念</a></li>
+                <li><a href="#business">三大事業群</a></li>
+                <li><a href="#numbers">全球網絡</a></li>
+                <li><a href="#media">媒體焦點</a></li>
+                <li><a href="#esg">永續與治理</a></li>
+            </ul>
+
+            <div class="nav-right-actions">
+                <a href="#contact" class="btn-nav-green">客戶服務洽詢</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 區塊 1：主視覺 HERO BANNER (造船重工巨幅 + 懸浮客戶服務資訊卡) -->
+    <section class="hd-hero-section">
+        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1920&q=80" alt="造船與深海作業" class="hd-hero-bg-media">
+
+        <div class="container">
+            <div class="hero-layout-grid">
+                <!-- 左側主標文案 -->
+                <div class="hero-content-left">
+                    <h1>
+                        敬海而行，<br>
+                        與世界共榮共善
+                    </h1>
+                    <p class="hero-lead-text">
+                        跨越四十載深耕 ‧ 建構全球智慧遠洋產業鏈與永續共善新局。打造全流程可追溯的全球海洋產業體系。
+                    </p>
+                    <div class="hero-cta-btn-group">
+                        <a href="#business" class="btn-hero-primary">探索事業版圖 <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i></a>
+                        <a href="#esg" class="btn-hero-outline">永續實踐與 ESG</a>
+                    </div>
+                </div>
+
+                <!-- 右側浮動客戶服務卡片 (Floating Customer Service Widget) -->
+                <div class="floating-customer-card">
+                    <div class="customer-card-header">
+                        <span>CUSTOMER SERVICE</span>
+                        <i data-lucide="headphones" style="width: 16px; height: 16px; color: var(--c-hd-green);"></i>
+                    </div>
+
+                    <ul class="customer-service-list">
+                        <li>
+                            <span class="service-label">投資人關係 (IR)</span>
+                            <span class="service-val">invest@seaworth.com</span>
+                        </li>
+                        <li>
+                            <span class="service-label">商務與業務合作</span>
+                            <span class="service-val">partnership@seaworth.com</span>
+                        </li>
+                        <li>
+                            <span class="service-label">公關與媒體專區</span>
+                            <span class="service-val">pr@seaworth.com</span>
+                        </li>
+                        <li>
+                            <span class="service-label">營運總部電話</span>
+                            <span class="service-val">+886-7-812-3456</span>
+                        </li>
+                    </ul>
+
+                    <a href="#contact" class="btn-widget-green">
+                        即刻發送洽詢需求 <i data-lucide="arrow-up-right" style="width: 16px; height: 16px;"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 區塊 2：BRAND MARQUEE 巨大字品牌橫幅帶 -->
+    <section class="brand-strip-section">
+        <div class="container">
+            <h2 class="brand-strip-h2">
+                SEAWORTH
+                <span class="brand-pill-thumb">
+                    <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=300&q=80" alt="大洋航行">
+                </span>
+                HOLDING
+                MARINE SOLUTION
+                <span class="brand-pill-thumb">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=300&q=80" alt="智慧冷鏈">
+                </span>
+                TECH
+            </h2>
+            <div style="font-size: 0.85rem; color: var(--c-muted); letter-spacing: 0.2em; font-weight: 700; margin-top: 14px; text-transform: uppercase;">
+                INTEGRATED MARITIME SUPPLY CHAIN & SUSTAINABLE GOVERNANCE
+            </div>
+        </div>
+    </section>
+
+    <!-- 區塊 3：VESSEL & MARINE SOLUTION 全幅大船舞台 (智慧航行與切換選單) -->
+    <section class="vessel-hero-section" id="about">
+        <div class="container">
+            <div class="vessel-stage-container">
+                <img id="vesselStageImg" src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1600&q=80" alt="海沃現代化智慧遠洋船隊" class="vessel-stage-img">
+                
+                <!-- 浮動文字 -->
+                <div class="vessel-floating-message">
+                    <h3>以智慧造船技術<br>創造明日海洋的全新可能</h3>
+                    <p>海沃控股集團成立於 2026 年，傳承逾四十載深厚根基，建立「從深海到市場」的一體化全球供應網絡。</p>
+                </div>
+
+                <!-- 右下角切換選單 -->
+                <div class="vessel-selector-widget">
+                    <button class="vessel-tab-btn active" onclick="switchVesselView(0, this)">
+                        智慧造船工程 <i data-lucide="check" style="width: 14px; height: 14px;"></i>
+                    </button>
+                    <button class="vessel-tab-btn" onclick="switchVesselView(1, this)">
+                        遠洋超低溫冷鏈 <i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i>
+                    </button>
+                    <button class="vessel-tab-btn" onclick="switchVesselView(2, this)">
+                        全球可追溯網絡 <i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 區塊 4：BUSINESS 三大核心事業群 -->
+    <section class="section-business" id="business">
+        <div class="container">
+            <div class="section-title-row">
+                <span class="section-tag-en">CORE BUSINESS SECTORS</span>
+                <h2 class="section-h2-large">全鏈路整合 ‧ 深耕全球大洋</h2>
+            </div>
+
+            <div class="business-card-grid">
+                <!-- 01 華偉 -->
+                <div class="biz-tech-card">
+                    <div class="biz-card-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80" alt="華偉漁業">
+                        <div class="biz-tag-badge">SECTOR 01 ‧ 圍網</div>
+                    </div>
+                    <div class="biz-card-body">
+                        <div>
+                            <h3 class="biz-card-title">華偉漁業事業群</h3>
+                            <span class="biz-card-tagline">產業根基與遠洋圍網</span>
+                            <p class="biz-card-desc">
+                                傳承自 1983 年高雄前鎮漁港冷凍倉儲與第一艘圍網漁船，奠定集團雄厚實力與全球化根基。深耕大洋作業海域，具備卓越捕撈效能。
+                            </p>
+                        </div>
+                        <a href="#contact" class="biz-card-footer-link">探索詳細作業規格 <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i></a>
+                    </div>
+                </div>
+
+                <!-- 02 巨寶 -->
+                <div class="biz-tech-card">
+                    <div class="biz-card-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=800&q=80" alt="巨寶漁業">
+                        <div class="biz-tag-badge">SECTOR 02 ‧ 冷鏈</div>
+                    </div>
+                    <div class="biz-card-body">
+                        <div>
+                            <h3 class="biz-card-title">巨寶漁業事業群</h3>
+                            <span class="biz-card-tagline">智慧造船與海上移動冷鏈</span>
+                            <p class="biz-card-desc">
+                                專營圍網捕撈與現代化超低溫冷凍運搬船，引進前瞻船舶設計與國際勞工合規標準，打造頂尖海上移動冷鏈，鎖住極鮮品質。
+                            </p>
+                        </div>
+                        <a href="#contact" class="biz-card-footer-link">探索詳細作業規格 <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i></a>
+                    </div>
+                </div>
+
+                <!-- 03 華昇 -->
+                <div class="biz-tech-card">
+                    <div class="biz-card-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="華昇魷釣">
+                        <div class="biz-tag-badge">SECTOR 03 ‧ 精準捕撈</div>
+                    </div>
+                    <div class="biz-card-body">
+                        <div>
+                            <h3 class="biz-card-title">華昇魷釣事業群</h3>
+                            <span class="biz-card-tagline">精準漁法與高技術捕撈</span>
+                            <p class="biz-card-desc">
+                                專精魷魚秋刀魚船與延繩釣漁船，展現高技術精準漁法、生態永續與全球供應的頂尖專業，實踐責任捕撈最高標準。
+                            </p>
+                        </div>
+                        <a href="#contact" class="biz-card-footer-link">探索詳細作業規格 <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 區塊 5：GLOBAL LEADER & KEY NUMBERS (地球弧線 + 藍色立體數字卡) -->
+    <section class="section-global-leader" id="numbers">
+        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1800&q=80" alt="地球與大洋軌道" class="earth-watermark-bg">
+        <div class="giant-outlined-watermark">A GLOBAL LEADER IN OCEAN</div>
+
+        <div class="container">
+            <div class="global-grid-layout">
+                <!-- 左側文案 -->
+                <div class="global-left-text">
+                    <span class="section-tag-en" style="color: var(--c-hd-green);">GLOBAL NETWORK</span>
+                    <h2>在全球每個大洋角落，<br>都有海沃控股的智慧足跡。</h2>
+                    <p>
+                        運用具體指標展現控股集團實力，橫跨太平洋與大西洋作業海域，建構五大跨國營運樞紐，極具說服力且有利於 AI 搜尋結構化抓取。
+                    </p>
+                    <a href="#contact" class="btn-hero-primary">查看全球網絡地圖 <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i></a>
+                </div>
+
+                <!-- 右側 4 大立體藍色數字卡 (2x2 Grid) -->
+                <div class="global-cards-right">
+                    <div class="stat-blue-card">
+                        <div class="stat-card-title">產業深耕經驗</div>
+                        <div class="stat-card-num">40<span>+ 載</span></div>
+                        <div style="font-size: 0.8rem; color: #94A3B8;">源自 1983 年高雄前鎮漁港</div>
+                    </div>
+
+                    <div class="stat-blue-card">
+                        <div class="stat-card-title">現代化合規船隊</div>
+                        <div class="stat-card-num">~40<span>艘</span></div>
+                        <div style="font-size: 0.8rem; color: #94A3B8;">美式圍網、延繩釣、運搬船</div>
+                    </div>
+
+                    <div class="stat-blue-card">
+                        <div class="stat-card-title">全球作業海域</div>
+                        <div class="stat-card-num">2<span>大洋</span></div>
+                        <div style="font-size: 0.8rem; color: #94A3B8;">橫跨太平洋與大西洋漁場</div>
+                    </div>
+
+                    <div class="stat-blue-card">
+                        <div class="stat-card-title">跨國營運樞紐</div>
+                        <div class="stat-card-num">5<span>大據點</span></div>
+                        <div style="font-size: 0.8rem; color: #94A3B8;">台灣、釜山、舟山、曼谷、巴紐</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 核心經濟魚種展示膠囊條 -->
+            <div class="fish-bar-hd">
+                <div class="fish-bar-title">
+                    <i data-lucide="fish" style="width: 18px; height: 18px; color: var(--c-hd-green);"></i>
+                    <span>核心經濟魚種展示 (TARGET SPECIES)</span>
+                </div>
+                <div class="fish-pills-group">
+                    <span class="fish-pill-tag">正鰹 (Skipjack)</span>
+                    <span class="fish-pill-tag">黃鰭鮪 (Yellowfin)</span>
+                    <span class="fish-pill-tag">大目鮪 (Bigeye)</span>
+                    <span class="fish-pill-tag">長鰭鮪 (Albacore)</span>
+                    <span class="fish-pill-tag">魷魚 (Squid)</span>
+                    <span class="fish-pill-tag">秋刀魚 (Pacific Saury)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 區塊 6：MEDIA HUB / 媒體中心 & 永續焦點 (2x2 Clean News Grid) -->
+    <section class="section-media-hub" id="media">
+        <div class="container">
+            <div class="media-hub-header-row">
+                <div>
+                    <span class="section-tag-en">PRESS & ESG FOCUS</span>
+                    <h2 class="section-h2-large" style="font-size: 2.3rem;">媒體中心 & 焦點動態</h2>
+                </div>
+
+                <ul class="media-tab-nav">
+                    <li><a href="javascript:void(0)" class="active">全部</a></li>
+                    <li><a href="javascript:void(0)">永續 ESG</a></li>
+                    <li><a href="javascript:void(0)">船隊與造船</a></li>
+                </ul>
+            </div>
+
+            <div class="media-2x2-grid">
+                <!-- News 1 -->
+                <a href="#contact" class="media-news-card">
+                    <div class="media-card-thumb">
+                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=400&q=80" alt="MSC 認證">
+                    </div>
+                    <div>
+                        <span class="media-tag-category">ENVIRONMENT</span>
+                        <div class="media-article-title">全面落實 SDGs 與 RFMO 規範，取得 MSC 海洋管理委員會與 Dolphin Safe 認證</div>
+                        <div class="media-article-date">2026.05.20</div>
+                    </div>
+                </a>
+
+                <!-- News 2 -->
+                <a href="#contact" class="media-news-card">
+                    <div class="media-card-thumb">
+                        <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=400&q=80" alt="新造運搬船">
+                    </div>
+                    <div>
+                        <span class="media-tag-category">FLEET & INNOVATION</span>
+                        <div class="media-article-title">巨寶漁業新一代智慧超低溫冷凍運搬船正式交付，建構頂尖海上移動冷鏈</div>
+                        <div class="media-article-date">2026.04.12</div>
+                    </div>
+                </a>
+
+                <!-- News 3 -->
+                <a href="#contact" class="media-news-card">
+                    <div class="media-card-thumb">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80" alt="人道醫療">
+                    </div>
+                    <div>
+                        <span class="media-tag-category">SOCIAL & HUMAN RIGHTS</span>
+                        <div class="media-article-title">遵循 ILO C-188 與 FISH 船員人權標準，率先導入「海上遠距醫療照護」與船上 Wi-Fi</div>
+                        <div class="media-article-date">2026.03.18</div>
+                    </div>
+                </a>
+
+                <!-- News 4 -->
+                <a href="#contact" class="media-news-card">
+                    <div class="media-card-thumb">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80" alt="智慧數位治理">
+                    </div>
+                    <div>
+                        <span class="media-tag-category">TECH GOVERNANCE</span>
+                        <div class="media-article-title">IoT 電子浮標與 AI 智慧預測系統上線，打造「深海到餐桌」全流程可追溯鏈</div>
+                        <div class="media-article-date">2026.02.26</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 區塊 7：ESG & PEOPLE / 人才與企業精神 (4 色交疊質感卡片) -->
+    <section class="section-people-esg" id="esg">
+        <div class="container">
+            <span class="section-tag-en">SUSTAINABLE FOUNDATION</span>
+            <h2 class="section-h2-large">共善經營 ‧ 智慧責任引領產業升級</h2>
+
+            <div class="people-cards-row">
+                <!-- Card 1: Sky Blue -->
+                <div class="color-esg-card card-sky">
+                    <div>
+                        <div class="esg-card-num-tag">01 ‧ ENVIRONMENT</div>
+                        <h4 class="esg-card-h4">海洋生態守護</h4>
+                    </div>
+                    <p class="esg-card-body-text">
+                        全面取得 MSC 與 Dolphin Safe 認證，採用非纏結式集魚器（FADs）與節能航行，減緩生態衝擊。
+                    </p>
+                </div>
+
+                <!-- Card 2: HD Green -->
+                <div class="color-esg-card card-green">
+                    <div>
+                        <div class="esg-card-num-tag">02 ‧ SOCIAL</div>
+                        <h4 class="esg-card-h4">人本人權保障</h4>
+                    </div>
+                    <p class="esg-card-body-text">
+                        遵循 ILO C-188 與 FISH 船員人權標準，提供 Wi-Fi 通訊人道權利與暴力零容忍尊嚴環境。
+                    </p>
+                </div>
+
+                <!-- Card 3: Deep Royal -->
+                <div class="color-esg-card card-royal">
+                    <div>
+                        <div class="esg-card-num-tag">03 ‧ GOVERNANCE</div>
+                        <h4 class="esg-card-h4">智慧科技合規</h4>
+                    </div>
+                    <p class="esg-card-body-text">
+                        IoT 電子浮標、AI 智慧預測與海事大數據調度，堅守反非法捕撈（IUU）與高標準內控。
+                    </p>
+                </div>
+
+                <!-- Card 4: Pure White -->
+                <div class="color-esg-card card-white">
+                    <div>
+                        <div class="esg-card-num-tag">04 ‧ PARTNERSHIP</div>
+                        <h4 class="esg-card-h4">全球共善夥伴</h4>
+                    </div>
+                    <p class="esg-card-body-text">
+                        與 PNA 國家及國際漁業組織建立長期夥伴關係，共創透明健康的藍色經濟產業生態。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 區塊 8：CONTACT & INQUIRY (國際認證 + 企業聯絡表單) -->
+    <section class="section-contact-hd" id="contact">
+        <div class="container">
+            <div class="contact-layout-grid">
+                <!-- 左側資訊 -->
+                <div>
+                    <span class="section-tag-en">GLOBAL COMPLIANCE & CONTACT</span>
+                    <h2 class="section-h2-large" style="font-size: 2.4rem;">攜手海沃 ‧ 共創海洋永續價值</h2>
+                    <p style="font-size: 1rem; color: var(--c-muted); line-height: 1.85; margin-top: 14px;">
+                        歡迎全球合作夥伴、機構投資人與產業先進與我們聯繫，共同開啟智慧遠洋新篇章。
+                    </p>
+
+                    <!-- 5 大認證徽章牆 -->
+                    <div class="cert-5-strip">
+                        <div class="cert-mini-badge">
+                            <i data-lucide="award" style="width: 20px; height: 20px;"></i>
+                            <div class="cert-mini-title">MSC 認證</div>
+                        </div>
+                        <div class="cert-mini-badge">
+                            <i data-lucide="shield" style="width: 20px; height: 20px;"></i>
+                            <div class="cert-mini-title">Dolphin Safe</div>
+                        </div>
+                        <div class="cert-mini-badge">
+                            <i data-lucide="users" style="width: 20px; height: 20px;"></i>
+                            <div class="cert-mini-title">FISH Standard</div>
+                        </div>
+                        <div class="cert-mini-badge">
+                            <i data-lucide="file-check-2" style="width: 20px; height: 20px;"></i>
+                            <div class="cert-mini-title">ILO C-188</div>
+                        </div>
+                        <div class="cert-mini-badge">
+                            <i data-lucide="check-circle" style="width: 20px; height: 20px;"></i>
+                            <div class="cert-mini-title">ISO 31000</div>
+                        </div>
+                    </div>
+
+                    <div style="background: var(--bg-canvas); border: 1px solid var(--c-border); border-left: 4px solid var(--c-hd-green); padding: 24px; border-radius: 6px;">
+                        <strong style="color: var(--c-navy); display: block; margin-bottom: 4px;">海沃控股集團全球營運總部</strong>
+                        <div style="font-size: 0.92rem; color: var(--c-charcoal);">台灣高雄市前鎮區漁港核心園區</div>
+                        <div style="font-size: 0.85rem; color: var(--c-muted); margin-top: 6px;">
+                            跨國樞紐：台灣高雄 ‧ 韓國釜山 ‧ 中國舟山 ‧ 泰國曼谷 ‧ 巴布亞紐幾內亞
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 右側正式洽詢表單 -->
+                <div class="inquiry-form-card">
+                    <form id="hdContactForm" onsubmit="handleFormSubmit(event)">
+                        <div class="form-group-hd">
+                            <label class="form-label-hd" for="serviceSelect">服務類別洽詢 *</label>
+                            <select id="serviceSelect" class="form-select-hd" required>
+                                <option value="" disabled selected>請選擇洽詢事項類別</option>
+                                <option value="IR">投資人關係洽詢 (invest@seaworth.com)</option>
+                                <option value="Partnership">商務合作與業務洽詢 (partnership@seaworth.com)</option>
+                                <option value="PR">公共關係與媒體事務 (pr@seaworth.com)</option>
+                                <option value="Other">其他海洋產業合作事宜</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row-2">
+                            <div class="form-group-hd">
+                                <label class="form-label-hd" for="nameField">您的姓名 *</label>
+                                <input type="text" id="nameField" class="form-input-hd" placeholder="例如：陳經理" required>
+                            </div>
+                            <div class="form-group-hd">
+                                <label class="form-label-hd" for="companyField">貴公司名稱 *</label>
+                                <input type="text" id="companyField" class="form-input-hd" placeholder="例如：全球海運貿易集團" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row-2">
+                            <div class="form-group-hd">
+                                <label class="form-label-hd" for="phoneField">聯絡電話</label>
+                                <input type="tel" id="phoneField" class="form-input-hd" placeholder="+886 912 345 678">
+                            </div>
+                            <div class="form-group-hd">
+                                <label class="form-label-hd" for="emailField">電子信箱 *</label>
+                                <input type="email" id="emailField" class="form-input-hd" placeholder="name@domain.com" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group-hd">
+                            <label class="form-label-hd" for="subjectField">需求主旨 *</label>
+                            <input type="text" id="subjectField" class="form-input-hd" placeholder="請簡述您的洽詢主旨" required>
+                        </div>
+
+                        <div class="form-group-hd">
+                            <label class="form-label-hd" for="messageField">留言內容 *</label>
+                            <textarea id="messageField" class="form-textarea-hd" rows="3" placeholder="請詳細說明您的需求與合作構想..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-submit-hd">
+                            發送洽詢需求 ‧ SEND INQUIRY
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 FOOTER -->
+    <footer class="hd-footer">
+        <div class="container">
+            <div class="footer-top-bar">
+                <div class="footer-brand-title">SEAWORTH HOLDING (海沃控股集團)</div>
+                <div>
+                    <select class="family-site-select" onchange="if(this.value) window.open(this.value)">
+                        <option value="">FAMILY SITES 旗下事業群快速連結</option>
+                        <option value="#business">華偉漁業事業群 (圍網)</option>
+                        <option value="#business">巨寶漁業事業群 (造船冷鏈)</option>
+                        <option value="#business">華昇魷釣事業群 (精準捕撈)</option>
+                        <option value="#contact">台灣高雄營運總部</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="footer-middle-grid">
+                <div>
+                    <strong style="color: #FFFFFF; display: block; margin-bottom: 6px;">海沃控股集團營運總部</strong>
+                    台灣高雄市前鎮區漁港核心園區<br>
+                    TEL: +886-7-812-3456 ｜ FAX: +886-7-812-7890<br>
+                    E-MAIL: info@seaworth.com
+                </div>
+
+                <div>
+                    <strong style="color: #FFFFFF; display: block; margin-bottom: 6px;">全球戰略樞紐</strong>
+                    台灣高雄 ‧ 韓國釜山 ‧ 中國舟山 ‧ 泰國曼谷 ‧ 巴布亞紐幾內亞
+                </div>
+
+                <div>
+                    <strong style="color: #FFFFFF; display: block; margin-bottom: 6px;">國際合規標準</strong>
+                    MSC 永續漁業標準 ‧ ILO C-188 公約 ‧ ISO 31000 風險管理體系
+                </div>
+            </div>
+
+            <div class="footer-bottom-info">
+                <div>© 2026 SEAWORTH HOLDING CO., LTD. ALL RIGHTS RESERVED.</div>
+                <div style="display: flex; gap: 24px;">
+                    <a href="#" style="color: #64748B; text-decoration: none;">個人資料保護方針</a>
+                    <a href="#" style="color: #64748B; text-decoration: none;">法律聲明</a>
+                    <a href="#" style="color: #64748B; text-decoration: none;">內部治理規範</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 訊息送出 Toast 反饋 -->
+    <div class="toast-hd" id="hdToast">
+        <i data-lucide="check-circle" style="color: var(--c-hd-green); width: 22px; height: 22px;"></i>
+        <div>
+            <div style="font-weight: 700; font-size: 0.95rem;">洽詢需求已成功送出</div>
+            <div style="font-size: 0.8rem; color: #94A3B8;">海沃專人將於 24 小時內與您聯繫。</div>
+        </div>
+    </div>
+
+    <!-- 互動腳本 -->
+    <script>
+        lucide.createIcons();
+
+        // 船隊大圖切換小工具
+        const vesselImages = [
+            "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1600&q=80",
+            "https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1600&q=80",
+            "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80"
+        ];
+
+        function switchVesselView(index, btn) {
+            document.querySelectorAll('.vessel-tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('vesselStageImg').src = vesselImages[index];
+        }
+
+        // 表單送出處理
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const toast = document.getElementById('hdToast');
+            toast.style.display = 'flex';
+            
+            document.getElementById('hdContactForm').reset();
+
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 4500);
+        }
+    </script>
+</body>
+</html>
