@@ -8,25 +8,28 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,500;0,700;0,800;0,900;1,700&family=Bitter:wght@700;800&family=Noto+Sans+TC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
 <style>
   :root{
-    --black:#0B0C0E;
+    /* 海沃品牌色：深邃黑／質純白／淡雅灰／海沃無垠藍／海沃富蘊藍 */
+    --black:#000000;
     --white:#FFFFFF;
-    --cream:#F6F3EC;
-    --navy:#13293D;
-    --gold:#C0813E;
-    --gold-deep:#8F5D28;
-    --text:#3A3A38;
-    --text-soft:#7A7770;
-    --line:#E4E0D6;
+    --cream:#CCCCCC;
+    --navy:#00495B;
+    --gold:#008B9C;
+    --gold-deep:#00495B;
+    --text:#000000;
+    --text-soft:rgba(0,0,0,.55);
+    --line:rgba(0,0,0,.15);
     --maxw:1320px;
+    --font-cn:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;
+    --font-en:Arial,Helvetica,sans-serif;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
-    font-family:'Noto Sans TC', sans-serif;
+    font-family:var(--font-en), var(--font-cn);
     background:var(--white);
     color:var(--text);
     line-height:1.75;
@@ -36,7 +39,7 @@
   img{max-width:100%;display:block;}
   a{color:inherit;text-decoration:none;}
   ul{list-style:none;}
-  .en{font-family:'Archivo',sans-serif;}
+  .en{font-family:var(--font-en);}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 40px;}
   .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 32px;font-size:.86rem;font-weight:700;letter-spacing:.03em;transition:all .3s;}
   .btn-black{background:var(--black);color:#fff;}
@@ -61,12 +64,10 @@
     box-shadow:0 4px 20px rgba(0,0,0,.06);
   }
   nav.wrap{display:flex;align-items:center;justify-content:space-between;height:82px;}
-  .logo{display:flex;align-items:center;gap:14px;}
-  .logo-icon{height:54px;width:54px;flex-shrink:0;}
-  .logo-text{display:flex;flex-direction:column;justify-content:center;line-height:1.35;color:#fff;transition:color .3s;}
-  header.scrolled .logo-text{color:var(--black);}
-  .logo-text strong{font-family:'Bitter',serif;font-weight:700;font-size:1.1rem;letter-spacing:.03em;}
-  .logo-text span{font-family:'Noto Sans TC',sans-serif;font-weight:600;font-size:.74rem;letter-spacing:.03em;opacity:.82;}
+  .logo{display:flex;align-items:center;gap:11px;}
+  .logo-icon{height:54px;width:auto;flex-shrink:0;}
+  .logo-text-img{height:37px;width:auto;filter:brightness(0) invert(1);transition:filter .3s;}
+  header.scrolled .logo-text-img{filter:none;}
   .nav-links{display:flex;align-items:center;gap:36px;}
   .nav-links a:not(.btn){font-size:.86rem;font-weight:500;letter-spacing:.02em;color:rgba(255,255,255,.9);transition:color .3s;}
   header.scrolled .nav-links a:not(.btn){color:var(--black);}
@@ -78,13 +79,13 @@
   /* ===== HERO ===== */
   .hero{position:relative;height:92vh;min-height:560px;overflow:hidden;color:#fff;}
   .hero img{width:100%;height:100%;object-fit:cover;}
-  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(11,12,14,.35) 0%, rgba(11,12,14,.15) 30%, rgba(11,12,14,.55) 100%);}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.15) 30%, rgba(0,0,0,.55) 100%);}
   .hero-stack{
     position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
     text-align:center;z-index:1;gap:2px;
   }
   .hero-stack .word{
-    font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:.06em;
+    font-family:var(--font-en), var(--font-cn);font-weight:800;letter-spacing:.06em;
     font-size:clamp(1.3rem,4.2vw,2.6rem);line-height:1.25;
     color:rgba(255,255,255,.5);
   }
@@ -102,13 +103,13 @@
   .intro{background:var(--cream);text-align:center;padding:110px 0;}
   .intro .pre{font-size:1.02rem;color:var(--text-soft);margin-bottom:18px;line-height:1.8;}
   .intro h2{font-size:clamp(2.4rem,5vw,4rem);font-weight:900;color:var(--black);letter-spacing:.02em;margin-bottom:18px;}
-  .intro .sub{font-family:'Archivo',sans-serif;font-size:.86rem;letter-spacing:.16em;color:var(--gold-deep);font-weight:700;margin-bottom:8px;}
+  .intro .sub{font-family:var(--font-en);font-size:.86rem;letter-spacing:.16em;color:var(--gold-deep);font-weight:700;margin-bottom:8px;}
   .intro .cap{font-size:.86rem;color:var(--text-soft);}
 
   /* ===== LANDMARK BAND ===== */
   .landmark{position:relative;height:64vh;min-height:420px;overflow:hidden;color:#fff;}
   .landmark img{width:100%;height:100%;object-fit:cover;}
-  .landmark::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(11,12,14,.1), rgba(11,12,14,.62));}
+  .landmark::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.1), rgba(0,0,0,.62));}
   .landmark-content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;z-index:1;}
   .landmark-content .en{font-size:clamp(2.6rem,7vw,5.4rem);font-weight:900;letter-spacing:.01em;margin-bottom:14px;}
   .landmark-content p{font-size:.98rem;color:rgba(255,255,255,.85);max-width:520px;}
@@ -148,8 +149,8 @@
   .fac-head{
     display:flex;align-items:center;gap:20px;padding:20px 2px;cursor:pointer;background:none;border:0;width:100%;text-align:left;
   }
-  .fac-head .num{font-family:'Archivo',sans-serif;font-weight:800;color:var(--gold);font-size:.9rem;width:28px;flex-shrink:0;}
-  .fac-head .name{font-size:1rem;font-weight:700;color:var(--black);flex:1;}
+  .fac-head .num{font-family:var(--font-en);font-weight:800;color:var(--gold);font-size:.9rem;width:28px;flex-shrink:0;}
+  .fac-head .name{font-size:1rem;font-weight:600;color:var(--black);flex:1;}
   .fac-head .plus{width:20px;height:20px;position:relative;flex-shrink:0;}
   .fac-head .plus::before,.fac-head .plus::after{content:"";position:absolute;background:var(--text-soft);top:50%;left:50%;transform:translate(-50%,-50%);}
   .fac-head .plus::before{width:12px;height:1.5px;}
@@ -167,20 +168,20 @@
   .split-text h3{font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:900;color:var(--black);margin-bottom:22px;line-height:1.4;}
   .split-text p{color:var(--text-soft);font-size:.96rem;margin-bottom:30px;max-width:480px;}
   .split-stats{display:flex;gap:44px;}
-  .split-stats .n{font-family:'Archivo',sans-serif;font-weight:900;font-size:2rem;color:var(--black);}
+  .split-stats .n{font-family:var(--font-en);font-weight:900;font-size:2rem;color:var(--black);}
   .split-stats .l{font-size:.8rem;color:var(--text-soft);margin-top:6px;}
-  .split-photo{position:relative;border-radius:8px;overflow:hidden;box-shadow:0 40px 70px -30px rgba(11,12,14,.4);}
+  .split-photo{position:relative;border-radius:8px;overflow:hidden;box-shadow:0 40px 70px -30px rgba(0,0,0,.4);}
   .split-photo img{width:100%;height:100%;object-fit:cover;aspect-ratio:3/4;}
   .split-photo .cap{
     position:absolute;left:0;right:0;bottom:0;padding:26px 24px;
-    background:linear-gradient(0deg, rgba(11,12,14,.82), transparent);color:#fff;
+    background:linear-gradient(0deg, rgba(0,0,0,.82), transparent);color:#fff;
   }
-  .split-photo .cap strong{display:block;font-size:1.02rem;margin-bottom:4px;}
+  .split-photo .cap strong{display:block;font-weight:600;font-size:1.02rem;margin-bottom:4px;}
   .split-photo .cap span{font-size:.8rem;color:rgba(255,255,255,.75);}
 
   /* ===== BRAND MOTIF (gold textured) ===== */
   .motif{
-    position:relative;background:linear-gradient(135deg, var(--gold-deep), var(--gold) 60%, #D69A5C);
+    position:relative;background:linear-gradient(135deg, var(--gold-deep), var(--gold));
     color:#fff;padding:130px 0;overflow:hidden;
   }
   .motif::before{
@@ -197,7 +198,7 @@
   .footer-top{display:grid;grid-template-columns:1.2fr 1fr 1fr 1.3fr;gap:50px;padding-bottom:60px;border-bottom:1px solid rgba(255,255,255,.12);}
   .footer-brand img{height:30px;margin-bottom:18px;filter:brightness(0) invert(1);}
   .footer-brand p{font-size:.85rem;max-width:280px;line-height:1.8;}
-  .footer-col h4{font-size:.78rem;letter-spacing:.08em;color:#fff;margin-bottom:18px;text-transform:uppercase;}
+  .footer-col h4{font-size:.78rem;font-weight:600;letter-spacing:.08em;color:#fff;margin-bottom:18px;text-transform:uppercase;}
   .footer-col li{margin-bottom:11px;font-size:.85rem;}
   .footer-col a:hover{color:var(--gold);}
   .footer-form p{font-size:.85rem;margin-bottom:16px;}
@@ -248,8 +249,8 @@
 <header id="siteHeader">
   <nav class="wrap">
     <a href="#top" class="logo">
-      <img src="assets/logomark-color.png" alt="" class="logo-icon">
-      <span class="logo-text"><strong>SEAWORTH</strong><span>海沃控股集團</span></span>
+      <img src="assets/logo-icon.png" alt="" class="logo-icon">
+      <img src="assets/logo-text.png" alt="SEAWORTH HOLDING 海沃控股集團" class="logo-text-img">
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">集團總覽</a></li>
