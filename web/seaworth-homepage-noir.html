@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>海沃控股集團 SEAWORTH HOLDING｜敬海而行，與世界共榮共善</title>
+<meta name="description" content="海沃控股集團（SEAWORTH HOLDING）整合智慧造船、遠洋漁撈、冷鏈物流與國際貿易，打造全流程可追溯的全球海洋產業體系，攜手世界共榮共善。">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Noto+Sans+TC:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#1B1815;
+    --ink-soft:#2A2621;
+    --cream:#F5EFE3;
+    --white:#FFFFFF;
+    --gold:#C6A063;
+    --gold-deep:#9C7B44;
+    --gold-pale:#E7D6B0;
+    --text:#4A453D;
+    --text-soft:#8A8377;
+    --line:#E7E0D2;
+    --maxw:1220px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Noto Sans TC', sans-serif;
+    background:var(--white);
+    color:var(--text);
+    line-height:1.8;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  .serif{font-family:'Cormorant Garamond','Noto Serif TC',serif;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+  .center{text-align:center;}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 34px;border-radius:999px;font-size:.84rem;letter-spacing:.05em;transition:all .3s;border:1px solid transparent;}
+  .btn-gold{background:var(--gold);color:#1B1815;font-weight:600;}
+  .btn-gold:hover{background:var(--gold-deep);color:#fff;}
+  .btn-line{border-color:rgba(255,255,255,.5);color:#fff;}
+  .btn-line:hover{background:#fff;color:var(--ink);}
+
+  /* ===== NAV ===== */
+  header{position:sticky;top:0;z-index:100;background:rgba(27,24,21,.82);backdrop-filter:blur(10px);}
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;height:78px;}
+  .logo img{height:28px;filter:brightness(0) invert(1);flex-shrink:0;}
+  .nav-links{display:flex;align-items:center;gap:32px;}
+  .nav-links a:not(.btn){font-size:.84rem;color:rgba(255,255,255,.8);letter-spacing:.02em;}
+  .nav-links a:not(.btn):hover{color:var(--gold-pale);}
+  .nav-toggle{display:none;background:none;border:0;cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:auto;flex-shrink:0;}
+  .nav-toggle span{width:22px;height:2px;background:#fff;display:block;}
+
+  section{padding:120px 0;}
+
+  /* ===== HERO ===== */
+  .hero{position:relative;height:88vh;min-height:540px;overflow:hidden;color:#fff;}
+  .hero img{width:100%;height:100%;object-fit:cover;}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(27,24,21,.5) 0%, rgba(27,24,21,.15) 35%, rgba(27,24,21,.7) 100%);}
+  .hero-content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;z-index:1;padding:0 24px;}
+  .hero-content .eyebrow{font-size:.8rem;letter-spacing:.2em;color:var(--gold-pale);margin-bottom:22px;}
+  .hero-content h1{font-family:'Noto Serif TC',serif;font-weight:500;font-size:clamp(1.9rem,4.6vw,3.2rem);line-height:1.55;}
+
+  /* ===== PRODUCT SPOTLIGHT (dark) ===== */
+  .spotlight{background:var(--ink);color:#fff;text-align:center;}
+  .spotlight h2{font-family:'Noto Serif TC',serif;font-weight:500;font-size:clamp(1.7rem,3.4vw,2.6rem);margin-bottom:60px;line-height:1.5;}
+  .spotlight-stage{position:relative;display:flex;align-items:center;justify-content:center;gap:40px;margin-bottom:20px;}
+  .spotlight-arrow{width:36px;height:36px;border:1px solid rgba(255,255,255,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);flex-shrink:0;}
+  .spotlight-img{width:140px;height:140px;display:flex;align-items:center;justify-content:center;}
+  .spotlight-img img{width:100%;height:100%;object-fit:contain;filter:brightness(0) invert(1);opacity:.92;}
+  .spotlight-dots{display:flex;justify-content:center;gap:8px;margin:26px 0 54px;}
+  .spotlight-dots span{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.3);}
+  .spotlight-dots span.on{background:var(--gold);width:18px;border-radius:3px;}
+  .spotlight-tag{font-size:1.02rem;color:rgba(255,255,255,.8);margin-bottom:50px;}
+  .feature-icons{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;max-width:820px;margin:0 auto 54px;}
+  .feature-icons .fi{display:flex;flex-direction:column;align-items:center;gap:14px;}
+  .feature-icons .fi .circle{width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;}
+  .feature-icons .fi .circle svg{width:22px;height:22px;color:var(--gold-pale);}
+  .feature-icons .fi span{font-size:.76rem;color:rgba(255,255,255,.65);line-height:1.5;}
+
+  /* ===== PHOTO + WHITE CARD ===== */
+  .rejuv{position:relative;padding:0;}
+  .rejuv-photo{position:relative;height:60vh;min-height:400px;overflow:hidden;color:#fff;}
+  .rejuv-photo img{width:100%;height:100%;object-fit:cover;}
+  .rejuv-photo::after{content:"";position:absolute;inset:0;background:rgba(27,24,21,.42);}
+  .rejuv-photo-content{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;z-index:1;padding:0 24px;}
+  .rejuv-photo-content h2{font-family:'Noto Serif TC',serif;font-weight:500;font-size:clamp(1.7rem,3.6vw,2.7rem);line-height:1.55;}
+  .rejuv-card{
+    position:relative;max-width:920px;margin:-90px auto 0;background:#fff;border-radius:20px;
+    box-shadow:0 40px 80px -30px rgba(27,24,21,.35);padding:64px 60px;z-index:2;
+  }
+  .rejuv-card .tag{font-size:.82rem;letter-spacing:.1em;color:var(--gold-deep);font-weight:600;margin-bottom:14px;}
+  .rejuv-card h3{font-family:'Noto Serif TC',serif;font-weight:600;font-size:1.6rem;color:var(--ink);margin-bottom:30px;}
+  .rejuv-main{display:flex;align-items:center;justify-content:center;gap:40px;margin-bottom:56px;}
+  .rejuv-main img{width:90px;height:90px;object-fit:contain;}
+  .rejuv-main p{max-width:380px;font-size:.9rem;color:var(--text-soft);text-align:left;}
+  .rejuv-sub{text-align:center;margin-bottom:34px;}
+  .rejuv-sub .tag{color:var(--gold-deep);}
+  .rejuv-sub h4{font-family:'Noto Serif TC',serif;font-weight:600;font-size:1.2rem;color:var(--ink);}
+  .attach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;}
+  .attach-item{text-align:center;}
+  .attach-item .img-box{aspect-ratio:1/1;border-radius:16px;overflow:hidden;margin-bottom:16px;background:var(--cream);}
+  .attach-item .img-box img{width:100%;height:100%;object-fit:cover;}
+  .attach-item span{display:inline-block;font-size:.78rem;color:var(--ink);background:var(--cream);padding:6px 16px;border-radius:999px;}
+
+  /* ===== DARK PHOTO + CARDS ===== */
+  .cards-sec{background:var(--ink);color:#fff;padding-top:180px;}
+  .cards-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start;}
+  .cards-photo{position:sticky;top:100px;border-radius:16px;overflow:hidden;aspect-ratio:3/4;}
+  .cards-photo img{width:100%;height:100%;object-fit:cover;}
+  .cards-heading{margin-bottom:36px;}
+  .cards-heading .eyebrow{font-size:.8rem;letter-spacing:.14em;color:var(--gold-pale);margin-bottom:14px;display:block;}
+  .cards-heading h2{font-family:'Noto Serif TC',serif;font-weight:500;font-size:clamp(1.7rem,3vw,2.3rem);line-height:1.5;}
+  .feature-card{
+    display:flex;align-items:center;gap:22px;background:var(--gold);color:var(--ink);
+    border-radius:14px;padding:20px 26px;margin-bottom:18px;
+  }
+  .feature-card .fc-img{width:64px;height:64px;border-radius:50%;overflow:hidden;flex-shrink:0;background:#fff;display:flex;align-items:center;justify-content:center;}
+  .feature-card .fc-img img{width:100%;height:100%;object-fit:cover;}
+  .feature-card .fc-img.badge img{object-fit:contain;padding:10px;}
+  .feature-card h4{font-family:'Noto Serif TC',serif;font-weight:600;font-size:1.02rem;margin-bottom:4px;}
+  .feature-card p{font-size:.82rem;color:rgba(27,24,21,.72);}
+
+  /* ===== ARCH CARDS ===== */
+  .arch-sec{background:var(--cream);}
+  .arch-grid{display:flex;justify-content:center;gap:26px;flex-wrap:wrap;margin-bottom:36px;}
+  .arch-card{position:relative;width:280px;aspect-ratio:3/3.6;border-radius:140px 140px 16px 16px;overflow:hidden;}
+  .arch-card img{width:100%;height:100%;object-fit:cover;}
+  .arch-card::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg, rgba(27,24,21,.65), transparent 55%);}
+  .arch-card .label{position:absolute;left:0;right:0;bottom:26px;text-align:center;color:#fff;font-family:'Noto Serif TC',serif;font-weight:500;font-size:1.05rem;z-index:1;}
+  .arch-dots{display:flex;justify-content:center;gap:8px;}
+  .arch-dots span{width:6px;height:6px;border-radius:50%;background:var(--line);}
+  .arch-dots span.on{background:var(--gold-deep);width:18px;border-radius:3px;}
+
+  /* ===== GALLERY ===== */
+  .gallery{background:var(--cream);padding-top:0;}
+  .gallery h2{font-family:'Noto Serif TC',serif;font-weight:500;font-size:1.6rem;margin-bottom:44px;}
+  .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;}
+  .gallery-grid .g-item{aspect-ratio:1/1;overflow:hidden;}
+  .gallery-grid img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+  .gallery-grid .g-item:hover img{transform:scale(1.06);}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--ink);color:rgba(255,255,255,.55);padding:80px 0 0;}
+  .footer-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr auto;gap:50px;align-items:start;padding-bottom:50px;border-bottom:1px solid rgba(255,255,255,.12);}
+  .footer-brand img{height:26px;filter:brightness(0) invert(1);margin-bottom:16px;}
+  .footer-brand p{font-size:.82rem;max-width:260px;line-height:1.8;}
+  .footer-col h4{font-size:.78rem;letter-spacing:.08em;color:#fff;margin-bottom:16px;}
+  .footer-col li{font-size:.82rem;margin-bottom:10px;}
+  .footer-col a:hover{color:var(--gold-pale);}
+  .footer-cta{text-align:right;}
+  .footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:26px 0;font-size:.74rem;}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  @media (max-width:980px){
+    .feature-icons{grid-template-columns:repeat(3,1fr);}
+    .rejuv-card{margin-top:-60px;padding:44px 32px;}
+    .rejuv-main{flex-direction:column;text-align:center;}
+    .rejuv-main p{text-align:center;}
+    .attach-grid{gap:18px;}
+    .cards-sec{padding-top:100px;}
+    .cards-grid{grid-template-columns:1fr;gap:36px;}
+    .cards-photo{position:static;aspect-ratio:16/10;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    .footer-cta{grid-column:1/-1;text-align:left;}
+  }
+  @media (max-width:720px){
+    .wrap{padding:0 22px;}
+    section{padding:80px 0;}
+    .nav-links{
+      position:fixed;top:78px;left:0;right:0;bottom:0;background:var(--ink);
+      flex-direction:column;align-items:flex-start;padding:36px 30px;gap:22px;
+      transform:translateX(100%);transition:transform .35s ease;overflow-y:auto;
+    }
+    .nav-links.open{transform:translateX(0);}
+    .nav-toggle{display:flex;}
+    .feature-icons{grid-template-columns:repeat(3,1fr);gap:26px 14px;}
+    .rejuv-card{border-radius:14px;padding:34px 22px;}
+    .attach-grid{grid-template-columns:1fr 1fr;}
+    .arch-card{width:44vw;border-radius:100px 100px 12px 12px;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    .footer-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <nav class="wrap">
+    <a href="#top" class="logo"><img src="assets/logo-header.png" alt="SEAWORTH HOLDING 海沃控股集團"></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">集團總覽</a></li>
+      <li><a href="#groups">事業版圖</a></li>
+      <li><a href="#esg">永續發展</a></li>
+      <li><a href="#gallery">船隊寫真</a></li>
+      <li><a href="#contact" class="btn btn-gold">聯絡我們</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="選單"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" style="padding:0;">
+    <img src="assets/hero-noir.jpg" alt="海沃控股集團・遠洋船隊">
+    <div class="hero-content">
+      <span class="eyebrow">SEAWORTH HOLDING · SINCE 2026</span>
+      <h1 class="serif">全流程可追溯的<br>智慧遠洋產業革新</h1>
+    </div>
+  </section>
+
+  <!-- PRODUCT SPOTLIGHT -->
+  <section class="spotlight" id="about">
+    <div class="wrap reveal">
+      <h2>海沃控股集團<br>SEAWORTH HOLDING</h2>
+
+      <div class="spotlight-stage">
+        <span class="spotlight-arrow">‹</span>
+        <div class="spotlight-img"><img src="assets/logomark.png" alt="海沃控股集團 Logomark"></div>
+        <span class="spotlight-arrow">›</span>
+      </div>
+      <div class="spotlight-dots"><span class="on"></span><span></span><span></span></div>
+
+      <p class="spotlight-tag">敬海而行，與世界共榮共善</p>
+
+      <div class="feature-icons">
+        <div class="fi">
+          <div class="circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V10l7-6 7 6v11M9 21v-6h6v6"/></svg></div>
+          <span>智慧造船</span>
+        </div>
+        <div class="fi">
+          <div class="circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6-10-6-10-6z"/><circle cx="12" cy="12" r="2.4"/></svg></div>
+          <span>遠洋漁撈</span>
+        </div>
+        <div class="fi">
+          <div class="circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 16V8l4-4h8l4 4v8M4 16l4 4h8l4-4M4 16h16"/></svg></div>
+          <span>冷鏈物流</span>
+        </div>
+        <div class="fi">
+          <div class="circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.7 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.7-3.8-9S9.5 5.5 12 3z"/></svg></div>
+          <span>國際貿易</span>
+        </div>
+        <div class="fi">
+          <div class="circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg></div>
+          <span>永續治理</span>
+        </div>
+      </div>
+
+      <a href="#groups" class="btn btn-line">了解事業版圖</a>
+    </div>
+  </section>
+
+  <!-- PHOTO + WHITE CARD -->
+  <section class="rejuv" id="groups">
+    <div class="rejuv-photo">
+      <img src="assets/texture-band.jpg" alt="海洋">
+      <div class="rejuv-photo-content reveal">
+        <h2 class="serif">全鏈路整合<br>深耕全球大洋</h2>
+      </div>
+    </div>
+
+    <div class="rejuv-card reveal">
+      <div class="center">
+        <span class="tag">COMBINING THREE GROUPS</span>
+        <h3>整合三大事業群</h3>
+      </div>
+      <div class="rejuv-main">
+        <img src="assets/logomark.png" alt="海沃控股集團">
+        <p>海沃控股集團（SEAWORTH HOLDING）成立於 2026 年，傳承逾四十載深厚根基，透過智慧化與合規管理，建立「從深海到市場」的一體化全球供應網絡，串聯捕撈、船隊管理、冷鏈物流及市場貿易。</p>
+      </div>
+
+      <div class="rejuv-sub">
+        <span class="tag serif" style="font-family:'Cormorant Garamond',serif;font-style:italic;">Three Business Groups</span>
+        <h4>旗下三大事業群</h4>
+      </div>
+      <div class="attach-grid">
+        <div class="attach-item">
+          <div class="img-box"><img src="assets/biz-fairwell.jpg" alt="華偉漁業事業群"></div>
+          <span>華偉漁業事業群</span>
+        </div>
+        <div class="attach-item">
+          <div class="img-box"><img src="assets/biz-jumbo.jpg" alt="巨寶漁業事業群"></div>
+          <span>巨寶漁業事業群</span>
+        </div>
+        <div class="attach-item">
+          <div class="img-box"><img src="assets/biz-huasheng.jpg" alt="華昇魷釣事業群"></div>
+          <span>華昇魷釣事業群</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DARK PHOTO + FEATURE CARDS -->
+  <section class="cards-sec" id="esg">
+    <div class="wrap">
+      <div class="cards-grid">
+        <div class="cards-photo reveal">
+          <img src="assets/landmark-fleet.jpg" alt="海沃控股集團船隊">
+        </div>
+        <div class="reveal">
+          <div class="cards-heading">
+            <span class="eyebrow">ESG & Certifications</span>
+            <h2>共善經營・智慧責任<br>引領產業升級</h2>
+          </div>
+
+          <div class="feature-card">
+            <div class="fc-img"><img src="assets/esg-environment.jpg" alt="海洋生態守護"></div>
+            <div><h4>海洋生態守護</h4><p>落實 SDGs 與 RFMO 規範，取得 MSC 與 Dolphin Safe 認證</p></div>
+          </div>
+          <div class="feature-card">
+            <div class="fc-img"><img src="assets/esg-social.jpg" alt="人本人權保障"></div>
+            <div><h4>人本人權保障</h4><p>遵循 ILO C-188 與 FISH 標準，導入海上遠距醫療照護</p></div>
+          </div>
+          <div class="feature-card">
+            <div class="fc-img"><img src="assets/esg-governance.jpg" alt="智慧科技與合規治理"></div>
+            <div><h4>智慧科技與合規治理</h4><p>IoT 電子浮標與 AI 漁撈預測，全流程可追溯供應鏈</p></div>
+          </div>
+          <div class="feature-card">
+            <div class="fc-img badge"><img src="assets/certs/MSC_ecolabel.png" alt="MSC 認證"></div>
+            <div><h4>國際認證通過</h4><p>MSC・Dolphin Safe・FISH・WCPFC・ISSF 多項國際標章</p></div>
+          </div>
+          <div class="feature-card">
+            <div class="fc-img"><img src="assets/crew-deck.jpg" alt="全球夥伴網絡"></div>
+            <div><h4>全球夥伴網絡</h4><p>攜手 PNA 國家與國際漁業組織，鞏固核心漁業資源</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCH CARDS -->
+  <section class="arch-sec">
+    <div class="wrap reveal">
+      <div class="arch-grid">
+        <div class="arch-card"><img src="assets/hero-blob.jpg" alt="遠洋船隊"><span class="label serif">遠洋核心戰略</span></div>
+        <div class="arch-card"><img src="assets/esg-environment.jpg" alt="頂尖合規船隊"><span class="label serif">頂尖合規船隊</span></div>
+        <div class="arch-card"><img src="assets/crew-deck.jpg" alt="船員權益保障"><span class="label serif">船員權益保障</span></div>
+      </div>
+      <div class="arch-dots"><span class="on"></span><span></span><span></span></div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery" id="gallery">
+    <div class="wrap reveal">
+      <h2 class="center">船隊寫真 Fleet Gallery</h2>
+      <div class="gallery-grid">
+        <div class="g-item"><img src="assets/hero-blob.jpg" alt="船隊寫真"></div>
+        <div class="g-item"><img src="assets/texture-band.jpg" alt="船隊寫真"></div>
+        <div class="g-item"><img src="assets/crew-deck.jpg" alt="船隊寫真"></div>
+        <div class="g-item"><img src="assets/esg-social.jpg" alt="船隊寫真"></div>
+        <div class="g-item"><img src="assets/esg-governance.jpg" alt="船隊寫真"></div>
+        <div class="g-item"><img src="assets/landmark-fleet.jpg" alt="船隊寫真"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/logo-header.png" alt="SEAWORTH HOLDING">
+        <p>海沃控股集團整合智慧造船、遠洋漁撈、冷鏈物流與國際貿易，打造全流程可追溯的全球海洋產業體系。</p>
+      </div>
+      <div class="footer-col">
+        <h4>集團</h4>
+        <ul>
+          <li><a href="#about">關於海沃</a></li>
+          <li><a href="#groups">事業版圖</a></li>
+          <li><a href="#esg">永續發展</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>聯絡資訊</h4>
+        <ul>
+          <li>台灣高雄（總部）</li>
+          <li><a href="mailto:invest@seaworth.com">invest@seaworth.com</a></li>
+          <li>+886 7-000-0000</li>
+        </ul>
+      </div>
+      <div class="footer-cta">
+        <a href="mailto:partnership@seaworth.com" class="btn btn-gold">商務合作洽詢</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 SEAWORTH HOLDING CO., LTD. 海沃控股股份有限公司</span>
+      <span>敬海而行，與世界共榮共善</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold:.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
