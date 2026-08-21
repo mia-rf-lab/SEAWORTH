@@ -285,20 +285,33 @@
     transform: translateX(4px);
   }
 
-  /* 頁尾巨幅鏤空輪廓字 */
+  /* 頁尾巨幅字 (固定於底部揭示) */
+  .footer-giant-wrapper {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    background-color: #FFFFFF;
+  }
   .footer-giant-wordmark {
-    font-family: var(--font-en);
-    font-size: clamp(3.8rem, 13.8vw, 15.5rem);
-    font-weight: 900;
-    color: transparent;
-    -webkit-text-stroke: 1.2px rgba(0, 139, 156, 0.3);
-    line-height: 0.8;
-    letter-spacing: 0.04em;
+    background-color: #FFFFFF; /* White background block */
+    width: 100%;
+    padding-top: 1vh;
+    padding-bottom: 0;
     user-select: none;
-    margin-top: 40px;
-    margin-bottom: 30px;
-    text-align: center;
     pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .footer-giant-wordmark img {
+    width: 95%;
+    max-width: 1800px;
+    height: auto;
+    object-fit: contain;
   }
   .footer-bottom-bar {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -834,11 +847,6 @@
       </div>
     </div>
 
-    <!-- 頁尾超巨大鏤空字 -->
-    <div class="footer-giant-wordmark">
-      SEAWORTH
-    </div>
-
     <div class="footer-bottom-bar">
       <div>© 2026 SEAWORTH HOLDING. ALL RIGHTS RESERVED.</div>
       <div class="footer-bottom-links">
@@ -849,6 +857,13 @@
     </div>
   </div>
 </footer>
+  
+  <!-- 頁尾超巨大實心字 (固定於底部，由捲動揭示) -->
+  <div class="footer-giant-wrapper" id="giantWordmark">
+    <div class="footer-giant-wordmark">
+      <img src="assets/logo-seaworth.svg" alt="SEAWORTH">
+    </div>
+  </div>
 
 <script>
   const siteHeader = document.getElementById('siteHeader');
@@ -861,7 +876,7 @@
   navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
-  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold:.12 });
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); } else { e.target.classList.remove('in'); } }), { threshold:.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
   // 三大事業群切換（可點擊或捲動切換）
@@ -990,6 +1005,33 @@
           });
       });
   }
+
+  // 設定頁尾揭示特效的 margin 與視差滾動 (Parallax)
+  function syncFooterReveal() {
+    const giant = document.getElementById('giantWordmark');
+    if (giant) {
+      document.body.style.marginBottom = giant.offsetHeight + 'px';
+    }
+  }
+  window.addEventListener('resize', syncFooterReveal);
+  window.addEventListener('load', syncFooterReveal);
+  syncFooterReveal();
+
+  window.addEventListener('scroll', () => {
+    const giant = document.getElementById('giantWordmark');
+    if (!giant) return;
+    
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const currentScroll = window.scrollY;
+    const distanceToBottom = maxScroll - currentScroll;
+    
+    // 視差效果：距底部越遠，字體稍微往下沉 (translateY > 0)
+    if (distanceToBottom >= 0 && distanceToBottom < window.innerHeight * 1.5) {
+      // 調整係數 0.4 控制視差強弱
+      const yOffset = distanceToBottom * 0.4; 
+      giant.style.transform = `translateY(${yOffset}px)`;
+    }
+  });
 
 </script>
 
