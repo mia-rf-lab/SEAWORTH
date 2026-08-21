@@ -376,6 +376,173 @@
   .about-statement-large span { color: var(--ci-abundant-blue); font-family: var(--font-en); font-style: normal; font-weight: 700; display: block; margin-top: 12px; font-size: 1.1rem; letter-spacing: 0.05em; }
   .about-curatorial-text { font-size: 1.05rem; color: var(--text); line-height: 2.2; font-weight: 400; }
   @media (max-width: 980px) { .about-curatorial-box { grid-template-columns: 1fr; gap: 40px; padding: 50px 0; } .curator-title { font-size: 2.2rem; } .about-statement-large { font-size: 1.5rem; } }
+
+  /* 區塊 4：THE TOTAL SOLUTION (三大事業群 交互手風琴式大標列表) */
+  .section-solution {
+      padding: 80px 0;
+      border-top: 1px solid var(--line);
+      background: var(--white);
+  }
+  .solution-header-top {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 30px;
+  }
+  .solution-header-subtitle {
+      color: var(--primary, #008B9C);
+      font-family: var(--font-en);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+  }
+  .solution-h2 {
+      font-family: var(--font-cn, sans-serif);
+      font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+      color: var(--text);
+      letter-spacing: 0.02em;
+      line-height: 1.35;
+      margin: 0;
+  }
+  .solution-header-desc {
+      color: var(--text-soft);
+      line-height: 1.8;
+      max-width: 800px;
+      font-size: 1.05rem;
+      margin: 0;
+  }
+
+  /* 手風琴式事業群條列 (Hover / Active Rows) */
+  .solution-accordion-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+  }
+  .solution-row-item {
+      border-top: 1px solid var(--line);
+      padding: 24px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr 160px;
+      align-items: center;
+      gap: 40px;
+      cursor: pointer;
+      transition: all 0.4s ease;
+  }
+  .solution-row-item:last-child {
+      border-bottom: 1px solid var(--line);
+  }
+  .solution-item-text {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+  }
+  .solution-item-title {
+      font-family: var(--font-en);
+      font-size: 2.3rem;
+      color: var(--text-soft);
+      letter-spacing: 0.05em;
+      transition: all 0.4s ease;
+  }
+  .solution-row-item:hover .solution-item-title {
+      color: var(--primary);
+  }
+  .solution-item-desc {
+      font-size: 0.95rem;
+      color: var(--text-soft);
+      line-height: 1.85;
+      opacity: 0.6;
+      transition: opacity 0.4s ease;
+  }
+  .solution-row-item:hover .solution-item-desc {
+      opacity: 1;
+      color: var(--text);
+  }
+  .solution-number {
+      display: flex;
+      align-items: baseline;
+      justify-self: center;
+      gap: 6px;
+      color: #0b1a2a;
+  }
+  .solution-number .num {
+      font-family: "Playfair Display", "Times New Roman", serif;
+      font-size: 6.5rem;
+      font-weight: 700;
+      line-height: 1;
+  }
+  .solution-number .unit {
+      font-size: 1.4rem;
+      color: #9c845b;
+      font-weight: 500;
+  }
+  .solution-image {
+      width: 160px;
+      height: 90px;
+      border-radius: 6px;
+      overflow: hidden;
+  }
+  .solution-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+  }
+  .solution-row-item:hover .solution-image {
+      opacity: 0;
+  }
+  @media (max-width: 980px) {
+      .solution-row-item {
+          grid-template-columns: 1fr;
+          gap: 20px;
+          padding: 30px 0;
+      }
+      .solution-item-title {
+          font-size: 1.8rem;
+      }
+      .solution-number .num {
+          font-size: 3.5rem;
+      }
+      .solution-image {
+          width: 100%;
+          height: 180px;
+      }
+      .solution-row-item:hover .solution-image {
+          opacity: 1;
+      }
+  }
+
+  /* 浮動大圖 */
+  .cursor-float-img {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+  }
+  .cursor-float-img.active {
+      opacity: 1;
+  }
+  .cursor-float-inner {
+      width: 400px;
+      height: 240px;
+      border-radius: 12px;
+      overflow: hidden;
+      transform: translate(-50%, -50%) scale(0.5);
+      transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+  }
+  .cursor-float-img.active .cursor-float-inner {
+      transform: translate(-50%, -50%) scale(1);
+  }
+  .cursor-float-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
 </style>
 </head>
 <body>
@@ -525,30 +692,91 @@
     </div>
   </section>
 
-  <!-- TWO COLUMN -->
-  <section class="split-sec" id="split">
+  <!-- 區塊 4：THE TOTAL SOLUTION (三大事業群 手風琴式交互列表) -->
+  <section class="section-solution" id="solution">
     <div class="wrap">
-      <div class="split-grid">
-        <div class="split-text reveal">
-          <span class="en">Global Fleet Specialist</span>
-          <h3>全球據點<br>與船隊實力</h3>
-          <p>集團於巴布亞紐幾內亞、泰國、中國及韓國建構跨國營運戰略據點，並與 PNA 國家及國際漁業組織締結深厚的策略合作夥伴關係，鞏固核心漁業資源；經銷網路垂直滲透亞洲、歐洲及美洲等全球主流消費市場。</p>
-          <div class="split-stats">
-            <div><div class="n en">5</div><div class="l">跨國營運據點</div></div>
-            <div><div class="n en">3</div><div class="l">洲際銷售市場</div></div>
-            <div><div class="n en">40+</div><div class="l">年產業深耕經驗</div></div>
-          </div>
-        </div>
-        <div class="split-photo reveal">
-          <img src="assets/crew-deck.jpg" alt="海沃控股集團船隊作業實況">
-          <div class="cap">
-            <strong>堅守合規，守護海洋</strong>
-            <span>落實 ILO C-188 與 FISH 船員人權標準</span>
-          </div>
-        </div>
+      <div class="solution-header-top">
+        <span class="solution-header-subtitle">GLOBAL NETWORK</span>
+        <h2 class="solution-h2">
+          在全球每個大洋角落，<br>都有海沃控股的智慧足跡。
+        </h2>
+        <p class="solution-header-desc">
+          運用具體指標展現控股集團實力，橫跨太平洋與大西洋作業海域，建構五大跨國營運樞紐，極具說服力且有利於 AI 搜尋結構化抓取。
+        </p>
       </div>
+
+      <!-- 手風琴列表 -->
+      <ul class="solution-accordion-list">
+        <!-- 01 -->
+        <li class="solution-row-item">
+          <div class="solution-item-text">
+            <div class="solution-item-title">產業深耕經驗</div>
+            <div class="solution-item-desc">源自 1983 年深厚傳承</div>
+          </div>
+          <div class="solution-number">
+            <span class="num count-up" data-target="40">0</span>
+            <span class="unit">+ 載</span>
+          </div>
+          <div class="solution-image">
+            <img src="assets/hero-wave.jpg" alt="海洋">
+          </div>
+        </li>
+
+        <!-- 02 -->
+        <li class="solution-row-item">
+          <div class="solution-item-text">
+            <div class="solution-item-title">頂尖現代化合規船隊</div>
+            <div class="solution-item-desc">圍網、延繩釣、魷釣與運搬船</div>
+          </div>
+          <div class="solution-number">
+            <span class="unit" style="margin-right:-6px;">~</span>
+            <span class="num count-up" data-target="40">0</span>
+            <span class="unit">艘</span>
+          </div>
+          <div class="solution-image">
+            <img src="assets/landmark-fleet.jpg" alt="船隊">
+          </div>
+        </li>
+
+        <!-- 03 -->
+        <li class="solution-row-item">
+          <div class="solution-item-text">
+            <div class="solution-item-title">全球作業海域</div>
+            <div class="solution-item-desc">橫跨太平洋與大西洋戰略漁場</div>
+          </div>
+          <div class="solution-number">
+            <span class="num count-up" data-target="2">0</span>
+            <span class="unit">大洋</span>
+          </div>
+          <div class="solution-image">
+            <img src="assets/hero-vessel.jpg" alt="海域">
+          </div>
+        </li>
+
+        <!-- 04 -->
+        <li class="solution-row-item">
+          <div class="solution-item-text">
+            <div class="solution-item-title">跨國營運樞紐</div>
+            <div class="solution-item-desc">台灣、韓國、中國、泰國、巴紐</div>
+          </div>
+          <div class="solution-number">
+            <span class="num count-up" data-target="5">0</span>
+            <span class="unit">大據點</span>
+          </div>
+          <div class="solution-image">
+            <img src="assets/enterprise-map.jpg" alt="據點">
+          </div>
+        </li>
+      </ul>
     </div>
   </section>
+
+  <!-- 浮動圖片容器 -->
+  <div class="cursor-float-img" id="cursorFloatImg">
+    <div class="cursor-float-inner">
+      <img src="" alt="" id="cursorFloatImgSrc">
+    </div>
+  </div>
 
   <!-- BRAND MOTIF -->
   <section class="motif" id="esg">
@@ -702,6 +930,66 @@
       }
     });
   });
+
+
+
+  // 數字跳動特效
+  const counters = document.querySelectorAll('.count-up');
+  const counterObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const target = +entry.target.getAttribute('data-target');
+        let count = 0;
+        const duration = 1500;
+        const increment = target / (duration / 16);
+        const updateCount = () => {
+          count += increment;
+          if (count < target) {
+            entry.target.innerText = Math.ceil(count);
+            requestAnimationFrame(updateCount);
+          } else {
+            entry.target.innerText = target;
+          }
+        };
+        updateCount();
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(counter => counterObserver.observe(counter));
+
+  // 滑鼠懸停浮動圖片跟隨特效
+  const floatImgContainer = document.getElementById('cursorFloatImg');
+  if (floatImgContainer) {
+      const floatImgSrc = document.getElementById('cursorFloatImgSrc');
+      const rows = document.querySelectorAll('.solution-row-item');
+      let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+      let floatX = mouseX, floatY = mouseY;
+
+      function animateFloat() {
+          floatX += (mouseX - floatX) * 0.15;
+          floatY += (mouseY - floatY) * 0.15;
+          floatImgContainer.style.transform = `translate(${floatX}px, ${floatY}px)`;
+          requestAnimationFrame(animateFloat);
+      }
+      animateFloat();
+
+      rows.forEach(row => {
+          row.addEventListener('mouseenter', (e) => {
+              if (window.innerWidth <= 980) return; // 手機版不啟用浮動
+              const img = row.querySelector('.solution-image img');
+              if (img) floatImgSrc.src = img.src;
+              floatImgContainer.classList.add('active');
+          });
+          row.addEventListener('mousemove', (e) => {
+              mouseX = e.clientX;
+              mouseY = e.clientY;
+          });
+          row.addEventListener('mouseleave', () => {
+              floatImgContainer.classList.remove('active');
+          });
+      });
+  }
 
 </script>
 
