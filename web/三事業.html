@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>關於我們｜海沃控股集團</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #F8F9FA;
+      color: #1A1A1A;
+      font-family: 'Noto Sans TC', sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .section-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 100px 32px 80px;
+    }
+
+    /* 2x2 Grid Layout matching the reference image */
+    .grid-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px 48px;
+      align-items: start;
+    }
+
+    /* Top Left: Header & Intro */
+    .header-block {
+      padding-top: 12px;
+      padding-right: 24px;
+    }
+
+    .header-en {
+      font-family: 'Cinzel', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      line-height: 1.15;
+      color: #0D161F;
+      margin-bottom: 24px;
+    }
+
+    .header-block h2 {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: #0E2238;
+      letter-spacing: 0.04em;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .header-block p {
+      color: #555E68;
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.85;
+      text-align: justify;
+    }
+
+    /* Card Module Container */
+    .group-card {
+      position: relative;
+      width: 100%;
+    }
+
+    .card-img-wrapper {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      overflow: hidden;
+      background-color: #E2E6EA;
+    }
+
+    .card-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .group-card:hover .card-img-wrapper img {
+      transform: scale(1.04);
+    }
+
+    /* Frosted Glass Overlay Card (Offset placement) */
+    .overlay-panel {
+      position: absolute;
+      right: 0;
+      bottom: -40px;
+      width: 78%;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      padding: 32px 30px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      z-index: 2;
+    }
+
+    .group-card:hover .overlay-panel {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.09);
+    }
+
+    /* Adjust Card 2's overlay position to bottom-left matching design balance */
+    .card-bottom-left .overlay-panel {
+      left: 0;
+      right: auto;
+      bottom: -40px;
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .panel-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #0E2238;
+      letter-spacing: 0.02em;
+    }
+
+    .panel-arrow {
+      color: #1A1A1A;
+      font-size: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .group-card:hover .panel-arrow {
+      transform: translateX(4px);
+    }
+
+    .panel-desc {
+      font-size: 0.85rem;
+      color: #616B76;
+      line-height: 1.65;
+      font-weight: 300;
+      margin-bottom: 20px;
+      min-height: 42px;
+    }
+
+    .panel-divider {
+      width: 36px;
+      height: 1.5px;
+      background-color: #D2D8DE;
+      margin-bottom: 18px;
+    }
+
+    .panel-sub-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: #242E38;
+      margin-bottom: 10px;
+    }
+
+    .tag-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      color: #4A5560;
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid #D9DEE3;
+      padding: 4px 10px;
+      letter-spacing: 0.02em;
+    }
+
+    /* Bottom CTA Button */
+    .cta-container {
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #11161B;
+      color: #FFFFFF;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      padding: 16px 44px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .cta-btn:hover {
+      background-color: #1E2832;
+      transform: translateY(-2px);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 960px) {
+      .grid-layout {
+        grid-template-columns: 1fr;
+        gap: 72px 0;
+      }
+      .header-block {
+        padding-right: 0;
+      }
+      .overlay-panel, .card-bottom-left .overlay-panel {
+        width: 88%;
+        bottom: -28px;
+        right: 0;
+        left: auto;
+      }
+      .cta-container {
+        margin-top: 70px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="section-container">
+    <div class="grid-layout">
+      
+      <!-- Top Left: Group Intro -->
+      <div class="header-block">
+        <div class="header-en">SEAWORTH<br>HOLDING</div>
+        <h2>全鏈路整合・深耕全球大洋</h2>
+        <p>海沃控股集團（SEAWORTH HOLDING）成立於 2026 年，傳承逾四十載深厚根基，以整合遠洋漁業上下游資源、深化共善治理為使命。透過智慧化與合規管理，建立「從深海到市場」的一體化全球供應網絡。</p>
+      </div>
+
+      <!-- Top Right: Card 1 (華偉漁業事業群) -->
+      <div class="group-card">
+        <div class="card-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80" alt="華偉漁業事業群">
+        </div>
+        <div class="overlay-panel">
+          <div class="panel-header">
+            <h3 class="panel-title">華偉漁業事業群</h3>
+            <span class="panel-arrow">›</span>
+          </div>
+          <p class="panel-desc">傳承自 1983 年高雄前鎮漁港冷凍倉儲與第一艘圍網漁船，奠定集團雄厚實力與全球化根基。</p>
+          <div class="panel-divider"></div>
+          <div class="panel-sub-label">核心範疇與優勢</div>
+          <div class="tag-group">
+            <span class="tag">產業根基</span>
+            <span class="tag">遠洋圍網</span>
+            <span class="tag">冷凍倉儲</span>
+            <span class="tag">全球運籌</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Left: Card 2 (巨寶漁業事業群) -->
+      <div class="group-card card-bottom-left">
+        <div class="card-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80" alt="巨寶漁業事業群">
+        </div>
+        <div class="overlay-panel">
+          <div class="panel-header">
+            <h3 class="panel-title">巨寶漁業事業群</h3>
+            <span class="panel-arrow">›</span>
+          </div>
+          <p class="panel-desc">專營圍網捕撈與現代化冷凍運搬船，引進前瞻船舶設計與國際勞工合規標準，打造頂尖海上移動冷鏈。</p>
+          <div class="panel-divider"></div>
+          <div class="panel-sub-label">技術與合規佈局</div>
+          <div class="tag-group">
+            <span class="tag">智慧造船</span>
+            <span class="tag">移動冷鏈</span>
+            <span class="tag">現代運搬船</span>
+            <span class="tag">國際合規</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Right: Card 3 (華昇魷釣事業群) -->
+      <div class="group-card">
+        <div class="card-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1200&q=80" alt="華昇魷釣事業群">
+        </div>
+        <div class="overlay-panel">
+          <div class="panel-header">
+            <h3 class="panel-title">華昇魷釣事業群</h3>
+            <span class="panel-arrow">›</span>
+          </div>
+          <p class="panel-desc">專精魷魚秋刀魚船與延繩釣漁船，展現高技術漁法、生態永續與全球供應的頂尖專業。</p>
+          <div class="panel-divider"></div>
+          <div class="panel-sub-label">精準技術與永續</div>
+          <div class="tag-group">
+            <span class="tag">精準漁法</span>
+            <span class="tag">高技術捕撈</span>
+            <span class="tag">魷秋延繩釣</span>
+            <span class="tag">生態永續</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Action Button -->
+    <div class="cta-container">
+      <a href="#" class="cta-btn">深入了解集團總覽 →</a>
+    </div>
+  </section>
+
+</body>
+</html>

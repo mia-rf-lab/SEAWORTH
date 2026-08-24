@@ -110,7 +110,7 @@
   header.scrolled .nav-toggle span{background:var(--black);}
 
   /* ===== HERO ===== */
-  .hero{position:relative;width:100%;height:100vh;min-height:100vh;overflow:hidden;color:#fff;}
+  .hero{position:sticky;top:0;width:100%;height:100vh;min-height:100vh;overflow:hidden;color:#fff;z-index:0;}
   .hero img, .hero video{width:100%;height:100%;object-fit:cover;object-position:center;}
   .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.15) 30%, rgba(0,0,0,.55) 100%);}
   .hero-stack{
@@ -171,7 +171,7 @@
   .black-sec{background:transparent;color:#fff;}
 
   .switch-scroll{position:relative;height:300vh;}
-  .switch-pin{position:sticky;top:0;height:100vh;overflow:hidden;border-radius:0 0 0 120px;}
+  .switch-pin{position:sticky;top:0;height:100vh;overflow:hidden;border-radius:0 0 0 120px; background-color: #000; transform: translateZ(0); -webkit-mask-image: -webkit-radial-gradient(white, black);}
 
   .switch-bg{position:absolute;inset:0;z-index:0;}
   .bg-panel{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;}
@@ -413,7 +413,7 @@
     .footer-bottom-bar{flex-direction:column;gap:16px;align-items:flex-start;}
   }
   /* ===== IMPORTED CURATORIAL SECTION ===== */
-  .curator-section { padding: 120px 0 60px; background: var(--white); }
+  .curator-section { padding: 120px 0 60px; background: var(--white); position: relative; z-index: 10; }
   .en-label-4 { font-family: var(--font-en); font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--ci-abundant-blue); font-weight: 700; }
   .curator-header { margin-bottom: 70px; position: relative; }
   .curator-tag { display: inline-block; margin-bottom: 24px; position: relative; padding-left: 36px; }
@@ -1270,10 +1270,9 @@
 <main id="top">
 
   <!-- HERO -->
+  <div style="position: relative; height: 100vh; z-index: 0;">
   <section class="hero">
-    <video autoplay muted loop playsinline poster="assets/hero-wave.jpg">
-      <source src="assets/video_1.mp4" type="video/mp4">
-    </video>
+    <img src="assets/kv-2.png" alt="Hero Image" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
     <div class="hero-stack">
       <span class="word">WE SEE YOUR WORTH</span>
       <span class="word main">敬海而行</span>
@@ -1290,6 +1289,7 @@
 
 
   </section>
+  </div>
 
 
 
@@ -1326,9 +1326,9 @@
       <div class="switch-pin">
 
         <div class="switch-bg">
-          <div class="bg-panel on" data-i="0"><img src="assets/hero-blob.jpg" alt="華偉漁業事業群"></div>
-          <div class="bg-panel" data-i="1"><img src="assets/texture-band.jpg" alt="巨寶漁業事業群"></div>
-          <div class="bg-panel" data-i="2"><img src="assets/hero-noir.jpg" alt="華昇魷釣事業群"></div>
+          <div class="bg-panel on" data-i="0"><img src="assets/華偉漁業事業群.jpeg" alt="華偉漁業事業群"></div>
+          <div class="bg-panel" data-i="1"><img src="assets/巨寶漁業事業群.jpeg" alt="巨寶漁業事業群"></div>
+          <div class="bg-panel" data-i="2"><img src="assets/華昇魷釣事業群.jpeg" alt="華昇魷釣事業群"></div>
           <div class="switch-scrim"></div>
         </div>
 
