@@ -92,6 +92,19 @@
   header .btn { padding: 10px 24px; font-size: 0.8rem; text-shadow: 0 2px 6px rgba(0,0,0,0.5); }
   header.scrolled .btn-outline-w { border-color: var(--black); color: var(--black); text-shadow: none; }
   header.scrolled .btn-outline-w:hover { background: var(--black); color: #fff; }
+  
+  /* Dropdown Styles */
+  .has-dropdown { position: relative; padding: 20px 0; cursor: pointer; }
+  .dropdown-menu {
+    position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(10px);
+    background: rgba(255, 255, 255, 0.98); border: 1px solid var(--line); border-radius: 8px;
+    padding: 10px 0; min-width: 160px; opacity: 0; visibility: hidden;
+    transition: all 0.3s ease; box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  }
+  .has-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+  .dropdown-menu a { display: block; padding: 10px 24px !important; color: var(--text) !important; text-shadow: none !important; font-size: 0.85rem !important; text-align: center; white-space: nowrap; }
+  .dropdown-menu a:hover { background: rgba(0,0,0,0.03); color: var(--ci-boundless-blue) !important; }
+
   .nav-toggle{display:none;background:none;border:0;cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:auto;flex-shrink:0;}
   .nav-toggle span{width:22px;height:2px;background:#fff;display:block;transition:background .3s;}
   header.scrolled .nav-toggle span{background:var(--black);}
@@ -112,9 +125,18 @@
   .hero-stack .word.main{color:rgba(255,255,255,.85);font-size:clamp(1.1rem, 2.8vw, 1.8rem);font-weight:500;margin:3px 0;letter-spacing:.12em;line-height:1.4;}
   .hero-badge{
     width:64px;height:64px;border-radius:50%;border:1px solid rgba(255,255,255,.5);
-    display:flex;align-items:center;justify-content:center;margin-bottom:20px;
+    display:flex;align-items:center;justify-content:center;
+    position:absolute;bottom:40px;left:50%;transform:translateX(-50%);z-index:1;
   }
-  .hero-badge img{width:30px;height:30px;filter:brightness(0) invert(1);}
+  .hero-badge img{
+    width:30px;height:30px;filter:brightness(0) invert(1);
+    transform: rotate(180deg);
+    animation: boatBounce 2s infinite ease-in-out;
+  }
+  @keyframes boatBounce {
+    0%, 100% { transform: rotate(180deg) translateY(0); }
+    50% { transform: rotate(180deg) translateY(-8px); }
+  }
   .hero-tag{position:absolute;left:40px;bottom:34px;z-index:1;font-size:.78rem;letter-spacing:.1em;color:rgba(255,255,255,.7);}
   .hero-cta{position:absolute;right:40px;bottom:34px;z-index:1;display:flex;gap:12px;}
   .hero-cta .btn{padding:12px 24px;font-size:.78rem;}
@@ -330,12 +352,23 @@
   @media (max-width:720px){
     .wrap{padding:0 22px;}
     .nav-links{
-      position:fixed;top:82px;left:0;right:0;bottom:0;background:#fff;
-      flex-direction:column;align-items:flex-start;padding:36px 30px;gap:24px;
-      transform:translateX(100%);transition:transform .35s ease;overflow-y:auto;
+      position:fixed;top:0;right:0;bottom:0;width:280px;background:#fff;
+      flex-direction:column;align-items:flex-start;padding:80px 40px;
+      gap:24px;transform:translateX(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);
+      box-shadow:-5px 0 30px rgba(0,0,0,.1);
+      overflow-y: auto;
     }
     .nav-links.open{transform:translateX(0);}
     .nav-links a:not(.btn){color:var(--black) !important;}
+    
+    .has-dropdown { padding: 0; width: 100%; }
+    .dropdown-menu {
+      position: static; transform: none !important; opacity: 1; visibility: visible;
+      background: transparent; box-shadow: none; border: none; padding: 10px 0 0 16px;
+      display: none;
+    }
+    .has-dropdown:hover .dropdown-menu, .has-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-menu a { text-align: left; padding: 8px 0 !important; font-size: 0.9rem !important; }
     .nav-toggle{display:flex;}
     .hero-tag{left:22px;bottom:20px;}
     .hero-cta{right:22px;bottom:20px;}
@@ -1080,11 +1113,54 @@
       <img src="assets/logo-text.png" alt="SEAWORTH HOLDING 海沃控股集團" class="logo-text-img">
     </a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#about">集團總覽</a></li>
-      <li><a href="#facility">事業版圖</a></li>
-      <li><a href="#split">全球據點</a></li>
-      <li><a href="#esg">永續發展</a></li>
-      <li><a href="#contact" class="btn btn-outline-w">聯絡我們</a></li>
+      <li class="has-dropdown">
+        <a href="#about">集團總覽</a>
+        <ul class="dropdown-menu">
+          <li><a href="#about">關於海沃</a></li>
+          <li><a href="#facility">事業版圖</a></li>
+          <li><a href="#facility">技術整合能力</a></li>
+        </ul>
+      </li>
+      <li class="has-dropdown">
+        <a href="#about">公司治理</a>
+        <ul class="dropdown-menu">
+          <li><a href="#about">公司治理架構</a></li>
+          <li><a href="#about">風險管理政策</a></li>
+          <li><a href="#about">內部稽核與內控制度</a></li>
+          <li><a href="#about">誠信經營守則</a></li>
+        </ul>
+      </li>
+      <li class="has-dropdown">
+        <a href="#esg">共善經營</a>
+        <ul class="dropdown-menu">
+          <li><a href="#esg">環境保護</a></li>
+          <li><a href="#esg">社會責任</a></li>
+        </ul>
+      </li>
+      <li class="has-dropdown">
+        <a href="#esg">投資人專區</a>
+        <ul class="dropdown-menu">
+          <li><a href="#esg">投資亮點</a></li>
+          <li><a href="#esg">策略布局</a></li>
+          <li><a href="#esg">股東訊息</a></li>
+        </ul>
+      </li>
+      <li class="has-dropdown">
+        <a href="#about">最新消息</a>
+        <ul class="dropdown-menu">
+          <li><a href="#about">官方公告</a></li>
+          <li><a href="#about">企業動態</a></li>
+          <li><a href="#esg">永續實踐</a></li>
+        </ul>
+      </li>
+      <li class="has-dropdown">
+        <a href="#contact">聯繫海沃</a>
+        <ul class="dropdown-menu">
+          <li><a href="#split">營運據點</a></li>
+          <li><a href="#contact">聯絡我們</a></li>
+          <li><a href="#contact">人才招募</a></li>
+        </ul>
+      </li>
     </ul>
     <button class="nav-toggle" id="navToggle" aria-label="選單"><span></span><span></span><span></span></button>
   </nav>
@@ -1099,10 +1175,11 @@
     </video>
     <div class="hero-stack">
       <span class="word">WE SEE YOUR WORTH</span>
-      <div class="hero-badge"><img src="assets/logomark.png" alt=""></div>
       <span class="word main">敬海而行</span>
       <span class="word main">與世界共榮共善</span>
     </div>
+    
+    <div class="hero-badge"><img src="assets/logomark.png" alt=""></div>
 
 
   </section>
@@ -1121,7 +1198,7 @@
       </div>
       <div class="about-curatorial-box">
         <div class="about-statement-large">
-          「承續四十載深厚根基，<br>在廣袤大洋間構築智慧共善的<br>供應新秩序。」
+          跨越四十載深耕<br>建構全球智慧遠洋產業鏈<br>共創永續新局
           <span>Since 1983 to the Global Horizon</span>
         </div>
         <div class="about-curatorial-text">
@@ -1146,7 +1223,6 @@
 
         <div class="switch-overlay reveal">
           <div class="switch-top">
-            <span class="en">About the Group</span>
             <h2>海沃控股集團<br>旗下<em>三大事業群</em></h2>
 
             <ul class="switch-list" id="switchList">
@@ -1317,6 +1393,13 @@
       <div class="esg-scroll-pin-wrapper" id="esgScrollWrap">
         <!-- 模組主舞台 (改為 sticky) -->
         <section class="esg-stage-section" id="esgShowcase" style="background: transparent;">
+          
+          <!-- ESG 動態背景圖 (隨卡片切換) -->
+          <div id="esgDynamicBg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; overflow: hidden; mask-image: radial-gradient(80% 80% at 100% 0%, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 100%); -webkit-mask-image: radial-gradient(80% 80% at 100% 0%, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 100%);">
+            <div class="esg-bg-img" style="position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1920&q=80') center/cover; opacity: 1; transition: opacity 0.8s;"></div>
+            <div class="esg-bg-img" style="position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1920&q=80') center/cover; opacity: 0; transition: opacity 0.8s;"></div>
+            <div class="esg-bg-img" style="position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80') center/cover; opacity: 0; transition: opacity 0.8s;"></div>
+          </div>
     
     <!-- 上半部：主題詳細資訊面板 (已移除左側軸線，置中偏右對齊) -->
     <div class="stage-top-container">
@@ -1873,6 +1956,13 @@ lucide.createIcons();
       cards.forEach((card, i) => {
         if (i === currentIndex) card.classList.add('active');
         else card.classList.remove('active');
+      });
+
+      // 3. 背景大圖切換
+      const bgImages = document.querySelectorAll('#esgDynamicBg .esg-bg-img');
+      bgImages.forEach((img, i) => {
+        if (i === currentIndex) img.style.opacity = '1';
+        else img.style.opacity = '0';
       });
 
       const w = window.innerWidth;
