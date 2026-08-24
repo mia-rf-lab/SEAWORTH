@@ -79,10 +79,10 @@
     border-bottom:1px solid var(--line);
     box-shadow:0 4px 20px rgba(0,0,0,.06);
   }
-  nav.wrap{display:flex;align-items:center;justify-content:space-between;height:82px;}
-  .logo{display:flex;align-items:center;gap:11px;}
-  .logo-icon{height:54px;width:auto;flex-shrink:0;}
-  .logo-text-img{height:37px;width:auto;filter:brightness(0) invert(1);transition:filter .3s;}
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .logo{display:flex;align-items:center;gap:10px;}
+  .logo-icon{height:40px;width:auto;flex-shrink:0;}
+  .logo-text-img{height:28px;width:auto;filter:brightness(0) invert(1);transition:filter .3s;}
   header.scrolled .logo-text-img{filter:none;}
   .nav-links{display:flex;align-items:center;gap:36px;}
   .nav-links a:not(.btn){font-size:.86rem;font-weight:500;letter-spacing:.02em;color:rgba(255,255,255,.9);transition:color .3s;}
@@ -572,12 +572,12 @@
       width: 100%;
       height: 100dvh;
       background-color: transparent;
-      padding: clamp(100px, 15vh, 160px) 0 40px 0;
+      padding: clamp(120px, 15dvh, 180px) 0 clamp(20px, 3dvh, 40px) 0;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      gap: clamp(40px, 6vh, 80px);
-      overflow: hidden;
+      gap: clamp(20px, 4dvh, 80px);
+      overflow: visible;
     }
 
     /* 上半部：寬大螢幕置中偏右包裝層 (已移除左側軸線，改為直接居中偏右展示) */
@@ -724,8 +724,8 @@
     /* 獨立 3D 浮動大卡片 */
     .isometric-card {
       position: relative;
-      width: clamp(400px, 28vw, 480px);
-      height: clamp(340px, 24vw, 400px);
+      width: clamp(300px, 28vw, 480px);
+      height: clamp(260px, 35dvh, 400px);
       border-radius: 24px;
       overflow: hidden;
       background: var(--c-navy-surface);
@@ -918,7 +918,7 @@
   /* NEW: 白底聯絡表單 */
   .contact-extended-section {
     background-color: transparent;
-    padding: 60px 0 100px 0;
+    padding: clamp(160px, 20vh, 280px) 0 100px 0;
   }
   .white-block-form {
     background: #ffffff;
@@ -1080,7 +1080,7 @@
       <li><a href="#facility">事業版圖</a></li>
       <li><a href="#split">全球據點</a></li>
       <li><a href="#esg">永續發展</a></li>
-      <li><a href="#contact" class="btn btn-black">聯絡我們</a></li>
+      <li><a href="#contact" class="btn btn-outline-w">聯絡我們</a></li>
     </ul>
     <button class="nav-toggle" id="navToggle" aria-label="選單"><span></span><span></span><span></span></button>
   </nav>
@@ -1099,7 +1099,7 @@
       <span class="word main">敬海而行</span>
       <span class="word main">與世界共榮共善</span>
     </div>
-    <span class="hero-tag">SEAWORTH HOLDING · SINCE 2026</span>
+
 
   </section>
 
