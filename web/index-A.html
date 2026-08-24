@@ -110,7 +110,7 @@
   header.scrolled .nav-toggle span{background:var(--black);}
 
   /* ===== HERO ===== */
-  .hero{position:relative;width:100%;height:100vh;min-height:100vh;overflow:hidden;color:#fff;z-index:0;}
+  .hero{position:sticky;top:0;width:100%;height:100vh;min-height:100vh;overflow:hidden;color:#fff;z-index:0;}
   .hero img, .hero video{width:100%;height:100%;object-fit:cover;object-position:center;}
   .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.15) 30%, rgba(0,0,0,.55) 100%);}
   .hero-stack{
@@ -530,6 +530,7 @@
       height: 90px;
       border-radius: 6px;
       overflow: hidden;
+      transition: opacity 0.4s ease;
   }
   .solution-image img {
       width: 100%;
@@ -538,7 +539,7 @@
       transition: transform 0.5s ease;
   }
   .solution-row-item:hover .solution-image {
-      opacity: 0;
+      opacity: 0.5;
   }
   @media (max-width: 980px) {
       .solution-row-item {
@@ -1270,7 +1271,7 @@
 <main id="top">
 
   <!-- HERO -->
-
+  <div class="parallax-hero-wrapper" style="position: relative; z-index: 0;">
   <section class="hero">
     <img src="assets/kv-2.png" alt="Hero Image" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
     <div class="hero-stack">
@@ -1281,8 +1282,8 @@
     
     <div class="scroll-indicator">
       <svg viewBox="0 0 100 120" class="boat-svg">
-        <path d="M 30,5 L 70,5 L 95,35 Q 95,85 50,115 Q 5,85 5,35 Z" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="6"/>
-        <path d="M 30,5 L 70,5 L 95,35 Q 95,85 50,115 Q 5,85 5,35 Z" fill="white" class="boat-fill"/>
+        <path d="M 35,10 L 65,10 L 85,30 L 85,75 L 50,110 L 15,75 L 15,30 Z" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="6" stroke-linejoin="miter"/>
+        <path d="M 35,10 L 65,10 L 85,30 L 85,75 L 50,110 L 15,75 L 15,30 Z" fill="white" class="boat-fill"/>
       </svg>
       <div class="scroll-text">SCROLL</div>
     </div>
@@ -1319,7 +1320,7 @@
     </div>
 
   </section>
-  
+  </div>
 
   <!-- BLACK SECTION / GROUP SWITCHER (full-bleed) -->
   <section class="black-sec" id="about">
@@ -1893,27 +1894,7 @@
   toggleHeaderScrolled();
   window.addEventListener('scroll', toggleHeaderScrolled);
 
-  // 首頁滾動動態圓角
-  const heroSection = document.querySelector('.hero');
-  if (heroSection) {
-    heroSection.style.willChange = 'border-radius';
-    
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      const maxScroll = window.innerHeight; // 效果在一個螢幕高度內完成
-      
-      if (scrollY <= 0) {
-        heroSection.style.borderRadius = '0';
-      } else if (scrollY < maxScroll) {
-        const progress = scrollY / maxScroll;
-        // 圓角增加至 120px
-        const radius = progress * 120;
-        heroSection.style.borderRadius = `0 0 ${radius}px ${radius}px`;
-      } else {
-        heroSection.style.borderRadius = '0 0 120px 120px';
-      }
-    });
-  }
+
 
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
