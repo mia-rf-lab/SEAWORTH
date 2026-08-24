@@ -1893,6 +1893,28 @@
   toggleHeaderScrolled();
   window.addEventListener('scroll', toggleHeaderScrolled);
 
+  // 首頁滾動動態圓角
+  const heroSection = document.querySelector('.hero');
+  if (heroSection) {
+    heroSection.style.willChange = 'border-radius';
+    
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const maxScroll = window.innerHeight; // 效果在一個螢幕高度內完成
+      
+      if (scrollY <= 0) {
+        heroSection.style.borderRadius = '0';
+      } else if (scrollY < maxScroll) {
+        const progress = scrollY / maxScroll;
+        // 圓角增加至 60px
+        const radius = progress * 60;
+        heroSection.style.borderRadius = `0 0 ${radius}px ${radius}px`;
+      } else {
+        heroSection.style.borderRadius = '0 0 60px 60px';
+      }
+    });
+  }
+
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
   navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
