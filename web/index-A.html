@@ -123,19 +123,28 @@
     color:rgba(255,255,255,.90);
   }
   .hero-stack .word.main{color:rgba(255,255,255,.85);font-size:clamp(1.1rem, 2.8vw, 1.8rem);font-weight:500;margin:3px 0;letter-spacing:.12em;line-height:1.4;}
-  .hero-badge{
-    width:64px;height:64px;border-radius:50%;border:1px solid rgba(255,255,255,.5);
-    display:flex;align-items:center;justify-content:center;
-    position:absolute;bottom:40px;left:50%;transform:translateX(-50%);z-index:1;
+  .scroll-indicator {
+    position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+    z-index: 10; display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer;
   }
-  .hero-badge img{
-    width:30px;height:30px;filter:brightness(0) invert(1);
-    transform: rotate(180deg);
-    animation: boatBounce 2s infinite ease-in-out;
+  .boat-svg {
+    width: 24px; height: 29px;
+    animation: boatBounce 2.5s infinite ease-in-out;
+  }
+  .boat-fill {
+    animation: boatFill 2.5s infinite ease-in-out;
+  }
+  .scroll-text {
+    color: rgba(255,255,255,.7); font-size: 0.7rem; letter-spacing: 0.25em; font-family: var(--font-en);
   }
   @keyframes boatBounce {
-    0%, 100% { transform: rotate(180deg) translateY(0); }
-    50% { transform: rotate(180deg) translateY(-8px); }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes boatFill {
+    0%, 20% { clip-path: inset(100% 0 0 0); }
+    50%, 70% { clip-path: inset(0 0 0 0); }
+    100% { clip-path: inset(100% 0 0 0); }
   }
   .hero-tag{position:absolute;left:40px;bottom:34px;z-index:1;font-size:.78rem;letter-spacing:.1em;color:rgba(255,255,255,.7);}
   .hero-cta{position:absolute;right:40px;bottom:34px;z-index:1;display:flex;gap:12px;}
@@ -402,7 +411,7 @@
 
   /* 區塊 4：THE TOTAL SOLUTION (三大事業群 交互手風琴式大標列表) */
   .section-solution {
-      padding: 80px 0;
+      padding: 120px 0 80px;
       border-top: 1px solid var(--line);
       background: var(--white);
   }
@@ -667,11 +676,17 @@
     }
 
     .badge-polygon-icon {
-      width: 20px;
-      height: 20px;
+      width: 24px;
+      height: 12px;
       background: var(--c-accent-glow);
-      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-      box-shadow: 0 0 16px var(--c-accent-glow);
+      mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 50' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,25 Q50,75 100,25 Q75,25 50,0 Q25,25 0,25 Z' fill='black'/%3E%3C/svg%3E");
+      -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 50' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,25 Q50,75 100,25 Q75,25 50,0 Q25,25 0,25 Z' fill='black'/%3E%3C/svg%3E");
+      mask-size: contain;
+      -webkit-mask-size: contain;
+      mask-repeat: no-repeat;
+      -webkit-mask-repeat: no-repeat;
+      mask-position: center;
+      -webkit-mask-position: center;
     }
 
     .badge-logo-text {
@@ -1101,7 +1116,74 @@
     box-shadow: 0 20px 40px rgba(0,0,0,0.2);
   }
 
+
+  /* SECTION: CERTIFICATIONS */
+  .cert-section {
+      background-color: var(--white);
+      padding: 80px 0 120px;
+  }
+  .cert-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0;
+      background: var(--white);
+      border: 1px solid var(--line);
+  }
+  .cert-item {
+      flex: 1 1 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 20px;
+      border-left: 1px solid var(--line);
+      min-height: 110px;
+  }
+  .cert-item:first-child {
+      border-left: none;
+  }
+  .cert-item img {
+      max-height: 46px;
+      max-width: 120px;
+      width: auto;
+      object-fit: contain;
+      filter: grayscale(45%);
+      opacity: 0.82;
+      transition: all 0.3s;
+  }
+  .cert-item:hover img {
+      filter: grayscale(0%);
+      opacity: 1;
+  }
+  .cert-badge-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: var(--black);
+  }
+  .cert-badge-text .mark {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--ci-abundant-blue);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ci-abundant-blue);
+      font-size: 0.72rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+  }
+  .cert-badge-text span.name {
+      font-size: 0.72rem;
+      letter-spacing: 0.03em;
+      text-align: center;
+      color: var(--text-soft);
+  }
 </style>
+
 <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
@@ -1179,7 +1261,13 @@
       <span class="word main">與世界共榮共善</span>
     </div>
     
-    <div class="hero-badge"><img src="assets/logomark.png" alt=""></div>
+    <div class="scroll-indicator">
+      <svg viewBox="0 0 100 120" class="boat-svg">
+        <path d="M 30,5 L 70,5 L 95,35 Q 95,85 50,115 Q 5,85 5,35 Z" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="6"/>
+        <path d="M 30,5 L 70,5 L 95,35 Q 95,85 50,115 Q 5,85 5,35 Z" fill="white" class="boat-fill"/>
+      </svg>
+      <div class="scroll-text">SCROLL</div>
+    </div>
 
 
   </section>
@@ -1191,8 +1279,12 @@
   <section class="curator-section">
     <div class="wrap reveal">
       <div class="curator-header">
-        <div class="curator-tag">
-          <span class="en-label-4">ABOUT THE GROUP</span>
+        <div style="display:flex; align-items:center; justify-content:flex-start; gap:16px; margin-bottom:16px;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="badge-polygon-icon"></div>
+            <div class="badge-logo-text" style="color:var(--c-accent-glow);">ABOUT THE GROUP</div>
+          </div>
+          <div class="badge-divider-line" style="flex:1; max-width:160px;"></div>
         </div>
         <h2 class="curator-title">全鏈路整合 ‧ 深耕全球大洋</h2>
       </div>
@@ -1260,49 +1352,17 @@
 
   </section>
 
-  <!-- FACILITY LIST + MAP -->
-  <section class="facility" id="facility">
-    <div class="wrap">
-      <div class="facility-grid">
-        <div class="reveal" id="facList">
-          <div class="fac-item open">
-            <button class="fac-head"><span class="num en">01</span><span class="name">華偉漁業事業群</span><span class="plus"></span></button>
-            <div class="fac-body"><p>傳承自 1983 年高雄前鎮漁港冷凍倉儲與第一艘圍網漁船，奠定集團雄厚實力與全球化根基。</p></div>
-          </div>
-          <div class="fac-item">
-            <button class="fac-head"><span class="num en">02</span><span class="name">巨寶漁業事業群</span><span class="plus"></span></button>
-            <div class="fac-body"><p>專營圍網捕撈與現代化冷凍運搬船，引進前瞻船舶設計與國際勞工合規標準，打造頂尖海上移動冷鏈。</p></div>
-          </div>
-          <div class="fac-item">
-            <button class="fac-head"><span class="num en">03</span><span class="name">華昇魷釣事業群</span><span class="plus"></span></button>
-            <div class="fac-body"><p>專精魷魚秋刀魚船與延繩釣漁船，展現高技術漁法、生態永續與全球供應的頂尖專業。</p></div>
-          </div>
-          <div class="fac-item">
-            <button class="fac-head"><span class="num en">04</span><span class="name">智慧造船與冷鏈物流</span><span class="plus"></span></button>
-            <div class="fac-body"><p>引進前瞻船舶設計，串聯捕撈、船隊管理與海上移動冷鏈，優化全鏈路營運效能。</p></div>
-          </div>
-          <div class="fac-item">
-            <button class="fac-head"><span class="num en">05</span><span class="name">永續發展與 ESG</span><span class="plus"></span></button>
-            <div class="fac-body"><p>落實國際永續認證與漁業組織規範，守護海洋生態與船員人權。</p></div>
-          </div>
-          <div class="fac-item">
-            <button class="fac-head"><span class="num en">06</span><span class="name">國際認證與全球夥伴</span><span class="plus"></span></button>
-            <div class="fac-body"><p>取得 MSC、Dolphin Safe 等國際認證，攜手 PNA 國家與國際漁業組織鞏固資源。</p></div>
-          </div>
-        </div>
-        <div class="fac-map reveal">
-          <img src="assets/enterprise-map.jpg" alt="海沃控股集團全球版圖">
-        </div>
-      </div>
-    </div>
-
-  </section>
-
   <!-- 區塊 4：THE TOTAL SOLUTION (三大事業群 手風琴式交互列表) -->
   <section class="section-solution" id="solution">
     <div class="wrap">
       <div class="solution-header-top">
-        <span class="solution-header-subtitle">GLOBAL NETWORK</span>
+        <div style="display:flex; align-items:center; gap:16px; width: 100%;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="badge-polygon-icon"></div>
+            <div class="badge-logo-text" style="color:var(--c-accent-glow);">GLOBAL NETWORK</div>
+          </div>
+          <div class="badge-divider-line" style="flex:1; max-width:160px;"></div>
+        </div>
         <h2 class="solution-h2">
           在全球每個大洋角落，<br>都有海沃控股的智慧足跡。
         </h2>
@@ -1377,6 +1437,46 @@
     </div>
   </section>
 
+  <!-- SECTION 5: CERTIFICATIONS & GLOBAL ARCHIVE -->
+  <section class="cert-section" id="certifications">
+    <div class="wrap">
+      <div class="curator-header" style="margin-bottom: 70px;">
+        <div style="display:flex; align-items:center; justify-content:flex-start; gap:16px; margin-bottom:16px; width:100%;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="badge-polygon-icon"></div>
+            <div class="badge-logo-text" style="color:var(--c-accent-glow);">INTERNATIONAL COMPLIANCE ARCHIVE</div>
+          </div>
+          <div class="badge-divider-line" style="flex:1; max-width:160px;"></div>
+        </div>
+        <h2 class="curator-title">國際合規認證 ‧ 全球合作網絡</h2>
+        <div class="about-curatorial-text" style="margin-top: 20px;">
+          以全球嚴苛檢驗標準為圭臬，獲取多項權威體系授權與信任。
+        </div>
+      </div>
+
+      <!-- Cert Strip from Homepage -->
+      <div class="cert-strip">
+        <div class="cert-item"><img src="assets/certs/MSC_ecolabel.png" alt="MSC 海洋管理委員會認證"></div>
+        <div class="cert-item"><img src="assets/certs/Dolphin_Safe.png" alt="Dolphin Safe 海豚保護標章"></div>
+        <div class="cert-item"><img src="assets/certs/FISH.jpg" alt="FISH Crew Standard 船員人權標準"></div>
+        <div class="cert-item"><img src="assets/certs/WCPFC-logo.png" alt="WCPFC 中西太平洋漁業委員會"></div>
+        <div class="cert-item"><img src="assets/certs/ISSF-LOGO.png" alt="ISSF 國際永續漁業基金會"></div>
+        <div class="cert-item">
+          <div class="cert-badge-text">
+            <span class="mark">ILO</span>
+            <span class="name">ILO C-188<br>國際勞工公約標準</span>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-badge-text">
+            <span class="mark">ISO</span>
+            <span class="name">ISO 31000:2018<br>風險管理規範</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- 浮動圖片容器 -->
   <div class="cursor-float-img" id="cursorFloatImg">
     <div class="cursor-float-inner">
@@ -1386,7 +1486,9 @@
 
   <!-- 藍色連續領域，讓 Canvas 當作整體的背景 -->
   <div id="blueDomain" style="position: relative; background: #00264F;">
-    <canvas id="fluidCanvas" style="position: sticky; top: 0; left: 0; width: 100%; height: 100vh; z-index: 0; pointer-events: none; display: block;"></canvas>
+    <div style="position: sticky; top: 0; left: 0; width: 100%; height: 100vh; overflow: hidden; z-index: 0; pointer-events: none;">
+      <canvas id="fluidCanvas" style="width: 100%; height: 100%; display: block;"></canvas>
+    </div>
     
     <div style="position: relative; z-index: 1; margin-top: -100vh;">
       <!-- 滾動釘選容器 (高度 300vh) -->
@@ -1539,7 +1641,13 @@
         <div class="white-block-img">
           <img src="assets/hero-noir.jpg" alt="SEAWORTH Contact">
           <div class="wb-img-overlay">
-            <div class="wb-badge"><i data-lucide="message-square" style="width: 16px; height: 16px;"></i> Contact Us</div>
+            <div style="display:flex; align-items:center; gap:16px; margin-bottom:16px;">
+              <div style="display:flex; align-items:center; gap:12px;">
+                <div class="badge-polygon-icon"></div>
+                <div class="badge-logo-text">CONTACT US</div>
+              </div>
+              <div class="badge-divider-line"></div>
+            </div>
             <h2 class="wb-img-title">Get in Touch<br>with SEAWORTH</h2>
           </div>
         </div>
