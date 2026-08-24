@@ -1881,10 +1881,21 @@ lucide.createIcons();
       } else {
         track.style.transform = `rotateX(24deg) rotateZ(-11deg) skewX(6deg) translateX(-${currentIndex * 520}px)`;
       }
+
+      // 更新按鈕狀態
+      const btns = document.querySelectorAll('.arrow-btn-group .btn-ctrl');
+      if (btns.length === 2) {
+        btns[0].style.opacity = currentIndex === 0 ? '0.2' : '1';
+        btns[0].style.pointerEvents = currentIndex === 0 ? 'none' : 'auto';
+        
+        btns[1].style.opacity = currentIndex === totalCards - 1 ? '0.2' : '1';
+        btns[1].style.pointerEvents = currentIndex === totalCards - 1 ? 'none' : 'auto';
+      }
     }
 
     function navigateCard(direction) {
-      let nextIndex = (currentIndex + direction + totalCards) % totalCards;
+      let nextIndex = currentIndex + direction;
+      if (nextIndex < 0 || nextIndex >= totalCards) return;
       
       const esgWrap = document.getElementById('esgScrollWrap');
       if (esgWrap) {
@@ -1892,8 +1903,9 @@ lucide.createIcons();
         // nextIndex 為 0, 1, 2
         // 計算對應的滾動進度比例 (0%, 50%, 100%)
         const targetScrolled = (nextIndex / 2) * scrollRange; 
-        // 算出該滾動到的絕對 Y 座標
-        const targetY = esgWrap.offsetTop + targetScrolled;
+        // 算出該滾動到的絕對 Y 座標 (解決 position: relative 造成的 offsetTop 不準確問題)
+        const absoluteTop = esgWrap.getBoundingClientRect().top + window.scrollY;
+        const targetY = absoluteTop + targetScrolled;
         window.scrollTo({ top: targetY, behavior: 'smooth' });
       } else {
         switchCard(nextIndex);
@@ -1940,6 +1952,9 @@ lucide.createIcons();
     window.addEventListener('resize', () => {
       switchCard(currentIndex);
     });
+
+    // 初始化按鈕狀態
+    switchCard(0);
   
 </script>
 
