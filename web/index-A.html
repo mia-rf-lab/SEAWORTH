@@ -92,7 +92,28 @@
   header .btn { padding: 10px 24px; font-size: 0.8rem; text-shadow: 0 2px 6px rgba(0,0,0,0.5); }
   header.scrolled .btn-outline-w { border-color: var(--black); color: var(--black); text-shadow: none; }
   header.scrolled .btn-outline-w:hover { background: var(--black); color: #fff; }
-  
+
+  /* ========================================================= */
+  /*  Header Entrance Animation                                */
+  /* ========================================================= */
+  @keyframes headerEntrance {
+    0% { opacity: 0; transform: translateY(-15px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .logo, .nav-links > li, .nav-toggle {
+    opacity: 0;
+    animation: headerEntrance 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+  .logo { animation-delay: 0.1s; }
+  .nav-links > li:nth-child(1) { animation-delay: 0.15s; }
+  .nav-links > li:nth-child(2) { animation-delay: 0.20s; }
+  .nav-links > li:nth-child(3) { animation-delay: 0.25s; }
+  .nav-links > li:nth-child(4) { animation-delay: 0.30s; }
+  .nav-links > li:nth-child(5) { animation-delay: 0.35s; }
+  .nav-links > li:nth-child(6) { animation-delay: 0.40s; }
+  .nav-links > li:nth-child(7) { animation-delay: 0.45s; }
+  .nav-toggle { animation-delay: 0.3s; }
+
   /* Dropdown Styles */
   .has-dropdown { position: relative; padding: 20px 0; cursor: pointer; }
   .dropdown-menu {
@@ -111,37 +132,50 @@
 
   /* ===== HERO ===== */
   .hero{position:sticky;top:0;width:100%;height:100vh;min-height:100vh;overflow:hidden;color:#fff;z-index:0;}
-  .hero img, .hero video{width:100%;height:100%;object-fit:cover;object-position:center;}
+  @keyframes heroBgZoomOut {
+    0% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+  }
+  .hero img, .hero video {
+    width:100%; height:100%; object-fit:cover; object-position:center;
+    animation: heroBgZoomOut 4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
   .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.15) 30%, rgba(0,0,0,.55) 100%);}
   .hero-stack{
     position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
     text-align:center;z-index:1;gap:2px;
   }
-  @keyframes heroTextRevealEn {
-    0% { opacity: 0; letter-spacing: -0.08em; transform: scale(0.98); }
-    100% { opacity: 1; letter-spacing: normal; transform: scale(1); }
-  }
-  @keyframes heroTextRevealCn {
-    0% { opacity: 0; letter-spacing: 0em; transform: scale(0.98); }
-    100% { opacity: 1; letter-spacing: 0.12em; transform: scale(1); }
-  }
-  .hero-stack .word{
-    font-family:var(--font-en), var(--font-cn);font-weight:900;letter-spacing:normal;
+  .hero-stack .word {
+    font-family:var(--font-en), var(--font-cn);font-weight:900;
     font-size:clamp(2.2rem, 7vw, 4.5rem);line-height:1.15;
     color:rgba(255,255,255,.90);
-    opacity: 0;
-    animation: heroTextRevealEn 2.5s cubic-bezier(0.2, 1, 0.3, 1) forwards;
+    /* 這裡不再使用 keyframes，改由 ScrollFloat 特效控制 */
   }
-  .hero-stack .word:nth-child(1) { animation-delay: 0.2s; }
-  .hero-stack .word.main{
-    color:rgba(255,255,255,.85);font-size:clamp(1.1rem, 2.8vw, 1.8rem);font-weight:500;margin:3px 0;letter-spacing:.12em;line-height:1.4;
+  .hero-stack .word.main {
+    color:rgba(255,255,255,.85);font-size:clamp(1.1rem, 2.8vw, 1.8rem);font-weight:500;margin:3px 0;line-height:1.4;
+    letter-spacing: 0.12em;
+  }
+  
+  .scroll-float-char {
+    display: inline-block;
     opacity: 0;
-    animation: heroTextRevealCn 2.5s cubic-bezier(0.2, 1, 0.3, 1) forwards;
-    animation-delay: 0.8s;
+    transform: translateY(30px);
+    transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .scroll-float-char.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @keyframes scrollIndicatorEntrance {
+    0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+    100% { opacity: 1; transform: translateX(-50%) translateY(0); }
   }
   .scroll-indicator {
     position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
     z-index: 10; display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer;
+    opacity: 0;
+    animation: scrollIndicatorEntrance 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation-delay: 1.5s;
   }
   .boat-svg {
     width: 23px; height: 33px;
@@ -166,6 +200,20 @@
   .hero-cta{position:absolute;right:40px;bottom:34px;z-index:1;display:flex;gap:12px;}
   .hero-cta .btn{padding:12px 24px;font-size:.78rem;}
 
+  /* ========================================================= */
+  /*  Scroll Reveal Animation for Headings (Blur & Rotate)     */
+  /* ========================================================= */
+  .reveal-block {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(20px);
+    transition: opacity 1s ease, filter 1s ease, transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .reveal-block.visible {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0);
+  }
 
   /* ===== BLACK SECTION / GROUP SWITCHER (full-bleed) ===== */
   .black-sec{background:transparent;color:#fff;}
@@ -2395,6 +2443,76 @@ lucide.createIcons();
 
     // 初始化按鈕狀態
     switchCard(0);
+
+    // ==========================================
+    // ScrollFloat 效果：拆分文字並加入錯落的浮現動畫
+    // ==========================================
+    document.addEventListener('DOMContentLoaded', () => {
+      const heroWords = document.querySelectorAll('.hero-stack .word');
+      let currentDelay = 0; // 累加的延遲時間
+      
+      heroWords.forEach((wordElement) => {
+        // 判斷是否為中文副標題 (.main)
+        const isChinese = wordElement.classList.contains('main');
+        const stagger = isChinese ? 0.03 : 0.04; // 中文 0.03s, 英文 0.04s
+
+        const text = wordElement.textContent;
+        wordElement.textContent = '';
+        
+        for (let char of text) {
+          const span = document.createElement('span');
+          span.textContent = char === ' ' ? '\u00A0' : char; // 保留空白字元
+          span.className = 'scroll-float-char';
+          span.style.transitionDelay = `${currentDelay}s`;
+          wordElement.appendChild(span);
+          
+          currentDelay += stagger;
+        }
+      });
+
+      // 稍微延遲後觸發動畫，讓字元一個接一個浮現
+      setTimeout(() => {
+        document.querySelectorAll('.scroll-float-char').forEach(span => {
+          span.classList.add('visible');
+        });
+      }, 150);
+    });
+    // ==========================================
+    // 大標題 ScrollReveal (模糊微旋轉浮現) 特效
+    // ==========================================
+    document.addEventListener('DOMContentLoaded', () => {
+      const titles = document.querySelectorAll('h2');
+      
+      // 因為部分 h2 使用了背景漸層 (background-clip: text; color: transparent)
+      // 若將文字拆分成 inline-block 的 span，漸層會無法跨字元連續顯示，導致文字隱形。
+      // 所以我們直接對整個 h2 區塊套用進場特效。
+      
+      titles.forEach(title => {
+        title.classList.add('reveal-block');
+      });
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px 0px 0px',
+        threshold: 0.1
+      };
+
+      const titleObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // 延遲一點點讓畫面有載入感
+            setTimeout(() => {
+              entry.target.classList.add('visible');
+            }, 100);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      titles.forEach(title => {
+        titleObserver.observe(title);
+      });
+    });
   
 </script>
 

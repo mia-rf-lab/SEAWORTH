@@ -22,7 +22,7 @@
       "name": "海沃控股集團",
       "alternateName": "SEAWORTH HOLDING",
       "url": "https://www.seaworth.com",
-      "logo": "https://www.seaworth.com/assets/logo.svg",
+      "logo": "https://www.seaworth.com/assets/logo-seaworth.svg",
       "description": "整合智慧造船、遠洋漁撈、冷鏈物流與國際貿易，建構全流程可追溯的全球永續海洋產業體系。",
       "foundingDate": "2026",
       "headquarters": {
@@ -235,50 +235,56 @@
             transform: scale(1.04);
         }
 
-        /* 區塊 2：ABOUT GROUP (錯位水波海面與雙拼大版面) */
-        .blanz-dual-stagger-grid {
-            display: grid;
-            grid-template-columns: 1fr 0.45fr 0.85fr;
-            gap: 50px;
-            align-items: center;
+        /* 區塊 2：ABOUT GROUP (文字疊圖歪斜錯位版面) */
+        .about-hero-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 60px;
+            position: relative;
+            z-index: 2;
+            margin-bottom: -100px;
         }
-        .stagger-editorial-left {
-            padding-right: 30px;
-        }
-        .stagger-zh-title {
-            font-size: 2.3rem;
-            line-height: 1.5;
+        .about-hero-title {
+            font-family: var(--font-display);
+            font-size: 3.2rem;
+            line-height: 1.2;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
             color: var(--c-ink);
-            margin-bottom: 28px;
-            font-weight: 300;
+            font-weight: 400;
+            margin: 0;
         }
-        .stagger-lead-p {
-            font-size: 1.05rem;
-            color: var(--c-charcoal);
-            line-height: 2.2;
-            margin-bottom: 24px;
+        .about-hero-title .accent-line {
+            color: var(--c-copper);
+            font-size: 1.6rem;
+            letter-spacing: 0.15em;
+            display: block;
+            margin-top: 8px;
         }
-        .stagger-sub-p {
-            font-size: 0.88rem;
+        .about-hero-desc {
+            max-width: 320px;
+            padding-top: 14px;
+            text-align: right;
+            flex-shrink: 0;
+        }
+        .about-hero-desc p {
+            font-size: 0.85rem;
             color: var(--c-muted);
-            line-height: 2.0;
+            line-height: 1.9;
+            margin-bottom: 14px;
         }
-        .stagger-img-vertical {
-            height: 540px;
-            width: 100%;
-            overflow: hidden;
+        .about-hero-desc p:last-child {
+            margin-bottom: 0;
         }
-        .stagger-img-vertical img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .stagger-img-large {
+        .about-hero-banner {
+            position: relative;
+            z-index: 1;
+            margin-left: 18%;
             height: 440px;
-            width: 100%;
             overflow: hidden;
         }
-        .stagger-img-large img {
+        .about-hero-banner img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -781,9 +787,19 @@
             .blanz-container {
                 padding: 0 32px;
             }
-            .blanz-dual-stagger-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
+            .about-hero-header {
+                flex-direction: column;
+                gap: 24px;
+                margin-bottom: -60px;
+            }
+            .about-hero-desc {
+                text-align: left;
+                max-width: 100%;
+                padding-top: 0;
+            }
+            .about-hero-banner {
+                margin-left: 10%;
+                height: 340px;
             }
             .slices-3-grid {
                 grid-template-columns: repeat(3, 1fr);
@@ -802,6 +818,19 @@
         @media (max-width: 640px) {
             .blanz-nav-menu {
                 display: none;
+            }
+            .about-hero-title {
+                font-size: 2.2rem;
+            }
+            .about-hero-title .accent-line {
+                font-size: 1.15rem;
+            }
+            .about-hero-header {
+                margin-bottom: -30px;
+            }
+            .about-hero-banner {
+                margin-left: 0;
+                height: 260px;
             }
             .slices-3-grid {
                 grid-template-columns: 1fr;
@@ -859,14 +888,14 @@
             overflow: hidden;
             border: 1px solid var(--c-line);
             box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            transition: all 0.4s var(--ease-icon);
+            transition: all 0.4s var(--ease-poetic);
             display: flex;
             flex-direction: column;
         }
         .project-card-item:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-            border-color: var(--c-crimson);
+            border-color: var(--c-copper);
         }
         .project-thumb-box {
             height: 320px;
@@ -889,7 +918,7 @@
             font-family: var(--font-display);
             font-size: 0.72rem;
             letter-spacing: 0.2em;
-            color: var(--c-crimson);
+            color: var(--c-copper);
             text-transform: uppercase;
             margin-bottom: 6px;
             display: block;
@@ -1113,38 +1142,29 @@
         </div>
 
         <div class="hero-panorama-stage">
-            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80" alt="浩瀚大洋與跨洋遠景" class="hero-panorama-img">
+            <img src="assets/hero-wave.jpg" alt="浩瀚大洋與跨洋遠景" class="hero-panorama-img">
         </div>
     </section>
 
     <!-- 區塊 2：ABOUT GROUP (錯位水波海面與雙拼大版面) -->
     <section class="blanz-section" id="about">
         <div class="blanz-container">
-            <div class="blanz-dual-stagger-grid">
-                <!-- 左側文案 -->
-                <div class="stagger-editorial-left">
-                    <div style="margin-bottom: 24px;">
-                        <h2 class="projects-h2" style="margin-bottom: 0px;">ABOUT SEAWORTH</h2>
-                        <span style="font-family: var(--font-serif); font-size: 20px; color: var(--c-muted); letter-spacing: 0.15em;">全鏈路整合 ‧ 深耕全球大洋</span>
-                    </div>
-                    <p class="stagger-lead-p">
-                        海沃控股集團（SEAWORTH HOLDING）成立於 2026 年，傳承逾四十載深厚根基，以整合遠洋漁業上下游資源、深化共善治理為使命。
-                    </p>
-                    <p class="stagger-sub-p">
-                        透過智慧化造船與合規管理，建立「從深海到市場」的一體化全球供應網絡，為大洋產業注入前瞻科技與永續責任。
-                    </p>
-                </div>
-
-                <!-- 中間垂直水波意象切片 -->
-                <div class="stagger-img-vertical">
-                    <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=600&q=80" alt="海洋深層水波紋理">
-                </div>
-
-                <!-- 右側大版面深海油畫質感圖 -->
-                <div class="stagger-img-large">
-                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1000&q=80" alt="現代化合規遠洋作業">
+            <!-- 標題與說明文字：一左一右並排 -->
+            <div class="about-hero-header">
+                <h2 class="about-hero-title">
+                    ABOUT<br>SEAWORTH
+                    <span class="accent-line">全鏈路整合 ‧ 深耕全球大洋</span>
+                </h2>
+                <div class="about-hero-desc">
+                    <p>海沃控股集團（SEAWORTH HOLDING）成立於 2026 年，傳承逾四十載深厚根基，以整合遠洋漁業上下游資源、深化共善治理為使命。</p>
+                    <p>透過智慧化造船與合規管理，建立「從深海到市場」的一體化全球供應網絡，為大洋產業注入前瞻科技與永續責任。</p>
                 </div>
             </div>
+        </div>
+
+        <!-- 大圖橫幅：貼齊視窗右側，並與上方文字疊在一起（不受 blanz-container 寬度限制） -->
+        <div class="about-hero-banner">
+            <img src="assets/hero-vessel.jpg" alt="現代化合規遠洋作業">
         </div>
     </section>
 
@@ -1163,7 +1183,7 @@
             <!-- Top Right: Card 1 (華偉漁業事業群) -->
             <div class="group-card">
                 <div class="card-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80" alt="華偉漁業事業群">
+                    <img src="assets/華偉漁業事業群.jpeg" alt="華偉漁業事業群">
                 </div>
                 <div class="overlay-panel">
                     <div class="panel-header">
@@ -1185,7 +1205,7 @@
             <!-- Bottom Left: Card 2 (巨寶漁業事業群) -->
             <div class="group-card card-bottom-left">
                 <div class="card-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80" alt="巨寶漁業事業群">
+                    <img src="assets/巨寶漁業事業群.jpeg" alt="巨寶漁業事業群">
                 </div>
                 <div class="overlay-panel">
                     <div class="panel-header">
@@ -1207,7 +1227,7 @@
             <!-- Bottom Right: Card 3 (華昇魷釣事業群) -->
             <div class="group-card">
                 <div class="card-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1200&q=80" alt="華昇魷釣事業群">
+                    <img src="assets/華昇魷釣事業群.jpeg" alt="華昇魷釣事業群">
                 </div>
                 <div class="overlay-panel">
                     <div class="panel-header">
@@ -1254,7 +1274,7 @@
 
             <!-- 海天立方體意象橫幅 (Monolith Horizon) -->
             <div class="monolith-banner-box">
-                <img id="sector-main-img" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80" alt="事業群主視覺" style="transition: opacity 0.4s ease;">
+                <img id="sector-main-img" src="assets/華偉漁業事業群.jpeg" alt="事業群主視覺" style="transition: opacity 0.4s ease;">
             </div>
 
             <!-- 3 欄切片藝廊 -->
@@ -1263,20 +1283,20 @@
 
                 <div class="slices-3-grid">
                     <!-- Slice 1: 華偉 -->
-                    <div class="slice-item active-slice" data-img-src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80">
-                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" alt="華偉漁業">
+                    <div class="slice-item active-slice" data-img-src="assets/華偉漁業事業群.jpeg">
+                        <img src="assets/華偉漁業事業群.jpeg" alt="華偉漁業">
                         <div class="slice-letter-overlay" style="font-size: 2rem; font-family: var(--font-serif); letter-spacing: 0.1em;">華偉</div>
                     </div>
 
                     <!-- Slice 2: 巨寶 -->
-                    <div class="slice-item" data-img-src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1600&q=80">
-                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=600&q=80" alt="巨寶漁業">
+                    <div class="slice-item" data-img-src="assets/巨寶漁業事業群.jpeg">
+                        <img src="assets/巨寶漁業事業群.jpeg" alt="巨寶漁業">
                         <div class="slice-letter-overlay" style="font-size: 2rem; font-family: var(--font-serif); letter-spacing: 0.1em;">巨寶</div>
                     </div>
 
                     <!-- Slice 3: 華昇 -->
-                    <div class="slice-item" data-img-src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1600&q=80">
-                        <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=600&q=80" alt="華昇魷釣">
+                    <div class="slice-item" data-img-src="assets/華昇魷釣事業群.jpeg">
+                        <img src="assets/華昇魷釣事業群.jpeg" alt="華昇魷釣">
                         <div class="slice-letter-overlay" style="font-size: 2rem; font-family: var(--font-serif); letter-spacing: 0.1em;">華昇</div>
                     </div>
                 </div>
@@ -1294,7 +1314,7 @@
         <div class="blanz-container">
             <!-- 雙重光影全景城市天際線 -->
             <div class="split-city-banner">
-                <img src="https://images.unsplash.com/photo-1477959858617-67f30bc75b82?auto=format&fit=crop&w=1600&q=80" alt="全球樞紐日夜景觀">
+                <img src="assets/landmark-fleet.jpg" alt="全球樞紐日夜景觀">
                 <div class="split-city-overlay">
                     <div style="text-align: center;">
                         <h2 class="projects-h2" style="margin-bottom: 0px; color: #fff;">GLOBAL SCALE</h2>
@@ -1352,10 +1372,10 @@
                 <!-- 左側雙圖錯位重疊 -->
                 <div class="esg-dual-img-stack">
                     <div class="esg-img-main">
-                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="海洋永續生態">
+                        <img src="assets/pho_ocean.jpg" alt="海洋永續生態">
                     </div>
                     <div class="esg-img-overlap">
-                        <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=600&q=80" alt="智慧科技水波">
+                        <img src="assets/pho_4.png" alt="智慧科技水波">
                     </div>
                 </div>
 
@@ -1412,7 +1432,7 @@
                 <!-- 01 -->
                 <div class="project-card-item">
                     <div class="project-thumb-box">
-                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=600&q=80" alt="美式圍網船隊">
+                        <img src="assets/華偉漁業事業群2.jpg" alt="美式圍網船隊">
                     </div>
                     <div class="project-card-body">
                         <span class="project-card-tag">HUA WEI SECTOR</span>
@@ -1424,7 +1444,7 @@
                 <!-- 02 -->
                 <div class="project-card-item">
                     <div class="project-thumb-box">
-                        <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=600&q=80" alt="超低溫運搬船">
+                        <img src="assets/巨寶漁業事業群.jpeg" alt="超低溫運搬船">
                     </div>
                     <div class="project-card-body">
                         <span class="project-card-tag">JU BAO SECTOR</span>
@@ -1436,7 +1456,7 @@
                 <!-- 03 -->
                 <div class="project-card-item">
                     <div class="project-thumb-box">
-                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" alt="魷釣秋刀魚船">
+                        <img src="assets/華昇魷釣事業群.jpeg" alt="魷釣秋刀魚船">
                     </div>
                     <div class="project-card-body">
                         <span class="project-card-tag">HUA SHENG SECTOR</span>
@@ -1448,7 +1468,7 @@
                 <!-- 04 -->
                 <div class="project-card-item">
                     <div class="project-thumb-box">
-                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80" alt="全球五大樞紐">
+                        <img src="assets/enterprise-map.jpg" alt="全球五大樞紐">
                     </div>
                     <div class="project-card-body">
                         <span class="project-card-tag">GLOBAL HUBS</span>
@@ -1466,7 +1486,7 @@
             <div class="rotunda-layout-grid">
                 <!-- 左側圓形天光意象 -->
                 <div class="rotunda-circle-frame">
-                    <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80" alt="現代主義圓形光影建築">
+                    <img src="assets/hero-blob.jpg" alt="現代主義圓形光影建築">
                 </div>
 
                 <!-- 右側標題與認證介紹 -->
@@ -1487,16 +1507,16 @@
             <!-- 4 欄垂直藝廊切片 -->
             <div class="art-slices-4-grid">
                 <div class="art-slice-box">
-                    <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80" alt="MSC 永續漁業">
+                    <img src="assets/fish-jump.jpg" alt="MSC 永續漁業">
                 </div>
                 <div class="art-slice-box">
-                    <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=600&q=80" alt="Dolphin Safe 友善捕撈">
+                    <img src="assets/csr.jpg" alt="Dolphin Safe 友善捕撈">
                 </div>
                 <div class="art-slice-box">
-                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80" alt="FISH 船員人權標準">
+                    <img src="assets/crew-deck.jpg" alt="FISH 船員人權標準">
                 </div>
                 <div class="art-slice-box">
-                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=600&q=80" alt="ISO 31000 風險管理">
+                    <img src="assets/core-values.jpg" alt="ISO 31000 風險管理">
                 </div>
             </div>
 
