@@ -2172,7 +2172,7 @@
   }), { threshold: 0, rootMargin: '0px 0px -15% 0px' });
 
   // 自動將重點文字與區塊加上 reveal 效果，不侷限於原本的大外框
-  document.querySelectorAll('h2:not(.wb-img-title):not(.white-block-form h2), h3, h4, p:not(.white-block-form p), .about-statement-large, .about-curatorial-text, .solution-row-item, .fac-item, .switch-list, .caption-panel > *, .info-en-subtitle, .info-points-list li, .footer-brand-sub, .footer-col-title, .footer-links-list li, .footer-bottom-bar > div').forEach(el => {
+  document.querySelectorAll('h2:not(.wb-img-title):not(.white-block-form h2), h3, h4, p:not(.white-block-form p), .about-statement-large, .about-curatorial-text, .solution-row-item, .fac-item, .switch-list, .caption-panel > *, .info-en-subtitle, .info-points-list li, .footer-brand-sub, .footer-col-title, .footer-links-list li').forEach(el => {
     if (!el.classList.contains('reveal')) {
       el.classList.add('reveal');
     }
