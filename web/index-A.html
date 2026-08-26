@@ -244,9 +244,11 @@
     50% { transform: translateY(-10px); }
   }
   @keyframes boatFill {
-    0%, 20% { clip-path: inset(100% 0 0 0); }
-    50%, 70% { clip-path: inset(0 0 0 0); }
-    100% { clip-path: inset(100% 0 0 0); }
+    0% { clip-path: inset(100% 0 0 0); opacity: 1; }
+    35% { clip-path: inset(0 0 0 0); opacity: 1; }
+    65% { clip-path: inset(0 0 0 0); opacity: 1; }
+    95% { clip-path: inset(0 0 0 0); opacity: 0; }
+    100% { clip-path: inset(100% 0 0 0); opacity: 0; }
   }
   .hero-tag{position:absolute;left:40px;bottom:34px;z-index:1;font-size:.78rem;letter-spacing:.1em;color:rgba(255,255,255,.7);}
   .hero-cta{position:absolute;right:40px;bottom:34px;z-index:1;display:flex;gap:12px;}
@@ -1509,8 +1511,17 @@
           <a href="#contact">人才招募</a>
         </div>
       </li>
-      <li>
-        <a href="#" class="lang-switch" style="border: 1px solid rgba(255,255,255,0.4); padding: 4px 12px; border-radius: 20px; font-family: var(--font-en); font-size: 0.8rem; letter-spacing: 0.05em;">EN</a>
+      <li class="has-dropdown" style="margin-left: 10px;">
+        <a href="#" style="font-family: var(--font-en); font-size: 0.9rem; letter-spacing: 0.05em; display:flex; align-items:center; gap: 6px;">
+          TW 
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </a>
+        <div class="wave-indicator"><svg viewBox="0 0 100 50"><path d="M50,0 Q75,30 100,30 Q50,50 0,30 Q25,30 50,0 Z" /></svg></div>
+        <div class="dropdown-menu" style="min-width: 120px;">
+          <div class="magnetic-bg"></div>
+          <a href="#">繁體中文</a>
+          <a href="#">English</a>
+        </div>
       </li>
     </ul>
     <button class="nav-toggle" id="navToggle" aria-label="選單"><span></span><span></span><span></span></button>
