@@ -364,6 +364,48 @@
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease;}
   .reveal.in{opacity:1;transform:translateY(0);}
 
+  /* 流動漸層文字特效 (Gradient Text Effect) */
+  .gradient-text-dark {
+    /* 用於淺色背景 (用戶指定的深海藍綠色系) */
+    background: linear-gradient(
+      to right,
+      #010d40,
+      #00697f,
+      #215a7e,
+      #00697f,
+      #010d40
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+    animation: gradient-sweep 4s linear infinite;
+  }
+
+  .gradient-text-light {
+    /* 用於深色背景 (用戶指定的極淺冰川色系) */
+    background: linear-gradient(
+      to right,
+      #cbedff,
+      #eefcff,
+      #c5f6ff,
+      #eefcff,
+      #cbedff
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+    animation: gradient-sweep 4s linear infinite;
+  }
+
+  @keyframes gradient-sweep {
+    0% { background-position: 200% center; }
+    100% { background-position: 0% center; }
+  }
+
   @media (max-width:980px){
     .switch-overlay{padding:100px 32px 60px;flex-direction:column;justify-content:center;align-items:flex-start;}
     .switch-top{max-width:100%;}
@@ -512,7 +554,7 @@
       align-items: baseline;
       justify-self: center;
       gap: 6px;
-      color: #0b1a2a;
+      color: #3a3a3a;
   }
   .solution-number .num {
       font-family: "Playfair Display", "Times New Roman", serif;
@@ -522,7 +564,7 @@
   }
   .solution-number .unit {
       font-size: 1.4rem;
-      color: #9c845b;
+      color: var(--primary);
       font-weight: 500;
   }
   .solution-image {
@@ -721,6 +763,42 @@
       background: linear-gradient(90deg, var(--c-accent-glow), transparent);
     }
 
+    /* Badge Header 動畫序列 (Icon -> 文字 -> 線條) */
+    .badge-header-group .badge-polygon-icon {
+      opacity: 0;
+      transform: scale(0);
+    }
+    .badge-header-group .badge-logo-text {
+      opacity: 0;
+      -webkit-clip-path: inset(0 100% 0 0);
+      clip-path: inset(0 100% 0 0);
+      transform: translateX(-10px);
+    }
+    .badge-header-group .badge-divider-line {
+      opacity: 0;
+      -webkit-clip-path: inset(0 100% 0 0);
+      clip-path: inset(0 100% 0 0);
+    }
+
+    .badge-header-group.in .badge-polygon-icon {
+      opacity: 1;
+      transform: scale(1);
+      transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .badge-header-group.in .badge-logo-text {
+      opacity: 1;
+      -webkit-clip-path: inset(0 0 0 0);
+      clip-path: inset(0 0 0 0);
+      transform: translateX(0);
+      transition: all 1.0s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s;
+    }
+    .badge-header-group.in .badge-divider-line {
+      opacity: 1;
+      -webkit-clip-path: inset(0 0 0 0);
+      clip-path: inset(0 0 0 0);
+      transition: all 2.5s cubic-bezier(0.2, 0.8, 0.2, 1) 1.0s;
+    }
+
     /* 主標題大字 */
     .info-main-h2 {
       font-family: var(--font-serif);
@@ -786,7 +864,7 @@
       transform-style: preserve-3d;
       transform: rotateX(24deg) rotateZ(-11deg) skewX(6deg) translateX(0);
       transition: transform 0.8s var(--ease-smooth);
-      padding-left: clamp(14vw, 20vw, 28vw);
+      padding-left: clamp(18vw, 26vw, 36vw);
       width: max-content;
     }
 
@@ -1299,7 +1377,7 @@
 
   <!-- IMPORTED CURATORIAL SECTION -->
   <section class="curator-section">
-    <div class="wrap reveal">
+    <div class="wrap">
       <div class="curator-header">
         <div style="display:flex; align-items:center; justify-content:flex-start; gap:16px; margin-bottom:16px;">
           <div style="display:flex; align-items:center; gap:12px;">
@@ -1336,7 +1414,7 @@
           <div class="switch-scrim"></div>
         </div>
 
-        <div class="switch-overlay reveal">
+        <div class="switch-overlay">
           <div class="switch-top">
             <h2>海沃控股集團<br>旗下<em>三大事業群</em></h2>
 
@@ -1542,7 +1620,7 @@
   <section class="cert-section" id="certifications">
     <div class="wrap cert-cluster-grid">
       <!-- Left side: Text -->
-      <div class="curator-header reveal" style="margin-bottom: 0;">
+      <div class="curator-header" style="margin-bottom: 0;">
         <div style="display:flex; align-items:center; justify-content:flex-start; gap:16px; margin-bottom:16px; width:100%;">
           <div style="display:flex; align-items:center; gap:12px;">
             <div class="badge-polygon-icon"></div>
@@ -1744,7 +1822,7 @@
   <!-- NEW: 白底聯絡表單區塊 -->
   <section class="contact-extended-section" id="inquiry">
     <div class="wrap">
-      <div class="white-block-form">
+      <div class="white-block-form reveal">
         <!-- 左半邊：情境圖 -->
         <div class="white-block-img">
           <img src="assets/hero-noir.jpg" alt="SEAWORTH Contact">
@@ -1903,8 +1981,44 @@
   navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
-  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); } else { e.target.classList.remove('in'); } }), { threshold:.12 });
+  // 強化文字與區塊的入場效果，確保滑入畫面 15% 後才觸發，讓使用者能清楚看見入場動畫
+  const io = new IntersectionObserver(es => es.forEach(e => { 
+    if (e.isIntersecting) { 
+      e.target.classList.add('in'); 
+      io.unobserve(e.target); // 觸發過一次後就解除觀察，節省瀏覽器效能
+    } 
+  }), { threshold: 0, rootMargin: '0px 0px -15% 0px' });
+
+  // 自動將重點文字與區塊加上 reveal 效果，不侷限於原本的大外框
+  document.querySelectorAll('h2:not(.wb-img-title):not(.white-block-form h2), h3, h4, p:not(.white-block-form p), .about-statement-large, .about-curatorial-text, .solution-row-item, .fac-item, .switch-list, .caption-panel > *, .info-en-subtitle, .info-points-list li, .footer-brand-sub, .footer-col-title, .footer-links-list li, .footer-bottom-bar > div').forEach(el => {
+    if (!el.classList.contains('reveal')) {
+      el.classList.add('reveal');
+    }
+  });
+
+  // 針對中文大標題 (h2) 加上流動漸層特效 (Gradient Text)，並根據其原本的文字顏色判斷是深色底還是淺色底
+  document.querySelectorAll('h2:not(.wb-img-title):not(.white-block-form h2)').forEach(el => {
+    const color = window.getComputedStyle(el).color;
+    // 如果文字原本是深黑色，代表它位在淺色背景上，適合套用您指定的深海藍綠色系
+    if (color === 'rgb(26, 26, 26)' || color === 'rgb(0, 0, 0)' || color === 'rgba(0, 0, 0, 1)' || color === 'rgb(28, 28, 28)') {
+      el.classList.add('gradient-text-dark');
+    } else {
+      // 否則視為位在深色背景上的淺色文字，使用提亮版的海洋漸層以免文字隱形
+      el.classList.add('gradient-text-light');
+    }
+  });
+
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // 動態綁定 Badge Header 的漸序動畫群組 (Icon -> Text -> Line)
+  document.querySelectorAll('.badge-polygon-icon').forEach(icon => {
+    // 根據 HTML 結構，通常它的爺爺節點或是特定的 .info-badge-row 會包住整個 badge header
+    let container = icon.closest('.info-badge-row') || icon.parentElement.parentElement;
+    if (container) {
+      container.classList.add('badge-header-group');
+      io.observe(container); // 加入同一組 observer 監控
+    }
+  });
 
   // 三大事業群切換（可點擊或捲動切換）
   (function () {
