@@ -243,7 +243,7 @@
             gap: 60px;
             position: relative;
             z-index: 2;
-            margin-bottom: -100px;
+            margin-bottom: -70px;
         }
         .about-hero-title {
             font-family: var(--font-display);
@@ -254,6 +254,8 @@
             color: var(--c-ink);
             font-weight: 400;
             margin: 0;
+            transform: translateY(-90px);
+            will-change: transform;
         }
         .about-hero-title .accent-line {
             color: var(--c-copper);
@@ -263,7 +265,7 @@
             margin-top: 8px;
         }
         .about-hero-desc {
-            max-width: 320px;
+            max-width: 620px;
             padding-top: 14px;
             text-align: right;
             flex-shrink: 0;
@@ -272,10 +274,6 @@
             font-size: 0.85rem;
             color: var(--c-muted);
             line-height: 1.9;
-            margin-bottom: 14px;
-        }
-        .about-hero-desc p:last-child {
-            margin-bottom: 0;
         }
         .about-hero-banner {
             position: relative;
@@ -286,8 +284,11 @@
         }
         .about-hero-banner img {
             width: 100%;
-            height: 100%;
+            height: 140%; /* 預留更多高度給視差滾動，效果更明顯 */
             object-fit: cover;
+            display: block;
+            will-change: transform;
+            transform: translateY(-30%); /* 初始預設防閃爍 */
         }
 
         /* 區塊 3：THE BLANZ POETIC ARCHITECTURE (三大事業群) */
@@ -790,7 +791,7 @@
             .about-hero-header {
                 flex-direction: column;
                 gap: 24px;
-                margin-bottom: -60px;
+                margin-bottom: 0;
             }
             .about-hero-desc {
                 text-align: left;
@@ -800,6 +801,13 @@
             .about-hero-banner {
                 margin-left: 10%;
                 height: 340px;
+            }
+            .dark-sectors-layout {
+                flex-direction: column;
+                gap: 32px;
+            }
+            .dark-sectors-intro {
+                flex: none;
             }
             .slices-3-grid {
                 grid-template-columns: repeat(3, 1fr);
@@ -826,7 +834,17 @@
                 font-size: 1.15rem;
             }
             .about-hero-header {
-                margin-bottom: -30px;
+                margin-bottom: 0;
+            }
+            .dark-sectors-row {
+                flex-direction: column;
+            }
+            .dark-sectors-row.row-1 .dark-card,
+            .dark-sectors-row.row-2 .dark-card {
+                height: 260px;
+            }
+            .dark-card-plain {
+                display: none;
             }
             .about-hero-banner {
                 margin-left: 0;
@@ -944,6 +962,106 @@
             .projects-4-grid {
                 grid-template-columns: 1fr;
             }
+        }
+
+        /* ----- 三事業 版型實驗 B CSS (深色背景) ----- */
+        .dark-sectors-section {
+            background: var(--c-ink);
+            padding: 140px 0;
+        }
+        .dark-sectors-layout {
+            display: flex;
+            gap: 60px;
+            align-items: flex-start;
+        }
+        .dark-sectors-intro {
+            flex: 0 0 280px;
+            padding-top: 8px;
+        }
+        .dark-sectors-title {
+            font-family: var(--font-display);
+            font-size: 2.6rem;
+            line-height: 1.2;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: #FFFFFF;
+            font-weight: 400;
+            margin-bottom: 22px;
+        }
+        .dark-sectors-desc {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.9;
+        }
+        .dark-sectors-grid {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            min-width: 0;
+        }
+        .dark-sectors-row {
+            display: flex;
+            gap: 16px;
+        }
+        .dark-sectors-row.row-1 .dark-card {
+            height: 320px;
+        }
+        .dark-sectors-row.row-2 .dark-card {
+            height: 260px;
+        }
+        .dark-card-lg { flex: 2.2; }
+        .dark-card-plain { flex: 1; }
+        .dark-card-md { flex: 1; }
+        .dark-card {
+            position: relative;
+            display: block;
+            overflow: hidden;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+        .dark-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.78);
+            transition: transform 0.6s var(--ease-poetic), filter 0.6s ease;
+        }
+        .dark-card:hover img {
+            transform: scale(1.05);
+            filter: brightness(0.6);
+        }
+        .dark-card-caption {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            padding: 28px 30px;
+            background: linear-gradient(0deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 65%);
+        }
+        .dark-card-caption h3 {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #FFFFFF;
+            margin-bottom: 8px;
+            letter-spacing: 0.02em;
+        }
+        .dark-card-caption p {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.72);
+            line-height: 1.7;
+            max-width: 420px;
+            margin-bottom: 14px;
+        }
+        .dark-card-link {
+            font-size: 0.78rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #FFFFFF;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            padding-bottom: 4px;
         }
 
         /* ----- 三事業 CSS ----- */
@@ -1156,8 +1274,7 @@
                     <span class="accent-line">全鏈路整合 ‧ 深耕全球大洋</span>
                 </h2>
                 <div class="about-hero-desc">
-                    <p>海沃控股集團（SEAWORTH HOLDING）成立於 2026 年，傳承逾四十載深厚根基，以整合遠洋漁業上下游資源、深化共善治理為使命。</p>
-                    <p>透過智慧化造船與合規管理，建立「從深海到市場」的一體化全球供應網絡，為大洋產業注入前瞻科技與永續責任。</p>
+                    <p>海沃控股集團（SEAWORTH HOLDING）成立於 2026 年，傳承逾四十載深厚根基，以整合遠洋漁業上下游資源、深化共善治理為使命，並建立「從深海到市場」的一體化全球供應網絡。</p>
                 </div>
             </div>
         </div>
@@ -1165,6 +1282,52 @@
         <!-- 大圖橫幅：貼齊視窗右側，並與上方文字疊在一起（不受 blanz-container 寬度限制） -->
         <div class="about-hero-banner">
             <img src="assets/hero-vessel.jpg" alt="現代化合規遠洋作業">
+        </div>
+    </section>
+
+    <!-- 區塊：三事業 - 版型實驗 B（深色背景，參考 OWN THE ONE 排版） -->
+    <section class="dark-sectors-section">
+        <div class="blanz-container">
+            <div class="dark-sectors-layout">
+                <div class="dark-sectors-intro">
+                    <h2 class="dark-sectors-title">SEAWORTH<br>HOLDING</h2>
+                    <p class="dark-sectors-desc">海沃控股集團（SEAWORTH HOLDING）成立於 2026 年，傳承逾四十載深厚根基，以整合遠洋漁業上下游資源、深化共善治理為使命。透過智慧化與合規管理，建立「從深海到市場」的一體化全球供應網絡。</p>
+                </div>
+
+                <div class="dark-sectors-grid">
+                    <div class="dark-sectors-row row-1">
+                        <a href="#" class="dark-card dark-card-lg">
+                            <img src="assets/華偉漁業事業群.jpeg" alt="華偉漁業事業群">
+                            <div class="dark-card-caption">
+                                <h3>華偉漁業事業群</h3>
+                                <p>傳承自 1983 年高雄前鎮漁港冷凍倉儲與第一艘圍網漁船，奠定集團雄厚實力與全球化根基。</p>
+                                <span class="dark-card-link">華偉 更多 →</span>
+                            </div>
+                        </a>
+                        <div class="dark-card dark-card-plain">
+                            <img src="assets/texture-band.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="dark-sectors-row row-2">
+                        <a href="#" class="dark-card dark-card-md">
+                            <img src="assets/巨寶漁業事業群.jpeg" alt="巨寶漁業事業群">
+                            <div class="dark-card-caption">
+                                <h3>巨寶漁業事業群</h3>
+                                <p>專營圍網捕撈與現代化冷凍運搬船，引進前瞻船舶設計與國際勞工合規標準。</p>
+                                <span class="dark-card-link">巨寶 更多 →</span>
+                            </div>
+                        </a>
+                        <a href="#" class="dark-card dark-card-md">
+                            <img src="assets/華昇魷釣事業群.jpeg" alt="華昇魷釣事業群">
+                            <div class="dark-card-caption">
+                                <h3>華昇魷釣事業群</h3>
+                                <p>專精魷魚秋刀魚船與延繩釣漁船，展現高技術漁法、生態永續與全球供應的頂尖專業。</p>
+                                <span class="dark-card-link">華昇 更多 →</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1656,6 +1819,38 @@
             }, 4500);
         }
     </script>
+    <!-- ABOUT 標題隨滾動位移效果：初始在更高處的白底，隨滾動進度即時下滑到疊圖位置 -->
+    <script>
+        (function() {
+            const aboutTitle = document.querySelector('.about-hero-title');
+            if (!aboutTitle) return;
+
+            const START_OFFSET = -90; // px，初始往上偏移的距離
+
+            function updateAboutTitle() {
+                const rect = aboutTitle.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    // 進度：從標題進入視窗底部（0）到完全離開視窗頂部（1），拉長距離讓位移更明顯
+                    const progress = Math.min(1, Math.max(0,
+                        (window.innerHeight - rect.top) / (window.innerHeight + rect.height)
+                    ));
+                    aboutTitle.style.transform = `translateY(${START_OFFSET * (1 - progress)}px)`;
+                }
+            }
+
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        updateAboutTitle();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+            updateAboutTitle();
+        })();
+    </script>
     <!-- 動態事業群輪播邏輯 -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -1720,7 +1915,7 @@
 
         // 圖片視差滾動效果 (Parallax Scrolling)
         (function() {
-            const parallaxImages = document.querySelectorAll('.card-img-wrapper img');
+            const parallaxImages = document.querySelectorAll('.card-img-wrapper img, .about-hero-banner img');
             
             function animateParallax() {
                 parallaxImages.forEach(img => {

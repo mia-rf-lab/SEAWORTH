@@ -102,17 +102,21 @@
   }
   .logo, .nav-links > li, .nav-toggle {
     opacity: 0;
-    animation: headerEntrance 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   }
-  .logo { animation-delay: 0.1s; }
-  .nav-links > li:nth-child(1) { animation-delay: 0.15s; }
-  .nav-links > li:nth-child(2) { animation-delay: 0.20s; }
-  .nav-links > li:nth-child(3) { animation-delay: 0.25s; }
-  .nav-links > li:nth-child(4) { animation-delay: 0.30s; }
-  .nav-links > li:nth-child(5) { animation-delay: 0.35s; }
-  .nav-links > li:nth-child(6) { animation-delay: 0.40s; }
-  .nav-links > li:nth-child(7) { animation-delay: 0.45s; }
-  .nav-toggle { animation-delay: 0.3s; }
+  body.page-loaded .logo, 
+  body.page-loaded .nav-links > li, 
+  body.page-loaded .nav-toggle {
+    animation: headerEntrance 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+  body.page-loaded .logo { animation-delay: 0.2s; }
+  body.page-loaded .nav-links > li:nth-child(1) { animation-delay: 0.3s; }
+  body.page-loaded .nav-links > li:nth-child(2) { animation-delay: 0.4s; }
+  body.page-loaded .nav-links > li:nth-child(3) { animation-delay: 0.5s; }
+  body.page-loaded .nav-links > li:nth-child(4) { animation-delay: 0.6s; }
+  body.page-loaded .nav-links > li:nth-child(5) { animation-delay: 0.7s; }
+  body.page-loaded .nav-links > li:nth-child(6) { animation-delay: 0.8s; }
+  body.page-loaded .nav-links > li:nth-child(7) { animation-delay: 0.9s; }
+  body.page-loaded .nav-toggle { animation-delay: 0.6s; }
 
   /* Dropdown Styles */
   .has-dropdown { position: relative; padding: 20px 0; cursor: pointer; }
@@ -174,8 +178,10 @@
     position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
     z-index: 10; display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer;
     opacity: 0;
+  }
+  body.page-loaded .scroll-indicator {
     animation: scrollIndicatorEntrance 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-    animation-delay: 1.5s;
+    animation-delay: 0.8s;
   }
   .boat-svg {
     width: 23px; height: 33px;
@@ -199,21 +205,6 @@
   .hero-tag{position:absolute;left:40px;bottom:34px;z-index:1;font-size:.78rem;letter-spacing:.1em;color:rgba(255,255,255,.7);}
   .hero-cta{position:absolute;right:40px;bottom:34px;z-index:1;display:flex;gap:12px;}
   .hero-cta .btn{padding:12px 24px;font-size:.78rem;}
-
-  /* ========================================================= */
-  /*  Scroll Reveal Animation for Headings (Blur & Rotate)     */
-  /* ========================================================= */
-  .reveal-block {
-    opacity: 0;
-    filter: blur(8px);
-    transform: translateY(20px);
-    transition: opacity 1s ease, filter 1s ease, transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
-  }
-  .reveal-block.visible {
-    opacity: 1;
-    filter: blur(0px);
-    transform: translateY(0);
-  }
 
   /* ===== BLACK SECTION / GROUP SWITCHER (full-bleed) ===== */
   .black-sec{background:transparent;color:#fff;}
@@ -1325,11 +1316,82 @@
       text-align: center;
       color: var(--text-soft);
   }
+  /* ========================================================= */
+  /*  Page Loading Screen                                      */
+  /* ========================================================= */
+  #page-loader {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--ci-boundless-blue);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    /* 背景延遲 0.3 秒才淡出，讓裡面的文字先消失 */
+    transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s, visibility 1.3s;
+  }
+  #page-loader.loaded {
+    opacity: 0;
+    visibility: hidden;
+  }
+  /* 讓文字跟海浪有自己的退場動畫 */
+  .loader-text, .loader-waves {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  #page-loader.loaded .loader-text,
+  #page-loader.loaded .loader-waves {
+    opacity: 0;
+    transform: translateY(-15px); /* 微微往上飄散 */
+  }
+  .loader-text {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    color: rgba(255, 255, 255, 0.75);
+    text-transform: uppercase;
+    margin-left: 0.2em; /* 為了平衡寬字距造成的視覺偏移 */
+  }
+  .loader-waves {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+  }
+  .loader-waves svg {
+    width: 36px;
+    height: 18px;
+    fill: var(--white);
+    margin: 0 -2px;
+    opacity: 0.2;
+    transform: scale(0.7);
+    animation: wavePulse 1.4s infinite ease-in-out;
+  }
+  .loader-waves svg:nth-child(1) { animation-delay: 0s; }
+  .loader-waves svg:nth-child(2) { animation-delay: 0.2s; }
+  .loader-waves svg:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes wavePulse {
+    0%, 100% { opacity: 0.2; transform: scale(0.7); }
+    40% { opacity: 1; transform: scale(1); }
+  }
 </style>
 
 <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
+
+  <!-- Loading Screen -->
+  <div id="page-loader">
+    <div class="loader-text">Loading</div>
+    <div class="loader-waves">
+      <svg viewBox="0 0 100 50"><path d="M50,0 Q75,30 100,30 Q50,50 0,30 Q25,30 50,0 Z" /></svg>
+      <svg viewBox="0 0 100 50"><path d="M50,0 Q75,30 100,30 Q50,50 0,30 Q25,30 50,0 Z" /></svg>
+      <svg viewBox="0 0 100 50"><path d="M50,0 Q75,30 100,30 Q50,50 0,30 Q25,30 50,0 Z" /></svg>
+    </div>
+  </div>
 
 <header id="siteHeader">
   <nav class="wrap">
@@ -2470,50 +2532,27 @@ lucide.createIcons();
         }
       });
 
-      // 稍微延遲後觸發動畫，讓字元一個接一個浮現
-      setTimeout(() => {
-        document.querySelectorAll('.scroll-float-char').forEach(span => {
-          span.classList.add('visible');
-        });
-      }, 150);
-    });
-    // ==========================================
-    // 大標題 ScrollReveal (模糊微旋轉浮現) 特效
-    // ==========================================
-    document.addEventListener('DOMContentLoaded', () => {
-      const titles = document.querySelectorAll('h2');
-      
-      // 因為部分 h2 使用了背景漸層 (background-clip: text; color: transparent)
-      // 若將文字拆分成 inline-block 的 span，漸層會無法跨字元連續顯示，導致文字隱形。
-      // 所以我們直接對整個 h2 區塊套用進場特效。
-      
-      titles.forEach(title => {
-        title.classList.add('reveal-block');
-      });
-
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px 0px 0px 0px',
-        threshold: 0.1
-      };
-
-      const titleObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            // 延遲一點點讓畫面有載入感
-            setTimeout(() => {
-              entry.target.classList.add('visible');
-            }, 100);
-            observer.unobserve(entry.target);
-          }
-        });
-      }, observerOptions);
-
-      titles.forEach(title => {
-        titleObserver.observe(title);
-      });
     });
   
+    // ==========================================
+    // Page Loading Screen Remove
+    // ==========================================
+    window.addEventListener('load', () => {
+      // 延遲一點點，確保動畫至少閃亮一下不會太快消失
+      setTimeout(() => {
+        document.getElementById('page-loader').classList.add('loaded');
+        
+        // 等待 Loading 背景開始溶出的時候 (延遲 300ms)，再觸發底下的入場動畫
+        setTimeout(() => {
+          document.body.classList.add('page-loaded');
+          document.querySelectorAll('.scroll-float-char').forEach(span => {
+            span.classList.add('visible');
+          });
+        }, 300);
+        
+      }, 600);
+    });
+
 </script>
 
 </body>
