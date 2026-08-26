@@ -144,7 +144,7 @@
     z-index: 10; display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer;
   }
   .boat-svg {
-    width: 24px; height: 29px;
+    width: 23px; height: 33px;
     animation: boatBounce 2.5s infinite ease-in-out;
   }
   .boat-fill {
@@ -1281,9 +1281,11 @@
     </div>
     
     <div class="scroll-indicator">
-      <svg viewBox="0 0 100 120" class="boat-svg">
-        <path d="M 35,10 L 65,10 L 85,30 L 85,75 L 50,110 L 15,75 L 15,30 Z" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="6" stroke-linejoin="miter"/>
-        <path d="M 35,10 L 65,10 L 85,30 L 85,75 L 50,110 L 15,75 L 15,30 Z" fill="white" class="boat-fill"/>
+      <svg viewBox="135 175 280 400" class="boat-svg">
+        <g transform="rotate(180 275 375)">
+          <path d="M180.7 530.2 l-30.8 -30.8 0.4 -69.5 c0.3 -67.1 0.4 -69.7 2.5 -79.2 10.4 -45.7 41.4 -92.2 90.2 -135 12.9 -11.3 31.4 -25.7 33 -25.7 1.6 0 20.2 14.5 33 25.8 48.8 42.8 79.8 89.3 90.2 135.2 2 9.1 2.2 12.4 2.5 78.9 l0.4 69.5 -30.8 30.8 -30.8 30.8 -64.5 0 -64.5 0 -30.8 -30.8z" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="16" stroke-linejoin="round"/>
+          <path d="M180.7 530.2 l-30.8 -30.8 0.4 -69.5 c0.3 -67.1 0.4 -69.7 2.5 -79.2 10.4 -45.7 41.4 -92.2 90.2 -135 12.9 -11.3 31.4 -25.7 33 -25.7 1.6 0 20.2 14.5 33 25.8 48.8 42.8 79.8 89.3 90.2 135.2 2 9.1 2.2 12.4 2.5 78.9 l0.4 69.5 -30.8 30.8 -30.8 30.8 -64.5 0 -64.5 0 -30.8 -30.8z" fill="white" class="boat-fill"/>
+        </g>
       </svg>
       <div class="scroll-text">SCROLL</div>
     </div>
