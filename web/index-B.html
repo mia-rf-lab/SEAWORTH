@@ -959,13 +959,11 @@
         }
         .card-img-wrapper img {
             width: 100%;
-            height: 100%;
+            height: 140%; /* 預留更多高度給視差滾動，效果更明顯 */
             object-fit: cover;
             display: block;
-            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        .group-card:hover .card-img-wrapper img {
-            transform: scale(1.04);
+            will-change: transform;
+            transform: translateY(-30%); /* 初始預設防閃爍 */
         }
         .overlay-panel {
             position: absolute;
@@ -1699,6 +1697,40 @@
             // Init
             startCarousel();
         });
+
+        // 圖片視差滾動效果 (Parallax Scrolling)
+        (function() {
+            const parallaxImages = document.querySelectorAll('.card-img-wrapper img');
+            
+            function animateParallax() {
+                parallaxImages.forEach(img => {
+                    const wrapper = img.parentElement;
+                    const rect = wrapper.getBoundingClientRect();
+                    // 確保元素在畫面內才進行運算
+                    if (rect.top < window.innerHeight && rect.bottom > 0) {
+                        // 計算滾動進度：0代表剛進入畫面底部，1代表即將離開畫面頂部
+                        const progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+                        
+                        // 擴大位移範圍，從 -30% 到 0%，讓滾動效果非常明顯
+                        const translateY = -30 + (progress * 30); 
+                        img.style.transform = `translateY(${translateY}%)`;
+                    }
+                });
+            }
+            
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        animateParallax();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+            // 初始化呼叫一次，確保初始位置正確
+            animateParallax();
+        })();
     </script>
 </body>
 </html>
