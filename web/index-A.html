@@ -118,17 +118,63 @@
   body.page-loaded .nav-links > li:nth-child(7) { animation-delay: 0.9s; }
   body.page-loaded .nav-toggle { animation-delay: 0.6s; }
 
-  /* Dropdown Styles */
+  /* Dropdown & Wave Indicator Styles */
   .has-dropdown { position: relative; padding: 20px 0; cursor: pointer; }
+  .has-dropdown .wave-indicator {
+    position: absolute; bottom: 5px; left: 50%; transform: translateX(-50%) translateY(5px);
+    opacity: 0; transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .has-dropdown .wave-indicator svg { width: 22px; height: 11px; fill: var(--ci-boundless-blue); }
+  .has-dropdown:hover > a { color: var(--ci-boundless-blue) !important; }
+  .has-dropdown:hover .wave-indicator { opacity: 1; transform: translateX(-50%) translateY(0); }
+
   .dropdown-menu {
-    position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(10px);
-    background: rgba(255, 255, 255, 0.98); border: 1px solid var(--line); border-radius: 8px;
-    padding: 10px 0; min-width: 160px; opacity: 0; visibility: hidden;
-    transition: all 0.3s ease; box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(15px);
+    background: rgba(255, 255, 255, 0.12); backdrop-filter: blur(24px) saturate(120%); -webkit-backdrop-filter: blur(24px) saturate(120%);
+    border: 1px solid rgba(255,255,255,0.25); border-radius: 12px;
+    padding: 8px; opacity: 0; visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); display: flex; flex-direction: column;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
   }
   .has-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
-  .dropdown-menu a { display: block; padding: 10px 24px !important; color: var(--text) !important; text-shadow: none !important; font-size: 0.85rem !important; text-align: center; white-space: nowrap; }
-  .dropdown-menu a:hover { background: rgba(0,0,0,0.03); color: var(--ci-boundless-blue) !important; }
+  
+  .dropdown-menu a { 
+    position: relative; z-index: 2; height: 42px; line-height: 42px; padding: 0 16px !important; 
+    color: rgba(255, 255, 255, 0.9) !important; text-shadow: 0 1px 4px rgba(0,0,0,0.3) !important; font-size: 0.85rem !important; 
+    text-align: center; white-space: nowrap; letter-spacing: 0.05em; transition: all 0.3s !important; 
+    display: block; box-sizing: border-box; border-radius: 8px;
+  }
+  .nav-links .dropdown-menu a:hover { color: #fff !important; font-weight: 600; text-shadow: 0 2px 8px rgba(0,0,0,0.5) !important; }
+  
+  .magnetic-bg {
+    position: absolute; top: 8px; left: 8px; right: 8px; height: 42px; 
+    background: rgba(0, 139, 156, 0.5); border-radius: 8px; /* 提高明度讓他在深色底中顯現 */
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    z-index: 1; pointer-events: none; opacity: 0;
+  }
+  .dropdown-menu:hover .magnetic-bg { opacity: 1; }
+  .dropdown-menu:has(a:nth-of-type(1):hover) .magnetic-bg { transform: translateY(0); }
+  .dropdown-menu:has(a:nth-of-type(2):hover) .magnetic-bg { transform: translateY(42px); }
+  .dropdown-menu:has(a:nth-of-type(3):hover) .magnetic-bg { transform: translateY(84px); }
+  .dropdown-menu:has(a:nth-of-type(4):hover) .magnetic-bg { transform: translateY(126px); }
+
+  /* ===== 滑動到白底區塊時的選單樣式 (Scrolled State) ===== */
+  header.scrolled .dropdown-menu {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  }
+  header.scrolled .dropdown-menu a {
+    color: var(--text) !important;
+    text-shadow: none !important;
+  }
+  header.scrolled .nav-links .dropdown-menu a:hover {
+    color: var(--ci-abundant-blue) !important;
+    text-shadow: none !important;
+  }
+  header.scrolled .magnetic-bg {
+    background: rgba(0, 139, 156, 0.1); /* 在白底變成淡淡的藍色指示區塊 */
+  }
 
   .nav-toggle{display:none;background:none;border:0;cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:auto;flex-shrink:0;}
   .nav-toggle span{width:22px;height:2px;background:#fff;display:block;transition:background .3s;}
@@ -469,12 +515,15 @@
     
     .has-dropdown { padding: 0; width: 100%; }
     .dropdown-menu {
-      position: static; transform: none !important; opacity: 1; visibility: visible;
-      background: transparent; box-shadow: none; border: none; padding: 10px 0 0 16px;
-      display: none;
+      position: static; transform: none; box-shadow: none; border: 0;
+      background: rgba(0,0,0,0.03); display: none; visibility: visible; opacity: 1;
+      padding: 10px 20px;
     }
     .has-dropdown:hover .dropdown-menu, .has-dropdown:focus-within .dropdown-menu { display: block; }
-    .dropdown-menu a { text-align: left; padding: 8px 0 !important; font-size: 0.9rem !important; }
+    .dropdown-menu a { text-align: left; padding: 8px 0 !important; font-size: 0.9rem !important; height: auto; line-height: normal; }
+    .dropdown-menu .magnetic-bg { display: none; }
+    .has-dropdown .wave-indicator { display: none; }
+    
     .nav-toggle{display:flex;}
     .hero-tag{left:22px;bottom:20px;}
     .hero-cta{right:22px;bottom:20px;}
@@ -1402,51 +1451,63 @@
     <ul class="nav-links" id="navLinks">
       <li class="has-dropdown">
         <a href="#about">集團總覽</a>
-        <ul class="dropdown-menu">
-          <li><a href="#about">關於海沃</a></li>
-          <li><a href="#facility">事業版圖</a></li>
-          <li><a href="#facility">技術整合能力</a></li>
-        </ul>
+        <div class="wave-indicator"><svg viewBox="0 0 100 50"><path d="M50,0 Q75,30 100,30 Q50,50 0,30 Q25,30 50,0 Z" /></svg></div>
+        <div class="dropdown-menu">
+          <div class="magnetic-bg"></div>
+          <a href="#about">關於海沃</a>
+          <a href="#facility">事業版圖</a>
+          <a href="#facility">技術整合能力</a>
+        </div>
       </li>
       <li class="has-dropdown">
         <a href="#about">公司治理</a>
-        <ul class="dropdown-menu">
-          <li><a href="#about">公司治理架構</a></li>
-          <li><a href="#about">風險管理政策</a></li>
-          <li><a href="#about">內部稽核與內控制度</a></li>
-          <li><a href="#about">誠信經營守則</a></li>
-        </ul>
+        <div class="wave-indicator"><svg viewBox="0 0 100 50"><path d="M50,0 Q75,30 100,30 Q50,50 0,30 Q25,30 50,0 Z" /></svg></div>
+        <div class="dropdown-menu">
+          <div class="magnetic-bg"></div>
+          <a href="#about">公司治理架構</a>
+          <a href="#about">風險管理政策</a>
+          <a href="#about">內部稽核與內控制度</a>
+          <a href="#about">誠信經營守則</a>
+        </div>
       </li>
       <li class="has-dropdown">
         <a href="#esg">共善經營</a>
-        <ul class="dropdown-menu">
-          <li><a href="#esg">環境保護</a></li>
-          <li><a href="#esg">社會責任</a></li>
-        </ul>
+        <div class="wave-indicator"><svg viewBox="0 0 100 50"><path d="M50,0 Q75,30 100,30 Q50,50 0,30 Q25,30 50,0 Z" /></svg></div>
+        <div class="dropdown-menu">
+          <div class="magnetic-bg"></div>
+          <a href="#esg">環境保護</a>
+          <a href="#esg">社會責任</a>
+        </div>
       </li>
       <li class="has-dropdown">
         <a href="#esg">投資人專區</a>
-        <ul class="dropdown-menu">
-          <li><a href="#esg">投資亮點</a></li>
-          <li><a href="#esg">策略布局</a></li>
-          <li><a href="#esg">股東訊息</a></li>
-        </ul>
+        <div class="wave-indicator"><svg viewBox="0 0 100 50"><path d="M50,0 Q75,30 100,30 Q50,50 0,30 Q25,30 50,0 Z" /></svg></div>
+        <div class="dropdown-menu">
+          <div class="magnetic-bg"></div>
+          <a href="#esg">投資亮點</a>
+          <a href="#esg">策略布局</a>
+          <a href="#esg">股東訊息</a>
+        </div>
       </li>
       <li class="has-dropdown">
         <a href="#about">最新消息</a>
-        <ul class="dropdown-menu">
-          <li><a href="#about">官方公告</a></li>
-          <li><a href="#about">企業動態</a></li>
-          <li><a href="#esg">永續實踐</a></li>
-        </ul>
+        <div class="wave-indicator"><svg viewBox="0 0 100 50"><path d="M50,0 Q75,30 100,30 Q50,50 0,30 Q25,30 50,0 Z" /></svg></div>
+        <div class="dropdown-menu">
+          <div class="magnetic-bg"></div>
+          <a href="#about">官方公告</a>
+          <a href="#about">企業動態</a>
+          <a href="#esg">永續實踐</a>
+        </div>
       </li>
       <li class="has-dropdown">
         <a href="#contact">聯繫海沃</a>
-        <ul class="dropdown-menu">
-          <li><a href="#split">營運據點</a></li>
-          <li><a href="#contact">聯絡我們</a></li>
-          <li><a href="#contact">人才招募</a></li>
-        </ul>
+        <div class="wave-indicator"><svg viewBox="0 0 100 50"><path d="M50,0 Q75,30 100,30 Q50,50 0,30 Q25,30 50,0 Z" /></svg></div>
+        <div class="dropdown-menu">
+          <div class="magnetic-bg"></div>
+          <a href="#split">營運據點</a>
+          <a href="#contact">聯絡我們</a>
+          <a href="#contact">人才招募</a>
+        </div>
       </li>
       <li>
         <a href="#" class="lang-switch" style="border: 1px solid rgba(255,255,255,0.4); padding: 4px 12px; border-radius: 20px; font-family: var(--font-en); font-size: 0.8rem; letter-spacing: 0.05em;">EN</a>

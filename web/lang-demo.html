@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>高級語系切換提案預覽</title>
+<style>
+  :root {
+    --ci-boundless-blue: #008B9C;
+    --white: #FFFFFF;
+    --bg-dark: #071724; 
+    --font-cn: 'Noto Sans TC', sans-serif;
+    --font-en: 'Courier New', Courier, monospace;
+  }
+  body { 
+    background: var(--bg-dark); 
+    color: var(--white);
+    font-family: var(--font-cn);
+    margin: 0; padding: 0;
+    display: flex; flex-direction: column;
+    min-height: 100vh;
+  }
+  .demo-header {
+    text-align: center; padding: 40px; border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .demo-title-main { color: #8bcbd3; font-weight: 300; letter-spacing: 0.1em; font-size: 1.2rem; line-height: 1.8; }
+  
+  .demo-section {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: flex; justify-content: center; align-items: center;
+    background: url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat;
+  }
+  .demo-section::before {
+    content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.5);
+  }
+  
+  .demo-label {
+    position: absolute; top: 20px; left: 20px; z-index: 10;
+    background: rgba(0,0,0,0.6); padding: 8px 18px; border-radius: 20px; font-size: 0.85rem; letter-spacing: 0.1em;
+  }
+
+  /* =================================================
+     提案 4: 全螢幕語系展廳
+     ================================================= */
+  .lang-btn-4 {
+    position: relative; z-index: 20;
+    font-size: 0.9rem; letter-spacing: 0.2em; cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.3); padding: 12px 28px; border-radius: 30px;
+    transition: all 0.3s;
+  }
+  .lang-btn-4:hover { background: #fff; color: #000; }
+  
+  .overlay-4 {
+    position: absolute; inset: 0; z-index: 30;
+    background: rgba(0, 15, 30, 0.85); backdrop-filter: blur(20px);
+    display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 40px;
+    opacity: 0; pointer-events: none; transition: opacity 0.5s ease;
+  }
+  .overlay-4.active { opacity: 1; pointer-events: auto; }
+  .overlay-4-close { position: absolute; top: 40px; right: 50px; font-size: 3rem; font-weight: 100; cursor: pointer; color: rgba(255,255,255,0.4); transition: color 0.3s;}
+  .overlay-4-close:hover { color: #fff; }
+  .overlay-4 a {
+    color: rgba(255,255,255,0.3); text-decoration: none; font-size: 3rem; font-weight: 300; letter-spacing: 0.1em;
+    transition: all 0.4s ease;
+  }
+  .overlay-4 a:hover { color: #fff; transform: scale(1.05); text-shadow: 0 0 30px rgba(255,255,255,0.5); }
+
+
+  /* =================================================
+     提案 5: 航海座標儀 (Cyber/Radar)
+     ================================================= */
+  .lang-btn-5 {
+    position: relative; z-index: 20;
+    font-family: var(--font-en); font-size: 0.95rem; letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.7); cursor: pointer;
+    display: flex; align-items: center; gap: 15px;
+    padding: 12px 24px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.15);
+    box-shadow: inset 0 0 20px rgba(0,139,156,0.1);
+    transition: all 0.3s ease;
+  }
+  .radar-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #00e5ff;
+    box-shadow: 0 0 10px #00e5ff;
+    position: relative;
+  }
+  .radar-dot::after {
+    content: ''; position: absolute; inset: -5px; border-radius: 50%;
+    border: 1px solid #00e5ff;
+    animation: radarPing 2s infinite ease-out;
+  }
+  @keyframes radarPing {
+    0% { transform: scale(0.5); opacity: 1; }
+    100% { transform: scale(2.5); opacity: 0; }
+  }
+  .lang-btn-5:hover { color: #00e5ff; border-color: rgba(0,229,255,0.4); background: rgba(0,229,255,0.05); }
+
+
+  /* =================================================
+     提案 6: 懸浮水滴 (Magnetic Lens)
+     ================================================= */
+  .lang-btn-6-wrapper {
+    position: relative; z-index: 20; width: 120px; height: 120px;
+    display: flex; justify-content: center; align-items: center;
+  }
+  .lang-btn-6 {
+    width: 55px; height: 55px; border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.3);
+    display: flex; justify-content: center; align-items: center;
+    font-size: 0.9rem; letter-spacing: 0.1em; color: #fff;
+    cursor: pointer; transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3), inset 0 0 15px rgba(255,255,255,0.1);
+  }
+  .lang-btn-6-wrapper:hover .lang-btn-6 {
+    background: rgba(255, 255, 255, 0.15); border-color: #fff;
+  }
+
+</style>
+</head>
+<body>
+
+  <div class="demo-header">
+    <div class="demo-title-main">既然要顛覆，我們就連按鈕都不當了！<br>針對語系切換器 (Language Switch) 的 3 種進階微互動提案</div>
+  </div>
+
+  <!-- Style 4 -->
+  <div class="demo-section">
+    <div class="demo-label">提案 4：全螢幕語系展廳 (點擊觸發) - 頂級奢侈品牌最愛</div>
+    <div class="lang-btn-4" id="btn4">GLOBAL</div>
+    
+    <div class="overlay-4" id="overlay4">
+      <div class="overlay-4-close" id="close4">&times;</div>
+      <a href="#">亞洲區 (繁體中文)</a>
+      <a href="#">GLOBAL (ENGLISH)</a>
+    </div>
+  </div>
+
+  <!-- Style 5 -->
+  <div class="demo-section">
+    <div class="demo-label">提案 5：航海座標儀 (Hover 會有儀表板解碼密碼特效) - 科技感爆棚</div>
+    <div class="lang-btn-5" id="btn5">
+      <div class="radar-dot"></div>
+      <span>[ LANG // <span id="cyber-text">EN</span> ]</span>
+    </div>
+  </div>
+
+  <!-- Style 6 -->
+  <div class="demo-section">
+    <div class="demo-label">提案 6：懸浮水滴 / 磁吸透鏡 (游標靠近時會有磁力吸附) - 細節狂魔</div>
+    <div class="lang-btn-6-wrapper" id="magWrap">
+      <div class="lang-btn-6" id="magBtn">EN</div>
+    </div>
+  </div>
+
+  <script>
+    // Style 4 Logic
+    document.getElementById('btn4').addEventListener('click', () => {
+      document.getElementById('overlay4').classList.add('active');
+    });
+    document.getElementById('close4').addEventListener('click', () => {
+      document.getElementById('overlay4').classList.remove('active');
+    });
+
+    // Style 5 Logic (Cyber Glitch)
+    const btn5 = document.getElementById('btn5');
+    const cyberText = document.getElementById('cyber-text');
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%*';
+    let glitchInterval;
+    
+    btn5.addEventListener('mouseenter', () => {
+      let iteration = 0;
+      clearInterval(glitchInterval);
+      glitchInterval = setInterval(() => {
+        cyberText.innerText = cyberText.innerText.split('').map((letter, index) => {
+          if(index < iteration) return 'TW'[index] || ' ';
+          return chars[Math.floor(Math.random() * chars.length)];
+        }).join('');
+        
+        if(iteration >= 2) clearInterval(glitchInterval);
+        iteration += 1/3; // Speed of decoding
+      }, 30);
+    });
+    
+    btn5.addEventListener('mouseleave', () => {
+      let iteration = 0;
+      clearInterval(glitchInterval);
+      glitchInterval = setInterval(() => {
+        cyberText.innerText = cyberText.innerText.split('').map((letter, index) => {
+          if(index < iteration) return 'EN'[index] || ' ';
+          return chars[Math.floor(Math.random() * chars.length)];
+        }).join('');
+        
+        if(iteration >= 2) clearInterval(glitchInterval);
+        iteration += 1/3;
+      }, 30);
+    });
+
+    // Style 6 Logic (Magnetic Hover)
+    const magWrap = document.getElementById('magWrap');
+    const magBtn = document.getElementById('magBtn');
+    
+    magWrap.addEventListener('mousemove', (e) => {
+      const rect = magWrap.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      
+      // Move button towards cursor (0.5 is magnetic strength)
+      magBtn.style.transform = `translate(${x * 0.5}px, ${y * 0.5}px)`;
+    });
+    
+    magWrap.addEventListener('mouseleave', () => {
+      // Reset position
+      magBtn.style.transform = `translate(0px, 0px)`;
+    });
+
+  </script>
+</body>
+</html>

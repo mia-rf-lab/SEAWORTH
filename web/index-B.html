@@ -802,7 +802,7 @@
                 margin-left: 10%;
                 height: 340px;
             }
-            .dark-sectors-layout {
+            .dark-sectors-top {
                 flex-direction: column;
                 gap: 32px;
             }
@@ -966,10 +966,15 @@
 
         /* ----- 三事業 版型實驗 B CSS (深色背景) ----- */
         .dark-sectors-section {
-            background: var(--c-ink);
+            background: var(--c-white);
             padding: 140px 0;
         }
         .dark-sectors-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .dark-sectors-top {
             display: flex;
             gap: 60px;
             align-items: flex-start;
@@ -984,25 +989,24 @@
             line-height: 1.2;
             letter-spacing: 0.04em;
             text-transform: uppercase;
-            color: #FFFFFF;
+            color: var(--c-ink);
             font-weight: 400;
-            margin-bottom: 22px;
+            margin-bottom: 0;
         }
-        .dark-sectors-desc {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.6);
-            line-height: 1.9;
-        }
-        .dark-sectors-grid {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            min-width: 0;
+        .dark-sectors-accent {
+            display: block;
+            font-family: var(--font-serif);
+            font-size: 20px;
+            color: var(--c-copper);
+            letter-spacing: 0.15em;
         }
         .dark-sectors-row {
             display: flex;
             gap: 16px;
+        }
+        .dark-sectors-row.row-1 {
+            flex: 1;
+            min-width: 0;
         }
         .dark-sectors-row.row-1 .dark-card {
             height: 320px;
@@ -1010,9 +1014,10 @@
         .dark-sectors-row.row-2 .dark-card {
             height: 260px;
         }
-        .dark-card-lg { flex: 2.2; }
-        .dark-card-plain { flex: 1; }
-        .dark-card-md { flex: 1; }
+        .dark-card-lg { flex: 3.5; }
+        .dark-card-plain { flex: 0.8; }
+        .dark-sectors-row.row-2 .dark-card-md:first-child { flex: 1.3; }
+        .dark-sectors-row.row-2 .dark-card-md:last-child { flex: 1; }
         .dark-card {
             position: relative;
             display: block;
@@ -1289,13 +1294,11 @@
     <section class="dark-sectors-section">
         <div class="blanz-container">
             <div class="dark-sectors-layout">
-                <div class="dark-sectors-intro">
-                    <h2 class="dark-sectors-title">SEAWORTH<br>HOLDING</h2>
-                    <p class="dark-sectors-desc">海沃控股集團（SEAWORTH HOLDING）成立於 2026 年，傳承逾四十載深厚根基，以整合遠洋漁業上下游資源、深化共善治理為使命。透過智慧化與合規管理，建立「從深海到市場」的一體化全球供應網絡。</p>
-                </div>
-
-                <div class="dark-sectors-grid">
+                <div class="dark-sectors-top">
                     <div class="dark-sectors-row row-1">
+                        <div class="dark-card dark-card-plain">
+                            <img src="assets/texture-band.jpg" alt="">
+                        </div>
                         <a href="#" class="dark-card dark-card-lg">
                             <img src="assets/華偉漁業事業群.jpeg" alt="華偉漁業事業群">
                             <div class="dark-card-caption">
@@ -1304,28 +1307,32 @@
                                 <span class="dark-card-link">華偉 更多 →</span>
                             </div>
                         </a>
-                        <div class="dark-card dark-card-plain">
-                            <img src="assets/texture-band.jpg" alt="">
+                    </div>
+
+                    <div class="dark-sectors-intro">
+                        <h2 class="dark-sectors-title">SEAWORTH<br>HOLDING</h2>
+                        <span class="dark-sectors-accent">全鏈路整合 ‧ 深耕全球大洋</span>
+                    </div>
+                </div>
+
+                <!-- 下排滿版：寬度延伸到左側文字底下，不受側欄限制 -->
+                <div class="dark-sectors-row row-2">
+                    <a href="#" class="dark-card dark-card-md">
+                        <img src="assets/巨寶漁業事業群.jpeg" alt="巨寶漁業事業群">
+                        <div class="dark-card-caption">
+                            <h3>巨寶漁業事業群</h3>
+                            <p>專營圍網捕撈與現代化冷凍運搬船，引進前瞻船舶設計與國際勞工合規標準。</p>
+                            <span class="dark-card-link">巨寶 更多 →</span>
                         </div>
-                    </div>
-                    <div class="dark-sectors-row row-2">
-                        <a href="#" class="dark-card dark-card-md">
-                            <img src="assets/巨寶漁業事業群.jpeg" alt="巨寶漁業事業群">
-                            <div class="dark-card-caption">
-                                <h3>巨寶漁業事業群</h3>
-                                <p>專營圍網捕撈與現代化冷凍運搬船，引進前瞻船舶設計與國際勞工合規標準。</p>
-                                <span class="dark-card-link">巨寶 更多 →</span>
-                            </div>
-                        </a>
-                        <a href="#" class="dark-card dark-card-md">
-                            <img src="assets/華昇魷釣事業群.jpeg" alt="華昇魷釣事業群">
-                            <div class="dark-card-caption">
-                                <h3>華昇魷釣事業群</h3>
-                                <p>專精魷魚秋刀魚船與延繩釣漁船，展現高技術漁法、生態永續與全球供應的頂尖專業。</p>
-                                <span class="dark-card-link">華昇 更多 →</span>
-                            </div>
-                        </a>
-                    </div>
+                    </a>
+                    <a href="#" class="dark-card dark-card-md">
+                        <img src="assets/華昇魷釣事業群.jpeg" alt="華昇魷釣事業群">
+                        <div class="dark-card-caption">
+                            <h3>華昇魷釣事業群</h3>
+                            <p>專精魷魚秋刀魚船與延繩釣漁船，展現高技術漁法、生態永續與全球供應的頂尖專業。</p>
+                            <span class="dark-card-link">華昇 更多 →</span>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -1338,7 +1345,7 @@
             <div class="header-block">
                 <div style="margin-bottom: 24px;">
                     <h2 class="projects-h2" style="margin-bottom: 0px;">SEAWORTH HOLDING</h2>
-                    <span style="font-family: var(--font-serif); font-size: 20px; color: var(--c-muted); letter-spacing: 0.15em;">全鏈路整合・深耕全球大洋</span>
+                    <span style="font-family: var(--font-serif); font-size: 20px; color: var(--c-copper); letter-spacing: 0.15em;">全鏈路整合・深耕全球大洋</span>
                 </div>
                 <p>海沃控股集團（SEAWORTH HOLDING）成立於 2026 年，傳承逾四十載深厚根基，以整合遠洋漁業上下游資源、深化共善治理為使命。透過智慧化與合規管理，建立「從深海到市場」的一體化全球供應網絡。</p>
             </div>
@@ -1425,7 +1432,7 @@
                 <div class="poetic-quote-desc">
                     <div>
                         <h2 class="projects-h2" style="margin-bottom: 0px;">CORE SECTORS</h2>
-                        <span style="font-family: var(--font-serif); font-size: 20px; color: var(--c-muted); letter-spacing: 0.15em;">三大核心事業群</span>
+                        <span style="font-family: var(--font-serif); font-size: 20px; color: var(--c-copper); letter-spacing: 0.15em;">三大核心事業群</span>
                     </div>
                     <div>
                         <p style="font-size: 0.95rem; color: var(--c-charcoal); line-height: 2.1;">
@@ -1481,7 +1488,7 @@
                 <div class="split-city-overlay">
                     <div style="text-align: center;">
                         <h2 class="projects-h2" style="margin-bottom: 0px; color: #fff;">GLOBAL SCALE</h2>
-                        <span style="font-family: var(--font-serif); font-size: 20px; color: rgba(255,255,255,0.7); letter-spacing: 0.15em;">全球營運規模與里程碑</span>
+                        <span style="font-family: var(--font-serif); font-size: 20px; color: var(--c-copper-light); letter-spacing: 0.15em;">全球營運規模與里程碑</span>
                     </div>
                 </div>
             </div>
@@ -1546,7 +1553,7 @@
                 <div class="esg-editorial-right">
                     <div style="margin-bottom: 30px;">
                         <h2 class="projects-h2" style="margin-bottom: 0px;">SUSTAINABILITY</h2>
-                        <span style="font-family: var(--font-serif); font-size: 20px; color: var(--c-muted); letter-spacing: 0.15em;">共善經營 ‧ 責任引領產業升級</span>
+                        <span style="font-family: var(--font-serif); font-size: 20px; color: var(--c-copper); letter-spacing: 0.15em;">共善經營 ‧ 責任引領產業升級</span>
                     </div>
 
                     <!-- E -->
@@ -1586,7 +1593,7 @@
             <div class="projects-header-top">
                 <div>
                     <h2 class="projects-h2" style="margin-bottom: 0px;">FLEET & BASES</h2>
-                    <span style="font-family: var(--font-serif); font-size: 20px; color: var(--c-muted); letter-spacing: 0.15em;">全球船隊與營運樞紐</span>
+                    <span style="font-family: var(--font-serif); font-size: 20px; color: var(--c-copper); letter-spacing: 0.15em;">全球船隊與營運樞紐</span>
                 </div>
                 <a href="#contact" style="font-family: var(--font-display); font-size: 0.82rem; letter-spacing: 0.15em; color: var(--c-ink); text-decoration: none;">VIEW ALL FLEETS →</a>
             </div>
@@ -1656,7 +1663,7 @@
                 <div class="rotunda-right-text">
                     <div style="margin-bottom: 24px;">
                         <h2 class="projects-h2" style="margin-bottom: 0px;">COMPLIANCE</h2>
-                        <span style="font-family: var(--font-serif); font-size: 20px; color: var(--c-muted); letter-spacing: 0.15em;">國際合規認證 ‧ 全球合作網絡</span>
+                        <span style="font-family: var(--font-serif); font-size: 20px; color: var(--c-copper); letter-spacing: 0.15em;">國際合規認證 ‧ 全球合作網絡</span>
                     </div>
                     <p style="font-size: 0.95rem; color: var(--c-muted); line-height: 2.1; margin-bottom: 24px;">
                         海沃控股集團榮獲多項國際權威組織認證，與亞洲、歐洲、美洲主流市場及 PNA 國家建立長期穩固的戰略夥伴關係。
