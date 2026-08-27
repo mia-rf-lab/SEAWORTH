@@ -46,8 +46,8 @@
             --c-charcoal: #1E2229;
             --c-ink: #0E1217;
             --c-muted: #848B96;
-            --c-copper: #C28766;         /* 詩意銅金/暖赭點綴 */
-            --c-copper-light: #E8D3C5;
+            --c-copper: var(--c-subtitle-blue);  /* 詩意點綴色，統一改為海沃富蘊藍 */
+            --c-copper-light: #B2C8CE;
             --c-subtitle-blue: #00495B;  /* 海沃富蘊藍 */
             --c-ocean-deep: #162B40;     /* 藝術深海藍 */
             --c-line: rgba(0, 0, 0, 0.08);
@@ -217,6 +217,11 @@
             position: absolute;
             inset: 0;
             z-index: -1;
+            animation: hero-bg-reveal 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+        }
+        @keyframes hero-bg-reveal {
+            from { opacity: 0; transform: scale(1.08); }
+            to { opacity: 1; transform: scale(1); }
         }
         .hero-bg-img {
             position: absolute;
@@ -1144,7 +1149,7 @@
             padding-bottom: 50px;
         }
         #three-sectors {
-            padding-top: 0px;
+            padding-top: 100px;
         }
         .staggered-layout {
             display: flex;
@@ -1186,7 +1191,7 @@
             vector-effect: non-scaling-stroke;
         }
         .staggered-lineart .lineart-accent {
-            fill: rgba(194, 135, 102, 0.6);
+            fill: rgba(0, 73, 91, 0.6);
             stroke: none;
         }
         @keyframes ship-float {
@@ -1485,7 +1490,7 @@
             content: "";
             position: absolute;
             inset: 6px;
-            border: 1px solid rgba(194, 135, 102, 0.35);
+            border: 1px solid rgba(0, 73, 91, 0.35);
             border-radius: 50%;
         }
         .medallion-frame img {
@@ -1625,16 +1630,12 @@
             align-items: center;
             margin-top: 60px;
         }
-        .flagship-left p.flagship-tag,
-        .flagship-left h3,
-        .flagship-left p.flagship-desc,
-        .flagship-num,
-        .flagship-num-label,
-        .flagship-photo img {
-            transition: opacity 0.3s ease;
+        .flagship-pop {
+            animation: flagship-content-pop 0.5s cubic-bezier(0.22, 1, 0.36, 1);
         }
-        .flagship-fade {
-            opacity: 0;
+        @keyframes flagship-content-pop {
+            from { opacity: 0.4; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .flagship-left {
             justify-self: end;
@@ -1901,7 +1902,7 @@
 
                 <path class="lineart-wave" d="M -2 96.8 C 18 99.6, 38 94.6, 58 98.2 C 76 101, 92 96.4, 110 99.2" />
                 <path class="lineart-echo" d="M -2 94.4 C 18 97, 38 92.2, 58 95.6 C 76 98.4, 92 94, 110 96.6" />
-                <circle class="lineart-accent" cx="38" cy="94.6" r="0.4" />
+                <circle class="lineart-accent" cx="76" cy="99.2" r="0.35" />
             </svg>
 
             <!-- Group 1: WIN HOPE 707 (華偉) -->
@@ -2583,6 +2584,12 @@
                 }
             ];
 
+            // 預先載入每一組狀態的圖片，避免滾動切換時卡在讀取空白畫面
+            states.forEach(s => {
+                const preloadImg = new Image();
+                preloadImg.src = s.photo;
+            });
+
             const tagEl = document.getElementById('flagshipTag');
             const titleEl = document.getElementById('flagshipTitle');
             const descEl = document.getElementById('flagshipDesc');
@@ -2590,32 +2597,36 @@
             const numEl = document.getElementById('flagshipNum');
             const labelEl = document.getElementById('flagshipLabel');
             const dots = document.querySelectorAll('.flagship-dot');
-            const fadeTargets = [tagEl, titleEl, descEl, photoEl, numEl, labelEl];
+            const animTargets = [
+                document.querySelector('.flagship-left'),
+                document.querySelector('.flagship-photo'),
+                document.querySelector('.flagship-right')
+            ];
 
             let currentIndex = 0;
-            let fadeTimer = null;
 
             function applyState(index) {
-                if (index === currentIndex && fadeTimer === null) return;
+                if (index === currentIndex) return;
                 currentIndex = index;
                 const s = states[index];
 
-                fadeTargets.forEach(el => el.classList.add('flagship-fade'));
-
-                clearTimeout(fadeTimer);
-                fadeTimer = setTimeout(() => {
-                    tagEl.textContent = s.tag;
-                    titleEl.textContent = s.title;
-                    descEl.textContent = s.desc;
-                    photoEl.src = s.photo;
-                    photoEl.alt = s.title;
-                    numEl.textContent = s.num;
-                    labelEl.innerHTML = s.label;
-                    fadeTargets.forEach(el => el.classList.remove('flagship-fade'));
-                    fadeTimer = null;
-                }, 220);
+                tagEl.textContent = s.tag;
+                titleEl.textContent = s.title;
+                descEl.textContent = s.desc;
+                photoEl.src = s.photo;
+                photoEl.alt = s.title;
+                numEl.textContent = s.num;
+                labelEl.innerHTML = s.label;
 
                 dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+
+                // 內容已即時更新，這裡只是疊加一個輕巧的進場動畫，不會卡住畫面
+                animTargets.forEach(el => {
+                    if (!el) return;
+                    el.classList.remove('flagship-pop');
+                    void el.offsetWidth; // 強制 reflow，讓動畫可以重新觸發
+                    el.classList.add('flagship-pop');
+                });
             }
 
             function onScroll() {
