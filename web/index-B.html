@@ -138,6 +138,7 @@
             backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--c-line);
             transition: all 0.4s var(--ease-poetic);
+            animation: hero-fade-down 1s cubic-bezier(0.16, 1, 0.3, 1) both;
         }
         .blanz-nav-inner {
             max-width: 1440px;
@@ -586,110 +587,6 @@
         }
 
         /* 區塊 4：KEY NUMBERS & PANORAMIC CITYSCAPE (日夜雙重景觀橫幅) */
-        .panoramic-numbers-section {
-            background-color: var(--c-canvas);
-            border-top: 1px solid var(--c-line);
-            border-bottom: 1px solid var(--c-line);
-            padding: 140px 0;
-        }
-        .split-city-banner {
-            width: 100%;
-            height: 360px;
-            overflow: hidden;
-            position: relative;
-            margin-bottom: 70px;
-            background-color: #0E1217;
-        }
-        .split-city-banner img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .split-city-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 100%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: #FFFFFF;
-            text-align: center;
-        }
-        .split-city-overlay .brand-mid {
-            font-family: var(--font-display);
-            font-size: 2.8rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-        }
-
-        .numbers-4-columns-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
-            padding-top: 40px;
-            border-top: 1px solid var(--c-line);
-        }
-        .num-poetic-item {
-            text-align: left;
-        }
-        .num-poetic-val {
-            font-family: var(--font-display);
-            font-size: 3.8rem;
-            font-weight: 300;
-            line-height: 1;
-            color: var(--c-ink);
-            margin-bottom: 12px;
-        }
-        .num-poetic-val span {
-            font-family: var(--font-serif);
-            font-size: 1.3rem;
-            color: var(--c-copper);
-            margin-left: 4px;
-        }
-        .num-poetic-label {
-            font-size: 0.95rem;
-            color: var(--c-ink);
-            margin-bottom: 6px;
-            font-weight: 400;
-        }
-        .num-poetic-desc {
-            font-size: 0.8rem;
-            color: var(--c-muted);
-            line-height: 1.7;
-        }
-
-        /* 魚種流動陳列 */
-        .fish-curated-strip {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .fish-strip-label {
-            font-family: var(--font-display);
-            font-size: 0.82rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--c-muted);
-        }
-        .fish-items-row {
-            display: flex;
-            gap: 28px;
-        }
-        .fish-text-link {
-            font-size: 0.88rem;
-            color: var(--c-charcoal);
-            letter-spacing: 0.08em;
-            text-decoration: none;
-            padding-bottom: 2px;
-            border-bottom: 1px solid transparent;
-            transition: all 0.3s ease;
-        }
-        .fish-text-link:hover {
-            color: var(--c-copper);
-            border-bottom-color: var(--c-copper);
-        }
-
         /* 區塊 5：ESG & SUSTAINABILITY (錯位海天疊加排版) */
         .esg-stagger-layout {
             display: grid;
@@ -918,7 +815,7 @@
         footer.blanz-footer {
             background: var(--c-white);
             border-top: 1px solid var(--c-line);
-            padding: 100px 0 60px 0;
+            padding: 60px 0 36px 0;
             text-align: center;
         }
         .footer-logo-center {
@@ -926,7 +823,7 @@
             font-size: 1.8rem;
             letter-spacing: 0.35em;
             color: var(--c-ink);
-            margin-bottom: 18px;
+            margin-bottom: 14px;
             text-transform: uppercase;
         }
         .footer-poetic-statement {
@@ -934,7 +831,7 @@
             font-size: 0.88rem;
             color: var(--c-muted);
             max-width: 680px;
-            margin: 0 auto 50px auto;
+            margin: 0 auto 30px auto;
             line-height: 2.1;
         }
         .footer-bottom-info {
@@ -944,7 +841,7 @@
             font-size: 0.75rem;
             letter-spacing: 0.15em;
             color: var(--c-muted);
-            padding-top: 30px;
+            padding-top: 20px;
             border-top: 1px solid var(--c-line);
         }
 
@@ -993,9 +890,6 @@
             .slices-3-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
-            .numbers-4-columns-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
             .esg-stagger-layout, .rotunda-layout-grid, .contact-poetic-grid {
                 grid-template-columns: 1fr;
                 gap: 50px;
@@ -1034,9 +928,6 @@
             .slices-3-grid {
                 grid-template-columns: 1fr;
             }
-            .numbers-4-columns-grid {
-                grid-template-columns: 1fr;
-            }
             .form-2-split {
                 grid-template-columns: 1fr;
             }
@@ -1046,19 +937,10 @@
             .art-slices-4-grid {
                 grid-template-columns: 1fr;
             }
-            .fish-curated-strip {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 16px;
-            }
-            .fish-items-row {
-                flex-wrap: wrap;
-                gap: 16px;
-            }
         }
         /* 區塊 7：PROJECTS & FLEET (4 欄大圓角垂直船隊與港灣展示卡) */
         .section-projects {
-            padding: 80px 0 140px 0;
+            padding: 160px 0 140px 0;
             background: var(--c-canvas);
         }
         .projects-header-top {
@@ -1545,8 +1427,12 @@
         }
         /* ===== 國際合規認證 & 全球網絡 (Certifications & Global Presence) ===== */
         .certs-section {
-            background-color: var(--c-canvas);
+            background-color: var(--c-white);
+            transition: background-color 1.8s ease;
             padding: 100px 0;
+        }
+        .certs-section.bg-shift {
+            background-color: var(--c-canvas);
         }
         .certs-header {
             text-align: center;
@@ -1714,8 +1600,6 @@
             align-items: center;
             background: var(--c-canvas);
             color: var(--c-ink);
-            border-top: 1px solid var(--c-line);
-            border-bottom: 1px solid var(--c-line);
             overflow: hidden;
         }
         .flagship-section .blanz-container {
@@ -1758,8 +1642,9 @@
         }
         .flagship-left p.flagship-tag {
             font-family: var(--font-display);
-            font-style: italic;
             font-size: 1.3rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
             color: var(--c-copper);
             margin-bottom: 18px;
         }
@@ -1821,7 +1706,9 @@
             color: var(--c-copper);
         }
         .flagship-num-label {
+            font-family: var(--font-display);
             font-size: 0.86rem;
+            letter-spacing: 0.05em;
             line-height: 1.7;
             color: var(--c-muted);
             margin-top: 10px;
@@ -1957,20 +1844,20 @@
 
                 <!-- 右側：切換投影片/導覽選單 -->
                 <div class="hero-slide-nav">
-                    <a href="#" class="slide-nav-item active-nav" data-index="0">
-                        <span class="nav-text">集團總覽 Overview</span>
+                    <a href="#about" class="slide-nav-item active-nav">
+                        <span class="nav-text">集團總覽 About</span>
                         <i data-lucide="arrow-right" class="nav-icon"></i>
                     </a>
-                    <a href="#" class="slide-nav-item" data-index="1">
+                    <a href="#three-sectors" class="slide-nav-item">
                         <span class="nav-text">三大事業群 Pillars</span>
                         <i data-lucide="arrow-right" class="nav-icon"></i>
                     </a>
-                    <a href="#" class="slide-nav-item" data-index="2">
-                        <span class="nav-text">永續共善 ESG</span>
+                    <a href="#esg" class="slide-nav-item">
+                        <span class="nav-text">永續共善 Sustainability</span>
                         <i data-lucide="arrow-right" class="nav-icon"></i>
                     </a>
-                    <a href="#" class="slide-nav-item" data-index="3">
-                        <span class="nav-text">投資人專區 Investors</span>
+                    <a href="#news" class="slide-nav-item">
+                        <span class="nav-text">最新消息 News</span>
                         <i data-lucide="arrow-right" class="nav-icon"></i>
                     </a>
                     <!-- 垂直指示線 -->
@@ -2133,6 +2020,47 @@
         </div>
     </section>
 
+    <!-- 區塊：國際合規認證・全球合作網絡 (CERTIFICATIONS & GLOBAL PRESENCE) -->
+    <section class="certs-section" id="certs">
+        <div class="blanz-container">
+            <div class="certs-header">
+                <h2 class="certs-title">CERTIFICATIONS &amp;<br>GLOBAL PRESENCE</h2>
+                <span style="font-family: var(--font-serif); font-size: 20px; font-weight: 400; color: var(--c-subtitle-blue); letter-spacing: 0.15em; display: block; margin-top: 16px;">國際合規認證 ‧ 全球合作網絡</span>
+            </div>
+
+            <div class="medallion-row">
+                <div class="medallion">
+                    <div class="medallion-frame"><img src="assets/certs/MSC_ecolabel.png" alt="MSC 海洋管理委員會認證"></div>
+                    <div class="medallion-name">MSC<br>海洋管理委員會認證</div>
+                </div>
+                <div class="medallion">
+                    <div class="medallion-frame"><img src="assets/certs/Dolphin_Safe.png" alt="Dolphin Safe 海豚保護標章"></div>
+                    <div class="medallion-name">DOLPHIN SAFE<br>海豚保護標章</div>
+                </div>
+                <div class="medallion">
+                    <div class="medallion-frame"><span class="mark-text">ILO</span></div>
+                    <div class="medallion-name">ILO C-188<br>國際勞工公約標準</div>
+                </div>
+                <div class="medallion">
+                    <div class="medallion-frame"><img src="assets/certs/FISH.jpg" alt="FISH Crew Standard 船員人權標準"></div>
+                    <div class="medallion-name">FISH STANDARD<br>船員人權標準</div>
+                </div>
+                <div class="medallion">
+                    <div class="medallion-frame"><span class="mark-text">ISO</span></div>
+                    <div class="medallion-name">ISO 31000:2018<br>風險管理規範</div>
+                </div>
+                <div class="medallion">
+                    <div class="medallion-frame"><img src="assets/certs/WCPFC-logo.png" alt="WCPFC 中西太平洋漁業委員會"></div>
+                    <div class="medallion-name">WCPFC<br>中西太平洋漁業委員會</div>
+                </div>
+                <div class="medallion">
+                    <div class="medallion-frame"><img src="assets/certs/ISSF-LOGO.png" alt="ISSF 國際永續漁業基金會"></div>
+                    <div class="medallion-name">ISSF<br>國際永續漁業基金會</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 區塊：旗艦船隊 FLAGSHIP FLEET (Tuna Manzai 707，卡畫面滾動切換 4 組集團數據) -->
     <div class="flagship-scroll-wrapper" id="flagshipScrollWrapper">
         <section class="flagship-section">
@@ -2167,66 +2095,6 @@
         </section>
     </div>
 
-
-    <!-- 區塊 4：KEY NUMBERS & PANORAMIC CITYSCAPE (日夜雙重景觀橫幅) -->
-    <section class="panoramic-numbers-section" id="milestones">
-        <div class="blanz-container">
-            <!-- 核心經濟魚種展示列 -->
-            <div class="fish-curated-strip">
-                <span class="fish-strip-label">TARGET FISH SPECIES</span>
-                <div class="fish-items-row">
-                    <span class="fish-text-link">正鰹 Skipjack</span>
-                    <span class="fish-text-link">黃鰭鮪 Yellowfin</span>
-                    <span class="fish-text-link">大目鮪 Bigeye</span>
-                    <span class="fish-text-link">長鰭鮪 Albacore</span>
-                    <span class="fish-text-link">魷魚 Squid</span>
-                    <span class="fish-text-link">秋刀魚 Pacific Saury</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- 區塊：國際合規認證・全球合作網絡 (CERTIFICATIONS & GLOBAL PRESENCE) -->
-    <section class="certs-section" id="certs">
-        <div class="blanz-container">
-            <div class="certs-header">
-                <h2 class="certs-title">CERTIFICATIONS &amp;<br>GLOBAL PRESENCE</h2>
-                <span style="font-family: var(--font-serif); font-size: 20px; font-weight: 400; color: var(--c-subtitle-blue); letter-spacing: 0.15em; display: block; margin-top: 16px;">國際合規認證 ‧ 全球合作網絡</span>
-            </div>
-
-            <div class="medallion-row">
-                <div class="medallion">
-                    <div class="medallion-frame"><img src="assets/certs/MSC_ecolabel.png" alt="MSC 海洋管理委員會認證"></div>
-                    <div class="medallion-name">MSC<br>海洋管理委員會認證</div>
-                </div>
-                <div class="medallion">
-                    <div class="medallion-frame"><img src="assets/certs/Dolphin_Safe.png" alt="Dolphin Safe 海豚保護標章"></div>
-                    <div class="medallion-name">DOLPHIN SAFE<br>海豚保護標章</div>
-                </div>
-                <div class="medallion">
-                    <div class="medallion-frame"><img src="assets/certs/FISH.jpg" alt="FISH Crew Standard 船員人權標準"></div>
-                    <div class="medallion-name">FISH STANDARD<br>船員人權標準</div>
-                </div>
-                <div class="medallion">
-                    <div class="medallion-frame"><span class="mark-text">ILO</span></div>
-                    <div class="medallion-name">ILO C-188<br>國際勞工公約標準</div>
-                </div>
-                <div class="medallion">
-                    <div class="medallion-frame"><span class="mark-text">ISO</span></div>
-                    <div class="medallion-name">ISO 31000:2018<br>風險管理規範</div>
-                </div>
-                <div class="medallion">
-                    <div class="medallion-frame"><img src="assets/certs/WCPFC-logo.png" alt="WCPFC 中西太平洋漁業委員會"></div>
-                    <div class="medallion-name">WCPFC<br>中西太平洋漁業委員會</div>
-                </div>
-                <div class="medallion">
-                    <div class="medallion-frame"><img src="assets/certs/ISSF-LOGO.png" alt="ISSF 國際永續漁業基金會"></div>
-                    <div class="medallion-name">ISSF<br>國際永續漁業基金會</div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- 區塊：最新消息 NEWS & INSIGHTS -->
     <section class="section-projects" id="news">
@@ -2612,7 +2480,7 @@
         // ===== 全站流暢滾動入場效果 (Scroll Reveal Observer) =====
         (function() {
             // 針對網格/卡片容器自動為子項目加上錯落延遲
-            const staggerGrids = document.querySelectorAll('.projects-4-grid, .numbers-4-columns-grid, .slices-3-grid, .dark-sectors-row, .staggered-layout');
+            const staggerGrids = document.querySelectorAll('.projects-4-grid, .slices-3-grid, .dark-sectors-row, .staggered-layout');
             staggerGrids.forEach(grid => {
                 const items = grid.children;
                 for (let i = 0; i < items.length; i++) {
@@ -2635,7 +2503,6 @@
                 '.dark-sectors-row .dark-card',
                 '.poetic-quote-wrap',
                 '.monolith-banner-box',
-                '.split-city-overlay',
                 '.certs-header',
                 '.medallion-row',
                 '.network-row',
@@ -2643,8 +2510,9 @@
                 '.project-card-item',
                 '.contact-poetic-info',
                 '.form-poetic-box',
-                '.footer-blanz-grid > div',
-                '.footer-bottom-bar'
+                '.footer-logo-center',
+                '.footer-poetic-statement',
+                '.footer-bottom-info'
             ];
 
             revealSelectors.forEach(sel => {
@@ -2786,6 +2654,25 @@
             });
 
             onScroll();
+        })();
+    </script>
+
+    <!-- 認證區塊：滾動進場時的背景換色效果 -->
+    <script>
+        (function() {
+            const certsSection = document.querySelector('.certs-section');
+            if (!certsSection) return;
+
+            const bgObserver = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        certsSection.classList.add('bg-shift');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            bgObserver.observe(certsSection);
         })();
     </script>
 </body>
