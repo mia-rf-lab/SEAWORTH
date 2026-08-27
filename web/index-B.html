@@ -1226,6 +1226,9 @@
             margin: 0 auto;
             padding: 100px 32px 80px;
         }
+        #three-sectors {
+            padding-top: 20px; /* 縮減上方間距，拉近與上一區塊的距離 */
+        }
         .staggered-layout {
             display: flex;
             flex-direction: column;
@@ -1266,15 +1269,16 @@
         /* Group 1: WIN HOPE 707 (華偉) */
         .group-1 {
             flex-direction: column;
-            align-items: flex-end;
+            align-items: flex-start;
             position: relative;
         }
         .group-1 .header-block {
             position: absolute;
-            left: 0;
-            top: 35%;
-            transform: translateY(-50%);
-            width: 35%;
+            right: 0;
+            left: auto;
+            top: 10%; /* 固定在右側上方 */
+            transform: none; /* 移除 translateY 避免難以預測的位移 */
+            width: 360px;
             z-index: 10;
         }
         .group-1 .header-block .eyebrow-en {
@@ -1306,15 +1310,20 @@
             max-width: 880px;
             height: auto;
             object-fit: contain;
+            margin-left: -60px; /* 把船往左拉，不碰到右邊文字 */
+            margin-top: 180px; /* 只有大船本身大幅往下推 */
             margin-bottom: 0px;
         }
         .group-1 .overlay-panel {
+            position: absolute;
+            right: 0; /* 固定在右側 */
+            top: 48%; /* 往上拉近與大標題的間距，調整至剛剛好的距離 */
+            bottom: auto;
             width: 360px;
-            margin-right: 20px;
-            margin-top: -60px; /* 往上靠攏，貼近船身右側下方 */
-            position: relative;
+            margin: 0;
             z-index: 10;
         }
+
 
         /* Group 2: TIARA 108 (巨寶) */
         .group-2 {
@@ -1322,7 +1331,7 @@
             justify-content: flex-start;
             align-items: flex-start; /* 改為靠上對齊 */
             gap: 0px;
-            margin-top: -80px; /* 往上推，拉近與第一組的距離 */
+            margin-top: -100px; /* 往上拉近與第一組的距離 */
         }
         .group-2 .overlay-panel {
             width: 360px;
