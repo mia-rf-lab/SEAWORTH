@@ -48,6 +48,7 @@
             --c-muted: #848B96;
             --c-copper: #C28766;         /* 詩意銅金/暖赭點綴 */
             --c-copper-light: #E8D3C5;
+            --c-subtitle-blue: #00495B;  /* 海沃富蘊藍 */
             --c-ocean-deep: #162B40;     /* 藝術深海藍 */
             --c-line: rgba(0, 0, 0, 0.08);
 
@@ -409,11 +410,13 @@
             will-change: transform;
         }
         .about-hero-title .accent-line {
-            color: var(--c-copper);
-            font-size: 1.6rem;
+            color: var(--c-subtitle-blue);
+            font-family: var(--font-serif);
+            font-size: 20px;
+            font-weight: 400;
             letter-spacing: 0.15em;
             display: block;
-            margin-top: 8px;
+            margin-top: 16px;
         }
         .about-hero-desc {
             max-width: 620px;
@@ -1127,11 +1130,12 @@
         }
         .dark-sectors-top {
             display: flex;
-            gap: 60px;
+            gap: 40px; /* 留出充足間距 */
             align-items: center;
         }
         .dark-sectors-intro {
-            flex: 0 0 280px;
+            flex: 0 0 auto; /* 自動縮放到文字剛剛好的寬度 */
+            white-space: nowrap; /* 強制不換行，維持完美的 3 行 */
         }
         .dark-sectors-title {
             font-family: var(--font-display);
@@ -1145,11 +1149,12 @@
         }
         .dark-sectors-accent {
             display: block;
-            font-family: var(--font-display);
-            font-size: 1.6rem;
-            color: var(--c-copper);
+            font-family: var(--font-serif);
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--c-subtitle-blue);
             letter-spacing: 0.15em;
-            margin-top: 8px;
+            margin-top: 16px;
         }
         .dark-sectors-row {
             display: flex;
@@ -1167,7 +1172,7 @@
         }
         .dark-card-lg { flex: 3.5; }
         .dark-card-plain { flex: 0.8; }
-        .dark-sectors-row.row-2 .dark-card-md:first-child { flex: 1.3; }
+        .dark-sectors-row.row-2 .dark-card-md:first-child { flex: 1; }
         .dark-sectors-row.row-2 .dark-card-md:last-child { flex: 1; }
         .dark-card {
             position: relative;
@@ -1302,8 +1307,11 @@
         .group-1 .header-block span.tagline {
             font-family: var(--font-serif); 
             font-size: 20px; 
-            color: var(--c-copper); 
+            font-weight: 400;
+            color: var(--c-subtitle-blue); 
             letter-spacing: 0.15em;
+            display: block;
+            margin-top: 16px;
         }
         .group-1 .ship-img {
             width: 72%;
@@ -1503,7 +1511,7 @@
             <div class="nav-right-area">
                 <ul class="nav-split-menu">
                     <li><a href="#esg">投資人專區</a></li>
-                    <li><a href="#about">最新消息</a></li>
+                    <li><a href="#news">最新消息</a></li>
                     <li><a href="#contact">聯繫海沃</a></li>
                     <li class="nav-lang-picker">
                         <a href="#" style="display: flex; align-items: center; gap: 4px;">
@@ -1606,7 +1614,6 @@
             <!-- Group 1: WIN HOPE 707 (華偉) -->
             <div class="sector-group group-1">
                 <div class="header-block">
-                    <span class="eyebrow-en">SEAWORTH HOLDING</span>
                     <h2>THREE<br>PILLARS</h2>
                     <span class="tagline">海沃控股集團旗下三大事業群</span>
                 </div>
@@ -1667,47 +1674,52 @@
         </div>
     </section>
 
-    <!-- 區塊：三事業 - 版型實驗 B（深色背景，參考 OWN THE ONE 排版） -->
-    <section class="dark-sectors-section">
+    <!-- 區塊：ESG 永續經營 (版型實驗 B) -->
+    <section class="dark-sectors-section" id="esg">
         <div class="blanz-container">
             <div class="dark-sectors-layout">
                 <div class="dark-sectors-top">
+                    <div class="dark-sectors-intro">
+                        <h2 class="dark-sectors-title" style="font-size: 3.2rem; line-height: 1.2;">
+                            SUSTAINABILITY
+                        </h2>
+                        <span class="dark-sectors-accent">共善經營 ‧ 責任引領產業升級</span>
+                    </div>
+
                     <div class="dark-sectors-row row-1">
+                        <a href="#" class="dark-card dark-card-lg">
+                            <img src="assets/pho_ocean.jpg" alt="海洋生態守護">
+                            <div class="dark-card-caption">
+                                <div style="font-family: var(--font-en); font-size: 3.5rem; font-weight: 700; line-height: 0.8; color: #FFFFFF; margin-bottom: 4px;">E</div>
+                                <h3>海洋生態守護</h3>
+                                <p>全面落實聯合國永續發展目標（SDGs）與區域漁業管理組織（RFMO）規範。採用非纏結式集魚器（FADs）與低碳節能航行技術，減緩生態衝擊。</p>
+                                <span class="dark-card-link">環境保護 更多 →</span>
+                            </div>
+                        </a>
                         <div class="dark-card dark-card-plain">
                             <img src="assets/texture-band.jpg" alt="">
                         </div>
-                        <a href="#" class="dark-card dark-card-lg">
-                            <img src="assets/華偉漁業事業群.jpeg" alt="華偉漁業事業群">
-                            <div class="dark-card-caption">
-                                <h3>華偉漁業事業群</h3>
-                                <p>傳承自 1983 年高雄前鎮漁港冷凍倉儲與第一艘圍網漁船，奠定集團雄厚實力與全球化根基。</p>
-                                <span class="dark-card-link">華偉 更多 →</span>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="dark-sectors-intro">
-                        <h2 class="dark-sectors-title">THREE<br>PILLARS</h2>
-                        <span class="dark-sectors-accent">海沃控股集團<br>旗下三大事業群</span>
                     </div>
                 </div>
 
-                <!-- 下排滿版：寬度延伸到左側文字底下，不受側欄限制 -->
+                <!-- 下排滿版：50/50 比例分配 -->
                 <div class="dark-sectors-row row-2">
                     <a href="#" class="dark-card dark-card-md">
-                        <img src="assets/巨寶漁業事業群.jpeg" alt="巨寶漁業事業群">
+                        <img src="assets/pho_3.png" alt="人本人權保障">
                         <div class="dark-card-caption">
-                            <h3>巨寶漁業事業群</h3>
-                            <p>專營圍網捕撈與現代化冷凍運搬船，引進前瞻船舶設計與國際勞工合規標準。</p>
-                            <span class="dark-card-link">巨寶 更多 →</span>
+                            <div style="font-family: var(--font-en); font-size: 3.5rem; font-weight: 700; line-height: 0.8; color: #FFFFFF; margin-bottom: 4px;">S</div>
+                            <h3>人本人權保障</h3>
+                            <p>嚴格遵循 ILO C-188 漁業工作公約 與 FISH 船員人權標準。堅守暴力零容忍原則，提供合規生活起居設施與尊嚴勞動保障。</p>
+                            <span class="dark-card-link">社會責任 更多 →</span>
                         </div>
                     </a>
                     <a href="#" class="dark-card dark-card-md">
-                        <img src="assets/華昇魷釣事業群.jpeg" alt="華昇魷釣事業群">
+                        <img src="assets/pho_4.png" alt="智慧科技與合規治理">
                         <div class="dark-card-caption">
-                            <h3>華昇魷釣事業群</h3>
-                            <p>專精魷魚秋刀魚船與延繩釣漁船，展現高技術漁法、生態永續與全球供應的頂尖專業。</p>
-                            <span class="dark-card-link">華昇 更多 →</span>
+                            <div style="font-family: var(--font-en); font-size: 3.5rem; font-weight: 700; line-height: 0.8; color: #FFFFFF; margin-bottom: 4px;">G</div>
+                            <h3>智慧科技與合規治理</h3>
+                            <p>導入 IoT 電子浮標、AI 智慧漁撈預測與海事大數據即時調度中心。打造「從深海到餐桌」全流程可追溯供應鏈，數據透明公開。</p>
+                            <span class="dark-card-link">公司治理 更多 →</span>
                         </div>
                     </a>
                 </div>
@@ -1724,7 +1736,7 @@
                 <div class="poetic-quote-desc">
                     <div>
                         <h2 class="projects-h2" style="margin-bottom: 0px;">CORE SECTORS</h2>
-                        <span style="font-family: var(--font-serif); font-size: 20px; color: var(--c-copper); letter-spacing: 0.15em;">三大核心事業群</span>
+                        <span style="font-family: var(--font-serif); font-size: 20px; font-weight: 400; color: var(--c-subtitle-blue); letter-spacing: 0.15em; display: block; margin-top: 16px;">三大核心事業群</span>
                     </div>
                     <div>
                         <p style="font-size: 0.95rem; color: var(--c-charcoal); line-height: 2.1;">
@@ -1780,7 +1792,7 @@
                 <div class="split-city-overlay">
                     <div style="text-align: center;">
                         <h2 class="projects-h2" style="margin-bottom: 0px; color: #fff;">GLOBAL SCALE</h2>
-                        <span style="font-family: var(--font-serif); font-size: 20px; color: var(--c-copper-light); letter-spacing: 0.15em;">全球營運規模與里程碑</span>
+                        <span style="font-family: var(--font-serif); font-size: 20px; font-weight: 400; color: var(--c-subtitle-blue); letter-spacing: 0.15em; display: block; margin-top: 16px;">全球營運規模與里程碑</span>
                     </div>
                 </div>
             </div>
@@ -1827,167 +1839,70 @@
         </div>
     </section>
 
-    <!-- 區塊 5：ESG & SUSTAINABILITY (錯位海天疊加排版) -->
-    <section class="blanz-section" id="sustainability">
-        <div class="blanz-container">
-            <div class="esg-stagger-layout">
-                <!-- 左側雙圖錯位重疊 -->
-                <div class="esg-dual-img-stack">
-                    <div class="esg-img-main">
-                        <img src="assets/pho_ocean.jpg" alt="海洋永續生態">
-                    </div>
-                    <div class="esg-img-overlap">
-                        <img src="assets/pho_4.png" alt="智慧科技水波">
-                    </div>
-                </div>
 
-                <!-- 右側 ESG 詩意文字 -->
-                <div class="esg-editorial-right">
-                    <div style="margin-bottom: 30px;">
-                        <h2 class="projects-h2" style="margin-bottom: 0px;">SUSTAINABILITY</h2>
-                        <span style="font-family: var(--font-serif); font-size: 20px; color: var(--c-copper); letter-spacing: 0.15em;">共善經營 ‧ 責任引領產業升級</span>
-                    </div>
-
-                    <!-- E -->
-                    <div class="esg-pillar-item">
-                        <span class="esg-pillar-en">01 ‧ ENVIRONMENT</span>
-                        <h3 class="esg-pillar-title">海洋生態守護</h3>
-                        <p class="esg-pillar-text">
-                            落實 SDGs 與 RFMO 規範，取得 MSC 海洋管理委員會與 Dolphin Safe 認證，導入低碳航行與環保集魚器。
-                        </p>
-                    </div>
-
-                    <!-- S -->
-                    <div class="esg-pillar-item">
-                        <span class="esg-pillar-en">02 ‧ SOCIAL</span>
-                        <h3 class="esg-pillar-title">人本人權保障</h3>
-                        <p class="esg-pillar-text">
-                            遵循 ILO C-188 與 FISH 船員人權標準，率先導入海上遠距醫療與全船 Wi-Fi 通訊，堅守尊嚴勞動。
-                        </p>
-                    </div>
-
-                    <!-- G -->
-                    <div class="esg-pillar-item">
-                        <span class="esg-pillar-en">03 ‧ GOVERNANCE</span>
-                        <h3 class="esg-pillar-title">智慧科技與合規治理</h3>
-                        <p class="esg-pillar-text">
-                            IoT 電子浮標、AI 智慧漁撈預測與大數據調度，堅守反非法捕撈（IUU），打造全流程可追溯鏈。
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 區塊 7：PROJECTS & FLEET (4 欄大圓角垂直船隊與港灣展示卡) -->
-    <section class="section-projects" id="projects">
+    <!-- 區塊：最新消息 NEWS & INSIGHTS -->
+    <section class="section-projects" id="news">
         <div class="blanz-container">
             <div class="projects-header-top">
                 <div>
-                    <h2 class="projects-h2" style="margin-bottom: 0px;">FLEET & BASES</h2>
-                    <span style="font-family: var(--font-serif); font-size: 20px; color: var(--c-copper); letter-spacing: 0.15em;">全球船隊與營運樞紐</span>
+                    <h2 class="projects-h2" style="margin-bottom: 0px;">NEWS & INSIGHTS</h2>
+                    <span style="font-family: var(--font-serif); font-size: 20px; font-weight: 400; color: var(--c-subtitle-blue); letter-spacing: 0.15em; display: block; margin-top: 16px;">最新動態 ‧ 產業洞察與集團快訊</span>
                 </div>
-                <a href="#contact" style="font-family: var(--font-display); font-size: 0.82rem; letter-spacing: 0.15em; color: var(--c-ink); text-decoration: none;">VIEW ALL FLEETS →</a>
+                <a href="#news" style="font-family: var(--font-display); font-size: 0.82rem; letter-spacing: 0.15em; color: var(--c-ink); text-decoration: none;">VIEW ALL NEWS →</a>
             </div>
 
             <div class="projects-4-grid">
                 <!-- 01 -->
                 <div class="project-card-item">
                     <div class="project-thumb-box">
-                        <img src="assets/華偉漁業事業群2.jpg" alt="美式圍網船隊">
+                        <img src="assets/華偉漁業事業群2.jpg" alt="海沃控股集團正式成立">
                     </div>
                     <div class="project-card-body">
-                        <span class="project-card-tag">HUA WEI SECTOR</span>
-                        <div class="project-card-title">美式遠洋圍網船隊</div>
-                        <p class="project-card-desc">大洋作業主力，具備頂尖捕撈效能與非纏結集魚器技術。</p>
+                        <span class="project-card-tag">2026.08.15 ‧ CORPORATE</span>
+                        <div class="project-card-title">海沃控股集團正式成立，整合遠洋全產業鏈生態系</div>
+                        <p class="project-card-desc">匯聚深耕海洋逾四十載之造船、漁撈與貿易巨頭，開啟共善治理新紀元。</p>
                     </div>
                 </div>
 
                 <!-- 02 -->
                 <div class="project-card-item">
                     <div class="project-thumb-box">
-                        <img src="assets/巨寶漁業事業群.jpeg" alt="超低溫運搬船">
+                        <img src="assets/pho_ocean.jpg" alt="非纏結集魚器與低碳技術">
                     </div>
                     <div class="project-card-body">
-                        <span class="project-card-tag">JU BAO SECTOR</span>
-                        <div class="project-card-title">智慧超低溫冷凍運搬船</div>
-                        <p class="project-card-desc">海上移動極鮮冷鏈，全流程溫控鎖住大洋第一手風味。</p>
+                        <span class="project-card-tag">2026.07.28 ‧ SUSTAINABILITY</span>
+                        <div class="project-card-title">旗下船隊全面導入非纏結集魚器與低碳導航技術</div>
+                        <p class="project-card-desc">攜手國際組織深化生態友善漁法，守護大洋資源與生物多樣性。</p>
                     </div>
                 </div>
 
                 <!-- 03 -->
                 <div class="project-card-item">
                     <div class="project-thumb-box">
-                        <img src="assets/華昇魷釣事業群.jpeg" alt="魷釣秋刀魚船">
+                        <img src="assets/pho_4.png" alt="AI 智慧漁撈預測">
                     </div>
                     <div class="project-card-body">
-                        <span class="project-card-tag">HUA SHENG SECTOR</span>
-                        <div class="project-card-title">精準魷釣與延繩釣船隊</div>
-                        <p class="project-card-desc">高技術精準漁法，兼具生態友善與高價值經濟魚種供應。</p>
+                        <span class="project-card-tag">2026.06.10 ‧ INNOVATION</span>
+                        <div class="project-card-title">AI 智慧漁撈預測與海事大數據中心正式啟用</div>
+                        <p class="project-card-desc">打造從深海到餐桌全流程透明可追溯系統，大幅提升供應鏈營運效能。</p>
                     </div>
                 </div>
 
                 <!-- 04 -->
                 <div class="project-card-item">
                     <div class="project-thumb-box">
-                        <img src="assets/enterprise-map.jpg" alt="全球五大樞紐">
+                        <img src="assets/enterprise-map.jpg" alt="拓展跨國營運樞紐">
                     </div>
                     <div class="project-card-body">
-                        <span class="project-card-tag">GLOBAL HUBS</span>
-                        <div class="project-card-title">五大跨國營運網絡</div>
-                        <p class="project-card-desc">高雄總部、韓國釜山、中國舟山、泰國曼谷、巴紐要塞。</p>
+                        <span class="project-card-tag">2026.05.02 ‧ GLOBAL NETWORK</span>
+                        <div class="project-card-title">拓展跨國營運樞紐，深化東南亞與南太平洋佈局</div>
+                        <p class="project-card-desc">串聯全球五大樞紐基地，構建高效率超低溫冷鏈物流運輸網絡。</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 區塊 6：POETIC CLASS & CERTIFICATIONS (圓形建築光影 + 4 欄垂直藝廊) -->
-    <section class="rotunda-cert-section" id="compliance">
-        <div class="blanz-container">
-            <div class="rotunda-layout-grid">
-                <!-- 左側圓形天光意象 -->
-                <div class="rotunda-circle-frame">
-                    <img src="assets/hero-blob.jpg" alt="現代主義圓形光影建築">
-                </div>
-
-                <!-- 右側標題與認證介紹 -->
-                <div class="rotunda-right-text">
-                    <div style="margin-bottom: 24px;">
-                        <h2 class="projects-h2" style="margin-bottom: 0px;">COMPLIANCE</h2>
-                        <span style="font-family: var(--font-serif); font-size: 20px; color: var(--c-copper); letter-spacing: 0.15em;">國際合規認證 ‧ 全球合作網絡</span>
-                    </div>
-                    <p style="font-size: 0.95rem; color: var(--c-muted); line-height: 2.1; margin-bottom: 24px;">
-                        海沃控股集團榮獲多項國際權威組織認證，與亞洲、歐洲、美洲主流市場及 PNA 國家建立長期穩固的戰略夥伴關係。
-                    </p>
-                    <div style="font-family: var(--font-display); font-size: 2.6rem; color: var(--c-ink); letter-spacing: 0.08em;">
-                        POETIC CLASS
-                    </div>
-                </div>
-            </div>
-
-            <!-- 4 欄垂直藝廊切片 -->
-            <div class="art-slices-4-grid">
-                <div class="art-slice-box">
-                    <img src="assets/fish-jump.jpg" alt="MSC 永續漁業">
-                </div>
-                <div class="art-slice-box">
-                    <img src="assets/csr.jpg" alt="Dolphin Safe 友善捕撈">
-                </div>
-                <div class="art-slice-box">
-                    <img src="assets/crew-deck.jpg" alt="FISH 船員人權標準">
-                </div>
-                <div class="art-slice-box">
-                    <img src="assets/core-values.jpg" alt="ISO 31000 風險管理">
-                </div>
-            </div>
-
-            <div style="display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--c-muted); letter-spacing: 0.15em; text-transform: uppercase;">
-                <span>MSC CERTIFIED ‧ DOLPHIN SAFE ‧ FISH STANDARD ‧ ILO C-188 ‧ ISO 31000</span>
-                <span>GLOBAL OPERATING HUBS: KAOHSIUNG / BUSAN / ZHOUSHAN / BANGKOK / PNG</span>
-            </div>
-        </div>
-    </section>
 
     <!-- 區塊 7：CONTACT US (極簡詩意登記處) -->
     <section class="contact-poetic-section" id="contact">

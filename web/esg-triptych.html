@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ESG 永續治理｜海沃控股集團 SEAWORTH HOLDING</title>
+<meta name="description" content="海沃控股集團 ESG 永續治理：海洋生態守護、人本人權保障、智慧科技與合規治理。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500;600&family=Noto+Serif+TC:wght@200;300;400;600&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    /* 沿用 THE BLANZ 色系：純白留白、沉靜海洋深藍、金銅光澤 */
+    --c-white:#FFFFFF;
+    --c-canvas:#FCFCFA;
+    --c-subtle:#F6F6F4;
+    --c-charcoal:#1E2229;
+    --c-ink:#0E1217;
+    --c-muted:#848B96;
+    --c-copper:#C28766;
+    --c-copper-light:#E8D3C5;
+    --c-subtitle-blue:#00495B;
+    --c-ocean-deep:#162B40;
+    --c-line:rgba(0,0,0,.08);
+
+    --font-display:'Cormorant Garamond',serif;
+    --font-serif:'Noto Serif TC',serif;
+    --font-sans:'Montserrat','Noto Sans TC',sans-serif;
+
+    --ease-poetic:cubic-bezier(0.19,1,0.22,1);
+  }
+  html{scroll-behavior:smooth;font-size:16px;background:var(--c-white);}
+  body{
+    font-family:var(--font-sans);
+    background:var(--c-white);
+    color:var(--c-charcoal);
+    line-height:1.9;
+    letter-spacing:.03em;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+  }
+  h2,h3{font-family:var(--font-serif);font-weight:400;color:var(--c-ink);}
+
+  /* ===== 頂部極簡列 ===== */
+  .tri-topbar{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 44px;
+    background:rgba(255,255,255,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--c-line);
+  }
+  .tri-back{
+    display:flex;align-items:center;gap:10px;color:var(--c-charcoal);text-decoration:none;
+    font-family:var(--font-sans);font-size:.76rem;letter-spacing:.16em;font-weight:500;text-transform:uppercase;
+    transition:color .3s;
+  }
+  .tri-back:hover{color:var(--c-copper);}
+  .tri-back svg{width:15px;height:15px;flex-shrink:0;}
+  .tri-page-tag{
+    font-family:var(--font-display);font-style:italic;font-size:.85rem;letter-spacing:.1em;color:var(--c-muted);
+  }
+
+  /* ===== TRIPTYCH 捲動釘選區 ===== */
+  .triptych-wrap{position:relative;height:340vh;background:var(--c-canvas);}
+  .triptych-pin{position:sticky;top:0;height:100vh;overflow:hidden;}
+  .triptych-grid{
+    display:grid;grid-template-columns:1fr 1.08fr 1fr;height:100%;width:100%;
+  }
+  .tri-col{position:relative;height:100%;overflow:hidden;background:var(--c-subtle);}
+
+  /* 左右影像欄 */
+  .tri-img-slide{
+    position:absolute;inset:0;opacity:0;transform:scale(1.06);
+    transition:opacity 1.3s cubic-bezier(.16,1,.3,1), transform 2.4s cubic-bezier(.16,1,.3,1);
+  }
+  .tri-img-slide.on{opacity:1;transform:scale(1);}
+  .tri-img-slide img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(8%) contrast(102%) brightness(1.02);}
+  .tri-img-scrim{
+    position:absolute;inset:0;pointer-events:none;z-index:1;
+    background:linear-gradient(180deg, rgba(28,32,26,0) 0%, rgba(28,32,26,0) 60%, rgba(20,18,14,.42) 100%);
+  }
+  .tri-img-badge{
+    position:absolute;top:24px;left:24px;z-index:2;width:38px;height:38px;border-radius:50%;
+    background:var(--c-white);box-shadow:0 8px 24px rgba(14,18,23,.14);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .tri-img-badge img{width:20px;height:20px;object-fit:contain;}
+  .tri-img-caption{position:absolute;left:26px;bottom:24px;z-index:2;overflow:hidden;height:14px;}
+  .tri-cap-slide{
+    position:absolute;left:0;bottom:0;white-space:nowrap;
+    font-family:var(--font-sans);font-size:.68rem;letter-spacing:.16em;font-weight:500;color:#fff;text-transform:uppercase;
+    opacity:0;transform:translateY(10px);transition:opacity .9s ease, transform .9s ease;
+  }
+  .tri-cap-slide.on{opacity:1;transform:translateY(0);}
+
+  /* 中央文字欄 */
+  .tri-center{
+    display:flex;flex-direction:column;align-items:center;justify-content:space-between;
+    padding:40px 28px 34px;text-align:center;
+    background:linear-gradient(175deg, #FDFCFA 0%, #F3F0E9 100%);
+    border-left:1px solid var(--c-line);border-right:1px solid var(--c-line);
+  }
+  .tri-center-top{
+    width:100%;display:flex;align-items:center;justify-content:space-between;
+  }
+  .tri-badge-row{display:flex;align-items:center;gap:9px;}
+  .tri-badge-icon{width:5px;height:5px;border-radius:50%;background:var(--c-copper);}
+  .tri-badge-text{font-family:var(--font-sans);font-size:.68rem;font-weight:500;letter-spacing:.22em;color:var(--c-muted);text-transform:uppercase;}
+  .tri-index{font-family:var(--font-display);font-style:italic;font-size:.9rem;letter-spacing:.06em;color:var(--c-muted);}
+  .tri-index b{color:var(--c-ink);font-weight:600;}
+
+  .tri-letter-stage{
+    position:relative;flex:1;width:100%;display:flex;align-items:center;justify-content:center;min-height:0;
+  }
+  .tri-letter{
+    position:absolute;font-family:var(--font-display);font-weight:600;font-style:italic;
+    font-size:clamp(7rem, 19vw, 15rem);line-height:1;color:var(--c-ocean-deep);
+    opacity:0;transform:scale(.86);
+    text-shadow:0 24px 50px rgba(22,43,64,.14);
+    transition:opacity 1.5s cubic-bezier(.16,1,.3,1), transform 1.6s cubic-bezier(.16,1,.3,1);
+  }
+  .tri-letter.on{opacity:1;transform:scale(1);}
+
+  .tri-copy-stage{position:relative;width:100%;max-width:380px;min-height:clamp(180px, 26vh, 232px);}
+  .tri-copy{
+    position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
+    opacity:0;transform:translateY(16px);pointer-events:none;
+    transition:opacity 1s cubic-bezier(.16,1,.3,1), transform 1s cubic-bezier(.16,1,.3,1);
+  }
+  .tri-copy.on{opacity:1;transform:translateY(0);pointer-events:auto;}
+  .tri-copy-en{
+    font-family:var(--font-display);font-style:italic;font-size:.82rem;letter-spacing:.2em;
+    color:var(--c-copper);margin-bottom:12px;text-transform:uppercase;
+  }
+  .tri-copy h2{font-size:clamp(1.25rem,2.4vw,1.55rem);font-weight:400;margin-bottom:14px;letter-spacing:.06em;color:var(--c-ink);}
+  .tri-copy p{font-size:.86rem;line-height:1.9;color:var(--c-muted);font-weight:300;}
+
+  .tri-dots{list-style:none;display:flex;gap:26px;}
+  .tri-dots li{
+    display:flex;align-items:center;gap:8px;cursor:pointer;
+    font-family:var(--font-sans);font-size:.66rem;letter-spacing:.14em;color:var(--c-muted);text-transform:uppercase;
+    transition:color .3s;
+  }
+  .tri-dots li:hover{color:var(--c-charcoal);}
+  .tri-dots li.on{color:var(--c-ink);font-weight:500;}
+  .tri-dot{width:5px;height:5px;border-radius:50%;background:rgba(14,18,23,.2);transition:background .3s,box-shadow .3s;}
+  .tri-dots li.on .tri-dot{background:var(--c-copper);box-shadow:0 0 0 3px rgba(194,135,102,.18);}
+
+  .tri-scrollhint{
+    position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:3;
+    display:flex;flex-direction:column;align-items:center;gap:8px;
+    font-family:var(--font-sans);font-size:.64rem;letter-spacing:.24em;color:rgba(255,255,255,.85);
+    opacity:1;transition:opacity .5s ease;pointer-events:none;
+    text-shadow:0 2px 10px rgba(0,0,0,.25);
+  }
+  .tri-scrollhint.hide{opacity:0;}
+  .tri-scroll-line{width:1px;height:26px;background:linear-gradient(180deg, rgba(255,255,255,.9), transparent);animation:triScrollMove 1.8s ease-in-out infinite;}
+  @keyframes triScrollMove{
+    0%{transform:scaleY(0);transform-origin:top;}
+    50%{transform:scaleY(1);transform-origin:top;}
+    50.001%{transform-origin:bottom;}
+    100%{transform:scaleY(0);transform-origin:bottom;}
+  }
+
+  @media (max-width:900px){
+    .triptych-grid{grid-template-columns:.62fr 1.4fr .62fr;}
+    .tri-img-badge{width:30px;height:30px;top:16px;left:16px;}
+    .tri-img-badge img{width:16px;height:16px;}
+    .tri-img-caption{display:none;}
+    .tri-center{padding:30px 16px 24px;}
+    .tri-letter{font-size:clamp(5rem,26vw,9rem);}
+    .tri-copy p{font-size:.8rem;}
+    .tri-dots{gap:16px;}
+    .tri-dots li span:last-child{display:none;}
+  }
+  @media (max-width:480px){
+    .triptych-grid{grid-template-columns:.5fr 1.6fr .5fr;}
+    .tri-badge-text{display:none;}
+    .tri-letter{font-size:clamp(3.6rem,22vw,6rem);}
+    .tri-copy h2{font-size:1.1rem;}
+    .tri-copy p{font-size:.74rem;line-height:1.75;}
+    .tri-copy-stage{min-height:clamp(150px, 30vh, 210px);}
+    .tri-dots li span:last-child{display:none;}
+    .tri-dots{gap:12px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .tri-img-slide, .tri-letter, .tri-copy, .tri-cap-slide{transition-duration:.01s !important;animation:none !important;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="tri-topbar">
+    <a class="tri-back" href="index-B.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 18l-6-6 6-6"/></svg>
+      SEAWORTH HOLDING
+    </a>
+    <div class="tri-page-tag">ESG · 永續治理</div>
+  </div>
+
+  <!-- ===== TRIPTYCH 捲動釘選區 ===== -->
+  <section class="triptych-wrap" id="triptychWrap">
+    <div class="triptych-pin">
+      <div class="triptych-grid">
+
+        <!-- 左欄影像 -->
+        <div class="tri-col tri-img">
+          <div class="tri-img-slide on" data-i="0"><img src="assets/pho_ocean.jpg" alt="海洋生態守護" style="object-position:75% center;"></div>
+          <div class="tri-img-slide" data-i="1"><img src="assets/pho_3.png" alt="人本人權保障" style="object-position:70% 25%;"></div>
+          <div class="tri-img-slide" data-i="2"><img src="assets/pho_4.png" alt="智慧科技與合規治理" style="object-position:center;"></div>
+          <div class="tri-img-scrim"></div>
+          <div class="tri-img-badge"><img src="assets/logomark-color.png" alt=""></div>
+          <div class="tri-img-caption">
+            <span class="tri-cap-slide on" data-i="0">MSC CERTIFIED WATERS</span>
+            <span class="tri-cap-slide" data-i="1">LIFE ABOARD OUR FLEET</span>
+            <span class="tri-cap-slide" data-i="2">REAL-TIME OCEAN DATA</span>
+          </div>
+        </div>
+
+        <!-- 中欄文字 -->
+        <div class="tri-col tri-center">
+          <div class="tri-center-top">
+            <div class="tri-badge-row">
+              <div class="tri-badge-icon"></div>
+              <div class="tri-badge-text">SEAWORTH ESG</div>
+            </div>
+            <div class="tri-index"><b id="triIndexNum">01</b> / 03</div>
+          </div>
+
+          <div class="tri-letter-stage">
+            <span class="tri-letter on" data-i="0">E</span>
+            <span class="tri-letter" data-i="1">S</span>
+            <span class="tri-letter" data-i="2">G</span>
+          </div>
+
+          <div class="tri-copy-stage">
+            <div class="tri-copy on" data-i="0">
+              <span class="tri-copy-en">Environment Stewardship</span>
+              <h2>海洋生態守護</h2>
+              <p>全面取得 MSC 海洋管理委員會與 Dolphin Safe 雙重認證，採用非纏結式集魚器（FADs）與低碳節能航行技術，減緩生態衝擊。</p>
+            </div>
+            <div class="tri-copy" data-i="1">
+              <span class="tri-copy-en">Social &amp; Dignity</span>
+              <h2>人本人權保障</h2>
+              <p>嚴格遵循 ILO C-188 漁業工作公約與 FISH 船員人權標準，導入海上遠距醫療照護與船上 Wi-Fi 通訊權，堅守暴力零容忍原則。</p>
+            </div>
+            <div class="tri-copy" data-i="2">
+              <span class="tri-copy-en">Governance &amp; Tech</span>
+              <h2>智慧科技與合規治理</h2>
+              <p>導入 IoT 電子浮標與 AI 智慧漁撈預測，打造從深海到餐桌全流程可追溯供應鏈，堅守反非法捕撈（IUU）原則。</p>
+            </div>
+          </div>
+
+          <ul class="tri-dots" id="triDots">
+            <li class="on" data-i="0"><span class="tri-dot"></span><span>Environment</span></li>
+            <li data-i="1"><span class="tri-dot"></span><span>Social</span></li>
+            <li data-i="2"><span class="tri-dot"></span><span>Governance</span></li>
+          </ul>
+        </div>
+
+        <!-- 右欄影像 -->
+        <div class="tri-col tri-img">
+          <div class="tri-img-slide on" data-i="0"><img src="assets/fish-jump.jpg" alt="海洋生態" style="object-position:75% 65%;"></div>
+          <div class="tri-img-slide" data-i="1"><img src="assets/crew-deck.jpg" alt="船員甲板作業"></div>
+          <div class="tri-img-slide" data-i="2"><img src="assets/core-values.jpg" alt="智慧治理總部"></div>
+          <div class="tri-img-scrim"></div>
+          <div class="tri-img-badge"><img src="assets/logomark-color.png" alt=""></div>
+          <div class="tri-img-caption">
+            <span class="tri-cap-slide on" data-i="0">PACIFIC TUNA GROUNDS</span>
+            <span class="tri-cap-slide" data-i="1">LIFE ON DECK</span>
+            <span class="tri-cap-slide" data-i="2">GLOBAL OPERATIONS</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="tri-scrollhint" id="triScrollHint">
+        SCROLL
+        <span class="tri-scroll-line"></span>
+      </div>
+    </div>
+  </section>
+
+<script>
+  (function(){
+    const scrollEl = document.getElementById('triptychWrap');
+    const scrollHint = document.getElementById('triScrollHint');
+    const indexNum = document.getElementById('triIndexNum');
+    const total = 3;
+    let current = 0;
+
+    function setActive(i){
+      current = i;
+      document.querySelectorAll('.tri-img-slide, .tri-cap-slide, .tri-letter, .tri-copy').forEach(el => {
+        el.classList.toggle('on', +el.dataset.i === i);
+      });
+      document.querySelectorAll('#triDots li').forEach(li => {
+        li.classList.toggle('on', +li.dataset.i === i);
+      });
+      indexNum.textContent = String(i + 1).padStart(2, '0');
+    }
+
+    function onScroll(){
+      const totalScroll = scrollEl.offsetHeight - window.innerHeight;
+      if (totalScroll <= 0) return;
+      const rect = scrollEl.getBoundingClientRect();
+      const progress = Math.min(1, Math.max(0, -rect.top / totalScroll));
+      let idx = Math.floor(progress * total);
+      if (idx >= total) idx = total - 1;
+      if (idx !== current) setActive(idx);
+      if (scrollHint) scrollHint.classList.toggle('hide', progress > 0.04);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    onScroll();
+
+    document.querySelectorAll('#triDots li').forEach(li => {
+      li.addEventListener('click', () => {
+        const i = +li.dataset.i;
+        const totalScroll = scrollEl.offsetHeight - window.innerHeight;
+        if (totalScroll > 0) {
+          const targetY = scrollEl.offsetTop + (totalScroll * (i + 0.5) / total);
+          window.scrollTo({ top: targetY, behavior: 'smooth' });
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
