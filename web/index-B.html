@@ -96,7 +96,7 @@
             font-size: 0.9rem;
             color: var(--c-muted);
             display: block;
-            margin-bottom: 12px;
+            margin-bottom: 2px; /* 從 12px 縮短以拉近兩行文字的間距 */
         }
 
         .en-poetic-title {
@@ -141,50 +141,35 @@
         .blanz-nav-inner {
             max-width: 1440px;
             margin: 0 auto;
-            padding: 24px 60px;
+            padding: 12px 60px; /* 縮減上下 padding，讓導覽列變矮 */
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+        }
+        
+        .nav-left-area {
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
+            padding-right: 40px;
         }
-        .blanz-logo-link {
-            text-decoration: none;
+        
+        .nav-right-area {
             display: flex;
             align-items: center;
-            gap: 16px;
+            justify-content: flex-start;
+            padding-left: 40px;
         }
-        .logo-symbol {
-            width: 32px;
-            height: 32px;
-            border: 1px solid var(--c-ink);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-display);
-            font-size: 1.1rem;
-            color: var(--c-ink);
-        }
-        .logo-text-en {
-            font-family: var(--font-display);
-            font-size: 1.25rem;
-            letter-spacing: 0.28em;
-            color: var(--c-ink);
-            font-weight: 600;
-        }
-        .logo-text-zh {
-            font-family: var(--font-serif);
-            font-size: 0.75rem;
-            letter-spacing: 0.2em;
-            color: var(--c-muted);
-            border-left: 1px solid var(--c-line);
-            padding-left: 14px;
-        }
-        .blanz-nav-menu {
+
+        .nav-split-menu {
             display: flex;
             list-style: none;
-            gap: 45px;
+            gap: 40px;
             align-items: center;
+            margin: 0;
+            padding: 0;
         }
-        .blanz-nav-menu a {
+        .nav-split-menu a {
             text-decoration: none;
             color: var(--c-charcoal);
             font-size: 0.8rem;
@@ -193,46 +178,212 @@
             font-weight: 400;
             transition: color 0.3s ease;
         }
-        .blanz-nav-menu a:hover {
+        .nav-split-menu a:hover {
             color: var(--c-copper);
         }
-        .blanz-nav-cta {
-            border: 1px solid var(--c-ink);
-            padding: 8px 22px;
-            font-size: 0.75rem !important;
-            letter-spacing: 0.22em !important;
-            transition: all 0.4s var(--ease-poetic);
-        }
-        .blanz-nav-cta:hover {
-            background: var(--c-ink);
-            color: #FFFFFF !important;
+        
+        .nav-center-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* 區塊 1：HERO BANNER (巨幅跨海大橋與遠景電影感視覺) */
-        .blanz-hero {
-            position: relative;
-            padding-top: 100px;
+        /* 頂部詩意標題區塊 */
+        .hero-intro-section {
+            background-color: var(--c-white);
+            padding-top: 90px; /* 縮減高度，原本 120px */
         }
         .hero-poetic-header {
             text-align: center;
-            padding: 40px 0 60px 0;
+            padding: 10px 0 20px 0; /* 縮減高度，原本 20px 0 40px 0 */
         }
-        .hero-panorama-stage {
+
+        /* 區塊 1：HERO BANNER (全景大洋與幻燈片導覽) */
+        .blanz-hero {
             position: relative;
             width: 100%;
-            height: 68vh;
-            min-height: 520px;
+            height: calc(100vh - 190px); /* 更精確地扣除上方白色區塊高度 */
+            min-height: 500px; /* 安全最小高度 */
             overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 20px; 
+            z-index: 1;
         }
-        .hero-panorama-img {
+        .hero-bg-wrapper {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+        }
+        .hero-bg-img {
+            position: absolute;
+            inset: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.96) contrast(102%);
-            transition: transform 12s var(--ease-poetic);
+            filter: brightness(0.85);
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out, transform 12s var(--ease-poetic);
+            transform: scale(1.02);
+            z-index: 1;
         }
-        .hero-panorama-stage:hover .hero-panorama-img {
-            transform: scale(1.04);
+        .hero-bg-img.active {
+            opacity: 1;
+            z-index: 2;
+        }
+        .blanz-hero:hover .hero-bg-img.active {
+            transform: scale(1.05);
+        }
+        .hero-bg-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%);
+            z-index: 3;
+        }
+        .hero-content-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding-top: 40px; /* 取消 140px，因為上方已經沒有 fixed header 擋住影像了 */
+            padding-left: 40px; 
+            padding-right: 40px;
+            z-index: 2;
+        }
+        
+        /* 幻燈片圓點 */
+        .hero-slide-dots {
+            align-self: flex-end;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 40px;
+            padding-right: 20px;
+        }
+        .hero-slide-dots .dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .hero-slide-dots .dot.active, .hero-slide-dots .dot:hover {
+            background-color: #FFFFFF;
+            transform: scale(1.5);
+        }
+
+        /* 底部區域 */
+        .hero-bottom-area {
+            display: flex;
+            justify-content: flex-end; /* 讓導覽靠右 */
+            align-items: flex-end;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        /* 巨大英文標題 (緊貼最左下角) */
+        .hero-big-title-group {
+            position: absolute;
+            left: 0; /* 緊貼 content-wrapper 的左側 */
+            bottom: 0; /* 貼齊 bottom-area 底部 */
+            display: flex;
+            align-items: baseline;
+            gap: 24px;
+            z-index: 5;
+        }
+        .hero-big-title {
+            font-family: var(--font-display);
+            font-size: 10rem;
+            color: #FFFFFF;
+            font-weight: 300;
+            line-height: 0.75;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            text-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            margin: 0;
+            padding-bottom: 10px; /* 留一點點避免被裁切 */
+        }
+        .hero-big-subtitle {
+            font-family: var(--font-sans);
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.9);
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            position: relative;
+            top: -16px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            white-space: nowrap;
+        }
+
+        /* 右側導覽選單 */
+        .hero-slide-nav {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0px;
+            position: relative;
+            padding-right: 40px;
+        }
+        .slide-nav-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            width: 260px;
+            text-transform: uppercase;
+        }
+        .slide-nav-item:hover, .slide-nav-item.active-nav {
+            color: #FFFFFF;
+            border-bottom-color: #FFFFFF;
+            padding-right: 10px;
+        }
+        .slide-nav-item .nav-icon {
+            width: 16px;
+            height: 16px;
+            opacity: 0.6;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .slide-nav-item:hover .nav-icon, .slide-nav-item.active-nav .nav-icon {
+            opacity: 1;
+        }
+        
+        /* 垂直滾動指示線 */
+        .hero-scroll-indicator {
+            position: absolute;
+            right: 0px;
+            bottom: -20px; /* 向上拉，避免被 overflow: hidden 裁切 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .scroll-line {
+            width: 1px;
+            height: 80px; /* 縮短長度以適應視窗 */
+            background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 30%, rgba(255,255,255,0) 100%);
+        }
+        
+        @media (max-width: 1024px) {
+            .hero-big-title { font-size: 6rem; }
+            .hero-big-subtitle { font-size: 0.9rem; }
+            .hero-bottom-area { flex-direction: column; align-items: flex-start; gap: 40px; }
+            .hero-slide-nav { align-items: flex-start; padding-left: 20px; padding-right: 0; width: 100%; }
+            .slide-nav-item { width: 100%; max-width: 320px; }
+            .hero-scroll-indicator { display: none; }
+        }
+        @media (max-width: 640px) {
+            .hero-big-title { font-size: 3.5rem; }
+            .hero-big-subtitle { font-size: 0.75rem; top: 0; display: block; margin-top: 8px; }
+            .hero-big-title-group { flex-direction: column; gap: 0; }
         }
 
         /* 區塊 2：ABOUT GROUP (文字疊圖歪斜錯位版面) */
@@ -1075,75 +1226,159 @@
             margin: 0 auto;
             padding: 100px 32px 80px;
         }
-        .grid-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            row-gap: 160px;
-            column-gap: 48px;
-            align-items: start;
+        .staggered-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 100px;
+            width: 100%;
+            position: relative;
+            padding-bottom: 60px;
         }
-        /* Staggered masonry positioning */
-        .grid-layout > :nth-child(1) { grid-column: 1; grid-row: 1; }
-        .grid-layout > :nth-child(2) { grid-column: 2; grid-row: 1 / span 2; }
-        .grid-layout > :nth-child(3) { grid-column: 1; grid-row: 2 / span 2; }
-        .grid-layout > :nth-child(4) { grid-column: 2; grid-row: 3; }
-        .header-block {
-            padding-top: 12px;
-            padding-right: 24px;
-        }
-        .header-block p {
-            color: var(--c-charcoal);
-            font-size: 0.95rem;
-            font-weight: 300;
-            line-height: 1.85;
-            text-align: justify;
-        }
-        .group-card {
+        .sector-group {
             position: relative;
             width: 100%;
+            display: flex;
         }
-        .card-img-wrapper {
-            position: relative;
-            width: 100%;
-            height: 380px;
-            overflow: hidden;
-            background-color: #E2E6EA;
+        @keyframes ship-float {
+            0% { translate: 0 0px; }
+            50% { translate: 0 -20px; }
+            100% { translate: 0 0px; }
         }
-        .card-img-wrapper img {
-            width: 100%;
-            height: 140%; /* 預留更多高度給視差滾動，效果更明顯 */
-            object-fit: cover;
+        .ship-img {
             display: block;
-            will-change: transform;
-            transform: translateY(-30%); /* 初始預設防閃爍 */
+            height: auto;
+            will-change: translate, scale;
+            transform: translateZ(0); /* 強制開啟 GPU 次像素平滑渲染 (Sub-pixel rendering) */
+            backface-visibility: hidden; /* 防止邊緣閃爍 */
+            animation: ship-float 3.5s ease-in-out infinite;
+            transition: scale 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            scale: 1;
         }
-        .overlay-panel {
+        .group-1 .ship-img { animation-delay: 0s; }
+        .group-2 .ship-img { animation-delay: -2s; }
+        .group-3 .ship-img { animation-delay: -4s; }
+        
+        .sector-group:hover .ship-img {
+            animation-play-state: paused;
+            scale: 1.02;
+        }
+
+        /* Group 1: WIN HOPE 707 (華偉) */
+        .group-1 {
+            flex-direction: column;
+            align-items: flex-end;
+            position: relative;
+        }
+        .group-1 .header-block {
             position: absolute;
-            right: 0;
-            bottom: -90px;
-            width: 78%;
-            background: rgba(255, 255, 255, 0.88);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            padding: 32px 30px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            z-index: 2;
-        }
-        .group-card:hover .overlay-panel {
-            transform: translateY(-4px);
-            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.09);
-        }
-        .card-bottom-left .overlay-panel {
             left: 0;
-            right: auto;
-            bottom: -90px;
+            top: 35%;
+            transform: translateY(-50%);
+            width: 35%;
+            z-index: 10;
+        }
+        .group-1 .header-block .eyebrow-en {
+            display: block;
+            font-size: 0.78rem;
+            font-family: var(--font-sans);
+            letter-spacing: 0.28em;
+            color: #8F9CA8;
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+        .group-1 .header-block h2 {
+            font-size: 3.4rem;
+            color: #2b3947;
+            margin-bottom: 8px;
+            line-height: 1.12;
+            font-family: var(--font-serif);
+            letter-spacing: 0.05em;
+        }
+        .group-1 .header-block span.tagline {
+            font-family: var(--font-serif); 
+            font-size: 20px; 
+            color: var(--c-copper); 
+            letter-spacing: 0.15em;
+        }
+        .group-1 .ship-img {
+            width: 72%;
+            max-width: 880px;
+            height: auto;
+            object-fit: contain;
+            margin-bottom: 0px;
+        }
+        .group-1 .overlay-panel {
+            width: 360px;
+            margin-right: 20px;
+            margin-top: -60px; /* 往上靠攏，貼近船身右側下方 */
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Group 2: TIARA 108 (巨寶) */
+        .group-2 {
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: flex-start; /* 改為靠上對齊 */
+            gap: 0px;
+            margin-top: -80px; /* 往上推，拉近與第一組的距離 */
+        }
+        .group-2 .overlay-panel {
+            width: 360px;
+            flex-shrink: 0;
+            margin-top: 100px; /* 往下推移一點，對齊船頭左上方空白處 */
+        }
+        .group-2 .ship-img {
+            width: 66%;
+            max-width: 840px;
+            height: auto;
+            object-fit: contain;
+            margin-left: -120px; /* 大幅靠左貼近文字 */
+        }
+
+        /* Group 3: BL2203 (華昇) */
+        .group-3 {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: 48px;
+        }
+        .group-3 .ship-img {
+            width: 66%;
+            max-width: 840px;
+            height: auto;
+            object-fit: contain;
+        }
+        .group-3 .overlay-panel {
+            width: 360px;
+            flex-shrink: 0;
+        }
+
+        /* Cards / Panels */
+        .overlay-panel {
+            background: transparent;
+            padding: 0;
+            box-shadow: none;
+            border: none;
+            transition: transform 0.4s ease;
+            z-index: 20;
+        }
+        .sector-group:hover .overlay-panel {
+            transform: translateY(-4px);
+        }
+        .sector-brand-logo {
+            height: 40px; /* 稍微放大 Logo */
+            width: auto;
+            object-fit: contain;
+            display: block;
+            margin-bottom: 14px;
         }
         .panel-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
         .panel-title {
             font-size: 1.15rem;
@@ -1164,21 +1399,20 @@
             color: #616B76;
             line-height: 1.65;
             font-weight: 300;
-            margin-bottom: 20px;
-            min-height: 42px;
+            margin-bottom: 12px;
         }
         .panel-divider {
             width: 36px;
             height: 1.5px;
             background-color: #D2D8DE;
-            margin-bottom: 18px;
+            margin-bottom: 12px;
         }
         .panel-sub-label {
             font-size: 0.75rem;
             font-weight: 600;
             letter-spacing: 0.05em;
             color: #242E38;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         .tag-group {
             display: flex;
@@ -1239,33 +1473,100 @@
     <!-- 頂部極簡固定導覽列 -->
     <header class="blanz-header">
         <nav class="blanz-nav-inner">
-            <a href="#top" class="blanz-logo-link">
-                <img src="assets/logo-icon.png" alt="" class="logo-icon" style="height:40px; width:auto; flex-shrink:0;">
-                <img src="assets/logo-text.png" alt="SEAWORTH HOLDING 海沃控股集團" class="logo-text-img" style="height:28px; width:auto;">
+            <!-- 左側：Logo 文字與 3 個選項 -->
+            <div class="nav-left-area">
+                <a href="#top" style="display: flex; align-items: center; height: 100%;">
+                    <img src="assets/logo-text.png" alt="SEAWORTH HOLDING" style="height:32px; width:auto;">
+                </a>
+                <ul class="nav-split-menu">
+                    <li><a href="#about">集團總覽</a></li>
+                    <li><a href="#about">公司治理</a></li>
+                    <li><a href="#esg">共善經營</a></li>
+                </ul>
+            </div>
+            
+            <!-- 中央：海神叉 Icon -->
+            <a href="#top" class="nav-center-icon">
+                <img src="assets/logo-icon.png" alt="" style="height:48px; width:auto;">
             </a>
 
-            <ul class="blanz-nav-menu">
-                <li><a href="#about">集團總覽</a></li>
-                <li><a href="#about">公司治理</a></li>
-                <li><a href="#esg">共善經營</a></li>
-                <li><a href="#esg">投資人專區</a></li>
-                <li><a href="#about">最新消息</a></li>
-                <li><a href="#contact" class="blanz-nav-cta">聯繫海沃</a></li>
-            </ul>
+            <!-- 右側：4 個選項 -->
+            <div class="nav-right-area">
+                <ul class="nav-split-menu">
+                    <li><a href="#esg">投資人專區</a></li>
+                    <li><a href="#about">最新消息</a></li>
+                    <li><a href="#contact">聯繫海沃</a></li>
+                    <li class="nav-lang-picker">
+                        <a href="#" style="display: flex; align-items: center; gap: 4px;">
+                            TW <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </nav>
     </header>
 
-    <!-- 區塊 1：主視覺 HERO BANNER (全景大橋與大洋遠景電影感) -->
-    <section class="blanz-hero">
+    <!-- 頂部詩意標題區塊 -->
+    <section class="hero-intro-section">
         <div class="hero-poetic-header">
             <span class="en-poetic-lead">THE ONLY ONE, POETIC OCEANIC CLASS</span>
             <h1 class="serif" style="font-size: 1.25rem; letter-spacing: 0.3em; color: var(--c-ink); font-weight: 300;">
                 敬海而行 ‧ 與世界共榮共善
             </h1>
         </div>
+    </section>
 
-        <div class="hero-panorama-stage">
-            <img src="assets/hero-wave.jpg" alt="浩瀚大洋與跨洋遠景" class="hero-panorama-img">
+    <!-- 區塊 1：主視覺 HERO BANNER (全景大洋與幻燈片導覽) -->
+    <section class="blanz-hero">
+        <div class="hero-bg-wrapper">
+            <!-- 底圖，為了看到切換效果加上濾鏡，實際上可以換成不同的圖片 src -->
+            <img src="assets/hero-wave.jpg" alt="Slide 1" class="hero-bg-img active">
+            <img src="assets/hero-wave.jpg" alt="Slide 2" class="hero-bg-img" style="filter: brightness(0.85) hue-rotate(30deg);">
+            <img src="assets/hero-wave.jpg" alt="Slide 3" class="hero-bg-img" style="filter: brightness(0.85) grayscale(60%);">
+            <img src="assets/hero-wave.jpg" alt="Slide 4" class="hero-bg-img" style="filter: brightness(0.85) hue-rotate(-30deg);">
+            <div class="hero-bg-overlay"></div>
+        </div>
+
+        <div class="hero-content-wrapper">
+            <!-- 右側上方：幻燈片圓點指示器 -->
+            <div class="hero-slide-dots">
+                <span class="dot active" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+                <span class="dot" data-index="3"></span>
+            </div>
+
+            <div class="hero-bottom-area">
+                <!-- 左側：大型英文標題 (如 CRUZIANA 風格) -->
+                <div class="hero-big-title-group">
+                    <h1 class="hero-big-title">SEAWORTH</h1>
+                    <span class="hero-big-subtitle">HOLDING GROUP</span>
+                </div>
+
+                <!-- 右側：切換投影片/導覽選單 -->
+                <div class="hero-slide-nav">
+                    <a href="#" class="slide-nav-item active-nav" data-index="0">
+                        <span class="nav-text">集團總覽 Overview</span>
+                        <i data-lucide="arrow-right" class="nav-icon"></i>
+                    </a>
+                    <a href="#" class="slide-nav-item" data-index="1">
+                        <span class="nav-text">三大事業群 Pillars</span>
+                        <i data-lucide="arrow-right" class="nav-icon"></i>
+                    </a>
+                    <a href="#" class="slide-nav-item" data-index="2">
+                        <span class="nav-text">永續共善 ESG</span>
+                        <i data-lucide="arrow-right" class="nav-icon"></i>
+                    </a>
+                    <a href="#" class="slide-nav-item" data-index="3">
+                        <span class="nav-text">投資人專區 Investors</span>
+                        <i data-lucide="arrow-right" class="nav-icon"></i>
+                    </a>
+                    <!-- 垂直指示線 -->
+                    <div class="hero-scroll-indicator">
+                        <div class="scroll-line"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1287,6 +1588,73 @@
         <!-- 大圖橫幅：貼齊視窗右側，並與上方文字疊在一起（不受 blanz-container 寬度限制） -->
         <div class="about-hero-banner">
             <img src="assets/hero-vessel.jpg" alt="現代化合規遠洋作業">
+        </div>
+    </section>
+
+    <!-- 區塊：三事業 (從 三事業.html 匯入) -->
+    <section class="section-container" id="three-sectors">
+        <div class="staggered-layout">
+            <!-- Group 1: WIN HOPE 707 (華偉) -->
+            <div class="sector-group group-1">
+                <div class="header-block">
+                    <span class="eyebrow-en">SEAWORTH HOLDING</span>
+                    <h2>THREE<br>PILLARS</h2>
+                    <span class="tagline">海沃控股集團旗下三大事業群</span>
+                </div>
+                <img src="assets/2_nologo.jpg" class="ship-img" alt="WIN HOPE 707">
+                
+                <div class="overlay-panel">
+                    <img src="assets/logo-huawei.png" alt="華偉漁業事業群 FAIR WELL" class="sector-brand-logo">
+                    <p class="panel-desc">傳承自 1983 年高雄前鎮漁港冷凍倉儲與第一艘圍網漁船，奠定集團雄厚實力與全球化根基。</p>
+                    <div class="panel-divider"></div>
+                    <div class="panel-sub-label">核心範疇與優勢</div>
+                    <div class="tag-group">
+                        <span class="tag">產業根基</span>
+                        <span class="tag">遠洋圍網</span>
+                        <span class="tag">冷凍倉儲</span>
+                        <span class="tag">全球運籌</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Group 2: TIARA 108 (巨寶) -->
+            <div class="sector-group group-2">
+                <div class="overlay-panel">
+                    <img src="assets/logo-jubao.png" alt="巨寶漁業事業群 JUMBO" class="sector-brand-logo">
+                    <p class="panel-desc">專營圍網捕撈與現代化冷凍運搬船，引進前瞻船舶設計與國際勞工合規標準，打造頂尖海上移動冷鏈。</p>
+                    <div class="panel-divider"></div>
+                    <div class="panel-sub-label">技術與合規佈局</div>
+                    <div class="tag-group">
+                        <span class="tag">智慧造船</span>
+                        <span class="tag">移動冷鏈</span>
+                        <span class="tag">現代運搬船</span>
+                        <span class="tag">國際合規</span>
+                    </div>
+                </div>
+                <img src="assets/4_nologo.jpg" class="ship-img" alt="TIARA 108">
+            </div>
+
+            <!-- Group 3: BL2203 (華昇) -->
+            <div class="sector-group group-3">
+                <img src="assets/3_nologo.jpg" class="ship-img" alt="BL2203">
+                <div class="overlay-panel">
+                    <img src="assets/logo-huasheng.png" alt="華昇魷釣事業群 HUA SHENG" class="sector-brand-logo">
+                    <p class="panel-desc">專精魷魚秋刀魚船與延繩釣漁船，展現高技術漁法、生態永續與全球供應的頂尖專業。</p>
+                    <div class="panel-divider"></div>
+                    <div class="panel-sub-label">精準技術與永續</div>
+                    <div class="tag-group">
+                        <span class="tag">精準漁法</span>
+                        <span class="tag">高技術捕撈</span>
+                        <span class="tag">魷秋延繩釣</span>
+                        <span class="tag">生態永續</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Action Button -->
+        <div class="cta-container">
+            <a href="#" class="cta-btn">深入了解集團總覽 →</a>
         </div>
     </section>
 
@@ -1335,91 +1703,6 @@
                     </a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- 區塊：三事業 (從 三事業.html 匯入) -->
-    <section class="section-container" id="three-sectors">
-        <div class="grid-layout">
-            <!-- Top Left: Group Intro -->
-            <div class="header-block">
-                <div style="margin-bottom: 24px;">
-                    <h2 class="projects-h2" style="margin-bottom: 0px;">SEAWORTH HOLDING</h2>
-                    <span style="font-family: var(--font-serif); font-size: 20px; color: var(--c-copper); letter-spacing: 0.15em;">全鏈路整合・深耕全球大洋</span>
-                </div>
-                <p>海沃控股集團（SEAWORTH HOLDING）成立於 2026 年，傳承逾四十載深厚根基，以整合遠洋漁業上下游資源、深化共善治理為使命。透過智慧化與合規管理，建立「從深海到市場」的一體化全球供應網絡。</p>
-            </div>
-
-            <!-- Top Right: Card 1 (華偉漁業事業群) -->
-            <div class="group-card">
-                <div class="card-img-wrapper">
-                    <img src="assets/華偉漁業事業群.jpeg" alt="華偉漁業事業群">
-                </div>
-                <div class="overlay-panel">
-                    <div class="panel-header">
-                        <h3 class="panel-title">華偉漁業事業群</h3>
-                        <span class="panel-arrow">›</span>
-                    </div>
-                    <p class="panel-desc">傳承自 1983 年高雄前鎮漁港冷凍倉儲與第一艘圍網漁船，奠定集團雄厚實力與全球化根基。</p>
-                    <div class="panel-divider"></div>
-                    <div class="panel-sub-label">核心範疇與優勢</div>
-                    <div class="tag-group">
-                        <span class="tag">產業根基</span>
-                        <span class="tag">遠洋圍網</span>
-                        <span class="tag">冷凍倉儲</span>
-                        <span class="tag">全球運籌</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bottom Left: Card 2 (巨寶漁業事業群) -->
-            <div class="group-card card-bottom-left">
-                <div class="card-img-wrapper">
-                    <img src="assets/巨寶漁業事業群.jpeg" alt="巨寶漁業事業群">
-                </div>
-                <div class="overlay-panel">
-                    <div class="panel-header">
-                        <h3 class="panel-title">巨寶漁業事業群</h3>
-                        <span class="panel-arrow">›</span>
-                    </div>
-                    <p class="panel-desc">專營圍網捕撈與現代化冷凍運搬船，引進前瞻船舶設計與國際勞工合規標準，打造頂尖海上移動冷鏈。</p>
-                    <div class="panel-divider"></div>
-                    <div class="panel-sub-label">技術與合規佈局</div>
-                    <div class="tag-group">
-                        <span class="tag">智慧造船</span>
-                        <span class="tag">移動冷鏈</span>
-                        <span class="tag">現代運搬船</span>
-                        <span class="tag">國際合規</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bottom Right: Card 3 (華昇魷釣事業群) -->
-            <div class="group-card">
-                <div class="card-img-wrapper">
-                    <img src="assets/華昇魷釣事業群.jpeg" alt="華昇魷釣事業群">
-                </div>
-                <div class="overlay-panel">
-                    <div class="panel-header">
-                        <h3 class="panel-title">華昇魷釣事業群</h3>
-                        <span class="panel-arrow">›</span>
-                    </div>
-                    <p class="panel-desc">專精魷魚秋刀魚船與延繩釣漁船，展現高技術漁法、生態永續與全球供應的頂尖專業。</p>
-                    <div class="panel-divider"></div>
-                    <div class="panel-sub-label">精準技術與永續</div>
-                    <div class="tag-group">
-                        <span class="tag">精準漁法</span>
-                        <span class="tag">高技術捕撈</span>
-                        <span class="tag">魷秋延繩釣</span>
-                        <span class="tag">生態永續</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Bottom Action Button -->
-        <div class="cta-container">
-            <a href="#" class="cta-btn">深入了解集團總覽 →</a>
         </div>
     </section>
 
@@ -1952,6 +2235,66 @@
             });
             // 初始化呼叫一次，確保初始位置正確
             animateParallax();
+        })();
+
+        // 主視覺 Hero 幻燈片切換腳本
+        (function() {
+            const bgs = document.querySelectorAll('.hero-bg-img');
+            const dots = document.querySelectorAll('.hero-slide-dots .dot');
+            const navItems = document.querySelectorAll('.slide-nav-item');
+            
+            if (bgs.length === 0) return;
+
+            let currentIndex = 0;
+            let timer = null;
+
+            function goToSlide(index) {
+                // 移除現有的 active 狀態
+                bgs.forEach(bg => bg.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                navItems.forEach(nav => nav.classList.remove('active-nav'));
+
+                // 加上新的 active 狀態
+                bgs[index].classList.add('active');
+                if (dots[index]) dots[index].classList.add('active');
+                if (navItems[index]) navItems[index].classList.add('active-nav');
+                
+                currentIndex = index;
+                resetTimer();
+            }
+
+            function nextSlide() {
+                let next = (currentIndex + 1) % bgs.length;
+                goToSlide(next);
+            }
+
+            function resetTimer() {
+                clearInterval(timer);
+                timer = setInterval(nextSlide, 6000); // 每 6 秒切換一次
+            }
+
+            // 綁定點擊事件
+            dots.forEach(dot => {
+                dot.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    let targetIndex = parseInt(dot.getAttribute('data-index'));
+                    if(!isNaN(targetIndex)) goToSlide(targetIndex);
+                });
+            });
+            
+            navItems.forEach(nav => {
+                nav.addEventListener('click', (e) => {
+                    // 只攔截帶有 data-index 的導覽點擊，作為幻燈片切換
+                    if (nav.hasAttribute('data-index')) {
+                        e.preventDefault();
+                        let targetIndex = parseInt(nav.getAttribute('data-index'));
+                        if(!isNaN(targetIndex)) goToSlide(targetIndex);
+                    }
+                });
+            });
+
+            // 初始化
+            resetTimer();
         })();
     </script>
 </body>
