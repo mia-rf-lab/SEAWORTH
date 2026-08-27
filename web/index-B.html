@@ -197,6 +197,7 @@
         .hero-poetic-header {
             text-align: center;
             padding: 10px 0 20px 0; /* 縮減高度，原本 20px 0 40px 0 */
+            animation: hero-fade-down 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
         }
 
         /* 區塊 1：HERO BANNER (全景大洋與幻燈片導覽) */
@@ -262,6 +263,7 @@
             gap: 16px;
             margin-top: 40px;
             padding-right: 20px;
+            animation: hero-fade-in 1s ease 0.9s both;
         }
         .hero-slide-dots .dot {
             width: 5px;
@@ -307,6 +309,7 @@
             text-shadow: 0 10px 40px rgba(0,0,0,0.3);
             margin: 0;
             padding-bottom: 10px; /* 留一點點避免被裁切 */
+            animation: hero-title-up 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
         }
         .hero-big-subtitle {
             font-family: var(--font-sans);
@@ -318,6 +321,7 @@
             top: -16px;
             text-shadow: 0 4px 10px rgba(0,0,0,0.2);
             white-space: nowrap;
+            animation: hero-sub-slide 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
         }
 
         /* 右側導覽選單 */
@@ -342,6 +346,32 @@
             transition: all 0.3s ease;
             width: 260px;
             text-transform: uppercase;
+            animation: hero-nav-slide 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+        .hero-slide-nav .slide-nav-item:nth-child(1) { animation-delay: 0.45s; }
+        .hero-slide-nav .slide-nav-item:nth-child(2) { animation-delay: 0.6s; }
+        .hero-slide-nav .slide-nav-item:nth-child(3) { animation-delay: 0.75s; }
+        .hero-slide-nav .slide-nav-item:nth-child(4) { animation-delay: 0.9s; }
+
+        @keyframes hero-fade-down {
+            from { opacity: 0; transform: translateY(-24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes hero-title-up {
+            from { opacity: 0; transform: translateY(60px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes hero-sub-slide {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes hero-nav-slide {
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes hero-fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         .slide-nav-item:hover, .slide-nav-item.active-nav {
             color: #FFFFFF;
@@ -1231,8 +1261,11 @@
             margin: 0 auto;
             padding: 100px 32px 80px;
         }
+        #about {
+            padding-bottom: 50px;
+        }
         #three-sectors {
-            padding-top: 20px; /* 縮減上方間距，拉近與上一區塊的距離 */
+            padding-top: 0px;
         }
         .staggered-layout {
             display: flex;
@@ -1483,6 +1516,173 @@
                 margin-top: 70px;
             }
         }
+        /* ===== 國際合規認證 & 全球網絡 (Certifications & Global Presence) ===== */
+        .certs-section {
+            background-color: #F8F9FA;
+            padding: 120px 0;
+            border-top: 1px solid var(--c-line);
+            border-bottom: 1px solid var(--c-line);
+        }
+        .certs-header {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 56px;
+        }
+        .certs-eyebrow {
+            font-family: var(--font-en);
+            font-size: 0.85rem;
+            letter-spacing: 0.2em;
+            color: var(--c-copper);
+            text-transform: uppercase;
+            display: inline-block;
+        }
+        .certs-title {
+            font-family: var(--font-serif);
+            font-size: 2.6rem;
+            color: var(--c-ink);
+            margin-top: 16px;
+            font-weight: 400;
+            letter-spacing: 0.06em;
+        }
+        .cert-strip {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            background: #FFFFFF;
+            border: 1px solid var(--c-line);
+            margin-bottom: 56px;
+            box-shadow: 0 12px 36px rgba(0,0,0,0.03);
+        }
+        .cert-item {
+            flex: 1 1 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 32px 20px;
+            border-left: 1px solid var(--c-line);
+            min-height: 120px;
+            transition: transform 0.3s ease;
+        }
+        .cert-item:first-child {
+            border-left: none;
+        }
+        .cert-item:hover {
+            transform: translateY(-3px);
+        }
+        .cert-item img {
+            max-height: 48px;
+            max-width: 130px;
+            width: auto;
+            object-fit: contain;
+            filter: grayscale(40%);
+            opacity: 0.85;
+            transition: all 0.3s ease;
+        }
+        .cert-item:hover img {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+        .cert-badge-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            text-align: center;
+        }
+        .cert-badge-text .mark {
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--c-copper);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--c-copper);
+            font-size: 0.75rem;
+            font-family: var(--font-display);
+            font-style: italic;
+        }
+        .cert-badge-text span.name {
+            font-size: 0.72rem;
+            letter-spacing: 0.04em;
+            color: var(--c-muted);
+            line-height: 1.4;
+        }
+        .network-row {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .network-row h3 {
+            font-family: var(--font-serif);
+            color: var(--c-ink);
+            font-weight: 500;
+            font-size: 1.35rem;
+            margin-bottom: 14px;
+            letter-spacing: 0.05em;
+        }
+        .network-row p {
+            color: var(--c-muted);
+            font-size: 0.95rem;
+            line-height: 2;
+            margin-bottom: 0;
+        }
+        .market-tags {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+        .market-tag-btn {
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+            color: var(--c-ink);
+            padding: 16px 32px;
+            border: 1px solid var(--c-ink);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            letter-spacing: 0.05em;
+            background: transparent;
+        }
+        .market-tag-btn:hover {
+            background: var(--c-ink);
+            color: #FFFFFF;
+            transform: translateY(-2px);
+        }
+        @media (max-width: 960px) {
+            .network-row {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            .market-tags {
+                justify-content: flex-start;
+            }
+        }
+
+        /* ===== 全站滾動入場效果 (Scroll Entrance Reveal) ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+        .reveal.reveal-left {
+            transform: translateX(-32px);
+        }
+        .reveal.reveal-right {
+            transform: translateX(32px);
+        }
+        .reveal.in {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
     </style>
 </head>
 <body>
@@ -1727,61 +1927,6 @@
         </div>
     </section>
 
-    <!-- 區塊 3：三大事業群 (THE BLANZ ARCHITECTURE & 5-LETTER SLICES) -->
-    <section class="blanz-section" style="padding-top: 0;" id="sectors">
-        <div class="blanz-container">
-            <!-- 標題與簡介引用 -->
-            <div class="poetic-quote-wrap">
-                <div class="poetic-mark-line"></div>
-                <div class="poetic-quote-desc">
-                    <div>
-                        <h2 class="projects-h2" style="margin-bottom: 0px;">CORE SECTORS</h2>
-                        <span style="font-family: var(--font-serif); font-size: 20px; font-weight: 400; color: var(--c-subtitle-blue); letter-spacing: 0.15em; display: block; margin-top: 16px;">三大核心事業群</span>
-                    </div>
-                    <div>
-                        <p style="font-size: 0.95rem; color: var(--c-charcoal); line-height: 2.1;">
-                            整合智慧造船、遠洋漁撈、冷鏈物流與國際貿易，打造全流程可追溯的全球海洋產業體系。旗下三大核心事業群齊頭並進，樹立大洋作業新標準。
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 海天立方體意象橫幅 (Monolith Horizon) -->
-            <div class="monolith-banner-box">
-                <img id="sector-main-img" src="assets/華偉漁業事業群.jpeg" alt="事業群主視覺" style="transition: opacity 0.4s ease;">
-            </div>
-
-            <!-- 3 欄切片藝廊 -->
-            <div class="slices-gallery-wrapper" id="slices-interactive-wrapper">
-                <div class="slices-giant-watermark">SEAWORTH</div>
-
-                <div class="slices-3-grid">
-                    <!-- Slice 1: 華偉 -->
-                    <div class="slice-item active-slice" data-img-src="assets/華偉漁業事業群.jpeg">
-                        <img src="assets/華偉漁業事業群.jpeg" alt="華偉漁業">
-                        <div class="slice-letter-overlay" style="font-size: 2rem; font-family: var(--font-serif); letter-spacing: 0.1em;">華偉</div>
-                    </div>
-
-                    <!-- Slice 2: 巨寶 -->
-                    <div class="slice-item" data-img-src="assets/巨寶漁業事業群.jpeg">
-                        <img src="assets/巨寶漁業事業群.jpeg" alt="巨寶漁業">
-                        <div class="slice-letter-overlay" style="font-size: 2rem; font-family: var(--font-serif); letter-spacing: 0.1em;">巨寶</div>
-                    </div>
-
-                    <!-- Slice 3: 華昇 -->
-                    <div class="slice-item" data-img-src="assets/華昇魷釣事業群.jpeg">
-                        <img src="assets/華昇魷釣事業群.jpeg" alt="華昇魷釣">
-                        <div class="slice-letter-overlay" style="font-size: 2rem; font-family: var(--font-serif); letter-spacing: 0.1em;">華昇</div>
-                    </div>
-                </div>
-
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 24px;">
-                    <span class="slice-caption">1. 華偉漁業事業群 (圍網) ｜ 2. 巨寶漁業事業群 (冷鏈) ｜ 3. 華昇魷釣事業群 (精準捕撈)</span>
-                    <a href="#about" style="color: var(--c-ink); font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid var(--c-ink);">VIEW SECTORS →</a>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- 區塊 4：KEY NUMBERS & PANORAMIC CITYSCAPE (日夜雙重景觀橫幅) -->
     <section class="panoramic-numbers-section" id="milestones">
@@ -1839,6 +1984,48 @@
         </div>
     </section>
 
+
+    <!-- 區塊：國際合規認證・全球合作網絡 (CERTIFICATIONS & GLOBAL PRESENCE) -->
+    <section class="certs-section" id="certs">
+        <div class="blanz-container">
+            <div class="certs-header">
+                <span class="certs-eyebrow">— CERTIFICATIONS &amp; GLOBAL PRESENCE</span>
+                <h2 class="certs-title">國際合規認證 ‧ 全球合作網絡</h2>
+            </div>
+
+            <div class="cert-strip">
+                <div class="cert-item"><img src="assets/certs/MSC_ecolabel.png" alt="MSC 海洋管理委員會認證"></div>
+                <div class="cert-item"><img src="assets/certs/Dolphin_Safe.png" alt="Dolphin Safe 海豚保護標章"></div>
+                <div class="cert-item"><img src="assets/certs/FISH.jpg" alt="FISH Crew Standard 船員人權標準"></div>
+                <div class="cert-item">
+                    <div class="cert-badge-text">
+                        <span class="mark">ILO</span>
+                        <span class="name">ILO C-188<br>國際勞工公約標準</span>
+                    </div>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-badge-text">
+                        <span class="mark">ISO</span>
+                        <span class="name">ISO 31000:2018<br>風險管理規範</span>
+                    </div>
+                </div>
+                <div class="cert-item"><img src="assets/certs/WCPFC-logo.png" alt="WCPFC 中西太平洋漁業委員會"></div>
+                <div class="cert-item"><img src="assets/certs/ISSF-LOGO.png" alt="ISSF 國際永續漁業基金會"></div>
+            </div>
+
+            <div class="network-row">
+                <div>
+                    <h3>全球市場經銷網絡</h3>
+                    <p>經銷網路垂直滲透亞洲、歐洲、美洲等主流消費市場；與 PNA 國家及國際漁業組織締結長期戰略夥伴關係，鞏固核心漁業資源，穩健擴張國際版圖。</p>
+                </div>
+                <div class="market-tags">
+                    <a href="#contact" class="market-tag-btn">亞洲 Asia</a>
+                    <a href="#contact" class="market-tag-btn">歐洲 Europe</a>
+                    <a href="#contact" class="market-tag-btn">美洲 Americas</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- 區塊：最新消息 NEWS & INSIGHTS -->
     <section class="section-projects" id="news">
@@ -2219,6 +2406,68 @@
 
             // 初始化
             resetTimer();
+        })();
+
+        // ===== 全站流暢滾動入場效果 (Scroll Reveal Observer) =====
+        (function() {
+            // 針對網格/卡片容器自動為子項目加上錯落延遲
+            const staggerGrids = document.querySelectorAll('.projects-4-grid, .numbers-4-columns-grid, .slices-3-grid, .dark-sectors-row, .staggered-layout');
+            staggerGrids.forEach(grid => {
+                const items = grid.children;
+                for (let i = 0; i < items.length; i++) {
+                    if (!items[i].classList.contains('reveal')) {
+                        items[i].classList.add('reveal', `delay-${(i % 4) + 1}`);
+                    }
+                }
+            });
+
+            // 選取全站重點大標題、文字與圖表區塊
+            const revealSelectors = [
+                '.about-hero-title',
+                '.about-hero-desc',
+                '.about-hero-banner',
+                '.header-block',
+                '.ship-img',
+                '.overlay-panel',
+                '.sector-group',
+                '.dark-sectors-intro',
+                '.dark-sectors-row .dark-card',
+                '.poetic-quote-wrap',
+                '.monolith-banner-box',
+                '.split-city-overlay',
+                '.certs-header',
+                '.cert-strip',
+                '.network-row',
+                '.projects-header-top',
+                '.project-card-item',
+                '.contact-poetic-info',
+                '.form-poetic-box',
+                '.footer-blanz-grid > div',
+                '.footer-bottom-bar'
+            ];
+
+            revealSelectors.forEach(sel => {
+                document.querySelectorAll(sel).forEach(el => {
+                    if (!el.classList.contains('reveal')) {
+                        el.classList.add('reveal');
+                    }
+                });
+            });
+
+            // 建立 IntersectionObserver 進行平滑入場監控
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in');
+                        obs.unobserve(entry.target); // 動畫觸發一次即解綁，節省效能
+                    }
+                });
+            }, {
+                threshold: 0.05,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         })();
     </script>
 </body>
