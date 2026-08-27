@@ -661,12 +661,9 @@
 
         /* 魚種流動陳列 */
         .fish-curated-strip {
-            margin-top: 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-top: 30px;
-            border-top: 1px dashed var(--c-line);
         }
         .fish-strip-label {
             font-family: var(--font-display);
@@ -1280,6 +1277,36 @@
             width: 100%;
             display: flex;
         }
+        /* 背景線條裝飾：只鋪在最外側邊緣與頂部/底部留白，避開船體與文字 */
+        .staggered-lineart {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 100vw;
+            height: 100%;
+            margin-left: -50vw;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .staggered-lineart .lineart-wave {
+            fill: none;
+            stroke: rgba(14, 18, 23, 0.24);
+            stroke-width: 1px;
+            stroke-linecap: round;
+            vector-effect: non-scaling-stroke;
+        }
+        .staggered-lineart .lineart-echo {
+            fill: none;
+            stroke: rgba(14, 18, 23, 0.1);
+            stroke-width: 1px;
+            stroke-dasharray: 1 7;
+            stroke-linecap: round;
+            vector-effect: non-scaling-stroke;
+        }
+        .staggered-lineart .lineart-accent {
+            fill: rgba(194, 135, 102, 0.6);
+            stroke: none;
+        }
         @keyframes ship-float {
             0% { translate: 0 0px; }
             50% { translate: 0 -20px; }
@@ -1518,96 +1545,86 @@
         }
         /* ===== 國際合規認證 & 全球網絡 (Certifications & Global Presence) ===== */
         .certs-section {
-            background-color: #F8F9FA;
+            background-color: var(--c-canvas);
             padding: 100px 0;
-            border-top: 1px solid var(--c-line);
-            border-bottom: 1px solid var(--c-line);
         }
         .certs-header {
             text-align: center;
-            max-width: 760px;
+            max-width: 820px;
             margin: 0 auto 48px;
         }
-        .certs-eyebrow {
-            font-family: var(--font-en);
-            font-size: 0.85rem;
-            letter-spacing: 0.2em;
-            color: var(--c-copper);
-            text-transform: uppercase;
-            display: inline-block;
-        }
         .certs-title {
-            font-family: var(--font-serif);
-            font-size: 2.6rem;
+            font-family: var(--font-display);
+            font-size: 3.2rem;
+            line-height: 1.1;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
             color: var(--c-ink);
-            margin-top: 16px;
             font-weight: 400;
-            letter-spacing: 0.06em;
         }
-        .cert-strip {
+        /* 鑄印勳章集：認證徽章版型 */
+        .medallion-row {
             display: flex;
-            align-items: center;
-            justify-content: center;
             flex-wrap: wrap;
-            background: #FFFFFF;
-            border: 1px solid var(--c-line);
-            margin-bottom: 0;
-            box-shadow: 0 12px 36px rgba(0,0,0,0.03);
-        }
-        .cert-item {
-            flex: 1 1 140px;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            padding: 32px 20px;
-            border-left: 1px solid var(--c-line);
-            min-height: 120px;
-            transition: transform 0.3s ease;
+            align-items: flex-start;
+            gap: 46px 40px;
         }
-        .cert-item:first-child {
-            border-left: none;
-        }
-        .cert-item:hover {
-            transform: translateY(-3px);
-        }
-        .cert-item img {
-            max-height: 48px;
-            max-width: 130px;
-            width: auto;
-            object-fit: contain;
-            filter: grayscale(40%);
-            opacity: 0.85;
-            transition: all 0.3s ease;
-        }
-        .cert-item:hover img {
-            filter: grayscale(0%);
-            opacity: 1;
-        }
-        .cert-badge-text {
+        .medallion {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
+            width: 118px;
             text-align: center;
         }
-        .cert-badge-text .mark {
-            width: 36px;
-            height: 36px;
-            border: 1px solid var(--c-copper);
+        .medallion:nth-child(even) { transform: translateY(26px); }
+        .medallion:nth-child(3n) { transform: translateY(-14px); }
+        .medallion-frame {
+            width: 96px;
+            height: 96px;
             border-radius: 50%;
+            border: 1px solid var(--c-copper-light);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--c-copper);
-            font-size: 0.75rem;
+            padding: 18px;
+            background: #FFFFFF;
+            box-shadow:
+                inset 0 2px 6px rgba(14, 18, 23, 0.12),
+                inset 0 -2px 4px rgba(255, 255, 255, 0.6),
+                0 10px 24px rgba(14, 18, 23, 0.05);
+            position: relative;
+        }
+        .medallion-frame::before {
+            content: "";
+            position: absolute;
+            inset: 6px;
+            border: 1px solid rgba(194, 135, 102, 0.35);
+            border-radius: 50%;
+        }
+        .medallion-frame img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: grayscale(60%) contrast(105%);
+            opacity: 0.85;
+        }
+        .medallion-frame .mark-text {
             font-family: var(--font-display);
             font-style: italic;
-        }
-        .cert-badge-text span.name {
             font-size: 0.72rem;
-            letter-spacing: 0.04em;
+            color: var(--c-copper);
+        }
+        .medallion-name {
+            margin-top: 16px;
+            font-size: 0.72rem;
             color: var(--c-muted);
-            line-height: 1.4;
+            letter-spacing: 0.04em;
+            line-height: 1.5;
+        }
+        @media (max-width: 720px) {
+            .medallion:nth-child(even),
+            .medallion:nth-child(3n) { transform: none; }
         }
         .network-row {
             display: grid;
@@ -1683,6 +1700,184 @@
         .delay-2 { transition-delay: 0.2s; }
         .delay-3 { transition-delay: 0.3s; }
         .delay-4 { transition-delay: 0.4s; }
+
+        /* ===== 旗艦船隊 FLAGSHIP FLEET (Tuna Manzai 707，移植自 seaworth-homepage-corporate.html .master 區塊) ===== */
+        .flagship-scroll-wrapper {
+            position: relative;
+            height: 400vh;
+        }
+        .flagship-section {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: var(--c-canvas);
+            color: var(--c-ink);
+            border-top: 1px solid var(--c-line);
+            border-bottom: 1px solid var(--c-line);
+            overflow: hidden;
+        }
+        .flagship-section .blanz-container {
+            width: 100%;
+        }
+        .flagship-top {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .flagship-subtitle {
+            display: block;
+            font-family: var(--font-serif);
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--c-subtitle-blue);
+            letter-spacing: 0.15em;
+            margin-top: 16px;
+        }
+        .flagship-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 64px;
+            align-items: center;
+            margin-top: 60px;
+        }
+        .flagship-left p.flagship-tag,
+        .flagship-left h3,
+        .flagship-left p.flagship-desc,
+        .flagship-num,
+        .flagship-num-label,
+        .flagship-photo img {
+            transition: opacity 0.3s ease;
+        }
+        .flagship-fade {
+            opacity: 0;
+        }
+        .flagship-left {
+            justify-self: end;
+            max-width: 320px;
+        }
+        .flagship-left p.flagship-tag {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.3rem;
+            color: var(--c-copper);
+            margin-bottom: 18px;
+        }
+        .flagship-left h3 {
+            font-family: var(--font-serif);
+            color: var(--c-ink);
+            font-weight: 600;
+            font-size: 1.4rem;
+            letter-spacing: 0.04em;
+            margin-bottom: 18px;
+        }
+        .flagship-left p.flagship-desc {
+            color: var(--c-muted);
+            font-size: 0.92rem;
+            line-height: 1.9;
+            margin-bottom: 26px;
+            max-width: 320px;
+        }
+        .flagship-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 30px;
+            font-family: var(--font-display);
+            font-size: 0.84rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 1px solid var(--c-ink);
+            color: var(--c-ink);
+            transition: all 0.3s ease;
+        }
+        .flagship-btn:hover {
+            background: var(--c-ink);
+            color: #FFFFFF;
+        }
+        .flagship-photo {
+            width: 280px;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+            aspect-ratio: 3 / 4;
+            margin: 0 auto;
+        }
+        .flagship-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .flagship-right {
+            text-align: right;
+            justify-self: start;
+            max-width: 260px;
+        }
+        .flagship-num {
+            font-family: var(--font-display);
+            font-size: 6rem;
+            line-height: 1;
+            color: var(--c-copper);
+        }
+        .flagship-num-label {
+            font-size: 0.86rem;
+            line-height: 1.7;
+            color: var(--c-muted);
+            margin-top: 10px;
+        }
+        .flagship-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 44px;
+        }
+        .flagship-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--c-line);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .flagship-dot.active {
+            background: var(--c-copper);
+            transform: scale(1.3);
+        }
+        .flagship-cap {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 32px;
+            text-align: center;
+            font-size: 0.86rem;
+            letter-spacing: 0.05em;
+            color: var(--c-muted);
+            margin: 0;
+        }
+        @media (max-width: 1024px) {
+            .flagship-scroll-wrapper {
+                height: auto;
+            }
+            .flagship-section {
+                position: relative;
+                height: auto;
+                padding: 120px 0 100px;
+            }
+            .flagship-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .flagship-left { order: 2; justify-self: center; max-width: 100%; }
+            .flagship-left p { margin-left: auto; margin-right: auto; }
+            .flagship-photo { order: 1; }
+            .flagship-right { order: 3; text-align: center; justify-self: center; max-width: 100%; }
+            .flagship-cap { position: static; margin-top: 40px; }
+        }
+        @media (max-width: 640px) {
+            .flagship-photo { width: 200px; }
+            .flagship-num { font-size: 4rem; }
+        }
     </style>
 </head>
 <body>
@@ -1811,6 +2006,17 @@
     <!-- 區塊：三事業 (從 三事業.html 匯入) -->
     <section class="section-container" id="three-sectors">
         <div class="staggered-layout">
+            <!-- 背景氛圍線條：單一流動的優雅弧線，搭配一條極淡虛線回聲與一顆銅色點綴 -->
+            <svg class="staggered-lineart" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path class="lineart-wave" d="M -2 3.2 C 18 0.4, 38 5.4, 58 1.8 C 76 -1, 92 3.6, 110 0.8" />
+                <path class="lineart-echo" d="M -2 5.6 C 18 3, 38 7.8, 58 4.4 C 76 1.6, 92 6, 110 3.4" />
+                <circle class="lineart-accent" cx="58" cy="1.8" r="0.4" />
+
+                <path class="lineart-wave" d="M -2 96.8 C 18 99.6, 38 94.6, 58 98.2 C 76 101, 92 96.4, 110 99.2" />
+                <path class="lineart-echo" d="M -2 94.4 C 18 97, 38 92.2, 58 95.6 C 76 98.4, 92 94, 110 96.6" />
+                <circle class="lineart-accent" cx="38" cy="94.6" r="0.4" />
+            </svg>
+
             <!-- Group 1: WIN HOPE 707 (華偉) -->
             <div class="sector-group group-1">
                 <div class="header-block">
@@ -1818,7 +2024,7 @@
                     <span class="tagline">海沃控股集團旗下三大事業群</span>
                 </div>
                 <img src="assets/2_nologo.jpg" class="ship-img" alt="WIN HOPE 707">
-                
+
                 <div class="overlay-panel">
                     <img src="assets/logo-huawei.png" alt="華偉漁業事業群 FAIR WELL" class="sector-brand-logo">
                     <p class="panel-desc">傳承自 1983 年高雄前鎮漁港冷凍倉儲與第一艘圍網漁船，奠定集團雄厚實力與全球化根基。</p>
@@ -1927,48 +2133,44 @@
         </div>
     </section>
 
+    <!-- 區塊：旗艦船隊 FLAGSHIP FLEET (Tuna Manzai 707，卡畫面滾動切換 4 組集團數據) -->
+    <div class="flagship-scroll-wrapper" id="flagshipScrollWrapper">
+        <section class="flagship-section">
+            <div class="blanz-container">
+                <div class="flagship-top reveal">
+                    <h2 class="en-poetic-title">GLOBAL SCALE</h2>
+                    <span class="flagship-subtitle">全球營運規模與里程碑</span>
+                </div>
+                <div class="flagship-grid reveal">
+                    <div class="flagship-left">
+                        <p class="flagship-tag" id="flagshipTag">Beyond Limits</p>
+                        <h3 id="flagshipTitle">遠洋核心戰略</h3>
+                        <p class="flagship-desc" id="flagshipDesc">作業海域橫跨太平洋與大西洋，精準捕撈正鰹、黃鰭鮪、大目鮪、長鰭鮪、魷魚及秋刀魚等全球核心經濟魚種。</p>
+                        <a href="#three-sectors" class="flagship-btn">閱讀更多 <i data-lucide="arrow-right" style="width:14px; height:14px;"></i></a>
+                    </div>
+                    <div class="flagship-photo">
+                        <img src="assets/crew-deck.jpg" alt="海沃控股集團旗艦船隊" id="flagshipPhoto">
+                    </div>
+                    <div class="flagship-right">
+                        <div class="flagship-num" id="flagshipNum">40+</div>
+                        <div class="flagship-num-label" id="flagshipLabel">年產業深耕經驗<br>源自 1983 年</div>
+                    </div>
+                </div>
+                <div class="flagship-dots">
+                    <span class="flagship-dot active" data-index="0"></span>
+                    <span class="flagship-dot" data-index="1"></span>
+                    <span class="flagship-dot" data-index="2"></span>
+                    <span class="flagship-dot" data-index="3"></span>
+                </div>
+                <p class="flagship-cap reveal">近 40 艘現代化合規船隊，全面符合國際合規標準</p>
+            </div>
+        </section>
+    </div>
+
 
     <!-- 區塊 4：KEY NUMBERS & PANORAMIC CITYSCAPE (日夜雙重景觀橫幅) -->
     <section class="panoramic-numbers-section" id="milestones">
         <div class="blanz-container">
-            <!-- 雙重光影全景城市天際線 -->
-            <div class="split-city-banner">
-                <img src="assets/landmark-fleet.jpg" alt="全球樞紐日夜景觀">
-                <div class="split-city-overlay">
-                    <div style="text-align: center;">
-                        <h2 class="projects-h2" style="margin-bottom: 0px; color: #fff;">GLOBAL SCALE</h2>
-                        <span style="font-family: var(--font-serif); font-size: 20px; font-weight: 400; color: var(--c-subtitle-blue); letter-spacing: 0.15em; display: block; margin-top: 16px;">全球營運規模與里程碑</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 4 欄極簡數字 -->
-            <div class="numbers-4-columns-grid">
-                <div class="num-poetic-item">
-                    <div class="num-poetic-val">40<span>+ 載</span></div>
-                    <div class="num-poetic-label">產業深耕經驗</div>
-                    <div class="num-poetic-desc">傳承自 1983 年高雄前鎮漁港深厚實力</div>
-                </div>
-
-                <div class="num-poetic-item">
-                    <div class="num-poetic-val">~40<span>艘</span></div>
-                    <div class="num-poetic-label">頂尖合規船隊</div>
-                    <div class="num-poetic-desc">圍網、延繩釣、魷釣秋刀魚與超低溫運搬船</div>
-                </div>
-
-                <div class="num-poetic-item">
-                    <div class="num-poetic-val">2<span>大洋</span></div>
-                    <div class="num-poetic-label">全球作業海域</div>
-                    <div class="num-poetic-desc">橫跨太平洋與大西洋戰略漁場</div>
-                </div>
-
-                <div class="num-poetic-item">
-                    <div class="num-poetic-val">5<span>大據點</span></div>
-                    <div class="num-poetic-label">跨國營運樞紐</div>
-                    <div class="num-poetic-desc">台灣高雄、韓國釜山、中國舟山、泰國曼谷、巴紐</div>
-                </div>
-            </div>
-
             <!-- 核心經濟魚種展示列 -->
             <div class="fish-curated-strip">
                 <span class="fish-strip-label">TARGET FISH SPECIES</span>
@@ -1989,28 +2191,39 @@
     <section class="certs-section" id="certs">
         <div class="blanz-container">
             <div class="certs-header">
-                <span class="certs-eyebrow">— CERTIFICATIONS &amp; GLOBAL PRESENCE</span>
-                <h2 class="certs-title">國際合規認證 ‧ 全球合作網絡</h2>
+                <h2 class="certs-title">CERTIFICATIONS &amp;<br>GLOBAL PRESENCE</h2>
+                <span style="font-family: var(--font-serif); font-size: 20px; font-weight: 400; color: var(--c-subtitle-blue); letter-spacing: 0.15em; display: block; margin-top: 16px;">國際合規認證 ‧ 全球合作網絡</span>
             </div>
 
-            <div class="cert-strip">
-                <div class="cert-item"><img src="assets/certs/MSC_ecolabel.png" alt="MSC 海洋管理委員會認證"></div>
-                <div class="cert-item"><img src="assets/certs/Dolphin_Safe.png" alt="Dolphin Safe 海豚保護標章"></div>
-                <div class="cert-item"><img src="assets/certs/FISH.jpg" alt="FISH Crew Standard 船員人權標準"></div>
-                <div class="cert-item">
-                    <div class="cert-badge-text">
-                        <span class="mark">ILO</span>
-                        <span class="name">ILO C-188<br>國際勞工公約標準</span>
-                    </div>
+            <div class="medallion-row">
+                <div class="medallion">
+                    <div class="medallion-frame"><img src="assets/certs/MSC_ecolabel.png" alt="MSC 海洋管理委員會認證"></div>
+                    <div class="medallion-name">MSC<br>海洋管理委員會認證</div>
                 </div>
-                <div class="cert-item">
-                    <div class="cert-badge-text">
-                        <span class="mark">ISO</span>
-                        <span class="name">ISO 31000:2018<br>風險管理規範</span>
-                    </div>
+                <div class="medallion">
+                    <div class="medallion-frame"><img src="assets/certs/Dolphin_Safe.png" alt="Dolphin Safe 海豚保護標章"></div>
+                    <div class="medallion-name">DOLPHIN SAFE<br>海豚保護標章</div>
                 </div>
-                <div class="cert-item"><img src="assets/certs/WCPFC-logo.png" alt="WCPFC 中西太平洋漁業委員會"></div>
-                <div class="cert-item"><img src="assets/certs/ISSF-LOGO.png" alt="ISSF 國際永續漁業基金會"></div>
+                <div class="medallion">
+                    <div class="medallion-frame"><img src="assets/certs/FISH.jpg" alt="FISH Crew Standard 船員人權標準"></div>
+                    <div class="medallion-name">FISH STANDARD<br>船員人權標準</div>
+                </div>
+                <div class="medallion">
+                    <div class="medallion-frame"><span class="mark-text">ILO</span></div>
+                    <div class="medallion-name">ILO C-188<br>國際勞工公約標準</div>
+                </div>
+                <div class="medallion">
+                    <div class="medallion-frame"><span class="mark-text">ISO</span></div>
+                    <div class="medallion-name">ISO 31000:2018<br>風險管理規範</div>
+                </div>
+                <div class="medallion">
+                    <div class="medallion-frame"><img src="assets/certs/WCPFC-logo.png" alt="WCPFC 中西太平洋漁業委員會"></div>
+                    <div class="medallion-name">WCPFC<br>中西太平洋漁業委員會</div>
+                </div>
+                <div class="medallion">
+                    <div class="medallion-frame"><img src="assets/certs/ISSF-LOGO.png" alt="ISSF 國際永續漁業基金會"></div>
+                    <div class="medallion-name">ISSF<br>國際永續漁業基金會</div>
+                </div>
             </div>
         </div>
     </section>
@@ -2424,7 +2637,7 @@
                 '.monolith-banner-box',
                 '.split-city-overlay',
                 '.certs-header',
-                '.cert-strip',
+                '.medallion-row',
                 '.network-row',
                 '.projects-header-top',
                 '.project-card-item',
@@ -2456,6 +2669,123 @@
             });
 
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        })();
+
+    </script>
+
+    <!-- FLAGSHIP FLEET 卡畫面滾動切換 (資料取自 GLOBAL SCALE 4 組集團數據) -->
+    <script>
+        (function() {
+            const wrapper = document.getElementById('flagshipScrollWrapper');
+            const section = wrapper ? wrapper.querySelector('.flagship-section') : null;
+            if (!wrapper || !section) return;
+
+            const states = [
+                {
+                    tag: 'Beyond Limits',
+                    title: '遠洋核心戰略',
+                    desc: '作業海域橫跨太平洋與大西洋，精準捕撈正鰹、黃鰭鮪、大目鮪、長鰭鮪、魷魚及秋刀魚等全球核心經濟魚種。',
+                    photo: 'assets/crew-deck.jpg',
+                    num: '40+',
+                    label: '年產業深耕經驗<br>源自 1983 年'
+                },
+                {
+                    tag: 'Modern Fleet',
+                    title: '頂尖合規船隊',
+                    desc: '圍網、延繩釣、魷釣秋刀魚與超低溫運搬船，近 40 艘現代化船隊全面符合國際合規標準。',
+                    photo: 'assets/hero-vessel.jpg',
+                    num: '~40',
+                    label: '艘現代化<br>合規船隊'
+                },
+                {
+                    tag: 'Ocean Reach',
+                    title: '全球作業海域',
+                    desc: '橫跨太平洋與大西洋戰略漁場，精準掌握全球核心經濟魚種漁汛與資源分布。',
+                    photo: 'assets/hero-wave.jpg',
+                    num: '2',
+                    label: '大洋<br>戰略作業海域'
+                },
+                {
+                    tag: 'Global Network',
+                    title: '跨國營運樞紐',
+                    desc: '台灣高雄、韓國釜山、中國舟山、泰國曼谷、巴紐，五大據點構建全球運籌網絡。',
+                    photo: 'assets/enterprise-map.jpg',
+                    num: '5',
+                    label: '大跨國<br>營運樞紐'
+                }
+            ];
+
+            const tagEl = document.getElementById('flagshipTag');
+            const titleEl = document.getElementById('flagshipTitle');
+            const descEl = document.getElementById('flagshipDesc');
+            const photoEl = document.getElementById('flagshipPhoto');
+            const numEl = document.getElementById('flagshipNum');
+            const labelEl = document.getElementById('flagshipLabel');
+            const dots = document.querySelectorAll('.flagship-dot');
+            const fadeTargets = [tagEl, titleEl, descEl, photoEl, numEl, labelEl];
+
+            let currentIndex = 0;
+            let fadeTimer = null;
+
+            function applyState(index) {
+                if (index === currentIndex && fadeTimer === null) return;
+                currentIndex = index;
+                const s = states[index];
+
+                fadeTargets.forEach(el => el.classList.add('flagship-fade'));
+
+                clearTimeout(fadeTimer);
+                fadeTimer = setTimeout(() => {
+                    tagEl.textContent = s.tag;
+                    titleEl.textContent = s.title;
+                    descEl.textContent = s.desc;
+                    photoEl.src = s.photo;
+                    photoEl.alt = s.title;
+                    numEl.textContent = s.num;
+                    labelEl.innerHTML = s.label;
+                    fadeTargets.forEach(el => el.classList.remove('flagship-fade'));
+                    fadeTimer = null;
+                }, 220);
+
+                dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+            }
+
+            function onScroll() {
+                const rect = wrapper.getBoundingClientRect();
+                const viewportHeight = window.innerHeight;
+                const scrollable = wrapper.offsetHeight - viewportHeight;
+                if (scrollable <= 0) return;
+
+                const scrolled = -rect.top;
+                const progress = Math.min(1, Math.max(0, scrolled / scrollable));
+                let index = Math.floor(progress * states.length);
+                if (index >= states.length) index = states.length - 1;
+                if (index < 0) index = 0;
+                applyState(index);
+            }
+
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        onScroll();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+
+            dots.forEach((dot, i) => {
+                dot.addEventListener('click', () => {
+                    const viewportHeight = window.innerHeight;
+                    const scrollable = wrapper.offsetHeight - viewportHeight;
+                    if (scrollable <= 0) return;
+                    const targetScroll = wrapper.offsetTop + (scrollable * (i / states.length)) + 10;
+                    window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+                });
+            });
+
+            onScroll();
         })();
     </script>
 </body>

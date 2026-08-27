@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全球營運規模與里程碑｜海沃控股集團 SEAWORTH HOLDING</title>
+    <meta name="description" content="海沃控股集團全球營運規模、產業里程碑、現代化船隊與跨國樞紐網絡展示。">
+    
+    <!-- Google Fonts: index-B 品牌詩意字體 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500;600&family=Noto+Serif+TC:wght@200;300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            /* index-B 色彩系統：極簡留白、藝術深海藍、詩意金銅與沉香灰 */
+            --c-white: #FFFFFF;
+            --c-canvas: #FCFCFA;
+            --c-subtle: #F6F6F4;
+            --c-charcoal: #1E2229;
+            --c-ink: #0E1217;
+            --c-muted: #848B96;
+            --c-copper: #C28766;         /* 詩意銅金/暖赭點綴 */
+            --c-copper-light: #E8D3C5;
+            --c-subtitle-blue: #00495B;  /* 海沃富蘊藍 */
+            --c-ocean-deep: #162B40;
+            --c-line: rgba(0, 0, 0, 0.08);
+
+            --font-display: 'Cormorant Garamond', serif;
+            --font-serif: 'Noto Serif TC', serif;
+            --font-sans: 'Montserrat', 'Noto Sans TC', sans-serif;
+
+            --ease-poetic: cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            background-color: var(--c-white);
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--c-charcoal);
+            background-color: var(--c-white);
+            line-height: 2.1;
+            letter-spacing: 0.04em;
+            font-weight: 300;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 標題與詩意字體 */
+        h1, h2, h3, h4, .serif {
+            font-family: var(--font-serif);
+            font-weight: 300;
+            color: var(--c-ink);
+            letter-spacing: 0.08em;
+        }
+
+        .en-poetic-title {
+            font-family: var(--font-display);
+            font-size: 3.2rem;
+            line-height: 1.1;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--c-ink);
+            font-weight: 400;
+        }
+
+        /* 頂部固定導覽列 (完全與 index-B 相同) */
+        header.blanz-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--c-line);
+            transition: all 0.4s var(--ease-poetic);
+        }
+
+        .blanz-nav-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 12px 60px;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+        }
+
+        .nav-left-area, .nav-right-area {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-right-area {
+            justify-content: flex-end;
+        }
+
+        .nav-split-menu {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-split-menu a {
+            text-decoration: none;
+            color: var(--c-charcoal);
+            font-size: 0.86rem;
+            font-weight: 300;
+            letter-spacing: 0.06em;
+            transition: color 0.3s ease;
+        }
+
+        .nav-split-menu a:hover {
+            color: var(--c-copper);
+        }
+
+        .nav-center-icon img {
+            height: 42px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+        .nav-center-icon:hover img {
+            transform: scale(1.05);
+        }
+
+        /* 主展頁容器 */
+        .showcase-wrapper {
+            min-height: 100vh;
+            padding: 140px 60px 80px;
+            max-width: 1440px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: var(--c-white);
+        }
+
+        /* 上方標題區塊 (index-B 風格) */
+        .flagship-top {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .flagship-subtitle {
+            display: block;
+            font-family: var(--font-serif);
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--c-subtitle-blue);
+            letter-spacing: 0.15em;
+            margin-top: 12px;
+        }
+
+        /* 三欄式網格 (乾淨俐落浮動於白底上) */
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: 1fr 300px 1fr;
+            gap: 60px;
+            align-items: center;
+            background: transparent;
+            padding: 10px 0;
+            position: relative;
+        }
+
+        /* === 左欄：標籤、標題、內文與優雅邊框按鈕 === */
+        .flagship-left {
+            justify-self: end;
+            max-width: 340px;
+        }
+
+        .flagship-left p.flagship-tag {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.35rem;
+            color: var(--c-copper);
+            margin-bottom: 14px;
+            transition: opacity 0.3s ease;
+        }
+
+        .flagship-left h3 {
+            font-family: var(--font-serif);
+            color: var(--c-ink);
+            font-weight: 400;
+            font-size: 1.8rem;
+            letter-spacing: 0.06em;
+            margin-bottom: 18px;
+            min-height: 52px;
+            display: flex;
+            align-items: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .flagship-left p.flagship-desc {
+            color: var(--c-muted);
+            font-size: 0.92rem;
+            line-height: 1.95;
+            margin-bottom: 30px;
+            min-height: 110px;
+            transition: opacity 0.3s ease;
+        }
+
+        /* index-B 品牌優雅框線按鈕 */
+        .flagship-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 28px;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 1px solid var(--c-ink);
+            color: var(--c-ink);
+            background: transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .flagship-btn:hover {
+            background: var(--c-ink);
+            color: var(--c-white);
+        }
+
+        /* === 中欄：精緻照片遮罩 (index-B 風格) === */
+        .flagship-photo {
+            width: 280px;
+            height: 380px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
+            margin: 0 auto;
+            position: relative;
+            background: var(--c-subtle);
+        }
+
+        .flagship-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.4s ease, transform 0.6s var(--ease-poetic);
+        }
+
+        /* === 右欄：4 組數據指標與數字計數器（極簡橫線分隔） === */
+        .right-col {
+            display: flex;
+            flex-direction: column;
+            justify-self: start;
+            width: 100%;
+            max-width: 320px;
+        }
+
+        .stat-item {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--c-line);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            background: transparent;
+        }
+
+        .stat-item:last-child {
+            border-bottom: none;
+        }
+
+        .stat-header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+
+        .stat-cat {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            letter-spacing: 0.08em;
+            color: var(--c-muted);
+            transition: color 0.3s ease;
+        }
+
+        .stat-indicator {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item.active .stat-indicator {
+            background: var(--c-copper);
+            transform: scale(1.3);
+        }
+
+        .stat-num-row {
+            display: flex;
+            align-items: baseline;
+            gap: 2px;
+        }
+
+        /* index-B 品牌風采數字 (Cormorant Garamond + 金銅色) */
+        .stat-num {
+            font-family: var(--font-display);
+            font-size: 4.2rem;
+            line-height: 1;
+            font-weight: 300;
+            color: var(--c-copper);
+            transition: color 0.3s ease;
+        }
+
+        .stat-item.active .stat-num {
+            color: var(--c-copper);
+            font-weight: 400;
+        }
+
+        .stat-unit {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            color: var(--c-ink);
+            margin-left: 4px;
+        }
+
+        .stat-subdesc {
+            font-size: 0.84rem;
+            color: var(--c-muted);
+            line-height: 1.6;
+            margin-top: 2px;
+        }
+
+        /* 底部指示圓點 (與 index-B 相同) */
+        .flagship-dots {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 14px;
+            margin-top: 50px;
+        }
+
+        .flagship-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--c-line);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .flagship-dot.active {
+            background: var(--c-copper);
+            transform: scale(1.4);
+        }
+
+        .progress-indicator {
+            width: 80px;
+            height: 2px;
+            background: var(--c-line);
+            position: relative;
+            overflow: hidden;
+            margin-left: 20px;
+        }
+
+        .progress-inner {
+            height: 100%;
+            width: 0%;
+            background: var(--c-copper);
+            transition: width 0.1s linear;
+        }
+
+        /* 淡入淡出 Class */
+        .flagship-fade {
+            opacity: 0;
+            transform: translateY(6px);
+        }
+
+        /* 頁尾 */
+        footer.blanz-footer {
+            margin-top: auto;
+            border-top: 1px solid var(--c-line);
+            padding: 40px 60px;
+            text-align: center;
+            background: var(--c-white);
+            color: var(--c-muted);
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* 響應式排版 */
+        @media (max-width: 1024px) {
+            .showcase-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+            .flagship-left {
+                justify-self: center;
+                max-width: 100%;
+            }
+            .flagship-photo {
+                order: -1;
+                width: 240px;
+                height: 320px;
+            }
+            .right-col {
+                justify-self: center;
+                max-width: 100%;
+            }
+            .stat-num-row {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 頂部固定導覽列 (與 index-B 相同) -->
+    <header class="blanz-header">
+        <nav class="blanz-nav-inner">
+            <div class="nav-left-area">
+                <a href="index-B.html" style="display: flex; align-items: center;">
+                    <img src="assets/logo-text.png" alt="SEAWORTH HOLDING" style="height:32px; width:auto;">
+                </a>
+                <ul class="nav-split-menu" style="margin-left: 36px;">
+                    <li><a href="index-B.html#about">集團總覽</a></li>
+                    <li><a href="index-B.html#about">公司治理</a></li>
+                    <li><a href="index-B.html#esg">共善經營</a></li>
+                </ul>
+            </div>
+            
+            <a href="index-B.html" class="nav-center-icon">
+                <img src="assets/logo-icon.png" alt="SEAWORTH Trident Logo">
+            </a>
+
+            <div class="nav-right-area">
+                <ul class="nav-split-menu">
+                    <li><a href="index-B.html#esg">投資人專區</a></li>
+                    <li><a href="index-B.html#news">最新消息</a></li>
+                    <li><a href="index-B.html#contact">聯繫海沃</a></li>
+                    <li class="nav-lang-picker">
+                        <a href="#" style="display: flex; align-items: center; gap: 4px;">
+                            TW <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 主展示頁容器 -->
+    <main class="showcase-wrapper">
+        
+        <!-- 上方標題 (完全比照 index-B 旗艦船隊/GLOBAL SCALE 區塊) -->
+        <div class="flagship-top">
+            <h2 class="en-poetic-title">GLOBAL SCALE</h2>
+            <span class="flagship-subtitle">全球營運規模與里程碑</span>
+        </div>
+
+        <!-- 三欄式核心展示 (優雅乾淨利落，無外框) -->
+        <div class="showcase-grid" id="showcaseGrid">
+            
+            <!-- 左欄：標籤、標題、說明與邊框按鈕 -->
+            <div class="flagship-left">
+                <p class="flagship-tag" id="flagshipTag">Beyond Limits</p>
+                <h3 id="flagshipTitle">遠洋核心戰略</h3>
+                <p class="flagship-desc" id="flagshipDesc">
+                    作業海域橫跨太平洋與大西洋，精準捕撈正鰹、黃鰭鮪、大目鮪、長鰭鮪、魷魚及秋刀魚等全球核心經濟魚種。
+                </p>
+                <a href="index-B.html#three-sectors" class="flagship-btn" id="flagshipBtn">
+                    閱讀更多 <i data-lucide="arrow-right" style="width:14px; height:14px;"></i>
+                </a>
+            </div>
+
+            <!-- 中欄：精緻照片 -->
+            <div class="flagship-photo">
+                <img src="assets/crew-deck.jpg" alt="海沃控股集團旗艦船隊" id="flagshipPhoto">
+            </div>
+
+            <!-- 右欄：4 組數據指標與金銅動態數字 -->
+            <div class="right-col">
+                
+                <!-- 項目 1 -->
+                <div class="stat-item active" data-index="0">
+                    <div class="stat-header-row">
+                        <span class="stat-cat">Years of experience</span>
+                        <div class="stat-indicator"></div>
+                    </div>
+                    <div class="stat-num-row">
+                        <span class="stat-num" id="num-0" data-target="40">40</span>
+                        <span class="stat-unit">+</span>
+                    </div>
+                    <div class="stat-subdesc">年產業深耕經驗（源自 1983 年）</div>
+                </div>
+
+                <!-- 項目 2 -->
+                <div class="stat-item" data-index="1">
+                    <div class="stat-header-row">
+                        <span class="stat-cat">Modern fleet</span>
+                        <div class="stat-indicator"></div>
+                    </div>
+                    <div class="stat-num-row">
+                        <span class="stat-num" id="num-1" data-target="40">40</span>
+                        <span class="stat-unit">艘</span>
+                    </div>
+                    <div class="stat-subdesc">近 40 艘現代化合規船隊</div>
+                </div>
+
+                <!-- 項目 3 -->
+                <div class="stat-item" data-index="2">
+                    <div class="stat-header-row">
+                        <span class="stat-cat">Strategic oceans</span>
+                        <div class="stat-indicator"></div>
+                    </div>
+                    <div class="stat-num-row">
+                        <span class="stat-num" id="num-2" data-target="2">2</span>
+                        <span class="stat-unit">大洋</span>
+                    </div>
+                    <div class="stat-subdesc">橫跨太平洋與大西洋戰略漁場</div>
+                </div>
+
+                <!-- 項目 4 -->
+                <div class="stat-item" data-index="3">
+                    <div class="stat-header-row">
+                        <span class="stat-cat">Global hubs</span>
+                        <div class="stat-indicator"></div>
+                    </div>
+                    <div class="stat-num-row">
+                        <span class="stat-num" id="num-4" data-target="5">5</span>
+                        <span class="stat-unit">大據點</span>
+                    </div>
+                    <div class="stat-subdesc">跨國營運與遠洋物流樞紐</div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- 底部切換指示點與輪播進度 -->
+        <div class="flagship-dots">
+            <button class="flagship-dot active" data-index="0" aria-label="Slide 1"></button>
+            <button class="flagship-dot" data-index="1" aria-label="Slide 2"></button>
+            <button class="flagship-dot" data-index="2" aria-label="Slide 3"></button>
+            <button class="flagship-dot" data-index="3" aria-label="Slide 4"></button>
+
+            <div class="progress-indicator">
+                <div class="progress-inner" id="progressInner"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- 頁尾 -->
+    <footer class="blanz-footer">
+        <p>© 2026 SEAWORTH HOLDING. ALL RIGHTS RESERVED. THE POETIC OCEANIC CLASS</p>
+    </footer>
+
+    <!-- JavaScript：完全對齊 index-B 邏輯 + 數字動態跑動動畫 -->
+    <script>
+        lucide.createIcons();
+
+        // 4 組切換資料 (完全對應 index-B.html 圖二)
+        const states = [
+            {
+                tag: 'Beyond Limits',
+                title: '遠洋核心戰略',
+                desc: '作業海域橫跨太平洋與大西洋，精準捕撈正鰹、黃鰭鮪、大目鮪、長鰭鮪、魷魚及秋刀魚等全球核心經濟魚種。',
+                photo: 'assets/crew-deck.jpg',
+                num: 40
+            },
+            {
+                tag: 'Modern Fleet',
+                title: '頂尖合規船隊',
+                desc: '圍網、延繩釣、魷釣秋刀魚與超低溫運搬船，近 40 艘現代化船隊全面符合國際合規標準。',
+                photo: 'assets/hero-vessel.jpg',
+                num: 40
+            },
+            {
+                tag: 'Ocean Reach',
+                title: '全球作業海域',
+                desc: '橫跨太平洋與大西洋戰略漁場，精準掌握全球核心經濟魚種漁汛與資源分布。',
+                photo: 'assets/hero-wave.jpg',
+                num: 2
+            },
+            {
+                tag: 'Global Network',
+                title: '跨國營運樞紐',
+                desc: '台灣高雄、韓國釜山、中國舟山、泰國曼谷、巴紐，五大據點構建全球運籌網絡。',
+                photo: 'assets/enterprise-map.jpg',
+                num: 5
+            }
+        ];
+
+        const tagEl = document.getElementById('flagshipTag');
+        const titleEl = document.getElementById('flagshipTitle');
+        const descEl = document.getElementById('flagshipDesc');
+        const photoEl = document.getElementById('flagshipPhoto');
+        const statItems = document.querySelectorAll('.stat-item');
+        const dots = document.querySelectorAll('.flagship-dot');
+        const progressInner = document.getElementById('progressInner');
+
+        let currentIndex = 0;
+        let autoTimer = null;
+        let progressTimer = null;
+        const DURATION = 5000;
+        let elapsedTime = 0;
+
+        /**
+         * 數字跑動動態計數器 (requestAnimationFrame + easeOutCubic)
+         */
+        function animateCounter(el, target, duration = 1200) {
+            const start = 0;
+            const startTime = performance.now();
+
+            function update(now) {
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easeProgress = 1 - Math.pow(1 - progress, 3);
+                const currentVal = Math.floor(start + (target - start) * easeProgress);
+
+                el.textContent = currentVal;
+
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    el.textContent = target;
+                }
+            }
+
+            requestAnimationFrame(update);
+        }
+
+        /**
+         * 觸發所有數字跑動
+         */
+        function runAllCounters() {
+            states.forEach((s, i) => {
+                const numEl = document.getElementById(`num-${i}`);
+                if (numEl) {
+                    animateCounter(numEl, s.num, 1200 + i * 150);
+                }
+            });
+        }
+
+        /**
+         * 切換目前 active 狀態
+         */
+        function applyState(index) {
+            if (index === currentIndex && elapsedTime > 0) return;
+            currentIndex = index;
+            const s = states[index];
+
+            // 淡出效果
+            tagEl.classList.add('flagship-fade');
+            titleEl.classList.add('flagship-fade');
+            descEl.classList.add('flagship-fade');
+            photoEl.classList.add('flagship-fade');
+
+            setTimeout(() => {
+                tagEl.textContent = s.tag;
+                titleEl.textContent = s.title;
+                descEl.textContent = s.desc;
+                photoEl.src = s.photo;
+                photoEl.alt = s.title;
+
+                tagEl.classList.remove('flagship-fade');
+                titleEl.classList.remove('flagship-fade');
+                descEl.classList.remove('flagship-fade');
+                photoEl.classList.remove('flagship-fade');
+            }, 220);
+
+            // 更新右側選取狀態與數字動態跑動
+            statItems.forEach((item, i) => {
+                const isActive = (i === index);
+                item.classList.toggle('active', isActive);
+                if (isActive) {
+                    const numEl = document.getElementById(`num-${i}`);
+                    if (numEl) animateCounter(numEl, s.num, 1000);
+                }
+            });
+
+            // 更新圓點
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+
+            // 重置進度條
+            resetAutoPlay();
+        }
+
+        function startAutoPlay() {
+            clearInterval(progressTimer);
+            elapsedTime = 0;
+            progressInner.style.width = '0%';
+
+            progressTimer = setInterval(() => {
+                elapsedTime += 100;
+                progressInner.style.width = `${(elapsedTime / DURATION) * 100}%`;
+
+                if (elapsedTime >= DURATION) {
+                    const next = (currentIndex + 1) % states.length;
+                    applyState(next);
+                }
+            }, 100);
+        }
+
+        function resetAutoPlay() {
+            startAutoPlay();
+        }
+
+        // 綁定右側項目點擊
+        statItems.forEach((item, i) => {
+            item.addEventListener('click', () => {
+                applyState(i);
+            });
+        });
+
+        // 綁定圓點點擊
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => {
+                applyState(i);
+            });
+        });
+
+        // 懸停暫停
+        const wrapper = document.getElementById('showcaseGrid');
+        if (wrapper) {
+            wrapper.addEventListener('mouseenter', () => clearInterval(progressTimer));
+            wrapper.addEventListener('mouseleave', () => startAutoPlay());
+        }
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            runAllCounters();
+            startAutoPlay();
+        });
+    </script>
+</body>
+</html>
