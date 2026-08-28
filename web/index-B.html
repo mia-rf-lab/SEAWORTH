@@ -332,16 +332,23 @@
             object-fit: cover;
             filter: brightness(0.85);
             opacity: 0;
-            transition: opacity 1.5s ease-in-out, transform 12s var(--ease-poetic);
+            transition: opacity 1.5s ease-in-out;
             transform: scale(1.02);
             z-index: 1;
         }
+        /* 放大動畫跟 4 秒自動切換同步：原尺寸 → 放大 → 收回原尺寸，收回後才切換下一張，
+           轉場那一刻永遠剛好落在 1.02 基準值，跟 WebGL shader 的補償係數對齊，不會跳動 */
+        @keyframes hero-zoom-cycle {
+            0% { transform: scale(1.02); }
+            65% { transform: scale(1.06); }
+            100% { transform: scale(1.02); }
+        }
         .hero-bg-img.active {
+            animation-name: hero-zoom-cycle;
+            animation-timing-function: ease-in-out;
+            /* 實際秒數由 JS 動態帶入（= 自動切換間隔 - 轉場時間），確保收回原尺寸的時機剛好對齊下一次轉場 */
             opacity: 1;
             z-index: 2;
-        }
-        .blanz-hero:hover .hero-bg-img.active {
-            transform: scale(1.05);
         }
         .hero-morph-canvas {
             position: absolute;
@@ -2036,7 +2043,7 @@
     <section class="blanz-hero">
         <div class="hero-bg-wrapper">
             <!-- 底圖，為了看到切換效果加上濾鏡，實際上可以換成不同的圖片 src -->
-            <img src="assets/hero-wave.jpg" alt="Slide 1" class="hero-bg-img active">
+            <img src="assets/hero-wave.jpg" alt="Slide 1" class="hero-bg-img active" style="animation-duration: 4900ms;">
             <img src="assets/hero-banner-02.jpg" alt="Slide 2" class="hero-bg-img" style="filter: brightness(0.85);">
             <img src="assets/hero-banner-04.jpg" alt="Slide 3" class="hero-bg-img" style="filter: brightness(0.85);">
             <img src="assets/hero-banner-01.jpg" alt="Slide 4" class="hero-bg-img" style="filter: brightness(0.85);">
@@ -2710,7 +2717,10 @@
 
                     vec4 colA = texture2D(uTexA, clamp(sA, 0.001, 0.999));
                     vec4 colB = texture2D(uTexB, clamp(sB, 0.001, 0.999));
-                    gl_FragColor = mix(colA, colB, m);
+                    vec3 outColor = mix(colA.rgb, colB.rgb, m);
+                    // 對應 <img> 的 CSS filter: brightness(0.85)，避免轉場時畫面突然變亮又暗回去
+                    outColor *= 0.85;
+                    gl_FragColor = vec4(outColor, 1.0);
                 }
             `;
 
@@ -2892,16 +2902,22 @@
             let currentIndex = 0;
             let timer = null;
 
+            // 自動切換間隔（含轉場時間）與轉場動畫本身的時長。
+            // 放大動畫要在「間隔 - 轉場時間」內跑完，收回原尺寸的時機才會剛好對齊下一次轉場開始的瞬間
+            const AUTO_INTERVAL = 6000;
+            const TRANSITION_DURATION = 1100;
+            const ZOOM_DURATION = AUTO_INTERVAL - TRANSITION_DURATION;
+
             // 轉場完成後，讓真正的 <img> 狀態瞬間同步（不觸發原本的 CSS 淡入淡出，避免與 WebGL 畫面打架）
             function setActiveImmediate(index) {
-                // 只讓 opacity 瞬間切換（避免跟 canvas 交接時重複淡入淡出）。
-                // 「transition」是簡寫屬性，只寫 opacity 的話會連 transform 的 12s 轉場一起洗掉，
-                // 必須把 transform 那段原封不動寫回去，不然 hover 時的緩慢放大會變成瞬間跳一下
+                // 只讓 opacity 瞬間切換（避免跟 canvas 交接時重複淡入淡出）；
+                // 放大動畫改用 animation（hero-zoom-cycle）驅動，強制 reflow 讓它在新的 active 圖片上重新從頭播放
                 bgs.forEach((bg, i) => {
-                    bg.style.transition = 'opacity 0s, transform 12s var(--ease-poetic)';
+                    bg.style.transition = 'opacity 0s';
+                    bg.style.animationDuration = ZOOM_DURATION + 'ms';
                     bg.classList.toggle('active', i === index);
                 });
-                void bgs[0].offsetWidth; // 強制 reflow
+                void bgs[0].offsetWidth; // 強制 reflow，讓 animation 重新觸發
                 requestAnimationFrame(() => {
                     bgs.forEach(bg => { bg.style.transition = ''; });
                 });
@@ -2921,7 +2937,7 @@
                 resetTimer();
 
                 if (window.heroMorphTransition) {
-                    window.heroMorphTransition(fromImg, toImg, 1100, () => setActiveImmediate(index));
+                    window.heroMorphTransition(fromImg, toImg, TRANSITION_DURATION, () => setActiveImmediate(index));
                 } else {
                     setActiveImmediate(index);
                 }
@@ -2934,7 +2950,7 @@
 
             function resetTimer() {
                 clearInterval(timer);
-                timer = setInterval(nextSlide, 4000); // 每 4 秒切換一次
+                timer = setInterval(nextSlide, AUTO_INTERVAL);
             }
 
             // 綁定點擊事件
