@@ -115,6 +115,54 @@
             font-style: normal;
         }
 
+        /* 全站 Loading 效果 */
+        .site-loader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: var(--c-canvas);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: opacity 0.9s var(--ease-poetic), visibility 0.9s var(--ease-poetic);
+        }
+        .site-loader.is-hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .site-loader-mark {
+            width: 40px;
+            height: auto;
+            opacity: 0;
+            animation: loader-mark-in 1s var(--ease-poetic) 0.1s forwards;
+        }
+        .site-loader-line {
+            width: 0;
+            height: 1px;
+            background: var(--c-ink);
+            animation: loader-line-pulse 2.2s ease-in-out 0.3s infinite;
+        }
+        .site-loader-text {
+            font-family: var(--font-display);
+            font-size: 0.72rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--c-subtitle-blue);
+            opacity: 0;
+            animation: loader-mark-in 1s var(--ease-poetic) 0.3s forwards;
+        }
+        @keyframes loader-mark-in {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes loader-line-pulse {
+            0%, 100% { width: 0; opacity: 0; }
+            50% { width: 64px; opacity: 0.55; }
+        }
+
         /* 版面容器與格線 */
         .blanz-container {
             max-width: 1440px;
@@ -1787,6 +1835,35 @@
     </style>
 </head>
 <body>
+
+    <!-- 全站 Loading 效果：極簡置中 logomark + 呼吸細線，載入完成淡出 -->
+    <div class="site-loader" id="siteLoader">
+        <img src="assets/logo-icon.png" alt="" class="site-loader-mark">
+        <div class="site-loader-line"></div>
+        <span class="site-loader-text">LOADING</span>
+    </div>
+    <script>
+        (function() {
+            const loader = document.getElementById('siteLoader');
+            if (!loader) return;
+            const MIN_DISPLAY = 2000; // 最短顯示時間，避免快取時一閃而過，看不清楚內容
+            const shownAt = performance.now();
+
+            function hide() {
+                const wait = Math.max(0, MIN_DISPLAY - (performance.now() - shownAt));
+                setTimeout(() => {
+                    loader.classList.add('is-hidden');
+                    setTimeout(() => loader.remove(), 900);
+                }, wait);
+            }
+
+            if (document.readyState === 'complete') {
+                hide();
+            } else {
+                window.addEventListener('load', hide);
+            }
+        })();
+    </script>
 
     <!-- 頂部極簡固定導覽列 -->
     <header class="blanz-header">
