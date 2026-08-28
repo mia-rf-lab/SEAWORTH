@@ -720,23 +720,34 @@
             padding: 140px 0;
             background: var(--c-white);
         }
+        .contact-poetic-header {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 100px;
+        }
+        .contact-poetic-title {
+            font-family: var(--font-display);
+            font-size: 3.2rem;
+            line-height: 1.1;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--c-ink);
+            font-weight: 400;
+        }
         .contact-poetic-grid {
             display: grid;
-            grid-template-columns: 0.85fr 1.15fr;
+            grid-template-columns: 1fr 1fr;
             gap: 90px;
             align-items: start;
-        }
-        .contact-poetic-info h3 {
-            font-size: 2.2rem;
-            line-height: 1.4;
-            margin-bottom: 20px;
-            font-weight: 300;
+            max-width: 1040px;
+            margin: 0 auto;
         }
         .contact-poetic-info p {
             font-size: 0.96rem;
             color: var(--c-muted);
             line-height: 2.1;
             margin-bottom: 40px;
+            max-width: 480px;
         }
         .contact-channels-list {
             list-style: none;
@@ -763,7 +774,16 @@
 
         /* 極簡無框線下劃線表單 */
         .form-poetic-box {
-            padding-left: 20px;
+            position: relative;
+        }
+        .form-poetic-box::before {
+            content: '';
+            position: absolute;
+            left: -45px;
+            top: 4px;
+            bottom: 4px;
+            width: 1px;
+            background: var(--c-line);
         }
         .form-line-group {
             margin-bottom: 32px;
@@ -799,21 +819,22 @@
             gap: 30px;
         }
         .btn-poetic-submit {
-            background: var(--c-ink);
-            color: #FFFFFF;
-            border: 1px solid var(--c-ink);
-            padding: 18px 48px;
+            display: inline-block;
+            background: none;
+            border: none;
+            border-bottom: 1px solid var(--c-ink);
+            color: var(--c-ink);
+            padding: 0 0 8px 0;
             font-family: var(--font-display);
             font-size: 0.85rem;
             letter-spacing: 0.25em;
             text-transform: uppercase;
             cursor: pointer;
-            transition: all 0.5s var(--ease-poetic);
+            transition: opacity 0.4s ease;
             margin-top: 16px;
         }
         .btn-poetic-submit:hover {
-            background: transparent;
-            color: var(--c-ink);
+            opacity: 0.55;
         }
 
         /* 頁尾 FOOTER (THE BLANZ 標誌性居中微型 Logo 與極簡收尾) */
@@ -898,6 +919,9 @@
             .esg-stagger-layout, .rotunda-layout-grid, .contact-poetic-grid {
                 grid-template-columns: 1fr;
                 gap: 50px;
+            }
+            .form-poetic-box::before {
+                display: none;
             }
             .art-slices-4-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -1212,11 +1236,6 @@
         .group-1 .ship-img { animation-delay: 0s; }
         .group-2 .ship-img { animation-delay: -2s; }
         .group-3 .ship-img { animation-delay: -4s; }
-        
-        .sector-group:hover .ship-img {
-            animation-play-state: paused;
-            scale: 1.02;
-        }
 
         /* Group 1: WIN HOPE 707 (華偉) */
         .group-1 {
@@ -1396,21 +1415,20 @@
             margin-top: 100px;
         }
         .cta-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #11161B;
-            color: #FFFFFF;
-            font-size: 0.88rem;
-            font-weight: 500;
-            letter-spacing: 0.12em;
+            display: inline-block;
+            color: var(--c-ink);
+            font-family: var(--font-display);
+            font-size: 0.84rem;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
             text-decoration: none;
-            padding: 16px 44px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            border-bottom: 1px solid var(--c-ink);
+            padding-bottom: 6px;
+            transition: opacity 0.4s ease;
         }
         .cta-btn:hover {
-            background-color: #1E2832;
-            transform: translateY(-2px);
+            opacity: 0.55;
         }
         @media (max-width: 960px) {
             .grid-layout {
@@ -1667,20 +1685,19 @@
         .flagship-btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 13px 30px;
+            gap: 8px;
             font-family: var(--font-display);
             font-size: 0.84rem;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
             text-decoration: none;
-            border: 1px solid var(--c-ink);
+            border-bottom: 1px solid var(--c-ink);
+            padding-bottom: 6px;
             color: var(--c-ink);
-            transition: all 0.3s ease;
+            transition: opacity 0.4s ease;
         }
         .flagship-btn:hover {
-            background: var(--c-ink);
-            color: #FFFFFF;
+            opacity: 0.55;
         }
         .flagship-photo {
             width: 280px;
@@ -1821,9 +1838,9 @@
         <div class="hero-bg-wrapper">
             <!-- 底圖，為了看到切換效果加上濾鏡，實際上可以換成不同的圖片 src -->
             <img src="assets/hero-wave.jpg" alt="Slide 1" class="hero-bg-img active">
-            <img src="assets/hero-wave.jpg" alt="Slide 2" class="hero-bg-img" style="filter: brightness(0.85) hue-rotate(30deg);">
-            <img src="assets/hero-wave.jpg" alt="Slide 3" class="hero-bg-img" style="filter: brightness(0.85) grayscale(60%);">
-            <img src="assets/hero-wave.jpg" alt="Slide 4" class="hero-bg-img" style="filter: brightness(0.85) hue-rotate(-30deg);">
+            <img src="assets/hero-banner-02.jpg" alt="Slide 2" class="hero-bg-img" style="filter: brightness(0.85);">
+            <img src="assets/hero-banner-04.jpg" alt="Slide 3" class="hero-bg-img" style="filter: brightness(0.85);">
+            <img src="assets/hero-banner-01.jpg" alt="Slide 4" class="hero-bg-img" style="filter: brightness(0.85);">
             <div class="hero-bg-overlay"></div>
         </div>
 
@@ -1840,7 +1857,6 @@
                 <!-- 左側：大型英文標題 (如 CRUZIANA 風格) -->
                 <div class="hero-big-title-group">
                     <h1 class="hero-big-title">SEAWORTH</h1>
-                    <span class="hero-big-subtitle">HOLDING GROUP</span>
                 </div>
 
                 <!-- 右側：切換投影片/導覽選單 -->
@@ -2075,10 +2091,10 @@
                         <p class="flagship-tag" id="flagshipTag">Beyond Limits</p>
                         <h3 id="flagshipTitle">遠洋核心戰略</h3>
                         <p class="flagship-desc" id="flagshipDesc">作業海域橫跨太平洋與大西洋，精準捕撈正鰹、黃鰭鮪、大目鮪、長鰭鮪、魷魚及秋刀魚等全球核心經濟魚種。</p>
-                        <a href="#three-sectors" class="flagship-btn">閱讀更多 <i data-lucide="arrow-right" style="width:14px; height:14px;"></i></a>
+                        <a href="#three-sectors" class="flagship-btn">READ MORE <i data-lucide="arrow-right" style="width:14px; height:14px;"></i></a>
                     </div>
                     <div class="flagship-photo">
-                        <img src="assets/crew-deck.jpg" alt="海沃控股集團旗艦船隊" id="flagshipPhoto">
+                        <img src="assets/img-1.png" alt="海沃控股集團旗艦船隊" id="flagshipPhoto">
                     </div>
                     <div class="flagship-right">
                         <div class="flagship-num" id="flagshipNum">40+</div>
@@ -2112,7 +2128,7 @@
                 <!-- 01 -->
                 <div class="project-card-item">
                     <div class="project-thumb-box">
-                        <img src="assets/華偉漁業事業群2.jpg" alt="海沃控股集團正式成立">
+                        <img src="assets/news-corporate.png" alt="海沃控股集團正式成立">
                     </div>
                     <div class="project-card-body">
                         <span class="project-card-tag">2026.08.15 ‧ CORPORATE</span>
@@ -2124,7 +2140,7 @@
                 <!-- 02 -->
                 <div class="project-card-item">
                     <div class="project-thumb-box">
-                        <img src="assets/pho_ocean.jpg" alt="非纏結集魚器與低碳技術">
+                        <img src="assets/news-sustainability.jpg" alt="非纏結集魚器與低碳技術">
                     </div>
                     <div class="project-card-body">
                         <span class="project-card-tag">2026.07.28 ‧ SUSTAINABILITY</span>
@@ -2136,7 +2152,7 @@
                 <!-- 03 -->
                 <div class="project-card-item">
                     <div class="project-thumb-box">
-                        <img src="assets/pho_4.png" alt="AI 智慧漁撈預測">
+                        <img src="assets/news-innovation.jpg" alt="AI 智慧漁撈預測" style="object-position: 20% center;">
                     </div>
                     <div class="project-card-body">
                         <span class="project-card-tag">2026.06.10 ‧ INNOVATION</span>
@@ -2148,7 +2164,7 @@
                 <!-- 04 -->
                 <div class="project-card-item">
                     <div class="project-thumb-box">
-                        <img src="assets/enterprise-map.jpg" alt="拓展跨國營運樞紐">
+                        <img src="assets/news-global.jpg" alt="拓展跨國營運樞紐">
                     </div>
                     <div class="project-card-body">
                         <span class="project-card-tag">2026.05.02 ‧ GLOBAL NETWORK</span>
@@ -2164,11 +2180,13 @@
     <!-- 區塊 7：CONTACT US (極簡詩意登記處) -->
     <section class="contact-poetic-section" id="contact">
         <div class="blanz-container">
+            <div class="contact-poetic-header">
+                <h2 class="contact-poetic-title">INQUIRY &<br>REGISTRATION</h2>
+                <span style="font-family: var(--font-serif); font-size: 20px; font-weight: 400; color: var(--c-subtitle-blue); letter-spacing: 0.15em; display: block; margin-top: 16px;">攜手海沃 ‧ 共創海洋永續價值</span>
+            </div>
             <div class="contact-poetic-grid">
                 <!-- 左側聯絡資訊 -->
                 <div class="contact-poetic-info">
-                    <span class="en-poetic-lead">INQUIRY & REGISTRATION</span>
-                    <h3 class="serif">攜手海沃 ‧ 共創海洋永續價值</h3>
                     <p>
                         誠摯歡迎全球合作夥伴、機構投資人與產業先進與我們聯繫。我們將於 24 小時內指派專人與您聯繫。
                     </p>
@@ -2481,7 +2499,7 @@
         // ===== 全站流暢滾動入場效果 (Scroll Reveal Observer) =====
         (function() {
             // 針對網格/卡片容器自動為子項目加上錯落延遲
-            const staggerGrids = document.querySelectorAll('.projects-4-grid, .slices-3-grid, .dark-sectors-row, .staggered-layout');
+            const staggerGrids = document.querySelectorAll('.projects-4-grid, .slices-3-grid, .dark-sectors-row, .staggered-layout, .contact-channels-list');
             staggerGrids.forEach(grid => {
                 const items = grid.children;
                 for (let i = 0; i < items.length; i++) {
@@ -2493,6 +2511,7 @@
 
             // 選取全站重點大標題、文字與圖表區塊
             const revealSelectors = [
+                '.contact-poetic-header',
                 '.about-hero-title',
                 '.about-hero-desc',
                 '.about-hero-banner',
@@ -2507,6 +2526,7 @@
                 '.certs-header',
                 '.medallion-row',
                 '.network-row',
+                '.cta-container',
                 '.projects-header-top',
                 '.project-card-item',
                 '.contact-poetic-info',
@@ -2554,7 +2574,7 @@
                     tag: 'Beyond Limits',
                     title: '遠洋核心戰略',
                     desc: '作業海域橫跨太平洋與大西洋，精準捕撈正鰹、黃鰭鮪、大目鮪、長鰭鮪、魷魚及秋刀魚等全球核心經濟魚種。',
-                    photo: 'assets/crew-deck.jpg',
+                    photo: 'assets/img-1.png',
                     num: '40+',
                     label: '年產業深耕經驗<br>源自 1983 年'
                 },

@@ -196,7 +196,7 @@
     0% { transform: scale(1.15); }
     100% { transform: scale(1); }
   }
-  .hero img, .hero video {
+  .hero img, .hero video, .hero canvas {
     width:100%; height:100%; object-fit:cover; object-position:center;
     animation: heroBgZoomOut 4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   }
@@ -204,7 +204,7 @@
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.1); }
   }
-  .hero img.hero-kv-img {
+  .hero img.hero-kv-img, .hero canvas {
     animation: heroKvBreathe 18s ease-in-out infinite;
   }
   .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.15) 30%, rgba(0,0,0,.55) 100%);}
@@ -419,6 +419,12 @@
     line-height: 1.9;
     color: rgba(255, 255, 255, 0.65);
     max-width: 320px;
+  }
+  body { 
+    background:#02141A; 
+    color:#fff; 
+    overflow-x:hidden; 
+    font-family: var(--font-body);
   }
   .footer-col-title {
     font-family: var(--font-cn);
@@ -2309,64 +2315,272 @@
 
   // Hero 封面圖：滑鼠水波效果
   (function () {
-    const hero = document.querySelector('.hero');
-    const canvas = document.getElementById('heroRippleCanvas');
+    const hero = document.querySelector(".hero");
+    const canvas = document.getElementById("heroRippleCanvas");
     if (!hero || !canvas) return;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     let ripples = [];
     let lastSpawn = 0;
+    let isAnimating2D = false;
 
     function resizeRippleCanvas() {
-      const rect = hero.getBoundingClientRect();
       const dpr = window.devicePixelRatio || 1;
-      canvas.width = rect.width * dpr;
-      canvas.height = rect.height * dpr;
-      canvas.style.width = rect.width + 'px';
-      canvas.style.height = rect.height + 'px';
+      canvas.width = hero.clientWidth * dpr;
+      canvas.height = hero.clientHeight * dpr;
+      canvas.style.width = hero.clientWidth + "px";
+      canvas.style.height = hero.clientHeight + "px";
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
-    window.addEventListener('resize', resizeRippleCanvas);
+    window.addEventListener("resize", resizeRippleCanvas);
     resizeRippleCanvas();
 
-    hero.addEventListener('pointermove', (e) => {
+    hero.addEventListener("pointermove", (e) => {
       const now = performance.now();
       if (now - lastSpawn > 220) {
         const rect = hero.getBoundingClientRect();
+        if (ripples.length >= 3) ripples.shift(); // 限制為 3
         ripples.push({ x: e.clientX - rect.left, y: e.clientY - rect.top, r: 24, alpha: 0.5 });
         lastSpawn = now;
+        if (!isAnimating2D) {
+          isAnimating2D = true;
+          loopRipples();
+        }
       }
     });
 
     function loopRipples() {
-      const rect = hero.getBoundingClientRect();
-      ctx.clearRect(0, 0, rect.width, rect.height);
-      ctx.filter = 'blur(2.5px)';
-      ripples = ripples.filter(r => r.alpha > 0.02);
-      for (const r of ripples) {
-        r.r += 1.3;
-        r.alpha *= 0.978;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.filter = "blur(2.5px)";
+      
+      for (let i = ripples.length - 1; i >= 0; i--) {
+        let r = ripples[i];
+        r.r += 0.6; // 減緩 2D 擴散速度
+        r.alpha *= 0.988; // 讓 2D 衰退更慢
+        
+        if (r.alpha <= 0.02) {
+          ripples.splice(i, 1);
+          continue;
+        }
 
         // 亮邊：水面被推起的反光稜線
         ctx.beginPath();
         ctx.arc(r.x, r.y, r.r, 0, Math.PI * 2);
-        ctx.strokeStyle = 'rgba(255,255,255,' + (r.alpha * 0.45).toFixed(3) + ')';
+        ctx.strokeStyle = "rgba(255,255,255," + (r.alpha * 0.35).toFixed(3) + ")";
         ctx.lineWidth = 5.5;
         ctx.stroke();
 
         // 暗邊：稜線內側的陰影凹陷
         ctx.beginPath();
         ctx.arc(r.x, r.y, r.r * 0.88, 0, Math.PI * 2);
-        ctx.strokeStyle = 'rgba(2,20,26,' + (r.alpha * 0.35).toFixed(3) + ')';
+        ctx.strokeStyle = "rgba(2,20,26," + (r.alpha * 0.35).toFixed(3) + ")";
         ctx.lineWidth = 7;
         ctx.stroke();
       }
-      ctx.filter = 'none';
-      requestAnimationFrame(loopRipples);
+      ctx.filter = "none";
+      
+      if (ripples.length > 0) {
+        requestAnimationFrame(loopRipples);
+      } else {
+        isAnimating2D = false;
+      }
     }
-    loopRipples();
+    // 不主動執行 loopRipples，等待滑鼠移動才觸發 (節省閒置資源)
   })();
 
+  // ========================================================
+  // Hero 封面圖：超輕量化 WebGL 真實水波扭曲 (漸進式增強)
+  // 若環境支援 (例如 localhost 伺服器)，會自動取代原本的 2D 線條
+  // ========================================================
+  (function () {
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
 
+    const glCanvas = document.createElement('canvas');
+    glCanvas.style.position = 'absolute';
+    glCanvas.style.inset = '0';
+    glCanvas.style.width = '100%';
+    glCanvas.style.height = '100%';
+    glCanvas.style.zIndex = '1'; 
+    glCanvas.style.pointerEvents = 'none';
+    
+    const stack = hero.querySelector('.hero-stack');
+    if (stack) hero.insertBefore(glCanvas, stack);
+    else hero.appendChild(glCanvas);
+
+    const gl = glCanvas.getContext('webgl', { antialias: false, depth: false, alpha: false });
+    if (!gl) return; 
+
+    const vsSource = `
+      attribute vec2 a_position;
+      void main() { gl_Position = vec4(a_position, 0.0, 1.0); }
+    `;
+    const fsSource = `
+      precision highp float;
+      uniform sampler2D u_image;
+      uniform vec2 u_resolution;
+      uniform vec2 u_imageResolution;
+      uniform vec3 u_ripples[3]; // 嚴格限制為 3 個
+      
+      void main() {
+        vec2 ratio = u_resolution / u_imageResolution;
+        float maxRatio = max(ratio.x, ratio.y);
+        vec2 newSize = u_imageResolution * maxRatio;
+        vec2 offset = (newSize - u_resolution) / 2.0;
+        
+        vec2 uv = (gl_FragCoord.xy + offset) / newSize;
+        uv.y = 1.0 - uv.y; 
+        
+        vec2 displacement = vec2(0.0);
+        for(int i = 0; i < 3; i++) { // 迴圈降至 3 次
+          float p = u_ripples[i].z; 
+          if(p > 0.0 && p < 1.0) {
+            vec2 d = gl_FragCoord.xy - u_ripples[i].xy;
+            float dist = max(length(d), 0.001); // 加上安全值，防止除以零導致 GPU 當機重整
+            float radius = p * 400.0; 
+            float diff = abs(dist - radius);
+            
+            if (diff < 80.0) { // 加寬波紋的厚度，感覺更柔和
+              float wave = sin((dist - radius) * 0.12); // 放寬波浪間距 (原 0.15)
+              float strength = (1.0 - p) * (1.0 - diff / 80.0) * 0.008; // 扭曲強度再減弱，呈現更低調沉浸的質感 (原 0.015)
+              displacement += (d / dist) * wave * strength;
+            }
+          }
+        }
+        
+        gl_FragColor = texture2D(u_image, uv - displacement);
+      }
+    `;
+    
+    function compile(type, source) {
+      const shader = gl.createShader(type);
+      gl.shaderSource(shader, source);
+      gl.compileShader(shader);
+      return shader;
+    }
+    const program = gl.createProgram();
+    gl.attachShader(program, compile(gl.VERTEX_SHADER, vsSource));
+    gl.attachShader(program, compile(gl.FRAGMENT_SHADER, fsSource));
+    gl.linkProgram(program);
+    gl.useProgram(program);
+    
+    const buffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);
+    const posLoc = gl.getAttribLocation(program, "a_position");
+    gl.enableVertexAttribArray(posLoc);
+    gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
+    
+    const resLoc = gl.getUniformLocation(program, "u_resolution");
+    const imgResLoc = gl.getUniformLocation(program, "u_imageResolution");
+    const ripplesLoc = gl.getUniformLocation(program, "u_ripples");
+
+    const img = new Image();
+    img.src = 'assets/kv-2.png';
+    img.crossOrigin = "anonymous";
+    let imgW = 1, imgH = 1;
+    let webglReady = false; // 追蹤 WebGL 是否成功啟動
+
+    img.onload = () => {
+      imgW = img.width; imgH = img.height;
+      const texture = gl.createTexture();
+      gl.bindTexture(gl.TEXTURE_2D, texture);
+      
+      try {
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+        
+        const heroImg = hero.querySelector('.hero-kv-img');
+        if (heroImg) heroImg.style.opacity = '0';
+        const oldCanvas = document.getElementById('heroRippleCanvas');
+        if (oldCanvas) oldCanvas.style.display = 'none';
+        
+        webglReady = true; // 成功載入材質才允許觸發水波
+        startLoop(); // 畫布就緒後立刻繪製第一幀靜態畫面，避免畫面黑屏
+      } catch (e) {
+        console.warn("WebGL CORS Error: 採用預設 2D 水滴特效");
+      }
+    };
+
+    let ripples = [];
+    let lastSpawn = 0;
+    let isAnimating = false;
+    
+    // 預先宣告 Float32Array，設定為 3 個水波
+    const rippleData = new Float32Array(3 * 3);
+    // 將 p 預設為 1.0 (已結束狀態)
+    for(let i=0; i<3; i++) rippleData[i*3+2] = 1.0;
+    let rippleIndex = 0; 
+    
+    hero.addEventListener('pointermove', (e) => {
+      if (!webglReady) return; 
+      
+      const now = performance.now();
+      if (now - lastSpawn > 150) { 
+        // 【關鍵保護機制】：如果準備要覆寫的最舊水波「還沒播完 (p < 1.0)」，就直接忽略這次滑鼠移動。
+        // 這樣就能保證畫面上永遠最多只有 3 個水波，而且絕對不會發生「舊水波突然被切斷重整」的視覺突兀感！
+        if (rippleData[rippleIndex * 3 + 2] < 1.0) {
+          return;
+        }
+
+        const rect = hero.getBoundingClientRect();
+        const dpr = 1; 
+        const x = (e.clientX - rect.left) * dpr;
+        const y = glCanvas.height - ((e.clientY - rect.top) * dpr);
+        
+        rippleData[rippleIndex * 3 + 0] = x;
+        rippleData[rippleIndex * 3 + 1] = y;
+        rippleData[rippleIndex * 3 + 2] = 0.001; 
+        rippleIndex = (rippleIndex + 1) % 3; // 在 3 個欄位中安全輪替
+        
+        lastSpawn = now;
+        
+        if (!isAnimating) startLoop();
+      }
+    });
+
+    function startLoop() {
+      if (isAnimating) return;
+      isAnimating = true;
+      render();
+    }
+
+    function render() {
+      // 使用 clientWidth 取代 getBoundingClientRect，避免 Layout Thrashing
+      const dpr = 1; // 強制設為 1，不使用 window.devicePixelRatio，效能可暴增 2~4 倍
+      const cw = hero.clientWidth * dpr;
+      const ch = hero.clientHeight * dpr;
+      
+      if (glCanvas.width !== cw || glCanvas.height !== ch) {
+        glCanvas.width = cw; glCanvas.height = ch;
+        gl.viewport(0, 0, cw, ch);
+      }
+      
+      gl.uniform2f(resLoc, cw, ch);
+      gl.uniform2f(imgResLoc, imgW, imgH);
+      
+      let hasActive = false;
+      for(let i = 0; i < 3; i++) { // 只計算 3 個
+        let p = rippleData[i*3+2];
+        if (p < 1.0) {
+          p += 0.006; // 擴散速度
+          rippleData[i*3+2] = p;
+          hasActive = true;
+        }
+      }
+      gl.uniform3fv(ripplesLoc, rippleData);
+      
+      gl.drawArrays(gl.TRIANGLES, 0, 6);
+      
+      if (hasActive) {
+        requestAnimationFrame(render);
+      } else {
+        isAnimating = false;
+      }
+    }
+  })();
 
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
