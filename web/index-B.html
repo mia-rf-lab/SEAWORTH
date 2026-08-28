@@ -896,12 +896,13 @@
             display: block;
             font-family: var(--font-display);
             font-size: 0.9rem;
-            letter-spacing: 0.22em;
+            font-weight: 600;
+            letter-spacing: normal;
             text-transform: uppercase;
             color: var(--c-charcoal);
             margin-bottom: 8px;
         }
-        .form-line-input, .form-line-select, .form-line-textarea {
+        .form-line-input, .form-line-textarea {
             width: 100%;
             padding: 12px 0;
             background: transparent;
@@ -914,8 +915,85 @@
             transition: border-color 0.4s ease;
             border-radius: 0;
         }
-        .form-line-input:focus, .form-line-select:focus, .form-line-textarea:focus {
+        .form-line-input:focus, .form-line-textarea:focus {
             border-bottom-color: var(--c-ink);
+        }
+
+        /* 洽詢類別自訂下拉選單，取代瀏覽器原生下拉樣式 */
+        .custom-select {
+            position: relative;
+        }
+        .custom-select-trigger {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--c-line);
+            font-family: inherit;
+            font-size: 0.95rem;
+            color: var(--c-ink);
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+            transition: border-color 0.4s ease;
+        }
+        .custom-select-trigger:hover,
+        .custom-select.is-open .custom-select-trigger {
+            border-bottom-color: var(--c-ink);
+        }
+        .custom-select-value.is-placeholder {
+            color: var(--c-muted);
+        }
+        .custom-select-chevron {
+            width: 16px;
+            height: 16px;
+            color: var(--c-muted);
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+        .custom-select.is-open .custom-select-chevron {
+            transform: rotate(180deg);
+        }
+        .custom-select-list {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            right: 0;
+            list-style: none;
+            margin: 0;
+            padding: 6px 0;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--c-line);
+            box-shadow: 0 20px 40px rgba(14, 18, 23, 0.1);
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            visibility: hidden;
+            transition: max-height 0.4s var(--ease-poetic), opacity 0.3s ease, visibility 0.4s;
+            z-index: 50;
+        }
+        .custom-select.is-open .custom-select-list {
+            max-height: 320px;
+            opacity: 1;
+            visibility: visible;
+        }
+        .custom-select-list li {
+            padding: 12px 16px;
+            font-family: var(--font-serif);
+            font-size: 0.88rem;
+            letter-spacing: 0.03em;
+            color: var(--c-charcoal);
+            cursor: pointer;
+            transition: color 0.25s ease, background-color 0.25s ease;
+        }
+        .custom-select-list li:hover,
+        .custom-select-list li.is-active {
+            color: var(--c-subtitle-blue);
+            background-color: var(--c-subtle);
         }
         .form-2-split {
             display: grid;
@@ -926,19 +1004,35 @@
             display: inline-block;
             background: none;
             border: none;
-            border-bottom: 1px solid var(--c-ink);
             color: var(--c-ink);
             padding: 0 0 8px 0;
             font-family: var(--font-display);
             font-size: 0.85rem;
             letter-spacing: 0.25em;
             text-transform: uppercase;
-            cursor: pointer;
-            transition: opacity 0.4s ease;
+            /* 隱藏原本的預設游標，因為我們有自己的藍綠點點 */
+            cursor: none; 
             margin-top: 16px;
+            position: relative;
+            transition: color 0.4s ease;
+        }
+        .btn-poetic-submit::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--c-ink);
+            /* 跟上面一模一樣的 1.5s 極致緩慢縮短效果 */
+            transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease;
         }
         .btn-poetic-submit:hover {
-            opacity: 0.55;
+            color: rgb(0, 139, 156); /* 變成滑鼠游標的藍綠色 */
+        }
+        .btn-poetic-submit:hover::after {
+            width: 0%; /* 線條縮短到消失 */
+            background-color: rgb(0, 139, 156);
         }
 
         /* 頁尾 FOOTER (THE BLANZ 標誌性居中微型 Logo 與極簡收尾) */
@@ -1315,9 +1409,15 @@
             stroke-linecap: round;
             vector-effect: non-scaling-stroke;
         }
-        .staggered-lineart .lineart-accent {
-            fill: rgba(0, 73, 91, 0.6);
-            stroke: none;
+        .lineart-accent-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: rgba(0, 73, 91, 0.6);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+        }
         }
         @keyframes ship-float {
             0% { translate: 0 0px; }
@@ -1513,7 +1613,7 @@
         }
         .cta-container {
             text-align: center;
-            margin-top: 100px;
+            margin-top: 40px; /* 將上方的距離縮小，讓它更靠近上方的區塊 */
         }
         .cta-btn {
             display: inline-block;
@@ -1524,12 +1624,38 @@
             letter-spacing: 0.2em;
             text-transform: uppercase;
             text-decoration: none;
-            border-bottom: 1px solid var(--c-ink);
             padding-bottom: 6px;
-            transition: opacity 0.4s ease;
+            position: relative;
+            transition: color 0.4s ease;
+        }
+        .cta-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--c-ink);
+            /* 跟上面一模一樣的 1.5s 極致緩慢縮短效果 */
+            transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease;
         }
         .cta-btn:hover {
-            opacity: 0.55;
+            color: rgb(0, 139, 156); /* 變成滑鼠游標的藍綠色 */
+        }
+        .cta-btn:hover::after {
+            width: 0%; /* 線條縮短到消失 */
+            background-color: rgb(0, 139, 156);
+        }
+        .news-link-btn {
+            font-family: var(--font-display);
+            font-size: 0.82rem;
+            letter-spacing: 0.15em;
+            color: var(--c-ink);
+            text-decoration: none;
+            transition: color 0.4s ease;
+        }
+        .news-link-btn:hover {
+            color: rgb(0, 139, 156);
         }
         @media (max-width: 960px) {
             .grid-layout {
@@ -1586,7 +1712,27 @@
             align-items: center;
             width: 118px;
             text-align: center;
+            
+            /* 入場動畫準備 */
+            opacity: 0;
+            position: relative;
+            top: 24px;
+            /* 將動畫時間拉長到 1s，讓浮現的過程更柔和 */
+            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), top 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
+        /* 一顆一顆依序進場 */
+        .medallion-row.in .medallion {
+            opacity: 1;
+            top: 0;
+        }
+        /* 拉大每一顆出現的時間間隔，原本差 0.1s，改為差 0.15s */
+        .medallion-row .medallion:nth-child(1) { transition-delay: 0.1s; }
+        .medallion-row .medallion:nth-child(2) { transition-delay: 0.25s; }
+        .medallion-row .medallion:nth-child(3) { transition-delay: 0.4s; }
+        .medallion-row .medallion:nth-child(4) { transition-delay: 0.55s; }
+        .medallion-row .medallion:nth-child(5) { transition-delay: 0.7s; }
+        .medallion-row .medallion:nth-child(6) { transition-delay: 0.85s; }
+        .medallion-row .medallion:nth-child(7) { transition-delay: 1.0s; }
         .medallion:nth-child(even) { transform: translateY(26px); }
         .medallion:nth-child(3n) { transform: translateY(-14px); }
         .medallion-frame {
@@ -1627,8 +1773,9 @@
         }
         .medallion-name {
             margin-top: 16px;
-            font-size: 0.72rem;
-            color: var(--c-muted);
+            font-size: 0.76rem; /* 稍微放大一點點 */
+            font-weight: 500; /* 加粗一點點 */
+            color: var(--c-charcoal); /* 改為深灰色 */
             letter-spacing: 0.04em;
             line-height: 1.5;
         }
@@ -1792,13 +1939,31 @@
             letter-spacing: 0.2em;
             text-transform: uppercase;
             text-decoration: none;
-            border-bottom: 1px solid var(--c-ink);
             padding-bottom: 6px;
             color: var(--c-ink);
-            transition: opacity 0.4s ease;
+            position: relative;
+            transition: color 0.4s ease;
         }
+        /* 替換原本的 border-bottom，改用偽元素來做動畫底線 */
+        .flagship-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--c-ink);
+            /* 線條慢慢變短的過渡動畫 (改為 1.5s 極致緩慢) */
+            transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease;
+        }
+        
         .flagship-btn:hover {
-            opacity: 0.55;
+            color: rgb(0, 139, 156); /* 變成滑鼠游標的藍綠色 */
+        }
+        
+        .flagship-btn:hover::after {
+            width: 0%; /* 線條縮短到消失 */
+            background-color: rgb(0, 139, 156);
         }
         .flagship-photo {
             width: 280px;
@@ -1900,7 +2065,7 @@
             top: 0;
             width: 10px;
             height: 10px;
-            background-color: #0099A1; /* 指定的藍綠色 */
+            background-color: rgb(0, 139, 156); /* 使用者指定的藍綠色 */
             position: fixed;
             border-radius: 5px;
             pointer-events: none;
@@ -1914,7 +2079,7 @@
             width: 6px;
             height: 6px;
             border-radius: 3px;
-            background-color: rgba(0, 153, 161, 0.8); /* 原版是實心色塊，稍微給點透明度避免完全一樣深 */
+            background-color: rgba(0, 139, 156, 0.8); /* 原版是實心色塊，稍微給點透明度避免完全一樣深 */
             margin-top: -3px;
             margin-left: -3px;
         }
@@ -2143,15 +2308,17 @@
     <section class="section-container" id="three-sectors">
         <div class="staggered-layout">
             <!-- 背景氛圍線條：單一流動的優雅弧線，搭配一條極淡虛線回聲與一顆銅色點綴 -->
-            <svg class="staggered-lineart" viewBox="0 0 100 100" preserveAspectRatio="none">
-                <path class="lineart-wave" d="M -2 3.2 C 18 0.4, 38 5.4, 58 1.8 C 76 -1, 92 3.6, 110 0.8" />
-                <path class="lineart-echo" d="M -2 5.6 C 18 3, 38 7.8, 58 4.4 C 76 1.6, 92 6, 110 3.4" />
-                <circle class="lineart-accent" cx="58" cy="1.8" r="0.4" />
-
-                <path class="lineart-wave" d="M -2 96.8 C 18 99.6, 38 94.6, 58 98.2 C 76 101, 92 96.4, 110 99.2" />
-                <path class="lineart-echo" d="M -2 94.4 C 18 97, 38 92.2, 58 95.6 C 76 98.4, 92 94, 110 96.6" />
-                <circle class="lineart-accent" cx="76" cy="99.2" r="0.35" />
-            </svg>
+            <div class="staggered-lineart">
+                <svg viewBox="0 0 100 100" preserveAspectRatio="none" style="width:100%; height:100%;">
+                    <path class="lineart-wave" d="M -2 3.2 C 18 0.4, 38 5.4, 58 1.8 C 76 -1, 92 3.6, 110 0.8" />
+                    <path class="lineart-echo" d="M -2 5.6 C 18 3, 38 7.8, 58 4.4 C 76 1.6, 92 6, 110 3.4" />
+                    <path class="lineart-wave" d="M -2 96.8 C 18 99.6, 38 94.6, 58 98.2 C 76 101, 92 96.4, 110 99.2" />
+                    <path class="lineart-echo" d="M -2 94.4 C 18 97, 38 92.2, 58 95.6 C 76 98.4, 92 94, 110 96.6" />
+                </svg>
+                <!-- 將原本在 SVG 裡的圓圈改為 HTML div，避免因為 preserveAspectRatio="none" 被拉長變形 -->
+                <div class="lineart-accent-dot" style="left: 58%; top: 1.8%;"></div>
+                <div class="lineart-accent-dot" style="left: 76%; top: 99.2%;"></div>
+            </div>
 
             <!-- Group 1: WIN HOPE 707 (華偉) -->
             <div class="sector-group group-1">
@@ -2212,7 +2379,7 @@
 
         <!-- Bottom Action Button -->
         <div class="cta-container">
-            <a href="#" class="cta-btn">深入了解集團總覽 →</a>
+            <a href="#" class="cta-btn">DISCOVER →</a>
         </div>
     </section>
 
@@ -2277,7 +2444,7 @@
                 <span style="font-family: var(--font-serif); font-size: 20px; font-weight: 400; color: var(--c-subtitle-blue); letter-spacing: 0.15em; display: block; margin-top: 16px;">國際合規認證 ‧ 全球合作網絡</span>
             </div>
 
-            <div class="medallion-row">
+            <div class="medallion-row reveal-trigger">
                 <div class="medallion">
                     <div class="medallion-frame"><img src="assets/certs/MSC_ecolabel.png" alt="MSC 海洋管理委員會認證"></div>
                     <div class="medallion-name">MSC<br>海洋管理委員會認證</div>
@@ -2300,7 +2467,7 @@
                 </div>
                 <div class="medallion">
                     <div class="medallion-frame"><img src="assets/certs/WCPFC-logo.png" alt="WCPFC 中西太平洋漁業委員會"></div>
-                    <div class="medallion-name">WCPFC<br>中西太平洋漁業委員會</div>
+                    <div class="medallion-name">WCPFC<br>中西太平洋漁業<br>委員會</div>
                 </div>
                 <div class="medallion">
                     <div class="medallion-frame"><img src="assets/certs/ISSF-LOGO.png" alt="ISSF 國際永續漁業基金會"></div>
@@ -2353,7 +2520,7 @@
                     <h2 class="projects-h2" style="margin-bottom: 0px;">NEWS & INSIGHTS</h2>
                     <span style="font-family: var(--font-serif); font-size: 20px; font-weight: 400; color: var(--c-subtitle-blue); letter-spacing: 0.15em; display: block; margin-top: 16px;">最新動態 ‧ 產業洞察與集團快訊</span>
                 </div>
-                <a href="#news" style="font-family: var(--font-display); font-size: 0.82rem; letter-spacing: 0.15em; color: var(--c-ink); text-decoration: none;">VIEW ALL NEWS →</a>
+                <a href="#news" class="news-link-btn">VIEW ALL NEWS →</a>
             </div>
 
             <div class="projects-4-grid">
@@ -2447,14 +2614,20 @@
                 <div class="form-poetic-box">
                     <form id="blanzContactForm" onsubmit="handleFormSubmit(event)">
                         <div class="form-line-group">
-                            <label class="form-line-label" for="serviceSelect">SELECT INQUIRY TYPE *</label>
-                            <select id="serviceSelect" class="form-line-select" required>
-                                <option value="" disabled selected>請選擇洽詢事項類別</option>
-                                <option value="IR">投資人關係洽詢 (invest@seaworth.com)</option>
-                                <option value="Partnership">商務合作與業務洽詢 (partnership@seaworth.com)</option>
-                                <option value="PR">公共關係與媒體事務 (pr@seaworth.com)</option>
-                                <option value="Other">其他事宜</option>
-                            </select>
+                            <label class="form-line-label" for="serviceSelectTrigger">SELECT INQUIRY TYPE *</label>
+                            <div class="custom-select" id="serviceSelectCustom">
+                                <button type="button" class="custom-select-trigger" id="serviceSelectTrigger" aria-haspopup="listbox" aria-expanded="false">
+                                    <span class="custom-select-value is-placeholder">請選擇洽詢事項類別</span>
+                                    <i data-lucide="chevron-down" class="custom-select-chevron"></i>
+                                </button>
+                                <ul class="custom-select-list" role="listbox" tabindex="-1">
+                                    <li role="option" data-value="IR">投資人關係洽詢 (invest@seaworth.com)</li>
+                                    <li role="option" data-value="Partnership">商務合作與業務洽詢 (partnership@seaworth.com)</li>
+                                    <li role="option" data-value="PR">公共關係與媒體事務 (pr@seaworth.com)</li>
+                                    <li role="option" data-value="Other">其他事宜</li>
+                                </ul>
+                                <input type="hidden" id="serviceSelect" name="service" required>
+                            </div>
                         </div>
 
                         <div class="form-2-split">
@@ -2524,15 +2697,78 @@
 
         function handleFormSubmit(e) {
             e.preventDefault();
+
+            const serviceInput = document.getElementById('serviceSelect');
+            if (serviceInput && !serviceInput.value) {
+                document.getElementById('serviceSelectTrigger').focus();
+                return;
+            }
+
             const toast = document.getElementById('blanzToast');
             toast.style.display = 'flex';
-            
+
             document.getElementById('blanzContactForm').reset();
 
             setTimeout(() => {
                 toast.style.display = 'none';
             }, 4500);
         }
+    </script>
+    <!-- 洽詢類別自訂下拉選單邏輯 -->
+    <script>
+        (function() {
+            const wrap = document.getElementById('serviceSelectCustom');
+            if (!wrap) return;
+            const trigger = document.getElementById('serviceSelectTrigger');
+            const valueEl = trigger.querySelector('.custom-select-value');
+            const list = wrap.querySelector('.custom-select-list');
+            const items = Array.from(list.querySelectorAll('li'));
+            const hiddenInput = document.getElementById('serviceSelect');
+            const placeholderText = valueEl.textContent;
+
+            function close() {
+                wrap.classList.remove('is-open');
+                trigger.setAttribute('aria-expanded', 'false');
+            }
+            function open() {
+                wrap.classList.add('is-open');
+                trigger.setAttribute('aria-expanded', 'true');
+            }
+
+            trigger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                wrap.classList.contains('is-open') ? close() : open();
+            });
+
+            items.forEach(item => {
+                item.addEventListener('click', () => {
+                    items.forEach(i => i.classList.remove('is-active'));
+                    item.classList.add('is-active');
+                    hiddenInput.value = item.getAttribute('data-value');
+                    valueEl.textContent = item.textContent;
+                    valueEl.classList.remove('is-placeholder');
+                    close();
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!wrap.contains(e.target)) close();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') close();
+            });
+
+            // 表單重置時，把自訂下拉的顯示狀態也還原成預設提示文字
+            const form = document.getElementById('blanzContactForm');
+            if (form) {
+                form.addEventListener('reset', () => {
+                    items.forEach(i => i.classList.remove('is-active'));
+                    valueEl.textContent = placeholderText;
+                    valueEl.classList.add('is-placeholder');
+                    close();
+                });
+            }
+        })();
     </script>
     <!-- ABOUT 標題隨滾動位移效果：初始在更高處的白底，隨滾動進度即時下滑到疊圖位置 -->
     <script>
@@ -3080,7 +3316,7 @@
                 rootMargin: '0px 0px 0px 0px'
             });
 
-            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+            document.querySelectorAll('.reveal, .reveal-trigger').forEach(el => observer.observe(el));
         })();
 
     </script>
