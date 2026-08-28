@@ -895,10 +895,10 @@
         .form-line-label {
             display: block;
             font-family: var(--font-display);
-            font-size: 0.75rem;
+            font-size: 0.9rem;
             letter-spacing: 0.22em;
             text-transform: uppercase;
-            color: var(--c-muted);
+            color: var(--c-charcoal);
             margin-bottom: 8px;
         }
         .form-line-input, .form-line-select, .form-line-textarea {
@@ -1890,6 +1890,34 @@
             .flagship-photo { width: 200px; }
             .flagship-num { font-size: 4rem; }
         }
+        /* Custom Cursor */
+        body, a, button, input, textarea, select, .swiper-button-next, .swiper-button-prev {
+            cursor: none !important;
+        }
+
+        .custom-cursor {
+            left: 0;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            background-color: #0099A1; /* 指定的藍綠色 */
+            position: fixed;
+            border-radius: 5px;
+            pointer-events: none;
+            z-index: 999999;
+            margin-top: -5px;
+            margin-left: -5px;
+        }
+
+        .custom-cursor__follower {
+            transition: transform .4s;
+            width: 6px;
+            height: 6px;
+            border-radius: 3px;
+            background-color: rgba(0, 153, 161, 0.8); /* 原版是實心色塊，稍微給點透明度避免完全一樣深 */
+            margin-top: -3px;
+            margin-left: -3px;
+        }
     </style>
 </head>
 <body>
@@ -2044,7 +2072,7 @@
     <section class="blanz-hero">
         <div class="hero-bg-wrapper">
             <!-- 底圖，為了看到切換效果加上濾鏡，實際上可以換成不同的圖片 src -->
-            <img src="assets/hero-wave.jpg" alt="Slide 1" class="hero-bg-img active" style="animation-duration: 4900ms;">
+            <img src="assets/hero-wave.jpg" alt="Slide 1" class="hero-bg-img active" style="animation-duration: 4400ms;">
             <img src="assets/hero-banner-02.jpg" alt="Slide 2" class="hero-bg-img" style="filter: brightness(0.85);">
             <img src="assets/hero-banner-04.jpg" alt="Slide 3" class="hero-bg-img" style="filter: brightness(0.85);">
             <img src="assets/hero-banner-01.jpg" alt="Slide 4" class="hero-bg-img" style="filter: brightness(0.85);">
@@ -2905,7 +2933,7 @@
 
             // 自動切換間隔（含轉場時間）與轉場動畫本身的時長。
             // 放大動畫要在「間隔 - 轉場時間」內跑完，收回原尺寸的時機才會剛好對齊下一次轉場開始的瞬間
-            const AUTO_INTERVAL = 6000;
+            const AUTO_INTERVAL = 5500;
             const TRANSITION_DURATION = 1100;
             const ZOOM_DURATION = AUTO_INTERVAL - TRANSITION_DURATION;
 
@@ -2928,9 +2956,7 @@
                 if (index === currentIndex) { resetTimer(); return; }
 
                 dots.forEach(dot => dot.classList.remove('active'));
-                navItems.forEach(nav => nav.classList.remove('active-nav'));
                 if (dots[index]) dots[index].classList.add('active');
-                if (navItems[index]) navItems[index].classList.add('active-nav');
 
                 const fromImg = bgs[currentIndex];
                 const toImg = bgs[index];
@@ -2976,6 +3002,21 @@
 
             // 初始化
             resetTimer();
+        })();
+
+        // 右側導覽選單醒目狀態獨立輪播（跟封面背景圖切換速度脫鉤，各自獨立計時）
+        (function() {
+            const navItems = document.querySelectorAll('.hero-slide-nav .slide-nav-item');
+            if (navItems.length === 0) return;
+
+            let navIndex = Array.from(navItems).findIndex(el => el.classList.contains('active-nav'));
+            if (navIndex < 0) navIndex = 0;
+
+            setInterval(() => {
+                navItems[navIndex].classList.remove('active-nav');
+                navIndex = (navIndex + 1) % navItems.length;
+                navItems[navIndex].classList.add('active-nav');
+            }, 2500);
         })();
 
         // ===== 全站流暢滾動入場效果 (Scroll Reveal Observer) =====
@@ -3232,6 +3273,30 @@
 
             bgObserver.observe(certsSection);
         })();
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const root = document.querySelector('body');
+
+            // Real cursor element
+            const cursor = document.createElement('div');
+            cursor.classList.add('custom-cursor');
+            root.appendChild(cursor);
+
+            // Following extra cursor element
+            const follower = document.createElement('div');
+            follower.classList.add('custom-cursor', 'custom-cursor__follower');
+            root.appendChild(follower);
+
+            window.addEventListener('mousemove', (e) => {
+                setPosition(follower, e);
+                setPosition(cursor, e);
+            });
+
+            function setPosition(element, e) {
+                element.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+            }
+        });
     </script>
 </body>
 </html>
