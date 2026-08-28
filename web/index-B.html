@@ -506,7 +506,8 @@
         .slide-nav-item .nav-icon {
             width: 16px;
             height: 16px;
-            opacity: 0.6;
+            flex-shrink: 0;
+            opacity: 0;
             transition: transform 0.3s ease, opacity 0.3s ease;
         }
         .slide-nav-item:hover .nav-icon, .slide-nav-item.active-nav .nav-icon {
@@ -2069,19 +2070,19 @@
                 <!-- 右側：切換投影片/導覽選單 -->
                 <div class="hero-slide-nav">
                     <a href="#about" class="slide-nav-item active-nav">
-                        <span class="nav-text">集團總覽 About</span>
+                        <span class="nav-text">集團總覽 <span class="nav-text-en">About</span></span>
                         <i data-lucide="arrow-right" class="nav-icon"></i>
                     </a>
                     <a href="#three-sectors" class="slide-nav-item">
-                        <span class="nav-text">三大事業群 Pillars</span>
+                        <span class="nav-text">三大事業群 <span class="nav-text-en">Pillars</span></span>
                         <i data-lucide="arrow-right" class="nav-icon"></i>
                     </a>
                     <a href="#esg" class="slide-nav-item">
-                        <span class="nav-text">永續共善 Sustainability</span>
+                        <span class="nav-text">永續共善 <span class="nav-text-en">Sustainability</span></span>
                         <i data-lucide="arrow-right" class="nav-icon"></i>
                     </a>
                     <a href="#news" class="slide-nav-item">
-                        <span class="nav-text">最新消息 News</span>
+                        <span class="nav-text">最新消息 <span class="nav-text-en">News</span></span>
                         <i data-lucide="arrow-right" class="nav-icon"></i>
                     </a>
                 </div>

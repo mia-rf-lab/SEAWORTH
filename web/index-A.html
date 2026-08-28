@@ -1793,7 +1793,9 @@
           </div>
         </div>
 
-        <button class="stage-next" id="stageNext" aria-label="下一個事業群">›</button>
+        <button class="stage-next" id="stageNext" aria-label="下一個事業群">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
       </div>
     </div>
 
@@ -2701,7 +2703,13 @@
     });
 
     nextBtn.addEventListener('click', () => {
-      listItems[(current + 1) % total].click();
+      if (current === total - 1) {
+        // 如果已經是最後一個，點擊箭頭就向下滾動離開這個固定區塊
+        const targetY = scrollEl.offsetTop + scrollEl.offsetHeight;
+        window.scrollTo({ top: targetY, behavior: 'smooth' });
+      } else {
+        listItems[current + 1].click();
+      }
     });
   })();
 
