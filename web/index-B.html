@@ -236,51 +236,53 @@
         .has-dropdown {
             position: relative;
         }
+        /* 下拉選單背景寬度滿版貼齊導覽列下方，內容置中 */
         .nav-dropdown {
-            position: absolute;
-            top: calc(100% + 26px);
-            left: 50%;
-            transform: translateX(-50%) translateY(10px);
+            position: fixed;
+            top: var(--header-h, 74px);
+            left: 0;
+            width: 100vw;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 18px;
-            width: 240px;
-            padding: 30px 22px;
-            background: rgba(255, 255, 255, 0.97);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--c-line);
-            box-shadow: 0 30px 60px rgba(14, 18, 23, 0.12);
+            justify-content: center;
+            background: #FFFFFF;
+            box-shadow: 0 24px 50px rgba(14, 18, 23, 0.1);
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.45s var(--ease-poetic), transform 0.45s var(--ease-poetic), visibility 0.45s;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s var(--ease-poetic), opacity 0.4s ease, visibility 0.5s;
             z-index: 100;
         }
         .has-dropdown:hover .nav-dropdown {
             opacity: 1;
             visibility: visible;
-            transform: translateX(-50%) translateY(0);
+            max-height: 420px;
+        }
+        .nav-dropdown-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 26px;
+            padding: 44px 22px;
         }
         .nav-dropdown a {
             font-family: var(--font-serif);
-            font-size: 0.95rem;
+            font-size: 1rem;
             letter-spacing: 0.06em;
             color: var(--c-muted);
             text-decoration: none;
             text-align: center;
             white-space: nowrap;
-            transition: color 0.35s ease, transform 0.35s ease;
+            font-weight: 400;
+            transition: color 0.3s ease, font-weight 0.3s ease;
         }
         /* 一個連結被 hover 時，其他連結一起淡下去，形成群組明暗對比 */
-        .nav-dropdown:hover a {
-            color: rgba(30, 34, 41, 0.32);
+        .nav-dropdown-inner:hover a {
+            color: rgba(30, 34, 41, 0.35);
         }
         .nav-dropdown a:hover {
             color: var(--c-ink);
-            transform: scale(1.06);
-        }
-        .nav-dropdown-narrow {
-            width: 140px;
+            font-weight: 700;
         }
 
         .nav-center-icon {
@@ -1925,25 +1927,31 @@
                     <li class="has-dropdown">
                         <a href="#about">集團總覽</a>
                         <div class="nav-dropdown">
-                            <a href="#about">關於海沃</a>
-                            <a href="#about">事業版圖</a>
-                            <a href="#about">技術整合能力</a>
+                            <div class="nav-dropdown-inner">
+                                <a href="#about">關於海沃</a>
+                                <a href="#about">事業版圖</a>
+                                <a href="#about">技術整合能力</a>
+                            </div>
                         </div>
                     </li>
                     <li class="has-dropdown">
                         <a href="#about">公司治理</a>
                         <div class="nav-dropdown">
-                            <a href="#about">公司治理架構</a>
-                            <a href="#about">風險管理政策</a>
-                            <a href="#about">內部稽核與內控制度</a>
-                            <a href="#about">誠信經營守則</a>
+                            <div class="nav-dropdown-inner">
+                                <a href="#about">公司治理架構</a>
+                                <a href="#about">風險管理政策</a>
+                                <a href="#about">內部稽核與內控制度</a>
+                                <a href="#about">誠信經營守則</a>
+                            </div>
                         </div>
                     </li>
                     <li class="has-dropdown">
                         <a href="#esg">共善經營</a>
                         <div class="nav-dropdown">
-                            <a href="#esg">環境保護</a>
-                            <a href="#esg">社會責任</a>
+                            <div class="nav-dropdown-inner">
+                                <a href="#esg">環境保護</a>
+                                <a href="#esg">社會責任</a>
+                            </div>
                         </div>
                     </li>
                 </ul>
@@ -1960,40 +1968,59 @@
                     <li class="has-dropdown">
                         <a href="#esg">投資人專區</a>
                         <div class="nav-dropdown">
-                            <a href="#esg">投資亮點</a>
-                            <a href="#esg">策略布局</a>
-                            <a href="#esg">股東訊息</a>
+                            <div class="nav-dropdown-inner">
+                                <a href="#esg">投資亮點</a>
+                                <a href="#esg">策略布局</a>
+                                <a href="#esg">股東訊息</a>
+                            </div>
                         </div>
                     </li>
                     <li class="has-dropdown">
                         <a href="#news">最新消息</a>
                         <div class="nav-dropdown">
-                            <a href="#news">官方公告</a>
-                            <a href="#news">企業動態</a>
-                            <a href="#esg">永續實踐</a>
+                            <div class="nav-dropdown-inner">
+                                <a href="#news">官方公告</a>
+                                <a href="#news">企業動態</a>
+                                <a href="#esg">永續實踐</a>
+                            </div>
                         </div>
                     </li>
                     <li class="has-dropdown">
                         <a href="#contact">聯繫海沃</a>
                         <div class="nav-dropdown">
-                            <a href="#contact">營運據點</a>
-                            <a href="#contact">聯絡我們</a>
-                            <a href="#contact">人才招募</a>
+                            <div class="nav-dropdown-inner">
+                                <a href="#contact">營運據點</a>
+                                <a href="#contact">聯絡我們</a>
+                                <a href="#contact">人才招募</a>
+                            </div>
                         </div>
                     </li>
                     <li class="nav-lang-picker has-dropdown">
                         <a href="#" style="display: flex; align-items: center; gap: 4px;">
                             TW <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i>
                         </a>
-                        <div class="nav-dropdown nav-dropdown-narrow">
-                            <a href="#">繁體中文</a>
-                            <a href="#">English</a>
+                        <div class="nav-dropdown">
+                            <div class="nav-dropdown-inner">
+                                <a href="#">繁體中文</a>
+                                <a href="#">English</a>
+                            </div>
                         </div>
                     </li>
                 </ul>
             </div>
         </nav>
     </header>
+    <script>
+        (function() {
+            const header = document.querySelector('.blanz-header');
+            if (!header) return;
+            function setHeaderHeight() {
+                document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+            }
+            setHeaderHeight();
+            window.addEventListener('resize', setHeaderHeight);
+        })();
+    </script>
 
     <!-- 頂部詩意標題區塊 -->
     <section class="hero-intro-section">
