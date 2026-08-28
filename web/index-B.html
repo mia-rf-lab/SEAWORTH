@@ -349,7 +349,6 @@
             align-items: flex-end;
             gap: 0px;
             position: relative;
-            padding-right: 40px;
         }
         .slide-nav-item {
             display: flex;
@@ -405,29 +404,13 @@
         .slide-nav-item:hover .nav-icon, .slide-nav-item.active-nav .nav-icon {
             opacity: 1;
         }
-        
-        /* 垂直滾動指示線 */
-        .hero-scroll-indicator {
-            position: absolute;
-            right: 0px;
-            bottom: -20px; /* 向上拉，避免被 overflow: hidden 裁切 */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .scroll-line {
-            width: 1px;
-            height: 80px; /* 縮短長度以適應視窗 */
-            background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 30%, rgba(255,255,255,0) 100%);
-        }
-        
+
         @media (max-width: 1024px) {
             .hero-big-title { font-size: 6rem; }
             .hero-big-subtitle { font-size: 0.9rem; }
             .hero-bottom-area { flex-direction: column; align-items: flex-start; gap: 40px; }
-            .hero-slide-nav { align-items: flex-start; padding-left: 20px; padding-right: 0; width: 100%; }
+            .hero-slide-nav { align-items: flex-start; padding-left: 20px; width: 100%; }
             .slide-nav-item { width: 100%; max-width: 320px; }
-            .hero-scroll-indicator { display: none; }
         }
         @media (max-width: 640px) {
             .hero-big-title { font-size: 3.5rem; }
@@ -1896,10 +1879,6 @@
                         <span class="nav-text">最新消息 News</span>
                         <i data-lucide="arrow-right" class="nav-icon"></i>
                     </a>
-                    <!-- 垂直指示線 -->
-                    <div class="hero-scroll-indicator">
-                        <div class="scroll-line"></div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -2026,7 +2005,7 @@
                             </div>
                         </a>
                         <div class="dark-card dark-card-plain">
-                            <img src="assets/texture-band.jpg" alt="">
+                            <img src="assets/bg.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -2521,7 +2500,9 @@
 
                 void main() {
                     float p = clamp(uProgress, 0.0, 1.0);
-                    vec2 uv = vUv;
+                    // 對應 .hero-bg-img 的 CSS transform: scale(1.02) 基準縮放，
+                    // 否則轉場結束、畫面交還給真正的 <img> 時會突然放大 2% 產生一下顫動
+                    vec2 uv = (vUv - 0.5) / 1.02 + 0.5;
 
                     // 仿 reactbits MorphSlider 的 melt 轉場：以 fbm 噪聲做局部位移融化，
                     // 邊界由噪聲值與進度共同決定，而非單純直線擦除
@@ -2583,13 +2564,36 @@
                 gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
                 return tex;
             }
-            const texA = createTexture();
-            const texB = createTexture();
 
-            function uploadTexture(tex, img) {
+            // 把來源圖片先縮小畫到離屏 canvas 上限制最長邊，避免把動輒 5000px+ 的原圖整張上傳給顯卡
+            const MAX_TEX_DIM = 1920;
+            const scratchCanvas = document.createElement('canvas');
+            const scratchCtx = scratchCanvas.getContext('2d');
+            function downscaleForTexture(img) {
+                const w = img.naturalWidth || img.width;
+                const h = img.naturalHeight || img.height;
+                const scale = Math.min(1, MAX_TEX_DIM / Math.max(w, h));
+                const tw = Math.max(1, Math.round(w * scale));
+                const th = Math.max(1, Math.round(h * scale));
+                scratchCanvas.width = tw;
+                scratchCanvas.height = th;
+                scratchCtx.drawImage(img, 0, 0, tw, th);
+                return { source: scratchCanvas, width: tw, height: th };
+            }
+
+            // 貼圖快取：同一張圖只上傳一次 GPU，換頁時直接重複使用，避免每次轉場都重新上傳造成卡頓
+            const textureCache = new Map();
+            function getTexture(img) {
+                const cached = textureCache.get(img.src);
+                if (cached) return cached;
+                const { source, width, height } = downscaleForTexture(img);
+                const tex = createTexture();
                 gl.bindTexture(gl.TEXTURE_2D, tex);
                 gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-                gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
+                gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, source);
+                const entry = { tex, width, height };
+                textureCache.set(img.src, entry);
+                return entry;
             }
 
             function resize() {
@@ -2600,6 +2604,24 @@
             }
             window.addEventListener('resize', resize);
             resize();
+
+            // 預先把所有幻燈片圖片上傳成貼圖（分散到閒置時間執行），第一次真正切換時就不用再等上傳
+            const allSlideImgs = document.querySelectorAll('.hero-bg-img');
+            function prewarm(i) {
+                if (i >= allSlideImgs.length) return;
+                const img = allSlideImgs[i];
+                const go = () => {
+                    if (img.complete) { try { getTexture(img); } catch (e) {} }
+                    prewarm(i + 1);
+                };
+                if (img.complete) go();
+                else img.addEventListener('load', go, { once: true });
+            }
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(() => prewarm(0));
+            } else {
+                setTimeout(() => prewarm(0), 300);
+            }
 
             const INTENSITY = 0.3;
             const SCALE = 2.4;
@@ -2615,12 +2637,12 @@
                 if (animating) return;
                 if (!fromImg.complete || !toImg.complete) { onDone(); return; }
                 animating = true;
-                resize();
                 canvas.classList.add('active');
 
+                let a, b;
                 try {
-                    uploadTexture(texA, fromImg);
-                    uploadTexture(texB, toImg);
+                    a = getTexture(fromImg);
+                    b = getTexture(toImg);
 
                     gl.useProgram(program);
                     gl.uniform1i(uTexA, 0);
@@ -2628,8 +2650,8 @@
                     gl.uniform1f(uIntensity, INTENSITY);
                     gl.uniform1f(uScale, SCALE);
                     gl.uniform2f(uResolution, canvas.width, canvas.height);
-                    gl.uniform2f(uTexASize, fromImg.naturalWidth || 1, fromImg.naturalHeight || 1);
-                    gl.uniform2f(uTexBSize, toImg.naturalWidth || 1, toImg.naturalHeight || 1);
+                    gl.uniform2f(uTexASize, a.width, a.height);
+                    gl.uniform2f(uTexBSize, b.width, b.height);
                 } catch (err) {
                     // 本機以 file:// 開啟時，部分瀏覽器會擋跨源畫布讀取（tainted canvas）
                     console.warn('Hero morph disabled (WebGL texture upload failed):', err);
@@ -2645,9 +2667,9 @@
                     const elapsed = now - start;
                     const t = Math.min(1, elapsed / duration);
                     gl.activeTexture(gl.TEXTURE0);
-                    gl.bindTexture(gl.TEXTURE_2D, texA);
+                    gl.bindTexture(gl.TEXTURE_2D, a.tex);
                     gl.activeTexture(gl.TEXTURE1);
-                    gl.bindTexture(gl.TEXTURE_2D, texB);
+                    gl.bindTexture(gl.TEXTURE_2D, b.tex);
                     gl.uniform1f(uProgress, easeInOutQuad(t));
                     gl.uniform1f(uTime, elapsed * 0.001);
                     gl.drawArrays(gl.TRIANGLES, 0, 3);
@@ -2680,8 +2702,11 @@
 
             // 轉場完成後，讓真正的 <img> 狀態瞬間同步（不觸發原本的 CSS 淡入淡出，避免與 WebGL 畫面打架）
             function setActiveImmediate(index) {
+                // 只讓 opacity 瞬間切換（避免跟 canvas 交接時重複淡入淡出）。
+                // 「transition」是簡寫屬性，只寫 opacity 的話會連 transform 的 12s 轉場一起洗掉，
+                // 必須把 transform 那段原封不動寫回去，不然 hover 時的緩慢放大會變成瞬間跳一下
                 bgs.forEach((bg, i) => {
-                    bg.style.transition = 'none';
+                    bg.style.transition = 'opacity 0s, transform 12s var(--ease-poetic)';
                     bg.classList.toggle('active', i === index);
                 });
                 void bgs[0].offsetWidth; // 強制 reflow
@@ -2717,7 +2742,7 @@
 
             function resetTimer() {
                 clearInterval(timer);
-                timer = setInterval(nextSlide, 6000); // 每 6 秒切換一次
+                timer = setInterval(nextSlide, 4000); // 每 4 秒切換一次
             }
 
             // 綁定點擊事件
