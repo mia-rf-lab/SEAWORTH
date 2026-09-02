@@ -45,7 +45,7 @@
             --c-subtle: #F6F6F4;
             --c-charcoal: #1E2229;
             --c-ink: #0E1217;
-            --c-muted: #848B96;
+            --c-muted: #646C7A; /* 加深原本的 #848B96，提升閱讀清晰度 */
             --c-copper: var(--c-subtitle-blue);  /* 詩意點綴色，統一改為海沃富蘊藍 */
             --c-copper-light: #B2C8CE;
             --c-subtitle-blue: #00495B;  /* 海沃富蘊藍 */
@@ -1193,14 +1193,15 @@
             overflow: hidden;
             border: 1px solid var(--c-line);
             box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            transition: all 0.4s var(--ease-poetic);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex;
             flex-direction: column;
+            border-color: transparent; /* 套用提案一設定 */
         }
         .project-card-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-            border-color: var(--c-copper);
+            transform: translateY(-6px);
+            box-shadow: 0 24px 60px rgba(0, 73, 91, 0.15); /* 深海陰影 */
+            border-color: rgba(0, 73, 91, 0.2);
         }
         .project-thumb-box {
             height: 320px;
@@ -1344,7 +1345,7 @@
         }
         .dark-card-caption p {
             font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.72);
+            color: #FFFFFF;
             line-height: 1.7;
             max-width: 420px;
             margin-bottom: 14px;
@@ -1354,8 +1355,22 @@
             letter-spacing: 0.1em;
             text-transform: uppercase;
             color: #FFFFFF;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-            padding-bottom: 4px;
+            padding-bottom: 6px;
+            position: relative;
+            display: inline-block;
+        }
+        .dark-card-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.5);
+            transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .dark-card:hover .dark-card-link::after {
+            width: 0%;
         }
 
         /* ----- 三事業 CSS ----- */
@@ -2021,15 +2036,11 @@
             transform: scale(1.3);
         }
         .flagship-cap {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 32px;
             text-align: center;
             font-size: 0.86rem;
             letter-spacing: 0.05em;
             color: var(--c-muted);
-            margin: 0;
+            margin: 60px 0 0 0;
         }
         @media (max-width: 1024px) {
             .flagship-scroll-wrapper {
@@ -2308,15 +2319,8 @@
         <div class="staggered-layout">
             <!-- 背景氛圍線條：單一流動的優雅弧線，搭配一條極淡虛線回聲與一顆銅色點綴 -->
             <div class="staggered-lineart">
-                <svg viewBox="0 0 100 100" preserveAspectRatio="none" style="width:100%; height:100%;">
-                    <path class="lineart-wave" d="M -2 3.2 C 18 0.4, 38 5.4, 58 1.8 C 76 -1, 92 3.6, 110 0.8" />
-                    <path class="lineart-echo" d="M -2 5.6 C 18 3, 38 7.8, 58 4.4 C 76 1.6, 92 6, 110 3.4" />
-                    <path class="lineart-wave" d="M -2 96.8 C 18 99.6, 38 94.6, 58 98.2 C 76 101, 92 96.4, 110 99.2" />
-                    <path class="lineart-echo" d="M -2 94.4 C 18 97, 38 92.2, 58 95.6 C 76 98.4, 92 94, 110 96.6" />
-                </svg>
-                <!-- 將原本在 SVG 裡的圓圈改為 HTML div，避免因為 preserveAspectRatio="none" 被拉長變形 -->
-                <div class="lineart-accent-dot" style="left: 58%; top: 1.8%;"></div>
-                <div class="lineart-accent-dot" style="left: 76%; top: 99.2%;"></div>
+                <canvas id="sectorWaveCanvas" style="width:100%; height:100%; position:absolute; top:0; left:0; pointer-events:none;"></canvas>
+                <!-- Dots are now drawn dynamically on the canvas -->
             </div>
 
             <!-- Group 1: WIN HOPE 707 (華偉) -->
@@ -3531,6 +3535,107 @@
             function setPosition(element, e) {
                 element.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
             }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const canvas = document.getElementById('sectorWaveCanvas');
+            if(!canvas) return;
+            const ctx = canvas.getContext('2d');
+            
+            let width, height;
+            let simplex = new SimplexNoise();
+            let time = 0;
+
+            function resize() {
+                const rect = canvas.parentElement.getBoundingClientRect();
+                width = rect.width;
+                height = rect.height;
+                canvas.width = width * window.devicePixelRatio;
+                canvas.height = height * window.devicePixelRatio;
+                ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            
+            window.addEventListener('resize', resize);
+            resize();
+
+            function draw() {
+                ctx.clearRect(0, 0, width, height);
+                
+                const linesConfig = [
+                    { type: 'wave', yRel: 0.032 },
+                    { type: 'echo', yRel: 0.056 },
+                    { type: 'wave', yRel: 0.968 },
+                    { type: 'echo', yRel: 0.944 }
+                ];
+
+                const stepX = 5; 
+                time += 0.0012; // 減緩波浪流動速度
+
+                for (let i = 0; i < linesConfig.length; i++) {
+                    let config = linesConfig[i];
+                    ctx.beginPath();
+                    
+                    if (config.type === 'wave') {
+                        ctx.strokeStyle = 'rgba(14, 18, 23, 0.28)'; // 稍微加深主線
+                        ctx.lineWidth = 1.2;
+                        ctx.setLineDash([]);
+                    } else {
+                        ctx.strokeStyle = 'rgba(14, 18, 23, 0.2)'; // 顯著加深虛線 (原本 0.1)
+                        ctx.lineWidth = 1.2; // 稍微加粗虛線 (原本 1)
+                        ctx.setLineDash([2, 6]); // 調整虛線比例，使其更明顯
+                    }
+
+                    let baseY = height * config.yRel;
+                    
+                    for (let x = 0; x <= width; x += stepX) {
+                        // 增加頻率 (x * 0.002) 讓波浪起伏更密集
+                        let noiseValue = simplex.noise3D(x * 0.002, i * 0.5, time);
+                        // 增加振幅 (35) 讓起伏更大 (原本 15)
+                        let offsetY = noiseValue * 35;
+                        
+                        let y = baseY + offsetY;
+                        
+                        if (x === 0) {
+                            ctx.moveTo(x, y);
+                        } else {
+                            ctx.lineTo(x, y);
+                        }
+                    }
+                    ctx.stroke();
+                }
+                
+                // Draw independent floating dots
+                const dots = [
+                    { xRel: 0.58, yRel: 0.08, seed: 10 }, 
+                    { xRel: 0.76, yRel: 0.985, seed: 20 }, // 右邊原點改回線條下方 (yRel 0.985)
+                    { xRel: 0.15, yRel: 0.92, seed: 30 }  // 左邊原點往下移一點，但仍保持在線條上方 (yRel 0.92)
+                ];
+                ctx.fillStyle = 'rgba(0, 73, 91, 0.35)'; // 降低不透明度，讓原點呈現半透明質感
+                for (let dot of dots) {
+                    let baseX = width * dot.xRel;
+                    let baseY = height * dot.yRel;
+                    
+                    let floatX = simplex.noise3D(dot.seed, 0, time * 0.8) * 35;
+                    let floatY = simplex.noise3D(0, dot.seed, time * 0.8) * 35;
+                    
+                    let dotX = baseX + floatX;
+                    let dotY = baseY + floatY;
+                    
+                    // 防止原點飄出畫布邊界被裁切
+                    if (dotY > height - 5) dotY = height - 5;
+                    if (dotY < 5) dotY = 5;
+                    
+                    ctx.beginPath();
+                    ctx.arc(dotX, dotY, 4, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                
+                requestAnimationFrame(draw);
+            }
+            
+            draw();
         });
     </script>
 </body>
