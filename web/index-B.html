@@ -886,7 +886,6 @@
         .channel-mail {
             font-family: var(--font-display);
             font-size: var(--text-base);
-            letter-spacing: 0.1em;
             color: var(--c-copper);
             text-decoration: none;
         }
@@ -1236,9 +1235,8 @@
             padding: 24px 20px;
         }
         .project-card-tag {
-            font-family: var(--font-display);
-            font-size: var(--text-tiny);
-            letter-spacing: 0.2em;
+            font-family: var(--font-sans);
+            font-size: var(--text-xs);
             color: var(--c-copper);
             text-transform: uppercase;
             margin-bottom: 6px;
@@ -1249,6 +1247,7 @@
             font-weight: 700;
             color: var(--c-ink);
             margin-bottom: 6px;
+            line-height: 1.4;
         }
         .project-card-desc {
             font-size: var(--text-xs);
@@ -1269,7 +1268,7 @@
 
         /* ----- 三事業 版型實驗 B CSS (深色背景) ----- */
         .dark-sectors-section {
-            background: var(--c-white);
+            background-color: var(--c-white);
             padding: 140px 0;
         }
         .dark-sectors-layout {
@@ -1707,11 +1706,30 @@
         /* ===== 國際合規認證 & 全球網絡 (Certifications & Global Presence) ===== */
         .certs-section {
             background-color: var(--c-white);
-            transition: background-color 1.8s ease;
             padding: 100px 0;
+            position: relative;
         }
-        .certs-section.bg-shift {
-            background-color: var(--c-canvas);
+        .certs-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* 頂部為白色（與上一區塊無縫接合），向下漸層到米色 */
+            background: linear-gradient(to bottom, var(--c-white) 0%, var(--c-canvas) 150px, var(--c-canvas) 100%);
+            opacity: 0;
+            transition: opacity 1.8s ease;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .certs-section.bg-shift::before {
+            opacity: 1;
+        }
+        /* 確保內容在偽元素之上 */
+        .certs-section .blanz-container {
+            position: relative;
+            z-index: 1;
         }
         .certs-header {
             text-align: center;
